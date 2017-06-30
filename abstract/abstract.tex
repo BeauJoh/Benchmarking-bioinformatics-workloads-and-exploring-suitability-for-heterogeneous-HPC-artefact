@@ -1,21 +1,15 @@
 \documentclass[../document.tex]{subfiles}
 \begin{document}
 
-Hardware in the High Performance Computing space is becoming increasingly
-heterogenous, with the range of accelerators supported by the OpenCL runtime
-steadily increasing. This is on account of two major motivators, energy
-efficiency and a reduction in computing time. All of the applications examined
-in this setting are scientific, with computationally intensive regions of code
-having already been partitioned into kernels. Each kernel will best be
-described as one of the 13 dwarfs of scientific computation. 
-This article presents an investigation  performed across 40 applications,
-encompassing 12 of the 13 dwarfs, on 3 different systems namely, a current
-high-end workstation system an older desktop system and an embedded system.
-The primary finding presented in this work is that  generally a specific type
-of accelerator will always outperform the others when running all applications
-in a dwarf. The logical conclusion of this finding is that knowing the dwarf
-hidden in a kernel can be used as the basis for the efficient scheduling of
-work to accelerators in HPC systems.
+High performance computing hardware is becoming increasingly heterogeneous due to considerations of compute time and energy efficiency.
+The OpenCL framework supports portable programming across a wide range of accelerators.
+
+Scientific application workloads typically contain one or more computationally intensive kernels, each of which may be categorized as one of the 13 ``dwarfs'', which represent patterns of computation and communication.
+We present an extensive performance study of 40 OpenCL application benchmarks representing 12 of the 13 dwarfs, on three different systems: a high-end CPU compute node; a previous-generation CPU compute node; and an embedded system.
+
+For a given set of accelerators in a HPC system, all kernels corresponding to a particular dwarf tend to perform best on the same accelerator.
+\todo[inline]{Best in terms of both time and energy?}
+This means that a categorization of kernels according to dwarfs is an effective means to determine efficient scheduling of work to accelerators in HPC systems.
 
 %Next paper title: Finding hidden Dwarfs in Kernels
 
