@@ -1,0 +1,26 @@
+\documentclass[../document.tex]{subfiles}
+\begin{document}\label{ssec:time}
+
+%LibSciBench and performance counters
+LibSciBench by Hoefler and Belli \cite{hoefler2015scientific} is measurement
+tool which allows high precision timing events to be collected for later
+statistical investigation. In addition, LibSciBench supports the use of
+PAPI (The Performace API) \cite{mucci1999papi} events, thus additional
+hardware event measurements were can also be collected by setting enviroment
+variables {\tt LSB_PAPI1} and {\tt LSB_PAPI2} over the command line.
+
+All applications presented in the OpenDwarfs Benchmark suite have had precise
+measurements made by manually including LibSciBench library calls. This allowed
+investigation into measured times for kernel execution, along with host setup
+and memory transfer operations exibited in each application, but also the
+culprits for each timing result were examined using these PAPI events. Thus,
+also measurements of IPC (Instructions Per Cycle), the L1 and L2 data cache
+and total L3 cache events in the form of request rate (requests/instructions),
+miss rate (misses/instructions) and miss ratio (misses/requests) were also
+taken. Other events collected were the data TLB (Translation Look-aside Buffer)
+miss rate (misses/instructions), the branch rate (branch instructions/total
+instructions), the branch misprediction rate (branch mispredictions/total
+instructions) and branch misprediction ratio (branch mispredictions/branch
+instructions).
+
+\end{document}

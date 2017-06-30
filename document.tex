@@ -1,0 +1,65 @@
+
+\documentclass[10pt,article]{styles/IEEEtran}
+\usepackage{subfiles}               %using subfiles
+\usepackage{url}                    %urls in bibliography
+\usepackage{csvsimple}              %for turning csvs into tables
+\usepackage{caption}                %comments in tables
+\usepackage{float}                  %in line table
+\usepackage{amsfonts}               %for mathbb
+\usepackage{amsmath}
+\usepackage{graphicx}               %for including eps
+\usepackage{epstopdf}               %^^
+\usepackage{todonotes}              %for todo notes
+\usepackage{pbox}                   %for multiline cells in tables
+\usepackage[boxed]{algorithm2e}     %for pseudocode
+\usepackage{multirow}               %for tables
+
+\begin{document}
+\title{Dwarfs on Accelerators: an Underlying Observation for Scientific
+High Performance Computing}
+ 
+\author{Beau Johnston \texttt{beau.johnston@anu.edu.au},\\
+        Joshua Milthorpe \texttt{joshua.milthorpe@anu.edu.au} \and\\
+        Alistair Rendell \texttt{alistair.rendell@anu.edu.au}\\
+        Research School of Computer Science\\
+        The Australian National University\\
+        Canberra, Australia}
+
+\maketitle
+
+
+\section{Abstract}\subfile{abstract/abstract}
+
+
+\section{Introduction}\subfile{introduction/introduction}
+
+
+\section{Related Work}\subfile{related_work/related_work}
+
+
+\section{Experimental Setup}\label{sec:experimental_setup}
+\subsection{Hardware}\subfile{experimental_setup/hardware}
+\subsection{Software}\subfile{experimental_setup/software}
+\subsection{Benchmarks And Dwarfs}
+\subfile{experimental_setup/benchmarks_and_dwarfs}
+\subsection{Measurements}\subfile{experimental_setup/measurements}
+\subsection{Setting Sizes}\subfile{experimental_setup/setting_sizes}
+
+
+\section{Results}\label{sec:results}
+\subsection{Time}\subfile{results/time}
+\subsection{Relative performance}\subfile{results/relative_performance}
+\subsection{Aggregating Dwarfs}\subfile{results/aggregating_dwarfs}
+
+
+\section{Conclusions}\subfile{conclusions/conclusions.tex}
+
+
+\section{Future Work}\subfile{future_work/future_work.tex}
+
+
+%References
+\bibliographystyle{plain}
+\bibliography{bibliography/bibliography}
+
+\end{document}
