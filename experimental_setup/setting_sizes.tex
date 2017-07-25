@@ -2,5 +2,52 @@
 \begin{document}\label{ssec:setting_sizes}
 
 %focus of this is the experimental evaluation to justify setting problem sizes
+For each application 4 different problem sizes were selected, namely {\tt tiny}, {\tt small},{\tt medium} and {\tt large}.
+This was based on various levels of caching performance on the Skylake CPU.
+For instance, tiny should just fit within L1 cache, on the Skylake this corresponds to 32KiB of data cache, small should fit within the 256KiB L2 data cache, medium should fit within 8192KiB of the L3 cache, and large must be greater than 8192KiB to avoid caching and operate out of main memory.
+This was verified using the {\tt lscpu} Linux tool.
+
+An experiment was conducted to verify the selection of each problem size, in which an examination of which increased problem sizes resulted in a cache spill-over.
+The final selected problem sizes should be as close to filling each level as cache as possible.
+
+Caching performance was collected using the PAPI counters.
+On the Skylake L1 and L2 data cache miss rates were counted using the {\tt PAPI\_L1\_DCM} and {\tt PAPI\_L2\_DCM} counters.
+For L3 miss events, only the total cache counter event ({\tt PAPI\_L3\_TCM}) was available.
+The final values presented as miss results are presented as a percentage, and were determined using the number of misses counted divided by the total instructions ({\tt PAPI_TOT_INS}).
+
+The methodology to determine the appropriate size parameters is demonstrated on the k-means benchmark.
+The k-means benchmark performs a local clustering to represent a collection of objects by the centroids of a cluster.
+Each step of the algorithm computes the nearest centroid for each data object, then relocates the centroid to the mean of all objects within the sub-cluster.
+Execution terminates when no clusters change size between iterations.
+Starting positions for each centroid is determined randomly.
+This benchmark previously required the feature space on which to perform clustering to be provided as a previously generated file which was then loaded.
+It was then extended to allow setting the feature space as an argument from the command line.
+This feature space is then randomly generated at each run, thereby increasingly the randomness of the distribution for each invocation of the program.
+This was done to increase true characteristics of cache performance, since repeated runs of clustering on the same feature space (loaded from file) would deterministically generate similar caching performance.
+Each value in the feature space is 32-bit floating point precision.
+The same number of clusters is fixed, with the minimum and maximum cluster locations being returned both set to 5.
+The only parameters changes between run to increase the problem size is the number of points/objects in this feature space, increasing from 5 to 47, and increasing the number of features for each level of the cache size.
+In the kernel for k-means there are 3 large one dimensional arrays passed to the device, namely {\bf feature}, {\bf cluster} and {\bf membership}.
+{\bf feature} is the array which stores the unclustered feature space, it is of size $P_n \times F_n \times \text{sizeof}\left(\text{float}\right\)$, where $P_n$ is the number of points in the subspace, $F_n$ is the number of features per point and $\text{sizeof}\left(\text{float}\right\)$ is the number of bytes required to represent a floating point value per feature.
+{\bf cluster} is the working and output array to store the intermediately clustered points, it is of size $C_n \times F_n \times \text{sizeof}\left(\text{float}\right\)$, where $C_n$ is the number of cluster to locate in the subspace.
+{\bf membership} is an array indicating whether each point has changed to a new cluster in each iteration of the algorithm, it is of size $P_n \times \text{sizeof}\left(\text{int}\right\)$, where $\text{sizeof}\left(\text{int}\right\)$ is the number of bytes to represent an integer value.
+Thereby the working kernel memory, in KiB, is determined as $feature_size+membership_size+cluster_size)/1024.0$.
+
+Each increasing size was emperically measured .
+Since it is known for the target CPU that L1 is 32K
+It is expected that the last, and thereby, optimal number of points in the feature space is 26.
+Each point/object contains the increasing number of features, .
+    #'tiny':'-g -p 26 -f 256',     #< 32K, object increments of 1KiB¬
+    #'small':'-g -p 26 -f 2048',   #< 256K, object increments of 8KiB¬
+    #'medium':'-g -p 26 -f 65536', #< 8196K, object increments of 256KiB¬
+    #'large':'-g -p 26 -f 524288', #> 8196K, object increments of 2048KiB
+    - we increase the number of points by 1 from 5 to 47,
+    - each experiment is run 150 times, and each iteration of the kernel is instrumented.
+Thereby hopefully showing that performance degrades once will spill out of L1 cache at 32KiB, and ideally at we see a degradation in time and an increase of L1 cache misses after 243 objects, which requires approximately 31.94KiB of memory. 
+This is verified as 
+
+
+For brevity, the figures to determine appropriate problem sizes for the remaining benchmarks have been omitted, but the final parameters used are presented in Table{} \todo{generate this table}.
+The methodology to generate the remaining scales is the same as those presented here to determine suitable selection of the k-means problem sizes.
 
 \end{document}
