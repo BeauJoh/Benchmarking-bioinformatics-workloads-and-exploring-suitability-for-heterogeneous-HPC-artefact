@@ -6,7 +6,6 @@
 \usepackage[hyphens]{url}
 \usepackage{hyperref}
 
-
 %%%%%%%%%%%---SETME-----%%%%%%%%%%%%%
 \newcommand{\microsubmissionnumber}{XXX}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -29,10 +28,22 @@
 \usepackage{amsmath}
 \usepackage{graphicx}               %for including eps
 \usepackage{epstopdf}               %^^
-\usepackage{todonotes}              %for todo notes
 \usepackage{pbox}                   %for multiline cells in tables
 \usepackage[boxed]{algorithm2e}     %for pseudocode
 \usepackage{multirow}               %for tables
+\usepackage{threeparttable}         %^^
+\usepackage{xargs}                      % Use more than one optional parameter in a new commands
+
+%todonotes
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+\usepackage{marginnote}
+\let\marginpar\marginnote
+\newcommandx{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+\newcommandx{\change}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+\newcommandx{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+\newcommandx{\improvement}[2][1=]{\todo[linecolor=purple,backgroundcolor=purple!25,bordercolor=purple,#1]{#2}}
+\newcommandx{\thiswillnotshow}[2][1=]{\todo[disable,#1]{#2}}
+%
 
 \def\sharedaffiliation{%
 \end{tabular}
@@ -94,5 +105,8 @@
 %References
 \bibliographystyle{plain}
 \bibliography{bibliography/bibliography}
+
+\newpage
+\listoftodos[Notes]
 
 \end{document}
