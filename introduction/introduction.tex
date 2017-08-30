@@ -1,10 +1,11 @@
 \documentclass[../document.tex]{subfiles}
 \begin{document}\label{sec:introduction}
 
-The next generation of scientific High Performance Computer (HPC) systems promises to see an increasingly heterogeneous range of devices available as accelerators.
-Several such systems have been proposed. \change{Mention Isambad and others}
-An interesting observation here is that each node is expected to comprise different types of accelerators.
-This poses an interesting question, does a method exist to select the most appropriate device?
+The next generation of scientific High Performance Computing (HPC) systems will use a wide range of accelerators.
+A single node may be heterogeneous, containing multiple different computing devices; moreover, a HPC system may offer nodes of different types.
+For example, the Cori system at Lawrence Berkeley National Laboratory comprises 2,388 Cray XC40 nodes with Intel Haswell CPUs, and 9,688 Intel Xeon Phi nodes~\cite{declerck2016cori}.
+Several such systems have been proposed. \change{Mention Isambard and others}
+Given a choice of computing devices, does a method exist to select the most appropriate device for a particular computation?
 
 \improvement{Include energy efficiency observations, perhaps from icpp paper?}
 

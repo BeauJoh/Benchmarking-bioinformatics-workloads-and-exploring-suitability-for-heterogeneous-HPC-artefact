@@ -1,9 +1,18 @@
 \documentclass[../document.tex]{subfiles}
 \begin{document}\label{ssec:hardware}
+	
+Our experiments were conducted on three hardware platforms:
+\begin{enumerate}
+	\item a modern quad-core Intel Skylake Core i7-6700K CPU with a clock frequency of \SI{4.3}{\giga\hertz};
+	\item an older quad-core Intel Nehalem Core i7 960 CPU with a clock frequency of \SI{3.2}{\giga\hertz}; and
+	\item a GeForce GTX 1080 GPU with a clock frequency of \SI{1835}{\mega\hertz}.
+\end{enumerate}
+\todo[inline]{confirm that tests were run at highest clock frequency}
 
-Intel(R) Core(TM) i7 960 CPU 1.6GHz-3.20GHz
-Intel(R) Core(TM) i7-6700K CPU 800MHz-4.30GHz (driver version: 6.3 provided in the tarball intel\_sdk\_for\_opencl\_2015\_ubuntu\_5.3.0.1904\_x64.tgz, opencl version: 1.2)
-Both have 4 physical cores or 8 hyperthreaded, for the purposes of the kmeans benchmark hyperthreading was disable.
-GeForce GTX 1080 @1835 MHz (driver version: 375.66, opencl version: 1.2 provided as part of CUDA 8.0.61)
+OpenCL version 1.2 was used for all experiments.
+On the CPUs we used the Intel OpenCL driver version 6.3, provided in the tarball intel\_sdk\_for\_opencl\_2015\_ubuntu\_5.3.0.1904\_x64.tgz.
+\todo[inline]{confirm mismatch 5.3 -> 6.3}
+On the GPU we used the Nvidia OpenCL driver version 375.66, provided as part of CUDA 8.0.61.
+Hyperthreading was disabled for all CPU experiments.
 
 \end{document}
