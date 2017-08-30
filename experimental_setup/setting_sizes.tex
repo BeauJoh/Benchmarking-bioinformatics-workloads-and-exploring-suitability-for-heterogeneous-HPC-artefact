@@ -50,50 +50,70 @@ Spilling over at each level of cache should be at 27 points/objects for each pro
 To measure increase the number of points/objects by 1 from 5 to 47.
 Configuration of the experiment is repeated 300 times, and each iteration of the kernel is instrumented for the respective cache events.
 
-\todo{Add figures for each level of cache and a brief write up.}
+\add{figures for each level of cache and a brief write up.}
 
 \begin{table*}[t]
 \centering
 \begin{threeparttable}
     \centering
-    \caption{OpenDwarf workload parameters $\Phi$}
+    \caption{OpenDwarf workload scale parameters $\Phi$}
     \begin{tabular}{l|c|c|c|c}
         \bf Benchmark & \bf tiny & small & medium & large\\\hline
-        kmeans\textdagger& 256 & 2048 & 65536 & 524288
+        {\tt kmeans}& 256 & 2048 & 65536 & 524288\\
+        {\tt lud} & 80 & 240 & 1440 & 4096\\
+        {\tt csr} & 736 & 2416 & 14336 & 16384\\
+        {\tt fft}$\medsquare$ & 128,16 & 128,128 & 1024,512 & 2048,1024\\
+        {\tt gem} & 4TUT & 2D3V & nucleosome & 1KX5\\
+        {\tt srad}& 80,16 & 128,80 & 1024,336 & 2048,1024
     \end{tabular}
     \begin{tablenotes}
-    \item [\textdagger] increasing feature size the number of features.
-    \item [*] Note the GPU devices ability to perform frequency scaling is
-        unknown as no governor is provided.
-    \item 
+    \item [$\medsquare$] {\tt fft} uses 2 arguments, shown here as {\tt arg1},{\tt arg2} these correspond to the square matrix size on which to perform a 2 dimensional Fast Fourier Transform. They are used within $\Phi$ using subscript notation, $\Phi_1$ and $\Phi_2$ respectively.
     \end{tablenotes}
     \label{tab:problem_sizes}
 \end{threeparttable}
 \end{table*}
 
-For brevity, the figures to determine appropriate problem sizes for the remaining benchmarks have been omitted, and the final parameters used are presented in Table~\ref{tab:problem_sizes}.
-The procedure to generate these remaining problem sizes is the same as those presented for k-means.
+For brevity, the procedures to used determine appropriate problem sizes each of the remaining benchmarks have been omitted, but the final selected parameters are presented in Table~\ref{tab:problem_sizes}.
+The procedure to generate the remaining scale arguments is benchmark specific but was similar same as those presented for k-means, trial and error until a suitably sized domain for each cache size was found.
+
+Gemnoui -- {\tt gem} is an n-body-method based benchmark which computes electrostatic potential of biomolecular structures.
+Determining suitable problem sizes was performed by initially browsing the National Center for Biotechnology Information's Molecular Modeling Database (MMDB)~\ref{madej2013mmdb} and inspecting the corresponding Protein Data Bank format (pdb) files.
+Molecules were then selected based on complexity, since the greater the complexity the greater the number of atoms required for the benchmark and thus the larger the memory footprint.
+{\bf tiny} used the Prion Peptide 4TUT~\ref{yu2015crystal} and was the simplest structure, consisting of a single protein (1 molecule), it had the device side memory usage of 31.3KiB which should fit in the L1 cache (32KiB) on the Skylake processor.
+{\bf small} used a Leukocyte Receptor 2D3V~\ref{shiroishi2006crystal} also consisting of 1 protein molecule, with an associated memory footprint of 252KiB.
+{\bf medium} used the nucleosome dataset originally provided in the OpenDwarf Benchmark Suite, using 7498KiB of device-side memory.
+{\bf large} used an X-Ray Structure of a Nucleosome Core Particle~\ref{davey2002solvent}, consisting of 8 protein, 2 nucleotide, and 18 chemical molecules, and requiring 10970.2KiB of memory when executed by {\tt gem}.
+Each {\tt pdb} file was converted to the {\tt pqr} atomic particle charge and radius format using the {\tt pdb2pqr}~\ref{dolinsky2004pdb2pqr} tool.
+Generation of the solvent excluded molecular surface used the tool {\tt msms}~\ref{sanner1996reduced}.
+The final datasets used for {\tt gem} and all other benchmarks can be found in this papers associated GitHub repository~\ref{johnston2017}.
 
 \begin{table*}[t]
 \centering
 \begin{threeparttable}
     \centering
     \caption{Program Arguments}
-    \begin{tabular}{l|c}
+    \begin{tabular}{l|l}
         \bf Benchmark & \bf Arguments\\\hline
-        kmeans & {\tt -g -p 26 -f} $\Phi$
+        {\tt kmeans} & {\tt -g -p 26 -f} $\Phi$\\
+        {\tt lud} & {\tt -s} $\Phi$\\
+        $\Psi$ & {\tt createcsr -n} $\Phi$ {\tt -d 5000}$\medtriangleup$\\
+        {\tt csr}\textdagger & {\tt -i} $\Psi$\\
+        {\tt fft} & {\tt --2D  --pts1 } $\Phi_1$ {\tt --pts2} $\Phi_2$\\
+        {\tt gem} & $\Phi$ {80 1 0}\\
+        {\tt srad}& $\Phi_1$ $\Phi_2$ {\tt 0 127 0 127 0.5 1}\\
     \end{tabular}
     \begin{tablenotes}
-    \item no notes just yet
+    \item [$\medtriangleup$] The {\tt -d 5000} indicates density of the matrix in this instance 0.5\% dense (or 99.5\% sparse).
+    \item [\textdagger] The {\tt csr} benchmark loads a file generated by each respective workload of $\Phi$, this file is generated by the {\tt createcsr} and is represented by the variable $\Psi$.
     \end{tablenotes}
     \label{tab:program_arguments}
 \end{threeparttable}
 \end{table*}
 
-Where $\Phi$ is substituted as the argument for each benchmark, these are presented in Table~\ref{tab:program_arguments}.
+Where $\Phi$ is substituted as the argument for each benchmark, it is taken as the respective scale from Table~\ref{tab:problem_sizes} and is inserted into Table~\ref{tab:program_arguments}.
 
 Each {\bf Device} can be selected in a uniform way between applications using the same notation, on this system {\bf Device} comprises of {\tt -p 1 -d 0 -t 0} for the Intel Skylake CPU, where {\tt p} and {\tt d} are the integer identifier of the platform and device to respectively use, and {\tt -p 1 -d 0 -t 1} for the Nvidia Geforce GTX 1080 GPU.
-Each application is run as {\bf Benchmark} {\bf Device} {\tt --} {\bf Arguments}.
-For reproducibility the entire set of python scripts with all problem sizes is available in the Github repository. \todo{add url to git repo} 
+Each application is run as {\bf Benchmark} {\bf Device} {\tt --} {\bf Arguments}, where {\bf Arguments} is taken from Table~\ref{tab:program_arguments} at the selected scale of $\Phi$.
+For reproducibility the entire set of python scripts with all problem sizes is available in the Github repository\ref{johnston2017}. 
 
 \end{document}
