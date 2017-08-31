@@ -2,26 +2,22 @@
 \begin{document}\label{ssec:measurements}
 
 %LibSciBench and performance counters
-LibSciBench by Hoefler and Belli \cite{hoefler2015scientific} is measurement
-tool which allows high precision timing events to be collected for later
-statistical investigation. In addition, LibSciBench supports the use of
-PAPI (The Performace API) \cite{mucci1999papi} events, thus additional
-hardware event measurements were can also be collected by setting enviroment
-variables {\tt LSB\_PAPI1} and {\tt LSB\_PAPI2} over the command line.
+LibSciBench is a performance measurement tool which allows high precision timing events to be collected for statistical analysis~\cite{hoefler2015scientific}.
+We used LibSciBench to record timings in conjunction with hardware events, which it collects via PAPI~\cite{mucci1999papi} counters.
 
-All applications presented in the OpenDwarfs Benchmark suite have had precise
-measurements made by manually including LibSciBench library calls. This allowed
-investigation into measured times for kernel execution, along with host setup
-and memory transfer operations exibited in each application, but also the
-culprits for each timing result were examined using these PAPI events. Thus,
-also measurements of IPC (Instructions Per Cycle), the L1 and L2 data cache
-and total L3 cache events in the form of request rate (requests/instructions),
-miss rate (misses/instructions) and miss ratio (misses/requests) were also
-taken. Other events collected were the data TLB (Translation Look-aside Buffer)
-miss rate (misses/instructions), the branch rate (branch instructions/total
-instructions), the branch misprediction rate (branch mispredictions/total
-instructions) and branch misprediction ratio (branch mispredictions/branch
-instructions).
+We modified the applications in the OpenDwarfs Benchmark suite to insert library calls to LibSciBench to record timings and PAPI events for the three main components of application time: kernel execution, host setup and memory transfer operations. 
+To help understand the timings, the following hardware counters were also collected:
+\begin{itemize}
+	\item total instructions and IPC (Instructions Per Cycle);
+	\item L1 and L2 data cache misses;
+	\item total L3 cache events in the form of request rate (requests/instructions) miss rate (misses/instructions) and miss ratio (misses/requests)
+	\item data TLB (Translation Look-aside Buffer) miss rate (misses/instructions); and
+	\item branch instructions and branch mispredictions.
+\end{itemize}
+\todo[inline]{Describe how we record energy}
+The branching behavior of the code was characterized by branch rate (branch instructions/total instructions), branch misprediction rate (branch mispredictions/total instructions), and
+branch misprediction ratio (branch mispredictions/branch instructions).
+\todo[inline]{Do we really use each of these ratios?}
 
 A sample of 300 iterations was collected for each measurement.
 Only the kernel execution times/energy are presented in Figure\todo{reference the big figure}%~\ref{}. 
