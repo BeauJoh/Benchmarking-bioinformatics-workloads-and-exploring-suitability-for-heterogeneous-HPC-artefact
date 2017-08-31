@@ -77,15 +77,15 @@ For brevity, the procedures to used determine appropriate problem sizes each of 
 The procedure to generate the remaining scale arguments is benchmark specific but was similar same as those presented for k-means, trial and error until a suitably sized domain for each cache size was found.
 
 Gemnoui -- {\tt gem} is an n-body-method based benchmark which computes electrostatic potential of biomolecular structures.
-Determining suitable problem sizes was performed by initially browsing the National Center for Biotechnology Information's Molecular Modeling Database (MMDB)~\ref{madej2013mmdb} and inspecting the corresponding Protein Data Bank format (pdb) files.
+Determining suitable problem sizes was performed by initially browsing the National Center for Biotechnology Information's Molecular Modeling Database (MMDB)~\cite{madej2013mmdb} and inspecting the corresponding Protein Data Bank format (pdb) files.
 Molecules were then selected based on complexity, since the greater the complexity the greater the number of atoms required for the benchmark and thus the larger the memory footprint.
-{\bf tiny} used the Prion Peptide 4TUT~\ref{yu2015crystal} and was the simplest structure, consisting of a single protein (1 molecule), it had the device side memory usage of 31.3KiB which should fit in the L1 cache (32KiB) on the Skylake processor.
-{\bf small} used a Leukocyte Receptor 2D3V~\ref{shiroishi2006crystal} also consisting of 1 protein molecule, with an associated memory footprint of 252KiB.
+{\bf tiny} used the Prion Peptide 4TUT~\cite{yu2015crystal} and was the simplest structure, consisting of a single protein (1 molecule), it had the device side memory usage of 31.3KiB which should fit in the L1 cache (32KiB) on the Skylake processor.
+{\bf small} used a Leukocyte Receptor 2D3V~\cite{shiroishi2006crystal} also consisting of 1 protein molecule, with an associated memory footprint of 252KiB.
 {\bf medium} used the nucleosome dataset originally provided in the OpenDwarf Benchmark Suite, using 7498KiB of device-side memory.
-{\bf large} used an X-Ray Structure of a Nucleosome Core Particle~\ref{davey2002solvent}, consisting of 8 protein, 2 nucleotide, and 18 chemical molecules, and requiring 10970.2KiB of memory when executed by {\tt gem}.
-Each {\tt pdb} file was converted to the {\tt pqr} atomic particle charge and radius format using the {\tt pdb2pqr}~\ref{dolinsky2004pdb2pqr} tool.
-Generation of the solvent excluded molecular surface used the tool {\tt msms}~\ref{sanner1996reduced}.
-The final datasets used for {\tt gem} and all other benchmarks can be found in this papers associated GitHub repository~\ref{johnston2017}.
+{\bf large} used an X-Ray Structure of a Nucleosome Core Particle~\cite{davey2002solvent}, consisting of 8 protein, 2 nucleotide, and 18 chemical molecules, and requiring 10970.2KiB of memory when executed by {\tt gem}.
+Each {\tt pdb} file was converted to the {\tt pqr} atomic particle charge and radius format using the {\tt pdb2pqr}~\cite{dolinsky2004pdb2pqr} tool.
+Generation of the solvent excluded molecular surface used the tool {\tt msms}~\cite{sanner1996reduced}.
+The final datasets used for {\tt gem} and all other benchmarks can be found in this papers associated GitHub repository~\cite{johnston2017}.
 
 \begin{table*}[t]
 \centering
@@ -114,6 +114,6 @@ Where $\Phi$ is substituted as the argument for each benchmark, it is taken as t
 
 Each {\bf Device} can be selected in a uniform way between applications using the same notation, on this system {\bf Device} comprises of {\tt -p 1 -d 0 -t 0} for the Intel Skylake CPU, where {\tt p} and {\tt d} are the integer identifier of the platform and device to respectively use, and {\tt -p 1 -d 0 -t 1} for the Nvidia Geforce GTX 1080 GPU.
 Each application is run as {\bf Benchmark} {\bf Device} {\tt --} {\bf Arguments}, where {\bf Arguments} is taken from Table~\ref{tab:program_arguments} at the selected scale of $\Phi$.
-For reproducibility the entire set of python scripts with all problem sizes is available in the Github repository\ref{johnston2017}. 
+For reproducibility the entire set of python scripts with all problem sizes is available in the Github repository\cite{johnston2017}. 
 
 \end{document}
