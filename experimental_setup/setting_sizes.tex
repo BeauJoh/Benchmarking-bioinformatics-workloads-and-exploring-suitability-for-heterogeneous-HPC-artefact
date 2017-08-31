@@ -58,13 +58,14 @@ Configuration of the experiment is repeated 300 times, and each iteration of the
     \centering
     \caption{OpenDwarf workload scale parameters $\Phi$}
     \begin{tabular}{l|c|c|c|c}
-        \bf Benchmark & \bf tiny & small & medium & large\\\hline
-        {\tt kmeans}& 256 & 2048 & 65536 & 524288\\
-        {\tt lud} & 80 & 240 & 1440 & 4096\\
-        {\tt csr} & 736 & 2416 & 14336 & 16384\\
-        {\tt fft}$\medsquare$ & 128,16 & 128,128 & 1024,512 & 2048,1024\\
-        {\tt gem} & 4TUT & 2D3V & nucleosome & 1KX5\\
-        {\tt srad}& 80,16 & 128,80 & 1024,336 & 2048,1024
+        \bf Benchmark         & \bf tiny   & small  & medium     & large\\\hline
+        {\tt kmeans}          & 256        & 2048   & 65536      & 524288\\
+        {\tt lud}             & 80         & 240    & 1440       & 4096\\
+        {\tt csr}             & 736        & 2416   & 14336      & 16384\\
+        {\tt fft}$\medsquare$ & 128,16     & 128,128& 1024,512   & 2048,1024\\
+        {\tt gem}             & 4TUT       & 2D3V   & nucleosome & 1KX5\\
+        {\tt srad}            & 80,16      & 128,80 & 1024,336   & 2048,1024\\
+        {\tt cfd}             & 128        & 1284   & 45056      & 193474
     \end{tabular}
     \begin{tablenotes}
     \item [$\medsquare$] {\tt fft} uses 2 arguments, shown here as {\tt arg1},{\tt arg2} these correspond to the square matrix size on which to perform a 2 dimensional Fast Fourier Transform. They are used within $\Phi$ using subscript notation, $\Phi_1$ and $\Phi_2$ respectively.
@@ -87,6 +88,11 @@ Each {\tt pdb} file was converted to the {\tt pqr} atomic particle charge and ra
 Generation of the solvent excluded molecular surface used the tool {\tt msms}~\cite{sanner1996reduced}.
 The final datasets used for {\tt gem} and all other benchmarks can be found in this papers associated GitHub repository~\cite{johnston2017}.
 
+Computational Fluid Dynamics -- {\tt cfd} is an unstructured grid benchmark which performs 3-dimensional euler-space computations to determine density, energy and momentum over a surface.
+This surface has a mesh data structure and internally is represented as a series of triangular vertices.
+To generate suitable data sizes for this benchmark the data set provided with the benchmark {\tt fvcorr.domn.097K} has been shortened to $\Phi$ vertices, where $Phi$ is given in Table~\ref{problem_sizes}, and was then stored as $\Phi${\tt.dat} files.
+These files are then passed as the only argument into the benchmark.
+
 \begin{table*}[t]
 \centering
 \begin{threeparttable}
@@ -101,6 +107,7 @@ The final datasets used for {\tt gem} and all other benchmarks can be found in t
         {\tt fft} & {\tt --2D  --pts1 } $\Phi_1$ {\tt --pts2} $\Phi_2$\\
         {\tt gem} & $\Phi$ {80 1 0}\\
         {\tt srad}& $\Phi_1$ $\Phi_2$ {\tt 0 127 0 127 0.5 1}\\
+        {\tt cfd} & $\Phi${\tt.dat}\\
     \end{tabular}
     \begin{tablenotes}
     \item [$\medtriangleup$] The {\tt -d 5000} indicates density of the matrix in this instance 0.5\% dense (or 99.5\% sparse).
