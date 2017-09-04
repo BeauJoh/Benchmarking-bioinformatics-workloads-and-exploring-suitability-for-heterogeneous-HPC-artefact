@@ -3,51 +3,49 @@
 
 %focus of this is the experimental evaluation to justify setting problem sizes
 For each application 4 different problem sizes were selected, namely {\bf tiny}, {\bf small},{\bf medium} and {\bf large}.
-This was based on various levels of caching performance on the Skylake CPU.
-For instance, tiny should just fit within L1 cache, on the Skylake this corresponds to 32KiB of data cache, small should fit within the 256KiB L2 data cache, medium should fit within 8192KiB of the L3 cache, and large must be greater than 8192KiB to avoid caching and operate out of main memory.
+This was based on the memory hierarchy of the Skylake CPU.
+For instance, tiny should just fit within L1 cache, on the Skylake this corresponds to \SI{32}{\kibi\byte} of data cache, small should fit within the \SI{256}{\kibi\byte} L2 data cache, medium should fit within \SI{8192}{\kibi\byte} of the L3 cache, and large must be greater than \SI{8192}{\kibi\byte} to avoid caching and operate out of main memory.
 This was verified using the {\tt lscpu} Linux tool.
+\todo[inline]{Should the problem sizes be customized to memory hierarchy of each platform?}
 
-An experiment was conducted to verify the selection of each problem size, in which an examination of which increased problem sizes resulted in a cache spill-over.
-The final selected problem sizes should be as close to filling each level as cache as possible.
-
-Caching performance was collected using the PAPI counters.
+Caching performance was measured using PAPI counters.
 On the Skylake L1 and L2 data cache miss rates were counted using the {\tt PAPI\_L1\_DCM} and {\tt PAPI\_L2\_DCM} counters.
 For L3 miss events, only the total cache counter event ({\tt PAPI\_L3\_TCM}) was available.
 The final values presented as miss results are presented as a percentage, and were determined using the number of misses counted divided by the total instructions ({\tt PAPI\_TOT\_INS}).
 
 The methodology to determine the appropriate size parameters is demonstrated on the k-means benchmark.
-The k-means benchmark performs a local clustering to represent a collection of objects by the centroids of a cluster.
-Each step of the algorithm computes the nearest centroid for each data object, then relocates the centroid to the mean of all objects within the sub-cluster.
+K-means is an iterative algorithm which groups a set of points into clusters, such that each point in is closer to the centroid of its assigned cluster than to the centroid of any other cluster.
+Each step of the algorithm assigns each point to the cluster with the closest centroid, then relocates each cluster centroid to the mean of all points within the cluster.
 Execution terminates when no clusters change size between iterations.
-Starting positions for each centroid is determined randomly.
-This benchmark previously required the feature space on which to perform clustering to be provided as a previously generated file which was then loaded.
-It was then extended to allow setting the feature space as an argument from the command line.
-This feature space is then randomly generated at each run, thereby increasingly the randomness of the distribution for each invocation of the program.
+Starting positions for the centroids are determined randomly.
+The OpenDwarfs benchmark previously required the object features to be read from a previously generated file.
+We extended the benchmark to support generation of a random distribution of points.
 This was done to increase true characteristics of cache performance, since repeated runs of clustering on the same feature space (loaded from file) would deterministically generate similar caching performance.
-Each value in the feature space is 32-bit floating point precision.
 The same number of clusters is fixed, with the minimum and maximum cluster locations being returned both set to 5.
-The only parameters changes between run to increase the problem size is the number of points/objects in this feature space, increasing from 5 to 47, and increasing the number of features for each level of the cache size.
+
+Given a fixed number of clusters, the parameters that may be used to select a problem size are the number of points $P_n$, and the dimensionality or number of features per point $F_n$.
 In the kernel for k-means there are 3 large one dimensional arrays passed to the device, namely {\bf feature}, {\bf cluster} and {\bf membership}.
-{\bf feature} is the array which stores the unclustered feature space, it is of size $P_n \times F_n \times \text{sizeof}\left(\text{float}\right)$, where $ P_n $ is the number of points in the subspace, $F_n$ is the number of features per point and $\text{sizeof}\left(\text{float}\right)$ is the number of bytes required to represent a floating point value per feature.
-{\bf cluster} is the working and output array to store the intermediately clustered points, it is of size $C_n \times F_n \times \text{sizeof}\left(\text{float}\right)$, where $C_n$ is the number of cluster to locate in the subspace.
+{\bf feature} is the array which stores the unclustered feature space, it is of size $P_n \times F_n \times \text{sizeof}\left(\text{float}\right)$.
+Each feature is represented by a 32-bit floating point number.
+{\bf cluster} is the working and output array to store the intermediately clustered points, it is of size $C_n \times F_n \times \text{sizeof}\left(\text{float}\right)$, where $C_n$ is the number of clusters.
 {\bf membership} is an array indicating whether each point has changed to a new cluster in each iteration of the algorithm, it is of size $P_n \times \text{sizeof}\left(\text{int}\right)$, where $\text{sizeof}\left(\text{int}\right)$ is the number of bytes to represent an integer value.
-Thereby the working kernel memory, in KiB, is determined to be:
+Thereby the working kernel memory, in KiB, is:
 \begin{equation}
     \frac{\text{size}\left(\textbf{feature}\right)+\text{size}\left(\textbf{membership}\right)+\text{size}\left(\textbf{cluster}\right)}{1024}
     \label{eq:kmeans_size}
 \end{equation}
 
-Since it is known for the target Skylake CPU that the L1 cache is of size 32KiB, and using the theoretical size of all memory buffers determined in Equation~\ref{eq:kmeans_size}, a careful experiment can be conducted around each benchmark and the appropriate amount of memory required.
-If the feature size were in increments of 1KiB (256 floating point values) and to fit within L1 cache, the optimal number of points/objects in the feature space is 26 (which is just under 32KiB).
+Since it is known for the target Skylake CPU that the L1 cache is of size \SI{32}{\kibi\byte}, and using the theoretical size of all memory buffers determined in Equation~\ref{eq:kmeans_size}, a careful experiment can be conducted around each benchmark and the appropriate amount of memory required.
+The tiny problem size is defined to have 300 points and 26 features; from Equation~\ref{eq:kmeans_size} the total size of the main arrays is \SI{31.2}{\kibi\byte}, slightly smaller than the \SI{32}{\kibi\byte} L1 cache.
+The number of points is increased for each larger problem size to ensure that the main arrays fit within the lower levels of the cache hierarchy, measuring the total execution time and respective caching events.
+The first row of table~\ref{tab:problem_sizes} shows the number of points for each problem size for k-means.
 
-Therefore the experiment was designed to increase the size of each increment by increasing the number of features per point/object, then as the number of features is increased the total execution time and respective caching events were measured.
-
-Similarly {\bf small} increases by 2048, or increments of 8KiB per point/object, {\bf medium} increases by 65536 as increments of 256KiB per point/object and {\bf large} increases by 524288 or increments of 2048KiB per object.
 Being constrained in such a way indicates that 26 points/objects should give the best L1, L2 and L3 in the {\bf tiny}, {\bf small} and {\bf medium} problem sizes respectively.
 Spilling over at each level of cache should be at 27 points/objects for each problem size.
 {\bf large} operates solely on main memory.
+The large problem size is at least four times the size of the last-level cache - in the case of the Skylake, at least \SI{32}{\Mibi\byte}. 
 
-To measure increase the number of points/objects by 1 from 5 to 47.
+To measure increase the number of points/objects by 1 from 5 to 47.\todo[inline]{How are number of points actually increased?}
 Configuration of the experiment is repeated 300 times, and each iteration of the kernel is instrumented for the respective cache events.
 
 \add{figures for each level of cache and a brief write up.}
@@ -59,7 +57,7 @@ Configuration of the experiment is repeated 300 times, and each iteration of the
     \caption{OpenDwarf workload scale parameters $\Phi$}
     \begin{tabular}{l|c|c|c|c}
         \bf Benchmark         & \bf tiny   & small  & medium     & large\\\hline
-        {\tt kmeans}          & 256        & 2048   & 65536      & 524288\\
+        {\tt kmeans}          & 300        & 2400   & 76000      & 320000\\
         {\tt lud}             & 80         & 240    & 1440       & 4096\\
         {\tt csr}             & 736        & 2416   & 14336      & 16384\\
         {\tt fft}$\medsquare$ & 128,16     & 128,128& 1024,512   & 2048,1024\\
@@ -80,10 +78,10 @@ The procedure to generate the remaining scale arguments is benchmark specific bu
 Gemnoui -- {\tt gem} is an n-body-method based benchmark which computes electrostatic potential of biomolecular structures.
 Determining suitable problem sizes was performed by initially browsing the National Center for Biotechnology Information's Molecular Modeling Database (MMDB)~\cite{madej2013mmdb} and inspecting the corresponding Protein Data Bank format (pdb) files.
 Molecules were then selected based on complexity, since the greater the complexity the greater the number of atoms required for the benchmark and thus the larger the memory footprint.
-{\bf tiny} used the Prion Peptide 4TUT~\cite{yu2015crystal} and was the simplest structure, consisting of a single protein (1 molecule), it had the device side memory usage of 31.3KiB which should fit in the L1 cache (32KiB) on the Skylake processor.
+{\bf tiny} used the Prion Peptide 4TUT~\cite{yu2015crystal} and was the simplest structure, consisting of a single protein (1 molecule), it had the device side memory usage of \SI{31.3}{\kibi\byte} which should fit in the L1 cache (\SI{32}{\kibi\byte}) on the Skylake processor.
 {\bf small} used a Leukocyte Receptor 2D3V~\cite{shiroishi2006crystal} also consisting of 1 protein molecule, with an associated memory footprint of 252KiB.
-{\bf medium} used the nucleosome dataset originally provided in the OpenDwarf Benchmark Suite, using 7498KiB of device-side memory.
-{\bf large} used an X-Ray Structure of a Nucleosome Core Particle~\cite{davey2002solvent}, consisting of 8 protein, 2 nucleotide, and 18 chemical molecules, and requiring 10970.2KiB of memory when executed by {\tt gem}.
+{\bf medium} used the nucleosome dataset originally provided in the OpenDwarf Benchmark Suite, using \SI{7498}{\kibi\byte} of device-side memory.
+{\bf large} used an X-Ray Structure of a Nucleosome Core Particle~\cite{davey2002solvent}, consisting of 8 protein, 2 nucleotide, and 18 chemical molecules, and requiring \SI{10970.2}{\kibi\byte} of memory when executed by {\tt gem}.
 Each {\tt pdb} file was converted to the {\tt pqr} atomic particle charge and radius format using the {\tt pdb2pqr}~\cite{dolinsky2004pdb2pqr} tool.
 Generation of the solvent excluded molecular surface used the tool {\tt msms}~\cite{sanner1996reduced}.
 The final datasets used for {\tt gem} and all other benchmarks can be found in this papers associated GitHub repository~\cite{johnston2017}.
