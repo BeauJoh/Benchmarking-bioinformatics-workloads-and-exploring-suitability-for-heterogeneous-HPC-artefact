@@ -2,15 +2,20 @@
 \begin{document}
 
 High performance computing (HPC) hardware is becoming increasingly heterogeneous.
-This year 
-This is motivated by having the option of choosing an accelerator which offers a shorter duration in compute time or a lower energy efficiency.
-The OpenCL framework supports portable programming across a wide range of accelerators and is only gaining influence with the next generation of accelerator vendors in the HPC space, in the form of Field-Programmable Gate Arrays (FPGAs).
+A major motivation for this is to achieve energy efficient HPC, especially in the supercomputing setting.
+To illustrate, from June 2016 to June 2017 the average energy efficiency of the top 10 of the Green500 supercomputers rose by 2.3x, from 4.8 to 11.1 gigaflops per watt.
+This was achieved by primarily using GPU accelerators, however the trend in increasing heterogeneity on the node is established.
+HPC hardware will soon include nodes with FPGA, DSP, ASIC and MIC alongside the conventional CPU/GPU pairing.
+Indeed the capability of choosing an accelerator which offers a shorter duration in compute time or a lower energy efficiency is tempting.
+
+The OpenCL framework supports portable programming across a wide range of accelerators and is only gaining influence with the next generation of accelerator vendors, in particular FPGAs.
+
 Meanwhile conventional measures of performance of HPC systems, Floating-Point Operations per Second (FLOPS) from running Linpack, is shown to be lacking.
-Instead a wider and more diverse suite of performance numbers should be used, which more appropriately represent the computational characteristics of scientific workloads actually run on HPC devices in the super computer setting.
+Instead a wider and more diverse suite of performance numbers should be used, which more appropriately represent the computational characteristics of scientific workloads executed on HPC devices in the super computer setting.
 Additionally it has been demonstrated that selection of problem size also impacts on performance, this is especially true across a wider range of accelerators, therefore additional effort has been placed on extending the OpenDwarfs Benchmark Suite to support running different problem sizes on each benchmark.
 We present a rebooted version of the OpenDwarfs Benchmark suite, with a strong focus placed on robustness of applications, curation of additional benchmarks with an increased emphasis on correctness of results and an increased problem size diversity within each application.
 
-These contributions have been verified with a brief analysis of 8 applicationson a set of current architectures -- two Intel CPUs, 4 NVidia GPUs and a Xeon Phi.
+These contributions have been verified with a brief analysis of 8 applications on a set of current architectures -- two Intel CPUs, 5 NVidia GPUs and a Xeon Phi.
 
 %Scientific application workloads typically contain one or more computationally intensive kernels, each of which may be categorized as one of the 13 ``dwarfs'', which represent patterns of computation and communication.
 %We present an extensive performance study of 40 OpenCL application benchmarks representing 12 of the 13 dwarfs, on three different systems: a high-end CPU compute node; a previous-generation CPU compute node; and an embedded system.
