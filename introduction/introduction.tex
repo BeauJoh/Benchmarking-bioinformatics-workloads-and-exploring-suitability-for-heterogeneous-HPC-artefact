@@ -12,7 +12,9 @@ The Summit supercomputer at Oak Ridge National Laboratory is based on the IBM Po
 Promising next generation architectures include Fujitsu's Post-K~\cite{morgan_2016_postk}, and Cray's CS-400, which forms the platform for the Isambard supercomputer~\cite{feldman_2017_isambard}.
 Both architectures use ARM cores alongside other conventional accelerators, with several Intel Xeon Phi and Nvidia P100 GPUs per node.
 
-\improvement{Include energy efficiency observations, perhaps from icpp paper?}
+Previous work~\cite{johnston2017embedded} has shown that energy consumption of accelerator devices, at least in the embedded space and on compute-bound applications, is strongly correlated with execution time.
+Extending this investigation into energy usage over communication-bound and memory-bound problems is essential, since many scientific codes targeted for HPC and supercomputing systems have these characteristics.
+Additionally, given the candidate accelerators are proposed as future components on such systems and the nature of these codes, an evaluation of energy consumption on a wide range of accelerators is essential.
 
 We seek to answer the question: for a given architecture with a variety of computing devices and a given set of computational tasks, which is the best choice of device for each task?
 Furthermore, does the best choice of device vary depending on whether the primary concern is time to solution or energy efficiency?
@@ -21,15 +23,13 @@ While we do not yet have a satisfactory answers to these questions, our early in
 As we are interested in comparing a diverse set of computing devices for HPC, we focus on the OpenCL programming model.
 OpenCL is supported on a wide range of systems including CPU, GPU and FPGA devices.
 While it is possible to write application code directly in OpenCL, it may also be used as a base to implement higher-level programming models.
-\todo[inline]{Cite Gaurav's work}
-%% While some vendors are removing support for OpenCL for HPC architectures, and tend to rely on OpenMP implementations for HPC systems, as shown with the Intel's Xeon Phi. 
-%% not sure it's necessary to mention at this stage - JM
+This technique was shown by Mitra et al.,~\cite{mitra2014implementation} where an OpenMP runtime was implemented over an OpenCL framework for Texas Instruments Keystone II DSP architecture.
 Having a common back-end in the form of OpenCL allows a direct comparison of identical code across diverse architectures, including FPGAs.
 
 \todo[inline]{Introduce Rodinia and OpenDwarfs here}
-Additional curation effort has occurred to ensure reliability and scalability on many different architectures each across 4 various problem sizes of increasing computation complexity.
 
-In Section~\ref{sec:related_work} we present related work.
+In Section~\ref{sec:extending_the_opendwarfs_benchmark_suite} discusses the changes made to the OpenDwarfs Benchmark suite.
+Related work is presented in Section~\ref{sec:related_work}.
 The experimental setup is presented in Section~\ref{sec:experimental_setup}.
 Performance measurements including time and energy is presented in the results Section~\ref{sec:results}.
 Finally, conclusions and future work are presented in Section~\ref{sec:conclusions} and Section~\ref{sec:future_work} respectively.
