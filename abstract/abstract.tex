@@ -1,15 +1,23 @@
 \documentclass[../document.tex]{subfiles}
 \begin{document}
 
-High performance computing hardware is becoming increasingly heterogeneous due to considerations of compute time and energy efficiency.
-The OpenCL framework supports portable programming across a wide range of accelerators.
+High performance computing (HPC) hardware is becoming increasingly heterogeneous.
+This year 
+This is motivated by having the option of choosing an accelerator which offers a shorter duration in compute time or a lower energy efficiency.
+The OpenCL framework supports portable programming across a wide range of accelerators and is only gaining influence with the next generation of accelerator vendors in the HPC space, in the form of Field-Programmable Gate Arrays (FPGAs).
+Meanwhile conventional measures of performance of HPC systems, Floating-Point Operations per Second (FLOPS) from running Linpack, is shown to be lacking.
+Instead a wider and more diverse suite of performance numbers should be used, which more appropriately represent the computational characteristics of scientific workloads actually run on HPC devices in the super computer setting.
+Additionally it has been demonstrated that selection of problem size also impacts on performance, this is especially true across a wider range of accelerators, therefore additional effort has been placed on extending the OpenDwarfs Benchmark Suite to support running different problem sizes on each benchmark.
+We present a rebooted version of the OpenDwarfs Benchmark suite, with a strong focus placed on robustness of applications, curation of additional benchmarks with an increased emphasis on correctness of results and an increased problem size diversity within each application.
 
-Scientific application workloads typically contain one or more computationally intensive kernels, each of which may be categorized as one of the 13 ``dwarfs'', which represent patterns of computation and communication.
-We present an extensive performance study of 40 OpenCL application benchmarks representing 12 of the 13 dwarfs, on three different systems: a high-end CPU compute node; a previous-generation CPU compute node; and an embedded system.
+These contributions have been verified with a brief analysis of 8 applicationson a set of current architectures -- two Intel CPUs, 4 NVidia GPUs and a Xeon Phi.
 
-For a given set of accelerators in a HPC system, all kernels corresponding to a particular dwarf tend to perform best on the same accelerator.
-\todo[inline]{Best in terms of both time and energy?}
-This means that a categorization of kernels according to dwarfs is an effective means to determine efficient scheduling of work to accelerators in HPC systems.
+%Scientific application workloads typically contain one or more computationally intensive kernels, each of which may be categorized as one of the 13 ``dwarfs'', which represent patterns of computation and communication.
+%We present an extensive performance study of 40 OpenCL application benchmarks representing 12 of the 13 dwarfs, on three different systems: a high-end CPU compute node; a previous-generation CPU compute node; and an embedded system.
+
+%For a given set of accelerators in a HPC system, all kernels corresponding to a particular dwarf tend to perform best on the same accelerator.
+%\todo[inline]{Best in terms of both time and energy?}
+%This means that a categorization of kernels according to dwarfs is an effective means to determine efficient scheduling of work to accelerators in HPC systems.
 
 %Next paper title: Finding hidden Dwarfs in Kernels
 

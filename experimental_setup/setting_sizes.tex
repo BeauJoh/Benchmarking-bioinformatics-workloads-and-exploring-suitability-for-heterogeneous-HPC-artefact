@@ -64,7 +64,8 @@ The large problem size is at least four times the size of the last-level cache -
         {\tt dwt2d}           & 72x54      & 200x150& 1152x864   & 3648x2736\\       
         {\tt gem}             & 4TUT       & 2D3V   & nucleosome & 1KX5\\
         {\tt srad}            & 80,16      & 128,80 & 1024,336   & 2048,1024\\
-        {\tt cfd}             & 128        & 1284   & 45056      & 193474
+        {\tt crc}             & 2000       & 16000  & 524000     & 4194304\\
+        %{\tt cfd}             & 128        & 1284   & 45056      & 193474
     \end{tabular}
     \begin{tablenotes}
     \item [$\medsquare$] {\tt fft} uses 2 arguments, shown here as {\tt arg1},{\tt arg2} these correspond to the square matrix size on which to perform a 2 dimensional Fast Fourier Transform. They are used within $\Phi$ using subscript notation, $\Phi_1$ and $\Phi_2$ respectively.
@@ -113,7 +114,8 @@ These files are then passed as the only argument into the benchmark.
         {\tt dwt2d} & {\tt -l 3 }$\Phi${\tt-gum.ppm}\\
         {\tt gem} & $\Phi$ {80 1 0}\\
         {\tt srad}& $\Phi_1$ $\Phi_2$ {\tt 0 127 0 127 0.5 1}\\
-        {\tt cfd} & $\Phi${\tt.dat}\\
+        {\tt crc}&  {\tt -i 1000_$\Phi$.txt}\\
+        %{\tt cfd} & $\Phi${\tt.dat}\\
     \end{tabular}
     \begin{tablenotes}
     \item [$\medtriangleup$] The {\tt -d 5000} indicates density of the matrix in this instance 0.5\% dense (or 99.5\% sparse).
@@ -122,6 +124,9 @@ These files are then passed as the only argument into the benchmark.
     \label{tab:program_arguments}
 \end{threeparttable}
 \end{table*}
+
+\todo{hide cfd specifics as it's not making an appearance in this paper}
+\todo{add brief write up for crc}
 
 Where $\Phi$ is substituted as the argument for each benchmark, it is taken as the respective scale from Table~\ref{tab:problem_sizes} and is inserted into Table~\ref{tab:program_arguments}.
 
