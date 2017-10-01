@@ -1,26 +1,32 @@
 \documentclass[../document.tex]{subfiles}
 \begin{document}\label{sec:introduction}
-
-The next generation of scientific High Performance Computing (HPC) systems will use a wide range of accelerators.
+	
+High performance computing (HPC) hardware is becoming increasingly heterogeneous.
+A major motivation for this is to reduce energy use; indeed, without significant improvements in energy efficiency, the cost of exascale computing will be prohibitive.
+From June 2016 to June 2017, the average energy efficiency of the top 10 of the Green500 supercomputers rose by 2.3x, from 4.8 to 11.1 gigaflops per watt.\cite{feldman_2017}
+For many systems, this was made possible by highly energy-efficient Nvidia Tesla P100 GPUs.
+In addition to GPUs, future HPC architectures are also likely to include nodes with FPGA, DSP, ASIC and MIC components.
 A single node may be heterogeneous, containing multiple different computing devices; moreover, a HPC system may offer nodes of different types.
 For example, the Cori system at Lawrence Berkeley National Laboratory comprises 2,388 Cray XC40 nodes with Intel Haswell CPUs, and 9,688 Intel Xeon Phi nodes~\cite{declerck2016cori}.
+The Summit supercomputer at Oak Ridge National Laboratory is based on the IBM Power9 CPU, which includes both NVLINK~\cite{morgan_2016}, a high bandwidth interconnect between Nvidia GPUs; and CAPI, an interconnect to support FPGAs and other accelerators.~\cite{morgan_2017}
+Promising next generation architectures include Fujitsu's Post-K~\cite{morgan_2016_postk}, and Cray's CS-400, which forms the platform for the Isambard supercomputer~\cite{feldman_2017_isambard}.
+Both architectures use ARM cores alongside other conventional accelerators, with several Intel Xeon Phi and Nvidia P100 GPUs per node.
 
 \improvement{Include energy efficiency observations, perhaps from icpp paper?}
 
-Recently in the supercomputing setting, from June 2016 to June 2017 the average energy efficiency of the top 10 of the Green500 supercomputers rose by 2.3x, from 4.8 to 11.1 gigaflops per watt.~\cite{feldman_2017}
-This was in large part due to an instalment of the latest Nvidia Tesla P100 GPUs.
-However, in the search for energy efficiency the diversity of the accelerators used won't stop at GPUs indeed it is set to increase.
-IBM have started shipping Power9 CPUs with NVLINK and CAPI~\cite{morgan_2016}, a high bandwidth interconnect between Nvidia GPUs and other accelerator devices respectively, the first instalment was in July to the Summit supercomputer at Oak Ridge National Laboratories.\cite{morgan_2017}
-Additionally, next generation promising architectures include Fujitsu's Post-K~\cite{morgan_2016_postk}, and Cray's CS-400, which is currently being installed as the Isambard system~\cite{feldman_2017_isambard}, both configurations heavily utilise ARM cores alongside other conventional accelerators -- several Intel Xeon Phi and Nvidia P100 GPUs per node.
+We seek to answer the question: for a given architecture with a variety of computing devices and a given set of computational tasks, which is the best choice of device for each task?
+Furthermore, does the best choice of device vary depending on whether the primary concern is time to solution or energy efficiency?
+While we do not yet have a satisfactory answers to these questions, our early investigations have yielded performance insights and valuable benchmarks, which we share in this paper.
 
-Given added rising importance of energy efficiency in this space, the selection of most appropriate accelerator is presented with another criteria for selection or a second dimension of complexity.
+As we are interested in comparing a diverse set of computing devices for HPC, we focus on the OpenCL programming model.
+OpenCL is supported on a wide range of systems including CPU, GPU and FPGA devices.
+While it is possible to write application code directly in OpenCL, it may also be used as a base to implement higher-level programming models.
+\todo[inline]{Cite Gaurav's work}
+%% While some vendors are removing support for OpenCL for HPC architectures, and tend to rely on OpenMP implementations for HPC systems, as shown with the Intel's Xeon Phi. 
+%% not sure it's necessary to mention at this stage - JM
+Having a common back-end in the form of OpenCL allows a direct comparison of identical code across diverse architectures, including FPGAs.
 
-Namely, should we select an accelerator which provides a shorter execution time or one that offers a higher energy efficiency?
-Additionally, we ask do the two coincide or are these two criteria at odds for for particular or all modern scientific HPC workloads?
-Given a choice of computing devices, does a method exist to select the most appropriate device for a particular computation?
-Some vendors are removing support for OpenCL for HPC architectures, and tend to rely on OpenMP implementations for HPC systems, as shown with the Intel's Xeon Phi.
-However having a common back-end, in the form of OpenCL, allows a direct comparision of identical code betweens diverse architectures - including FPGAs.
-
+\todo[inline]{Introduce Rodinia and OpenDwarfs here}
 Additional curation effort has occurred to ensure reliability and scalability on many different architectures each across 4 various problem sizes of increasing computation complexity.
 
 In Section~\ref{sec:related_work} we present related work.
