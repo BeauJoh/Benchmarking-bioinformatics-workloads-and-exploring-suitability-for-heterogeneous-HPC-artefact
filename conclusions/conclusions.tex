@@ -1,6 +1,17 @@
 \documentclass[../document.tex]{subfiles}
 \begin{document}\label{sec:conclusions}
 
+We have performed essential curation of the OpenDwarf Benchmark suite, both in the form of adding new applications where particular dwarfs were not adequately covered, for instance with the {\tt dwt} benchmark, and replacing benchmarks where the results were incorrect -- the {\tt fft} application.
 
+A large amount of effort has been placed on enabling each application in the benchmark suite to execute (at least) 4 different sized problem sizes.
+These were selected according to the memory hierarchy of CPU systems as motivated by Marjanovi{\'c}'s findings~\cite{marjanovic2016hpc}.
+It is believed that these can now be quickly adjusted for next generation accelerator systems were each applications working memory will affect performance on these systems, this methodology was outlined in Section~\ref{ssec:setting_sizes}.
+
+We run many of the original benchmarks presented in the \todo[inline]{OpenDwarf} paper but on current hardware.
+This was done for two reasons, firstly to investigate the original findings to the state-of-the-art systems and secondly to extend the usefulness of the benchmark suite.
+Re-examining the original codes on range of modern hardware showed limitations, such as the fixed problem sizes along with many fixed optimisations (such as local work-group size), which in the best case meant many of the applications would be sub-optimal for current systems (many problem sizes favored the original GPUs on which they were originally run) to the worst case -- segmentation faults associated with execution on untested platforms or new execution arguments.
+
+Finally a large contribution of this work has been with the LibSciBench integration, which adds a high precision timing library and rapid integration into the R programming language for analysis and visualisation.
+This has allowed collection of PAPI, energy and high resolution (sub-microsecond) time measurements at all stages of each application, which has added value to the analysis of OpenCL program flow on each system, for instance all OpenCL programs have a large overhead in kernel construction and buffer enqueuing.
 
 \end{document}
