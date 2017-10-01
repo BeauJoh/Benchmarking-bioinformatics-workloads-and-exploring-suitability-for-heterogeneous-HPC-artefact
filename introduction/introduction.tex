@@ -1,27 +1,27 @@
 \documentclass[../document.tex]{subfiles}
 \begin{document}\label{sec:introduction}
 
-Some vendors are removing support for OpenCL for HPC architectures, and tend to rely on OpenMP implementations for HPC systems, as shown with the Intel's Xeon Phi.
-However having a common back-end, in the form of OpenCL, allows a direct comparision of identical code betweens diverse architectures - including FPGAs.
-
 The next generation of scientific High Performance Computing (HPC) systems will use a wide range of accelerators.
 A single node may be heterogeneous, containing multiple different computing devices; moreover, a HPC system may offer nodes of different types.
 For example, the Cori system at Lawrence Berkeley National Laboratory comprises 2,388 Cray XC40 nodes with Intel Haswell CPUs, and 9,688 Intel Xeon Phi nodes~\cite{declerck2016cori}.
-Several such systems have been proposed with . \change{Mention Isambard, Power 8 high speed memory interconnects and others}
-Given a choice of computing devices, does a method exist to select the most appropriate device for a particular computation?
 
 \improvement{Include energy efficiency observations, perhaps from icpp paper?}
 
 Recently in the supercomputing setting, from June 2016 to June 2017 the average energy efficiency of the top 10 of the Green500 supercomputers rose by 2.3x, from 4.8 to 11.1 gigaflops per watt.~\cite{feldman_2017}
 This was in large part due to an instalment of the latest Nvidia Tesla P100 GPUs.
 However, in the search for energy efficiency the diversity of the accelerators used won't stop at GPUs indeed it is set to increase.
-IBM
+IBM have started shipping Power9 CPUs with NVLINK and CAPI~\cite{}, a high bandwidth interconnect between Nvidia GPUs and other accelerator devices respectively, the first instalment was in July to the Summit supercomputer at Oak Ridge National Laboratories.\cite{}
+Additionally Fujitsu announce Post-K.\todo{deck this out}
+Isambard (CrayCS-400) rollout.\todo{ditto}
 
 Given added rising importance of energy efficiency in this space, the selection of most appropriate accelerator is presented with another criteria for selection or a second dimension of complexity.
+
 Namely, should we select an accelerator which provides a shorter execution time or one that offers a higher energy efficiency?
 Additionally, we ask do the two coincide or are these two criteria at odds for for particular or all modern scientific HPC workloads?
+Given a choice of computing devices, does a method exist to select the most appropriate device for a particular computation?
+Some vendors are removing support for OpenCL for HPC architectures, and tend to rely on OpenMP implementations for HPC systems, as shown with the Intel's Xeon Phi.
+However having a common back-end, in the form of OpenCL, allows a direct comparision of identical code betweens diverse architectures - including FPGAs.
 
-This paper presents a reboot of the OpenDwarf benchmark suite, with the addition of some applications.
 Additional curation effort has occurred to ensure reliability and scalability on many different architectures each across 4 various problem sizes of increasing computation complexity.
 
 In Section~\ref{sec:related_work} we present related work.
