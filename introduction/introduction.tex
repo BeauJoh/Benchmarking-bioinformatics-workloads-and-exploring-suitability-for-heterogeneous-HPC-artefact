@@ -26,7 +26,12 @@ While it is possible to write application code directly in OpenCL, it may also b
 This technique was shown by Mitra et al.,~\cite{mitra2014implementation} where an OpenMP runtime was implemented over an OpenCL framework for Texas Instruments Keystone II DSP architecture.
 Having a common back-end in the form of OpenCL allows a direct comparison of identical code across diverse architectures, including FPGAs.
 
-\todo[inline]{Introduce Rodinia and OpenDwarfs here}
+Benchmark suites featuring an OpenCL implementation are not particularly novel.
+The first was introduced in 2009 as The Rodinia Benchmark Suite developed by Che et al.~\cite{che2009rodinia}.
+
+OpenDwarfs, Krommydas et al.~\cite{krommydas2016opendwarfs} introduces another such benchmark suite, utilising many applications from Rodinia.
+Similarly to Rodinia, all the applications presented in OpenDwarfs have been sorted into the computation/communication idioms based on the 13 Berkeley Dwarfs by Asanovic et al.~\cite{asanovic2006landscape}.\todo[inline]{ditto}
+This offers a larger set of applications, almost fully demonstrating all of the dwarfs.
 
 In Section~\ref{sec:extending_the_opendwarfs_benchmark_suite} discusses the changes made to the OpenDwarfs Benchmark suite.
 Related work is presented in Section~\ref{sec:related_work}.
