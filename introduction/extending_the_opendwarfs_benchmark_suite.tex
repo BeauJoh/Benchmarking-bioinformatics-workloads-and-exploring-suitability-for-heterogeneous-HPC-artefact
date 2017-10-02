@@ -5,6 +5,9 @@
 
 Additional curation effort has occurred to ensure reliability and scalability on many different architectures each across 4 various problem sizes of increasing computation complexity.
 
+The original OpenDwarfs version of the FFT benchmark was complex, with several code paths that were not executed for the default problem size, and returned incorrect results or failures on some combinations of platforms and problem sizes we tested.
+We replaced it with a simpler high-performance FFT benchmark created by Eric Bainville~\cite{bainville2010fft}, which worked correctly in all our tests.
+
 % Moved from intro - not sure it's quite right here either but don't want to delete just yet - JM
 Previous work~\cite{johnston2017embedded} has shown that energy consumption of accelerator devices, at least in the embedded space and on compute-bound applications, is strongly correlated with execution time.
 Extending this investigation into energy usage over communication-bound and memory-bound problems is essential, since many scientific codes targeted for HPC and supercomputing systems have these characteristics.

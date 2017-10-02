@@ -24,7 +24,7 @@ Having a common back-end in the form of OpenCL allows a direct comparison of ide
 
 Our starting point is the OpenDwarfs benchmark suite, a set of OpenCL benchmarks for heterogeneous computing platforms.\cite{krommydas2016opendwarfs}
 OpenDwarfs characterizes benchmarks according to patterns of computation and communication known as the 13 Berkeley Dwarfs.\cite{asanovic2006landscape}
-We extended OpenDwarfs with additional benchmarks taken from the Rodinia suite~\cite{che2009rodinia} (with modifications to improve portability), and with new benchmarks such as the two-dimensional discrete wavelet transform and a replaced version of the Fast Fourier Transform -- since the original version would frequently throw segmentation faults or generate an incorrect solution in the two dimensional setting.
+We extended OpenDwarfs with additional benchmarks taken from the Rodinia suite~\cite{che2009rodinia} (with modifications to improve portability), and with new benchmarks such as the two-dimensional discrete wavelet transform and a new FFT benchmark.
 
 Marjanovi\'{c} et al.~\cite{marjanovic2016hpc} argue that the selection of problem size for HPC benchmarking critically affects which hardware properties are relevant.
 We have observed this to be true across a wide range of accelerators, therefore we have enhanced the OpenDwarfs benchmark suite to support running different problem sizes for each benchmark.
