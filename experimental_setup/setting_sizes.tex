@@ -2,12 +2,12 @@
 \begin{document}\label{ssec:setting_sizes}
 
 %focus of this is the experimental evaluation to justify setting problem sizes
-For each application 4 different problem sizes were selected, namely {\bf tiny}, {\bf small},{\bf medium} and {\bf large}.
-This was based on the memory hierarchy of the Skylake CPU.
-For instance, tiny should just fit within L1 cache, on the Skylake this corresponds to \SI{32}{\kibi\byte} of data cache, small should fit within the \SI{256}{\kibi\byte} L2 data cache, medium should fit within \SI{8192}{\kibi\byte} of the L3 cache, and large must be greater than \SI{8192}{\kibi\byte} to avoid caching and operate out of main memory.
-This was verified using the {\tt lscpu} Linux tool.
+For each application, 4 different problem sizes were selected, namely {\bf tiny}, {\bf small}, {\bf medium} and {\bf large}.
+These problem sizes are based on the memory hierarchy of the Skylake CPU.
+Specifically, {\bf tiny} should just fit within L1 cache, on the Skylake this corresponds to \SI{32}{\kibi\byte} of data cache, {\bf small} should fit within the \SI{256}{\kibi\byte} L2 data cache, {\bf medium} should fit within \SI{8192}{\kibi\byte} of the L3 cache, and {\bf large} must be much larger than \SI{8192}{\kibi\byte} to avoid caching and operate out of main memory.
+%This was verified using the {\tt lscpu} Linux tool.
 
-The problem sizes need not be customized to the memory hierarchy of each platform since the CPU is the most sensitive to cache performance.
+For this study, problem sizes were not customized to the memory hierarchy of each platform, since the CPU is the most sensitive to cache performance.
 Also, note for these CPU systems the L1 and L2 cache sizes are identical, and since we ensure that L3 is at least $4\times$ larger than L3 for the largest spill over event, we are guaranteed to have L3 cache misses for the {\bf large} problem size.
 
 Caching performance was measured using PAPI counters.
@@ -16,13 +16,13 @@ For L3 miss events, only the total cache counter event ({\tt PAPI\_L3\_TCM}) was
 The final values presented as miss results are presented as a percentage, and were determined using the number of misses counted divided by the total instructions ({\tt PAPI\_TOT\_INS}).
 
 The methodology to determine the appropriate size parameters is demonstrated on the k-means benchmark.
-K-means is an iterative algorithm which groups a set of points into clusters, such that each point in is closer to the centroid of its assigned cluster than to the centroid of any other cluster.
+K-means is an iterative algorithm which groups a set of points into clusters, such that each point is closer to the centroid of its assigned cluster than to the centroid of any other cluster.
 Each step of the algorithm assigns each point to the cluster with the closest centroid, then relocates each cluster centroid to the mean of all points within the cluster.
 Execution terminates when no clusters change size between iterations.
 Starting positions for the centroids are determined randomly.
 The OpenDwarfs benchmark previously required the object features to be read from a previously generated file.
 We extended the benchmark to support generation of a random distribution of points.
-This was done to increase true characteristics of cache performance, since repeated runs of clustering on the same feature space (loaded from file) would deterministically generate similar caching performance.
+This was done to more fairly evaluate cache performance, since repeated runs of clustering on the same feature space (loaded from file) would deterministically generate similar caching performance.
 The same number of clusters is fixed, with the minimum and maximum cluster locations being returned both set to 5.
 
 Given a fixed number of clusters, the parameters that may be used to select a problem size are the number of points $P_n$, and the dimensionality or number of features per point $F_n$.
