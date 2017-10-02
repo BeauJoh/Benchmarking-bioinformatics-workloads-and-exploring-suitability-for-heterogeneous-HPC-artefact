@@ -1,18 +1,17 @@
 \documentclass[../document.tex]{subfiles}
 \begin{document}\label{sec:related_work}
-
-The Scalable Heterogeneous Computing benchmark suite as introduced by Lopez et al.~\cite{lopez2015examining} is another popular benchmark suite.
-Unlike the previously mentioned benchmark suites, it supports multiple node benchmarking with an MPI implemented for multi-node parallelism. 
-However adding the proposed various problem size support to SHOC would involve much more development time, since each application must be implemented in both CUDA and OpenCL.
-Additionally SHOC offers various levels of performance tests, but very few level 2 real application kernels.
-Finally SHOC was not selected due since the real application kernels offered currently lack classification into the dwarf taxonomy.
-
-Barnes et al.~\cite{barnes2016evaluating} collected a representative set of applications from the current NERSC workload to guide optimization for Knights Landing in the Cori supercomputer.
-As it is not always feasible to perform such a detailed performance study of the capabilities of different computational devices, the benchmarks described in this paper may give a rough understanding of device performance and limitations.
-
-Martineau et al.~\cite{martineau2016performance} collected a suite of benchmarks and three mini-apps to evaluate Clang OpenMP 4.5 support for NVIDIA GPUs.
-
+	
 The NAS parallel benchmarks~\cite{bailey1991parallel} follow a `pencil-and-paper` approach, specifying the computational problem but leaving implementation choices such as language, data structures and algorithms to the user.
 The benchmarks include varied kernels and applications which allow a more nuanced evaluation of a complete HPC system, however, the unconstrained approach does not readily support direct performance comparison between different hardware accelerators using a single set of codes.
+
+Martineau et al.~\cite{martineau2016performance} collected a suite of benchmarks and three mini-apps to evaluate Clang OpenMP 4.5 support for NVIDIA GPUs.
+Their focus was on comparison with CUDA; OpenCL was not considered.
+
+The Scalable Heterogeneous Computing benchmark suite~\cite{lopez2015examining}, unlike OpenDwarfs and Rodinia, supports multiple nodes using MPI for distributed parallelism.
+SHOC supports multiple programming models including OpenCL, CUDA and OpenACC, with benchmarks ranging from targeted tests of particular low-level hardware features to a handful of application kernels.
+By focusing on application kernels written exclusively in OpenCL, our enhanced OpenDwarfs benchmark suite is able to cover a wider range of application patterns.
+
+Barnes et al.~\cite{barnes2016evaluating} collected a representative set of applications from the current NERSC workload to guide optimization for Knights Landing in the Cori supercomputer.
+As it is not always feasible to perform such a detailed performance study of the capabilities of different computational devices for particular applications, the benchmarks described in this paper may give a rough understanding of device performance and limitations.
 
 \end{document}
