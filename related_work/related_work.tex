@@ -1,9 +1,6 @@
 \documentclass[../document.tex]{subfiles}
 \begin{document}\label{sec:related_work}
 
-Marjanovi\'{c} et al.~\cite{marjanovic2016hpc} argue that the selection of problem size for HPC benchmarking critically affects which hardware properties are relevant.
-We have observed this to be true across a wide range of accelerators, therefore we have enhanced the OpenDwarfs benchmark suite to support running different problem sizes for each benchmark.
-
 The Scalable Heterogeneous Computing benchmark suite as introduced by Lopez et al.~\cite{lopez2015examining} is another popular benchmark suite.
 Unlike the previously mentioned benchmark suites, it supports multiple node benchmarking with an MPI implemented for multi-node parallelism. 
 However adding the proposed various problem size support to SHOC would involve much more development time, since each application must be implemented in both CUDA and OpenCL.

@@ -12,10 +12,6 @@ The Summit supercomputer at Oak Ridge National Laboratory is based on the IBM Po
 Promising next generation architectures include Fujitsu's Post-K~\cite{morgan_2016_postk}, and Cray's CS-400, which forms the platform for the Isambard supercomputer~\cite{feldman_2017_isambard}.
 Both architectures use ARM cores alongside other conventional accelerators, with several Intel Xeon Phi and Nvidia P100 GPUs per node.
 
-Previous work~\cite{johnston2017embedded} has shown that energy consumption of accelerator devices, at least in the embedded space and on compute-bound applications, is strongly correlated with execution time.
-Extending this investigation into energy usage over communication-bound and memory-bound problems is essential, since many scientific codes targeted for HPC and supercomputing systems have these characteristics.
-Additionally, given the candidate accelerators are proposed as future components on such systems and the nature of these codes, an evaluation of energy consumption on a wide range of accelerators is essential.
-
 We seek to answer the question: for a given architecture with a variety of computing devices and a given set of computational tasks, which is the best choice of device for each task?
 Furthermore, does the best choice of device vary depending on whether the primary concern is time to solution or energy efficiency?
 While we do not yet have a satisfactory answers to these questions, our early investigations have yielded performance insights and valuable benchmarks, which we share in this paper.
@@ -26,16 +22,18 @@ While it is possible to write application code directly in OpenCL, it may also b
 This technique was shown by Mitra et al.,~\cite{mitra2014implementation} where an OpenMP runtime was implemented over an OpenCL framework for Texas Instruments Keystone II DSP architecture.
 Having a common back-end in the form of OpenCL allows a direct comparison of identical code across diverse architectures, including FPGAs.
 
-Benchmark suites featuring an OpenCL implementation are not particularly novel.
-The first was introduced in 2009 as The Rodinia Benchmark Suite developed by Che et al.~\cite{che2009rodinia}.
+Our starting point is the OpenDwarfs benchmark suite, a set of OpenCL benchmarks for heterogeneous computing platforms.\cite{krommydas2016opendwarfs}
+OpenDwarfs characterizes benchmarks according to patterns of computation and communication known as the 13 Berkeley Dwarfs.\cite{asanovic2006landscape}
+We extended OpenDwarfs with additional benchmarks taken from the Rodinia suite~\cite{che2009rodinia} (with modifications to improve portability), and with new benchmarks.
+\todo[inline]{Which new benchmarks?}
+Marjanovi\'{c} et al.~\cite{marjanovic2016hpc} argue that the selection of problem size for HPC benchmarking critically affects which hardware properties are relevant.
+We have observed this to be true across a wide range of accelerators, therefore we have enhanced the OpenDwarfs benchmark suite to support running different problem sizes for each benchmark.
+In this paper we report preliminary results for our enhanced version of OpenDwarfs on a range of platforms including CPU, GPU and MIC devices.
 
-OpenDwarfs, Krommydas et al.~\cite{krommydas2016opendwarfs} introduces another such benchmark suite, utilising many applications from Rodinia.
-Similarly to Rodinia, all the applications presented in OpenDwarfs have been sorted into the computation/communication idioms based on the 13 Berkeley Dwarfs by Asanovic et al.~\cite{asanovic2006landscape}.\todo[inline]{ditto}
-This offers a larger set of applications, almost fully demonstrating all of the dwarfs.
-
-In Section~\ref{sec:extending_the_opendwarfs_benchmark_suite} discusses the changes made to the OpenDwarfs benchmark suite.
-Related work is presented in Section~\ref{sec:related_work}.
-The experimental setup is presented in Section~\ref{sec:experimental_setup}.
-Performance measurements including time and energy is presented in the results Section~\ref{sec:results}.
-Finally, conclusions and future work are presented in Section~\ref{sec:conclusions} and Section~\ref{sec:future_work} respectively.
+% for a short paper, we may not need this roadmap - JM
+%Section~\ref{sec:extending_the_opendwarfs_benchmark_suite} discusses the changes made to the OpenDwarfs benchmark suite.
+%Related work is presented in Section~\ref{sec:related_work}.
+%The experimental setup is presented in Section~\ref{sec:experimental_setup}.
+%Performance measurements including time and energy is presented in the results Section~\ref{sec:results}.
+%Finally, conclusions and future work are presented in Section~\ref{sec:conclusions} and Section~\ref{sec:future_work} respectively.
 \end{document}
