@@ -1,12 +1,17 @@
 \documentclass[../document.tex]{subfiles}
 \begin{document}\label{sec:related_work}
 
+A major motivation for this work is based off the findings of Marjanovi et al.~\cite{marjanovic2016hpc} when showing that problem size matters when benchmark HPC super computer systems.
+
+The Scalable Heterogeneous Computing benchmark suite as introduced by Lopez et al.~\cite{lopez2015examining} is another popular benchmark suite.
+Unlike the previously mentioned benchmark suites, it supports multiple node benchmarking with an MPI implemented for multi-node parallelism. 
+However adding the proposed various problem size support to SHOC would involve much more development time, since each application must be implemented in both CUDA and OpenCL.
+Additionally SHOC offers various levels of performance tests, but very few level 2 real application kernels.
+Finally SHOC was not selected due since the real application kernels offered currently lack classification into the dwarf taxonomy.
+
 Barnes et al.~\cite{barnes2016evaluating} collected a set of applications representative of their current workload to evaluate performance on NERSC Cori phase 2.
 
 Martineau et al.~\cite{martineau2016performance} collected a suite of benchmarks and three mini-apps to evaluate Clang OpenMP 4.5 support for NVIDIA GPUs.
 
-Marjanovi et al.~\cite{marjanovic2016hpc} show that problem size matters when benchmark HPC super computer systems.
-
-Lopez et al.~\cite{lopez2015examining} Scalable Heterogeneous Computing benchmark suite.
 
 \end{document}
