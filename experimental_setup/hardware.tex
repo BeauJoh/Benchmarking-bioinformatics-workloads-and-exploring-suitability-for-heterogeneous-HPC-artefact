@@ -1,39 +1,37 @@
 \documentclass[../document.tex]{subfiles}
 \begin{document}\label{ssec:hardware}
-
 \begin{table*}[t]
+\hspace{-1.4cm}
+{
 \centering
 \begin{threeparttable}
     \centering
-    \caption{Hardware $\Phi$}
+    \caption{Hardware}
     \begin{tabular}{l|c|c|c|c|c|c|c|c}
-        \bf name         & vendor   & type  & series    & core count     & clock frequency (min/max/turbo) MHz & cache size (L1 D/L1 I/L2/L3) KiB & TDP & Launch Date\\\hline
-        Xeon E5−2697 v2  & Intel    & CPU   &Ivy Bridge & 24$\medsquare$ &1200/2700/3500 & 32/32/256/30720 & 130W & Q3 2013\\
-        i7-6700K & Intel    & CPU   &Skylake & 8$\medsquare$ & 800/4000/4300 & 32/32/256/8192& 91W & Q3 2015\\
-        Titan X & Nvidia & GPU & Pascal & 3072\textdagger & 1000/1075/NA &  & 250 & Q3 2016\\
+        Name         & Vendor   & Type  & Series    & \multicolumn{1}{|p{1cm}|}{\centering Core \\ Count}     & \multicolumn{1}{|p{3cm}|}{\centering Clock Frequency (\SI{}{\mega\hertz})\\(min/max/turbo)}  &\multicolumn{1}{|p{2.5cm}|}{\centering Cache (\SI{}{\kibi\byte})\\ (L1/L2/L3)} & \multicolumn{1}{|p{1cm}|}{\centering TDP \\ (\SI{}{\watt})} & Launch Date\\\hline
+        Xeon E5-2697 v2  & Intel    & CPU   &Ivy Bridge & 24$\medsquare$ &1200/2700/3500 & 32/256/30720 & 130 & Q3 2013\\
+        i7-6700K & Intel    & CPU   &Skylake & 8$\medsquare$ & 800/4000/4300 & 32/256/8192& 91 & Q3 2015\\
+        Titan X & Nvidia & GPU & Pascal & 3584\textdagger & 1417/1531/NA & 48/2048/NA & 250 & Q3 2016\\
+        GTX1080 & Nvidia & GPU & Pascal & 2560\textdagger & 1607/1733/NA & 48/2048/NA & 180 & Q2 2016\\
+        GTX1080Ti & Nvidia & GPU & Pascal & 3584\textdagger & 1480/1582/NA & 48/2048/NA & 250 & Q1 2017\\
+        K20m & Nvidia & GPU & Kepler & 2496\textdagger & 706/?/NA & 64/1536/NA & 225 & Q4 2012\\
+        K40m & Nvidia & GPU & Kepler & 2880\textdagger & 745/875/NA & 64/1536/NA & 235 & Q4 2013\\
+        Xeon Phi 7210 & Intel & MIC & KNL & 256\textdaggerdbl & 1300/1500/NA & 32/1024/NA & 215 & Q2 2016\\
     \end{tabular}
     \begin{tablenotes}
     \item [$\medsquare$] HyperThreaded cores
     \item [\textdagger] CUDA cores
+    \item [\textdaggerdbl] Each physical core has 4 hardware threads per core, thus 64 cores
     \end{tablenotes}
     \label{tab:hardware}
 \end{threeparttable}
+}
 \end{table*}
 
-\todo{hardware write up}
-
-Our experiments were conducted on three hardware platforms:
-\begin{enumerate}
-	\item a modern quad-core Intel Skylake Core i7-6700K CPU with a clock frequency of \SI{4.3}{\giga\hertz};
-	\item an older quad-core Intel Nehalem Core i7 960 CPU with a clock frequency of \SI{3.2}{\giga\hertz}; and
-	\item a GeForce GTX 1080 GPU with a clock frequency of \SI{1835}{\mega\hertz}.
-\end{enumerate}
-\todo[inline]{confirm that tests were run at highest clock frequency}
-
-OpenCL version 1.2 was used for all experiments.
-On the CPUs we used the Intel OpenCL driver version 6.3, provided in the tarball intel\_sdk\_for\_opencl\_2015\_ubuntu\_5.3.0.1904\_x64.tgz.
-\todo[inline]{confirm mismatch 5.3 -> 6.3}
-On the GPU we used the Nvidia OpenCL driver version 375.66, provided as part of CUDA 8.0.61.
-Hyperthreading was disabled for all CPU experiments.
+The experiments were conducted on eight hardware platforms and are presented in Table~\ref{tab:hardware}.
+Two of these systems are Intel CPU architectures, 5 are current Nvidia GPUs and one Intel Knights Landing Xeon Phi.
+The L1 Cache Size should be read as having both an instruction size cache and a data cache size of equal values as those displayed. 
+All Nvidia GPU L2 cache presented is per SM.
+For the Intel CPUs hyper-threading was enabled and the frequency governor was set to performance.
 
 \end{document}
