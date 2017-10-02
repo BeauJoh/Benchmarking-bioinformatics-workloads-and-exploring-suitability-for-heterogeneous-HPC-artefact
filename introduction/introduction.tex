@@ -26,9 +26,12 @@ While it is possible to write application code directly in OpenCL, it may also b
 This technique was shown by Mitra et al.,~\cite{mitra2014implementation} where an OpenMP runtime was implemented over an OpenCL framework for Texas Instruments Keystone II DSP architecture.
 Having a common back-end in the form of OpenCL allows a direct comparison of identical code across diverse architectures, including FPGAs.
 
+Marjanovi\'{c} et al.~\cite{marjanovic2016hpc} argue that the selection of problem size for HPC benchmarking critically affects which hardware properties are relevant.
+We have observed this to be true across a wide range of accelerators, therefore we have enhanced the OpenDwarfs benchmark suite to support running different problem sizes for each benchmark.
+
 \todo[inline]{Introduce Rodinia and OpenDwarfs here}
 
-In Section~\ref{sec:extending_the_opendwarfs_benchmark_suite} discusses the changes made to the OpenDwarfs Benchmark suite.
+In Section~\ref{sec:extending_the_opendwarfs_benchmark_suite} discusses the changes made to the OpenDwarfs benchmark suite.
 Related work is presented in Section~\ref{sec:related_work}.
 The experimental setup is presented in Section~\ref{sec:experimental_setup}.
 Performance measurements including time and energy is presented in the results Section~\ref{sec:results}.
