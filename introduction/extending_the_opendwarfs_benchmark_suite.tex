@@ -1,12 +1,18 @@
 \documentclass[../document.tex]{subfiles}
 \begin{document}\label{sec:extending_the_opendwarfs_benchmark_suite}
 
+Both Rodinia and the original OpenDwarfs benchmark suite, on which our contribution is based, were both heavily focused on collecting interesting sample of applications and classified according to dwarfs, with a thorough diversity analysis to justify the addition of each application to the corresponding suite.
 
+Unfortunately portability (between devices), understandability (within an application) and flexibility (differing problem sizes) was not the main focus.
 
 Additional curation effort has occurred to ensure reliability and scalability on many different architectures each across 4 various problem sizes of increasing computation complexity.
 
 The original OpenDwarfs version of the FFT benchmark was complex, with several code paths that were not executed for the default problem size, and returned incorrect results or failures on some combinations of platforms and problem sizes we tested.
 We replaced it with a simpler high-performance FFT benchmark created by Eric Bainville~\cite{bainville2010fft}, which worked correctly in all our tests.
+We have also added a 2-D discrete wavelet transform from Rodinia, and there is a continuous wavelet transform application still to be added to the Spectral Methods Dwarf.
+
+selection of at least 4 problem sizes per application (to evaluate memory hierarchy differences/similarities between hardware), and
+The goal of this curation effort is a full representation of each dwarf, both by integrating other benchmark suites and adding custom kernels.
 
 % Moved from intro - not sure it's quite right here either but don't want to delete just yet - JM
 Previous work~\cite{johnston2017embedded} has shown that energy consumption of accelerator devices, at least in the embedded space and on compute-bound applications, is strongly correlated with execution time.
