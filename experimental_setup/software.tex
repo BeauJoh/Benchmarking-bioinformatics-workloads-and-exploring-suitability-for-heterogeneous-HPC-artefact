@@ -1,22 +1,21 @@
 \documentclass[../document.tex]{subfiles}
 \begin{document}\label{ssec:software}
 
-The OpenCL runtime for version 1.2 was used for all experiments.
+OpenCL version 1.2 was used for all experiments.
 On the CPUs we used the Intel OpenCL driver version 6.3, provided in 16.1.1 and the 2016-R3 opencl-sdk release.
 On the GPU we used the Nvidia OpenCL driver version 375.66, provided as part of CUDA 8.0.61.
 
-The Knightslanding (KNL) architecture used the same OpenCL driver as the Intel CPU platforms however the 2018-R1 release of the Intel compiler was used.
-This was required to compile for the architecture natively on the host, also the KNL.
+The Knights Landing (KNL) architecture used the same OpenCL driver as the Intel CPU platforms, however, the 2018-R1 release of the Intel compiler was used.
+This was required to compile for the architecture natively on the host.
 Additionally, due to Intel removing support for OpenCL on the KNL architecture, some additional compiler flags were required.
-Namely, the CPU architecture was set to a core-avx2 since the `{\tt -xMIC-AVX512}' vectorisation support was removed, this will affect peak performance but up to $2\times$ since we compile for \SI{256}{\bit} registers instead of \SI{512}{\bit} but unfortunately it is unavoidable.
+Unfortunately, as Intel has removed support for AVX2 vectorization (using the `{\tt -xMIC-AVX512}' flag), vector instructions use only 256-bit registers instead of the wider 512-bit registers available on KNL.
+This means that floating-point performance on KNL is limited to half the theoretical peak.
 
 GCC version 5.4.0 with GLIBC 2.23 was used for the Skylake i7 and GTX 1080,  
 GCC version 4.8.5 with GLIBC 2.23 was used on the remaining platforms.
 OS Ubuntu Linux 16.04.4 with kernel version 4.4.0 was used for the Skylake CPU and GTX 1080 GPU, Red Hat 4.8.5-11 with kernel version 3.10.0 was used on the other platform.
 
-As OpenDwarfs has no stable release version it was extended from the last commit by the maintainer on the Feb 26, 2016.
-
-LibSciBench enables benchmarking and profiling parallel code.
-Version 0.2.2 was used and connected to the curated OpenDwarfs benchmark.
+As OpenDwarfs has no stable release version it was extended from the last commit by the maintainer on the Feb 26, 2016.~\cite{opendwarfs2017base}
+LibSciBench version 0.2.2 was used for all performance measurements.
 
 \end{document}
