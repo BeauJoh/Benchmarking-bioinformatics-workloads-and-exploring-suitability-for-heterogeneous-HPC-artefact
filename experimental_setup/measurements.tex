@@ -6,7 +6,7 @@ LibSciBench is a performance measurement tool which allows high precision timing
 It offers a high resolution timer in order to measure short running kernel codes, reported with one cycle resolution and roughly \SI{6}{\nano\second} of overhead.
 We used LibSciBench to record timings in conjunction with hardware events, which it collects via PAPI~\cite{mucci1999papi} counters.
 
-We modified the applications in the OpenDwarfs Benchmark suite to insert library calls to LibSciBench to record timings and PAPI events for the three main components of application time: kernel execution, host setup and memory transfer operations.
+We modified the applications in the OpenDwarfs benchmark suite to insert library calls to LibSciBench to record timings and PAPI events for the three main components of application time: kernel execution, host setup and memory transfer operations.
 To help understand the timings, the following hardware counters were also collected:
 \begin{itemize}
 	\item total instructions and IPC (Instructions Per Cycle);

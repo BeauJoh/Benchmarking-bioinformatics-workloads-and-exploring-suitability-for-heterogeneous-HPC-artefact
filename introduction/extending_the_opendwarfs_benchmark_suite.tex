@@ -1,26 +1,22 @@
 \documentclass[../document.tex]{subfiles}
 \begin{document}\label{sec:extending_the_opendwarfs_benchmark_suite}
 
-Both Rodinia and the original OpenDwarfs benchmark suite, on which our contribution is based, were heavily focused on collecting interesting sample of applications and classified according to dwarfs, with a thorough diversity analysis to justify the addition of each application to the corresponding suite.
+Both Rodinia and the original OpenDwarfs benchmark suite focused on collecting a representative benchmarks for scientific applications, classified according to dwarfs, with a thorough diversity analysis to justify the addition of each benchmark to the corresponding suite.
 
-Unfortunately portability (between devices), understandability (within an application) and flexibility (differing problem sizes) were not the main focus.
+We aim to extend these efforts to achieve a full representation of each dwarf, both by integrating other benchmark suites and adding custom kernels.
+At the same time, we hope to improve portability between devices, interpretability and flexibility of configuration including problem sizes.
 
-Additional curation effort has occurred to ensure reliability and scalability on many different architectures each across 4 various problem sizes of increasing computation complexity.
-
-The original OpenDwarfs version of the FFT benchmark was complex, with several code paths that were not executed for the default problem size, and returned incorrect results or failures on some combinations of platforms and problem sizes we tested.
+For the Spectral Methods dwarf, the original OpenDwarfs version of the FFT benchmark was complex, with several code paths that were not executed for the default problem size, and returned incorrect results or failures on some combinations of platforms and problem sizes we tested.
 We replaced it with a simpler high-performance FFT benchmark created by Eric Bainville~\cite{bainville2010fft}, which worked correctly in all our tests.
-We have also added a 2-D discrete wavelet transform from Rodinia, and there is a continuous wavelet transform application still to be added to the Spectral Methods Dwarf.
+We have also added a 2-D discrete wavelet transform from Rodinia, and we plan to add a continuous wavelet transform code.
 
-The goal of this curation effort is a full representation of each dwarf, both by integrating other benchmark suites and adding custom kernels.
-
-Additionally, since Marjanovi\'{c} et al.~\cite{marjanovic2016hpc} findings that problem size of HPC workload affects performance on accelerator systems, especially when evaluating memory hierarchy differences/similarities between hardware, selection of at least 4 problem sizes per application has been performed during curation.
+As problem size can profoundly affect performance on accelerator systems~\cite{marjanovic2016hpc}, we enhanced configurability so that each benchmark could be run for a wide range of problem sizes.
 
 % Moved from intro - not sure it's quite right here either but don't want to delete just yet - JM
 Previous work~\cite{johnston2017embedded} has shown that energy consumption of accelerator devices, at least in the embedded space and on compute-bound applications, is strongly correlated with execution time.
-Extending this investigation into energy usage over communication-bound and memory-bound problems is essential, since many scientific codes targeted for HPC and supercomputing systems have these characteristics.
-
-Additionally, given the candidate accelerators are proposed as future components on such systems and the nature of these codes, an evaluation of energy consumption on a wide range of accelerators is essential.
+Extending this investigation of energy usage to communication-bound and memory-bound problems is essential, since many scientific codes targeted for HPC and supercomputing systems have these characteristics.
+Additionally, given the candidate accelerators are proposed as future components on such systems, an evaluation of energy consumption on a wide range of accelerators is essential.
 To this end, LibSciBench (a performance measurement tool which allows high precision timing events to be collected for statistical analysis), complete with PAPI counters has been added to all of the applications in the OpenDwarfs Benchmark Suite.
-Extended support for this framework has ensured that energy measurements (using PAPI modules such as RAPL and NVML) can occur using the same LibSciBench high precision counter.And indeed, we use this to present our findings.
+Through PAPI modules such as RAPL and NVML, LibSciBench also supports energy measurements, for which we report preliminary results in this paper.
 
 \end{document}

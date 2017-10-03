@@ -86,7 +86,7 @@ Determining suitable problem sizes was performed by initially browsing the Natio
 Molecules were then selected based on complexity, since the greater the complexity the greater the number of atoms required for the benchmark and thus the larger the memory footprint.
 {\bf tiny} used the Prion Peptide 4TUT~\cite{yu2015crystal} and was the simplest structure, consisting of a single protein (1 molecule), it had the device side memory usage of \SI{31.3}{\kibi\byte} which should fit in the L1 cache (\SI{32}{\kibi\byte}) on the Skylake processor.
 {\bf small} used a Leukocyte Receptor 2D3V~\cite{shiroishi2006crystal} also consisting of 1 protein molecule, with an associated memory footprint of 252KiB.
-{\bf medium} used the nucleosome dataset originally provided in the OpenDwarf Benchmark Suite, using \SI{7498}{\kibi\byte} of device-side memory.
+{\bf medium} used the nucleosome dataset originally provided in the OpenDwarf benchmark suite, using \SI{7498}{\kibi\byte} of device-side memory.
 {\bf large} used an X-Ray Structure of a Nucleosome Core Particle~\cite{davey2002solvent}, consisting of 8 protein, 2 nucleotide, and 18 chemical molecules, and requiring \SI{10970.2}{\kibi\byte} of memory when executed by {\tt gem}.
 Each {\tt pdb} file was converted to the {\tt pqr} atomic particle charge and radius format using the {\tt pdb2pqr}~\cite{dolinsky2004pdb2pqr} tool.
 Generation of the solvent excluded molecular surface used the tool {\tt msms}~\cite{sanner1996reduced}.
