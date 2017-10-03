@@ -97,11 +97,13 @@ The final datasets used for {\tt gem} and all other benchmarks can be found in t
 %To generate suitable data sizes for this benchmark the data set provided with the benchmark {\tt fvcorr.domn.097K} has been shortened to $\Phi$ vertices, where $Phi$ is given in Table~\ref{tab:problem_sizes}, and was then stored as $\Phi${\tt.dat} files.
 %These files are then passed as the only argument into the benchmark.
 
-\begin{table*}[t]
+\begin{figure}
+\begin{minipage}[t]{.4\textwidth}
 \centering
 \begin{threeparttable}
     \centering
-    \caption{Program Arguments}
+    \captionof{table}{Program Arguments}
+    \vspace{0pt}
     \begin{tabular}{l|l}
         \bf Benchmark & \bf Arguments\\\hline
         {\tt kmeans} & {\tt -g -f 26 -p} $\Phi$\\
@@ -121,8 +123,15 @@ The final datasets used for {\tt gem} and all other benchmarks can be found in t
     \end{tablenotes}
     \label{tab:program_arguments}
 \end{threeparttable}
-\end{table*}
-
+\end{minipage}\hfill
+\begin{minipage}[t]{.45\textwidth}
+\centering
+\vspace{0pt}
+\includegraphics[width=\textwidth]{figures/time-results/crc.pdf}
+\caption{Kernel Execution times for {\bf crc}, the only application favouring the CPU architectures.}
+\label{fig:time-crc}
+\end{minipage}
+\end{figure}
 Where $\Phi$ is substituted as the argument for each benchmark, it is taken as the respective scale from Table~\ref{tab:problem_sizes} and is inserted into Table~\ref{tab:program_arguments}.
 
 Each {\bf Device} can be selected in a uniform way between applications using the same notation, on this system {\bf Device} comprises of {\tt -p 1 -d 0 -t 0} for the Intel Skylake CPU, where {\tt p} and {\tt d} are the integer identifier of the platform and device to respectively use, and {\tt -p 1 -d 0 -t 1} for the Nvidia Geforce GTX 1080 GPU.
