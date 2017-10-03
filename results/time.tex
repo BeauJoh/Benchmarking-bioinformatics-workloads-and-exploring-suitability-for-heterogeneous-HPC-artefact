@@ -3,9 +3,8 @@
 
 %Use Roman numerals for sub-figures in this section
 \renewcommand{\thesubfigure}{\roman{subfigure}}
-\captionsetup[subfigure]{skip=-10pt}
+\captionsetup[subfigure]{skip=-5pt}
 \begin{figure}
-\vspace{-2cm}
     \begin{tabular}{lr}
         \subcaptionbox{{\bf kmeans} \label{fig:time-kmeans}}{\includegraphics[width=.5\textwidth]{figures/time-results/kmeans.pdf}} &
         \subcaptionbox{{\bf lud} \label{fig:time-lud}}{\includegraphics[width=.5\textwidth]{figures/time-results/lud.pdf}} \\
@@ -13,9 +12,8 @@
         \subcaptionbox{{\bf fft} \label{fig:time-fft}}{\includegraphics[width=.5\textwidth]{figures/time-results/fft.pdf}} \\
         \subcaptionbox{{\bf gem} \label{fig:time-gem}}{\includegraphics[width=.5\textwidth]{figures/time-results/gem.pdf}} &
         \subcaptionbox{{\bf srad} \label{fig:time-srad}}{\includegraphics[width=.5\textwidth]{figures/time-results/srad.pdf}} \\
-        \multicolumn{2}{c}{\subcaptionbox{{\bf crc} \label{fig:time-crc}}{\includegraphics[width=.5\textwidth]{figures/time-results/crc.pdf}}} \\
     \end{tabular}
-    \caption{Kernel execution times for all applications}
+    \caption{Kernel execution times for applications where the GPU architectures are optimal}
 \end{figure}
 
 %\begin{figure*}
@@ -66,12 +64,12 @@
 %\end{minipage}
 %\end{figure*}
 
-%\begin{figure*}
-%\centering
-%\includegraphics[width=.5\textwidth]{figures/time-results/crc.pdf}
-%\caption{Kernel Execution times for {\bf crc}.}
-%\label{fig:time-crc}
-%\end{figure*}
+\begin{figure*}
+\centering
+\includegraphics[width=.5\textwidth]{figures/time-results/crc.pdf}
+\caption{Kernel Execution times for {\bf crc}.}
+\label{fig:time-crc}
+\end{figure*}
 
 Sample execution times from running 50 iterations per benchmark application.
 LibSciBench has a high resolution timer with one cycle resolution and roughly \SI{6}{\nano\second} of overhead.
