@@ -7,7 +7,7 @@ A large amount of effort has been placed on enabling each application in the ben
 These were selected according to the memory hierarchy of CPU systems as motivated by Marjanovi{\'c}'s findings~\cite{marjanovic2016hpc}.
 It is believed that these can now be quickly adjusted for next generation accelerator systems were each applications working memory will affect performance on these systems, this methodology was outlined in Section~\ref{ssec:setting_sizes}.
 
-We run many of the original benchmarks presented in the original OpenDwarfs~\ref{krommydas2016opendwarfs} paper but on current hardware.
+We run many of the original benchmarks presented in the original OpenDwarfs~\cite{krommydas2016opendwarfs} paper but on current hardware.
 This was done for two reasons, firstly to investigate the original findings to the state-of-the-art systems and secondly to extend the usefulness of the benchmark suite.
 Re-examining the original codes on range of modern hardware showed limitations, such as the fixed problem sizes along with many fixed optimisations (such as local work-group size), which in the best case meant many of the applications would be sub-optimal for current systems (many problem sizes favored the original GPUs on which they were originally run) to the worst case -- segmentation faults associated with execution on untested platforms or new execution arguments.
 
