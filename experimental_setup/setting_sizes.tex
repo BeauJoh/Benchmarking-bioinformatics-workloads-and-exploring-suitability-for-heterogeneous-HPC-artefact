@@ -37,15 +37,11 @@ Thereby the working kernel memory, in KiB, is:
     \label{eq:kmeans_size}
 \end{equation}
 
-Since it is known for the target Skylake CPU that the L1 cache is of size \SI{32}{\kibi\byte}, and using the theoretical size of all memory buffers determined in Equation~\ref{eq:kmeans_size}, a careful experiment can be conducted around each benchmark and the appropriate amount of memory required.
+Using this equation, we can determine the largest problem size that will fit in each level of cache.
 The tiny problem size is defined to have 256 points and 30 features; from Equation~\ref{eq:kmeans_size} the total size of the main arrays is \SI{31.5}{\kibi\byte}, slightly smaller than the \SI{32}{\kibi\byte} L1 cache.
 The number of points is increased for each larger problem size to ensure that the main arrays fit within the lower levels of the cache hierarchy, measuring the total execution time and respective caching events.
-The first row of table~\ref{tab:problem_sizes} shows the number of points for each problem size for k-means.
-
-Being constrained in such a way indicates that 30 points/objects should give the best L1, L2 and L3 in the {\bf tiny}, {\bf small} and {\bf medium} problem sizes respectively.
-Spilling over at each level of cache should be at 31 points/objects for each problem size.
-{\bf large} operates solely on main memory.
-The large problem size is at least four times the size of the last-level cache - in the case of the Skylake, at least \SI{32}{\mebi\byte}. 
+The {\bf tiny}, {\bf small} and {\bf medium} problem sizes in the first row of Table~\ref{tab:problem_sizes} correspond to L1, L2 and L3 cache respectively.
+The {\bf large} problem size is at least four times the size of the last-level cache -- in the case of the Skylake, at least \SI{32}{\mebi\byte} -- to ensure that data are transferred between main memory and cache.
 
 %To measure increase the number of points/objects by 1 from 5 to 47.\todo[inline]{How are number of points actually increased?}
 %Configuration of the experiment is repeated 300 times, and each iteration of the kernel is instrumented for the respective cache events.
@@ -56,7 +52,7 @@ The large problem size is at least four times the size of the last-level cache -
     \centering
     \caption{OpenDwarf workload scale parameters $\Phi$}
     \begin{tabular}{l|c|c|c|c}
-        \bf Benchmark         & \bf tiny   & small  & medium     & large\\\hline
+        \bf Benchmark         & \bf tiny   & \bf small  & \bf medium     & \bf large\\\hline
         {\tt kmeans}          & 256        & 2048   & 65600      & 131072\\
         {\tt lud}             & 80         & 240    & 1440       & 4096\\
         {\tt csr}             & 736        & 2416   & 14336      & 16384\\
@@ -72,8 +68,8 @@ The large problem size is at least four times the size of the last-level cache -
 \end{table*}
 
 For brevity, cache miss results are not presented in this paper but were used to verify the suitable selection of all workload scales across all applications.
-The procedure to generate the remaining scale arguments is benchmark specific but was similar same as those presented above for k-means, until a suitably sized domain for each cache size was found.
-The final selected parameters are presented in Table~\ref{tab:problem_sizes}.
+The procedure to select problem size parameters is specific to each benchmark, but follows a similar approach to k-means.
+The selected parameters are presented in Table~\ref{tab:problem_sizes}.
 
 The LU-Decomposition {\tt lud}, Fast Fourier Transform {\tt fft}, Speckle Reducing Anisotropic Diffusion {\tt srad} and Cyclic Redundancy Check {\tt crc} benchmarks do not require additional data sets, and so they have been extended and verified that setting the numerical arguments both generate the correct answer to each serial implementation and run on modern architectures.
 
