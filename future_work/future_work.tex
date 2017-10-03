@@ -1,15 +1,11 @@
 \documentclass[../document.tex]{subfiles}
 \begin{document}\label{sec:future_work}
 
-The work presented here is cursory, there are 6 remaining applications in the benchmark suite which have LibSciBench integration but which need to be tested under the 4 different problem sizes before the entire benchmark suite results can be tabulated.
-Additionally there is one of the 13 dwarfs, MapReduce, which still lacks an application in the OpenDwarf benchmark suite, this needs to be addressed.
+We plan to complete analysis of the remaining benchmarks in the suite for multiple problem sizes, and to add a benchmark for one of the 13 dwarfs that is not currently represented in the suite (MapReduce).
 A comparison to peak theoretical performance achievable for each application on each accelerator could offer additional perspective regarding each devices performance, instead of just a direct comparison.
 
-Auto-tuning is an active area of research, being able to determine the optimal parameters in which an application should run on an accelerator has great merit.
-For instance, occasional doubts arise regarding execution times and whether the best OpenCL local workgroup size is selected for a given accelerator.
-To have this certainty without the overhead placed on the developer to perform an exhaustive search would be ideal.
-We've done some preliminary research around integrating the OpenTuner library into some of the OpenDwarf applications with promising results.
-The benchmark suite would certainly benefit from having this work extended to the remainder of the benchmarks.
+Certain configuration parameters for the benchmarks, e.g. local workgroup size, are amenable to auto-tuning.
+We plan to integrate auto-tuning into the benchmarking framework to provide confidence that the optimal parameters are used for each combination of code and accelerator.
 
 The original emphasis of this research was in validating an intuitive hypothesis, namely, since all devices within a type of accelerator share similar physical characteristic and since applications which represent a dwarf have similar computation to communication patterns, we expect a type of accelerator to always outperform all other accelerator types over all applications within a dwarf.
 Until this point, we were always lacking in benchmark suite with enough stable applications could be run, and adequately represented a dwarf.
