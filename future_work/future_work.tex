@@ -2,13 +2,13 @@
 \begin{document}\label{sec:future_work}
 
 We plan to complete analysis of the remaining benchmarks in the suite for multiple problem sizes, and to add a benchmark for one of the 13 dwarfs that is not currently represented in the suite (MapReduce).
-A comparison to peak theoretical performance achievable for each application on each accelerator could offer additional perspective regarding each devices performance, instead of just a direct comparison.
+In addition to comparing performance between devices, we would also like to develop some notion of `ideal' performance for each combination of benchmark and device, which would guide efforts to improve performance portability.
 
 Certain configuration parameters for the benchmarks, e.g. local workgroup size, are amenable to auto-tuning.
 We plan to integrate auto-tuning into the benchmarking framework to provide confidence that the optimal parameters are used for each combination of code and accelerator.
 
-The original emphasis of this research was in validating an intuitive hypothesis, namely, since all devices within a type of accelerator share similar physical characteristic and since applications which represent a dwarf have similar computation to communication patterns, we expect a type of accelerator to always outperform all other accelerator types over all applications within a dwarf.
-Until this point, we were always lacking in benchmark suite with enough stable applications could be run, and adequately represented a dwarf.
-Now that a flexible benchmark suite is in place and results can be generated quickly and reliably on a range of accelerators, the next effort will be placed on verifying of disproving this hypothesis.
+The original goal of this research was to discover methods for choosing the best device for a particular computational task, for example to support scheduling decisions under time and/or energy constraints.
+Until now, we found the available OpenCL benchmark suites were not rich enough to adequately characterize performance across the diverse range of applications and computational devices of interest.
+Now that a flexible benchmark suite is in place and results can be generated quickly and reliably on a range of accelerators, we plan to use these benchmarks to evaluate scheduling approaches.
 
 \end{document}
