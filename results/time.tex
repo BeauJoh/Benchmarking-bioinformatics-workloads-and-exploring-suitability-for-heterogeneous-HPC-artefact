@@ -1,60 +1,77 @@
 \documentclass[../document.tex]{subfiles}
 \begin{document}\label{ssec:time}
 
-\begin{figure*}
-\begin{minipage}[b]{.45\textwidth}
-\centering
-\includegraphics[width=1\textwidth]{figures/time-results/kmeans.pdf}
-\caption{Kernel Execution times of the {\bf lud} benchmark.}
-\label{fig:time-kmeans}
-\end{minipage}
-\hfill
-\begin{minipage}[b]{.45\textwidth}
-\centering
-\includegraphics[width=1\textwidth]{figures/time-results/lud.pdf}
-\caption{Kernel execution times over the {\bf lud} benchmark.}
-\label{fig:time-lud}
-\end{minipage}
-\end{figure*}
+%Use Roman numerals for sub-figures in this section
+\renewcommand{\thesubfigure}{\roman{subfigure}}
+\captionsetup[subfigure]{skip=-10pt}
+\begin{figure}
+\vspace{-2cm}
+    \begin{tabular}{lr}
+        \subcaptionbox{{\bf kmeans} \label{fig:time-kmeans}}{\includegraphics[width=.5\textwidth]{figures/time-results/kmeans.pdf}} &
+        \subcaptionbox{{\bf lud} \label{fig:time-lud}}{\includegraphics[width=.5\textwidth]{figures/time-results/lud.pdf}} \\
+        \subcaptionbox{{\bf dwt} \label{fig:time-dwt}}{\includegraphics[width=.5\textwidth]{figures/time-results/dwt.pdf}} &
+        \subcaptionbox{{\bf fft} \label{fig:time-fft}}{\includegraphics[width=.5\textwidth]{figures/time-results/fft.pdf}} \\
+        \subcaptionbox{{\bf gem} \label{fig:time-gem}}{\includegraphics[width=.5\textwidth]{figures/time-results/gem.pdf}} &
+        \subcaptionbox{{\bf srad} \label{fig:time-srad}}{\includegraphics[width=.5\textwidth]{figures/time-results/srad.pdf}} \\
+        \multicolumn{2}{c}{\subcaptionbox{{\bf crc} \label{fig:time-crc}}{\includegraphics[width=.5\textwidth]{figures/time-results/crc.pdf}}} \\
+    \end{tabular}
+    \caption{Kernel execution times for all applications}
+\end{figure}
 
-\begin{figure*}
-\begin{minipage}[b]{.45\textwidth}
-\centering
-\includegraphics[width=1\textwidth]{figures/time-results/dwt.pdf}
-\caption{Kernel Execution times for {\bf dwt}.}
-\label{fig:time-dwt}
-\end{minipage}
-\hfill
-\begin{minipage}[b]{.45\textwidth}
-\centering
-\includegraphics[width=1\textwidth]{figures/time-results/fft.pdf}
-\caption{Kernel execution times for {\bf fft}.}
-\label{fig:time-fft}
-\end{minipage}
-\end{figure*}
+%\begin{figure*}
+%\begin{minipage}[b]{.45\textwidth}
+%\centering
+%\includegraphics[width=1\textwidth]{figures/time-results/kmeans.pdf}
+%\caption{Kernel Execution times of the {\bf lud} benchmark.}
+%\label{fig:time-kmeans}
+%\end{minipage}
+%\hfill
+%\begin{minipage}[b]{.45\textwidth}
+%\centering
+%\includegraphics[width=1\textwidth]{figures/time-results/lud.pdf}
+%\caption{Kernel execution times over the {\bf lud} benchmark.}
+%\label{fig:time-lud}
+%\end{minipage}
+%\end{figure*}
 
-\begin{figure*}
-\begin{minipage}[b]{.45\textwidth}
-\centering
-\includegraphics[width=1\textwidth]{figures/time-results/gem.pdf}
-\caption{Kernel Execution times for {\bf gem}.}
-\label{fig:time-gem}
-\end{minipage}
-\hfill
-\begin{minipage}[b]{.45\textwidth}
-\centering
-\includegraphics[width=1\textwidth]{figures/time-results/srad.pdf}
-\caption{Kernel execution times for {\bf srad}.}
-\label{fig:time-srad}
-\end{minipage}
-\end{figure*}
+%\begin{figure*}
+%\begin{minipage}[b]{.45\textwidth}
+%\centering
+%\includegraphics[width=1\textwidth]{figures/time-results/dwt.pdf}
+%\caption{Kernel Execution times for {\bf dwt}.}
+%\label{fig:time-dwt}
+%\end{minipage}
+%\hfill
+%\begin{minipage}[b]{.45\textwidth}
+%\centering
+%\includegraphics[width=1\textwidth]{figures/time-results/fft.pdf}
+%\caption{Kernel execution times for {\bf fft}.}
+%\label{fig:time-fft}
+%\end{minipage}
+%\end{figure*}
+%
+%\begin{figure*}
+%\begin{minipage}[b]{.45\textwidth}
+%\centering
+%\includegraphics[width=1\textwidth]{figures/time-results/gem.pdf}
+%\caption{Kernel Execution times for {\bf gem}.}
+%\label{fig:time-gem}
+%\end{minipage}
+%\hfill
+%\begin{minipage}[b]{.45\textwidth}
+%\centering
+%\includegraphics[width=1\textwidth]{figures/time-results/srad.pdf}
+%\caption{Kernel execution times for {\bf srad}.}
+%\label{fig:time-srad}
+%\end{minipage}
+%\end{figure*}
 
-\begin{figure*}
-\centering
-\includegraphics[width=.45\textwidth]{figures/time-results/crc.pdf}
-\caption{Kernel Execution times for {\bf crc}.}
-\label{fig:time-crc}
-\end{figure*}
+%\begin{figure*}
+%\centering
+%\includegraphics[width=.5\textwidth]{figures/time-results/crc.pdf}
+%\caption{Kernel Execution times for {\bf crc}.}
+%\label{fig:time-crc}
+%\end{figure*}
 
 Sample execution times from running 50 iterations per benchmark application.
 LibSciBench has a high resolution timer with one cycle resolution and roughly \SI{6}{\nano\second} of overhead.
@@ -63,6 +80,7 @@ The top-left corner captions in all figures correspond to the 4 different worklo
 The first two sets of figures in a row have applications which both correspond to a particular dwarf, for instance Figure~\ref{fig:time-kmeans} and Figure~\ref{fig:time-lud} are both representative of the Dense Linear Algebra dwarf, whereas Figure~\ref{fig:time-dwt} and Figure~\ref{fig:time-fft} are both applications within Spectral Methods.
 
 Figure~\ref{fig:time-gem} represents N-Body Methods, Figure~\ref{fig:time-srad} encompasses a Structured Grid Method of Dwarf, and finally Figure~\ref{fig:time-crc} is a problem from Combinational Logic.
+All but the {\bf crc} benchmark perform best on GPU type accelerators.
 
 \todo{Are there any benchmarks where increasing the problem sizes makes results worse for the GPU?}
 \todo{How does changing problem sizes affect benchmark performance across a range of platforms (selected accordingly to cache size)?}

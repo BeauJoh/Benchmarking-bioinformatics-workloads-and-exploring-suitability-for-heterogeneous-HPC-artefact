@@ -1,14 +1,13 @@
 \documentclass[../document.tex]{subfiles}
 \begin{document}\label{ssec:hardware}
 \begin{table*}[t]
-\hspace{-1.4cm}
-{
+\caption{Hardware}
+\resizebox{0.85\textwidth}{!}{\begin{minipage}{\textwidth}
 \centering
 \begin{threeparttable}
     \centering
-    \caption{Hardware}
     \begin{tabular}{l|c|c|c|c|c|c|c|c}
-        Name         & Vendor   & Type  & Series    & \multicolumn{1}{|p{1cm}|}{\centering Core \\ Count}     & \multicolumn{1}{|p{3cm}|}{\centering Clock Frequency (\SI{}{\mega\hertz})\\(min/max/turbo)}  &\multicolumn{1}{|p{2.5cm}|}{\centering Cache (\SI{}{\kibi\byte})\\ (L1/L2/L3)} & \multicolumn{1}{|p{1cm}|}{\centering TDP \\ (\SI{}{\watt})} & Launch Date\\\hline
+        Name         & Vendor   & Type  & Series    & \multicolumn{1}{m{1cm}|}{\centering Core \\ Count}     & \multicolumn{1}{m{2.5cm}|}{\centering Clock Frequency (\SI{}{\mega\hertz})\\(min/max/turbo)}  &\multicolumn{1}{m{2.1cm}|}{\centering Cache (\SI{}{\kibi\byte})\\ (L1/L2/L3)} & \multicolumn{1}{m{.8cm}|}{\centering TDP \\ (\SI{}{\watt})} &  \multicolumn{1}{m{1cm}}{\centering Launch\\ Date} \\ \hline
         Xeon E5-2697 v2  & Intel    & CPU   &Ivy Bridge & 24* &1200/2700/3500 & 32/256/30720 & 130 & Q3 2013\\
         i7-6700K & Intel    & CPU   &Skylake & 8* & 800/4000/4300 & 32/256/8192& 91 & Q3 2015\\
         Titan X & Nvidia & GPU & Pascal & 3584\textdagger & 1417/1531/NA & 48/2048/NA & 250 & Q3 2016\\
@@ -25,7 +24,7 @@
     \end{tablenotes}
     \label{tab:hardware}
 \end{threeparttable}
-}
+\end{minipage}}
 \end{table*}
 
 The experiments were conducted on eight hardware platforms and are presented in Table~\ref{tab:hardware}.
