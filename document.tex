@@ -1,4 +1,6 @@
-\documentclass{sig-alternate}
+\let\oldvec\vec% Store \vec in \oldvec
+\documentclass{styles/llncs}
+\let\vec\oldvec% Restore \vec from \oldvec
 
 \newcommand{\ignore}[1]{}
 \usepackage{fancyhdr}
@@ -7,7 +9,7 @@
 \usepackage{hyperref}
 
 %%%%%%%%%%%---SETME-----%%%%%%%%%%%%%
-\newcommand{\microsubmissionnumber}{XXX}
+\newcommand{\microsubmissionnumber}{30}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \fancypagestyle{firstpage}{
@@ -58,25 +60,32 @@
 %\title{Dwarfs on Accelerators: Rough and Ready Performance Prediction for Heterogeneous Computing Architectures}
 \title{Dwarfs on Accelerators: Extending OpenCL Benchmarking for Heterogeneous Computing Architectures}
 
-\numberofauthors{2}
-\author{
-    \alignauthor Beau Johnston\\
-    \email{\normalsize beau.johnston@anu.edu.au}
-    \alignauthor Josh Milthorpe\\
-    \email{\normalsize josh.milthorpe@anu.edu.au}
-    \and
-    \sharedaffiliation
-    \affaddr{Research School of Computer Science}\\
-    \affaddr{Australian National University}\\
-    \affaddr{Canberra, Australia}
+%ACM style:
+%\numberofauthors{2}
+%\author{
+%    \alignauthor Beau Johnston\\
+%    \email{\normalsize beau.johnston@anu.edu.au}
+%    \alignauthor Josh Milthorpe\\
+%    \email{\normalsize josh.milthorpe@anu.edu.au}
+%    \and
+%    \sharedaffiliation
+%    \affaddr{Research School of Computer Science}\\
+%    \affaddr{Australian National University}\\
+%    \affaddr{Canberra, Australia}
+%}
+
+%Springer LNCS manuscript style
+\author{Beau Johnston \and Josh Milthorpe }
+\institute{Research School of Computer Science, The Australian National University, Canberra, Australia\\
+\email{\{beau.johnston, josh.milthorpe\}@anu.edu.au}
 }
 
 \maketitle
-\thispagestyle{firstpage}
-\pagestyle{plain}
-
-\section{Abstract}\subfile{abstract/abstract}
-
+%\thispagestyle{firstpage}
+%\pagestyle{plain}
+\begin{abstract}
+\subfile{abstract/abstract}
+\end{abstract}
 
 \section{Introduction}\subfile{introduction/introduction}
 \section{Extending the OpenDwarfs Benchmark Suite}\subfile{introduction/extending_the_opendwarfs_benchmark_suite}
