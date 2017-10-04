@@ -75,7 +75,8 @@ For brevity, cache miss results are not presented in this paper but were used to
 The procedure to generate the remaining scale arguments is benchmark specific but was similar same as those presented above for k-means, until a suitably sized domain for each cache size was found.
 The final selected parameters are presented in Table~\ref{tab:problem_sizes}.
 
-The LU-Decomposition {\tt lud}, Fast Fourier Transform {\tt fft}, Speckle Reducing Anisotropic Diffusion {\tt srad} and Cyclic Redundancy Check {\tt crc} benchmarks do not require additional data sets, and so they have been extended and verified that setting the numerical arguments both generate the correct answer to each serial implementation and run on modern architectures.
+The LU-Decomposition {\tt lud}, Fast Fourier Transform {\tt fft}, Speckle Reducing Anisotropic Diffusion {\tt srad} and Cyclic Redundancy Check {\tt crc} benchmarks do not require additional data sets, and so they have been extended and verified that setting the numerical arguments both generate the correct solution and run on modern architectures.
+Correctness was confirmed directly against a serial implementation of the codes, where this was already provided, or in the least by adding utilities to compare norms between the experimental outputs.
 
 2-Dimensional Discrete Wavelet Transform -- {\tt dwt} is commonly used in image compression.
 It has been extended to support loading of Portable PixMap (.ppm) and Portable GrayMap (.pgm) image format, and storing Portable GrayMap images of the resulting DWT coefficients in a visual tiled fashion.
