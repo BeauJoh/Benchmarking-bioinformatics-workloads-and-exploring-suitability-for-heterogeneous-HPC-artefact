@@ -72,7 +72,7 @@ The procedure to select problem size parameters is specific to each benchmark, b
 The selected parameters are presented in Table~\ref{tab:problem_sizes}.
 
 The LU-Decomposition {\tt lud}, Fast Fourier Transform {\tt fft}, Speckle Reducing Anisotropic Diffusion {\tt srad} and Cyclic Redundancy Check {\tt crc} benchmarks do not require additional data sets, and so they have been extended and verified that setting the numerical arguments both generate the correct solution and run on modern architectures.
-Correctness was confirmed directly against a serial implementation of the codes, where this was already provided, or in the least by adding utilities to compare norms between the experimental outputs.
+Correctness was examined either by directly comparing outputs against a serial implementation of the codes -- where one was previously provided, or in the least by adding utilities to compare norms between the experimental outputs.
 
 2-Dimensional Discrete Wavelet Transform -- {\tt dwt} is commonly used in image compression.
 It has been extended to support loading of Portable PixMap (.ppm) and Portable GrayMap (.pgm) image format, and storing Portable GrayMap images of the resulting DWT coefficients in a visual tiled fashion.
