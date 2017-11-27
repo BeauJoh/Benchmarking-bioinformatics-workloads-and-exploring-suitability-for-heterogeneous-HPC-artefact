@@ -1,28 +1,36 @@
-\let\oldvec\vec% Store \vec in \oldvec
-\documentclass{styles/llncs}
-\let\vec\oldvec% Restore \vec from \oldvec
+\documentclass[sigconf,preprint,9pt]{acmart}
+
+% Copyright
+%\setcopyright{none}
+%\setcopyright{acmcopyright}
+%\setcopyright{acmlicensed}
+\setcopyright{rightsretained}
+%\setcopyright{usgov}
+%\setcopyright{usgovmixed}
+%\setcopyright{cagov}
+%\setcopyright{cagovmixed}
+
+% DOI
+\acmDOI{10.475/123_4}
+
+% ISBN
+\acmISBN{123-4567-24-567/08/06}
+
+%Conference
+\acmConference[PMAM]{9th International Workshop on Programming Models and Applications for Multicores and Manycores}{February 2018}{V\"{o}sendorf, Austria} 
+\acmYear{2018}
+\copyrightyear{2017}
+
+\acmArticle{4}
+\acmPrice{15.00}
 
 \newcommand{\ignore}[1]{}
-\usepackage{fancyhdr}
+\usepackage{booktabs} % For formal tables
+\usepackage{array}
+\renewcommand{\arraystretch}{1.2}  % stretch space between table rows a bit
 \usepackage[normalem]{ulem}
-\usepackage[hyphens]{url}
 \usepackage{hyperref}
-
-%%%%%%%%%%%---SETME-----%%%%%%%%%%%%%
-\newcommand{\microsubmissionnumber}{30}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\fancypagestyle{firstpage}{
-    \fancyhf{}
-    \setlength{\headheight}{50pt}
-    \renewcommand{\headrulewidth}{0pt}
-    \fancyhead[C]{\normalsize{PMBS'17 Submission
-            \textbf{\#\microsubmissionnumber} -- Confidential Draft -- Do NOT Distribute!!}} 
-    \pagenumbering{arabic}
-}
-
 \usepackage{subfiles}               %using subfiles
-\usepackage{url}                    %urls in bibliography
 \usepackage{csvsimple}              %for turning csvs into tables
 \usepackage{caption}                %comments in tables
 \usepackage{subcaption}             %comments in subfigures
@@ -58,35 +66,31 @@
 %
 
 \begin{document}
-%\title{Dwarfs on Accelerators: Rough and Ready Performance Prediction for Heterogeneous Computing Architectures}
-\title{Dwarfs on Accelerators: Enhancing OpenCL Benchmarking for Heterogeneous Computing Architectures}
+\title[Dwarfs on Accelerators]{Dwarfs on Accelerators: Enhancing OpenCL Benchmarking for Heterogeneous Computing Architectures}
 
-%ACM style:
-%\numberofauthors{2}
-%\author{
-%    \alignauthor Beau Johnston\\
-%    \email{\normalsize beau.johnston@anu.edu.au}
-%    \alignauthor Josh Milthorpe\\
-%    \email{\normalsize josh.milthorpe@anu.edu.au}
-%    \and
-%    \sharedaffiliation
-%    \affaddr{Research School of Computer Science}\\
-%    \affaddr{Australian National University}\\
-%    \affaddr{Canberra, Australia}
-%}
-
-%Springer LNCS manuscript style
-\author{Beau Johnston \and Josh Milthorpe }
-\institute{Research School of Computer Science, The Australian National University, Canberra, Australia\\
-\email{\{beau.johnston, josh.milthorpe\}@anu.edu.au}
+\author{Beau Johnston}
+\orcid{1234-5678-9012}
+\affiliation{%
+	\institution{Research School of Computer Science\\Australian National University}
+	\city{Canberra} 
+	\state{Australia}
 }
+\email{beau.johnston@anu.edu.au}
+
+\author{Josh Milthorpe}
+\orcid{0000-0002-3588-9896}
+\affiliation{%
+	\institution{Research School of Computer Science\\Australian National University}
+	\city{Canberra} 
+	\state{Australia}
+}
+\email{josh.milthorpe@anu.edu.au}
+
+\begin{abstract}
+	\subfile{abstract/abstract}
+\end{abstract}
 
 \maketitle
-%\thispagestyle{firstpage}
-%\pagestyle{plain}
-\begin{abstract}
-\subfile{abstract/abstract}
-\end{abstract}
 
 \section{Introduction}\subfile{introduction/introduction}
 \section{Enhancing the OpenDwarfs Benchmark Suite}\subfile{introduction/extending_the_opendwarfs_benchmark_suite}
@@ -113,7 +117,7 @@
 
 
 %References
-\bibliographystyle{unsrt}
+\bibliographystyle{ACM-Reference-Format}
 \bibliography{bibliography/bibliography}
 
 \newpage
