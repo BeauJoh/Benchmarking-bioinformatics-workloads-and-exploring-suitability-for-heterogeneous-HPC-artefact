@@ -11,11 +11,11 @@ Additionally, due to Intel removing support for OpenCL on the KNL architecture, 
 Unfortunately, as Intel has removed support for AVX2 vectorization (using the `{\tt -xMIC-AVX512}' flag), vector instructions use only 256-bit registers instead of the wider 512-bit registers available on KNL.
 This means that floating-point performance on KNL is limited to half the theoretical peak.
 
-GCC version 5.4.0 with GLIBC 2.23 was used for the Skylake i7 and GTX 1080,  
-GCC version 4.8.5 with GLIBC 2.23 was used on the remaining platforms.
+GCC version 5.4.0 with glibc 2.23 was used for the Skylake i7 and GTX 1080,  
+GCC version 4.8.5 with glibc 2.23 was used on the remaining platforms.
 OS Ubuntu Linux 16.04.4 with kernel version 4.4.0 was used for the Skylake CPU and GTX 1080 GPU, Red Hat 4.8.5-11 with kernel version 3.10.0 was used on the other platform.
 
-As OpenDwarfs has no stable release version it was extended from the last commit by the maintainer on the Feb 26, 2016.~\cite{opendwarfs2017base}
+As OpenDwarfs has no stable release version, it was extended from the last commit by the maintainer on 26 Feb 2016.~\cite{opendwarfs2017base}
 LibSciBench version 0.2.2 was used for all performance measurements.
 
 \end{document}

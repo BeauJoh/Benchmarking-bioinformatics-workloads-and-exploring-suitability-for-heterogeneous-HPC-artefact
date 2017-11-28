@@ -1,5 +1,28 @@
 \documentclass[../document.tex]{subfiles}
 \begin{document}\label{ssec:time}
+	
+The Cyclic Redundancy Check {\tt crc} benchmark represents the Combinational Logic dwarf.
+Figure~\ref{fig:time-crc} shows the execution times for the{\tt crc} benchmark over 50 iterations on each of the target architectures, including the KNL.
+This is the only benchmark which performs best on CPU-type architectures, and it also performs well on the KNL MIC architecture.
+All other benchmarks perform best on GPU type accelerators; furthermore, the performance on the KNL is poor due to the lack of support for wide vector registers in Intel's OpenCL SDK.
+For the remaining benchmarks, we omit results for KNL.
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=0.23\textwidth]{figures/time-results/generate_crc_tiny_boxplot_knl-1}
+	\includegraphics[width=0.23\textwidth]{figures/time-results/generate_crc_small_boxplot_knl-1}
+	
+	\includegraphics[width=0.23\textwidth]{figures/time-results/generate_crc_medium_boxplot_knl-1}
+	\includegraphics[width=0.23\textwidth]{figures/time-results/generate_crc_large_boxplot_knl-1}
+	\caption{Kernel Execution times for {\bf crc}, the only application favouring the CPU architectures.}
+	\label{fig:time-crc}
+\end{figure}
+
+Figure~\ref{fig:time} shows the distribution of execution times for the remaining benchmarks.
+LibSciBench has a high resolution timer with one cycle resolution and roughly \SI{6}{\nano\second} of overhead.
+
+Each benchmark corresponds to a particular dwarf, for instance Figure~\ref{fig:time-kmeans} and Figure~\ref{fig:time-lud} are both representative of the Dense Linear Algebra dwarf, whereas Figure~\ref{fig:time-dwt} and Figure~\ref{fig:time-fft} are representative of Spectral Methods.
+Figure~\ref{fig:time-gem} represents N-Body Methods and Figure~\ref{fig:time-srad} encompasses a Structured Grid Method of Dwarf.
 
 \captionsetup[subfigure]{justification=raggedright,singlelinecheck=false}
 
@@ -54,13 +77,6 @@
     \caption{Kernel execution times for benchmarks for which the GPU architectures are optimal}\label{fig:time}
 \end{figure*}
 
-
-Figure~\ref{fig:time} shows the distribution of execution times for each benchmark over 50 iterations.
-LibSciBench has a high resolution timer with one cycle resolution and roughly \SI{6}{\nano\second} of overhead.
-
-Each benchmark corresponds to a particular dwarf, for instance Figure~\ref{fig:time-kmeans} and Figure~\ref{fig:time-lud} are both representative of the Dense Linear Algebra dwarf, whereas Figure~\ref{fig:time-dwt} and Figure~\ref{fig:time-fft} are representative of Spectral Methods.
-Figure~\ref{fig:time-gem} represents N-Body Methods, Figure~\ref{fig:time-srad} encompasses a Structured Grid Method of Dwarf, and finally Figure~\ref{fig:time-crc} is a problem from Combinational Logic.
-All but the {\bf crc} benchmark perform best on GPU type accelerators.
 
 \todo{Are there any benchmarks where increasing the problem sizes makes results worse for the GPU?}
 \todo{How does changing problem sizes affect benchmark performance across a range of platforms (selected accordingly to cache size)?}
