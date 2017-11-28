@@ -25,7 +25,7 @@ Starting positions for the centroids are determined randomly.
 The OpenDwarfs benchmark previously required the object features to be read from a previously generated file.
 We extended the benchmark to support generation of a random distribution of points.
 This was done to more fairly evaluate cache performance, since repeated runs of clustering on the same feature space (loaded from file) would deterministically generate similar caching performance.
-The same number of clusters is fixed, with the minimum and maximum cluster locations being returned both set to 5.
+For all problem sizes, the number of clusters is fixed at 5.
 
 Given a fixed number of clusters, the parameters that may be used to select a problem size are the number of points $P_n$, and the dimensionality or number of features per point $F_n$.
 In the kernel for k-means there are three large one-dimensional arrays passed to the device, namely {\bf feature}, {\bf cluster} and {\bf membership}.
@@ -52,8 +52,9 @@ For brevity, cache miss results are not presented in this paper but were used to
 The procedure to select problem size parameters is specific to each benchmark, but follows a similar approach to k-means.
 
 \subsubsection{lud, fft, srad, crc}
-The LU-Decomposition {\tt lud}, Fast Fourier Transform {\tt fft}, Speckle Reducing Anisotropic Diffusion {\tt srad} and Cyclic Redundancy Check {\tt crc} benchmarks do not require additional data sets, and so they have been extended and verified that setting the numerical arguments both generate the correct solution and run on modern architectures.
-Correctness was examined either by directly comparing outputs against a serial implementation of the codes -- where one was previously provided, or in the least by adding utilities to compare norms between the experimental outputs.
+The LU-Decomposition {\tt lud}, Fast Fourier Transform {\tt fft}, Speckle Reducing Anisotropic Diffusion {\tt srad} and Cyclic Redundancy Check {\tt crc} benchmarks did not require additional data sets,.
+Where necessary these benchmarks were modified to generate the correct solution and run on modern architectures.
+Correctness was examined either by directly comparing outputs against a serial implementation of the codes (where one was available), or by adding utilities to compare norms between the experimental outputs.
 
 \subsubsection{dwt}
 Two-Dimensional Discrete Wavelet Transform is commonly used in image compression.
@@ -71,7 +72,7 @@ Molecules were then selected based on complexity, since the greater the complexi
 {\bf large} used an X-Ray Structure of a Nucleosome Core Particle~\cite{davey2002solvent}, consisting of 8 protein, 2 nucleotide, and 18 chemical molecules, and requiring \SI{10970.2}{\kibi\byte} of memory when executed by {\tt gem}.
 Each {\tt pdb} file was converted to the {\tt pqr} atomic particle charge and radius format using the {\tt pdb2pqr}~\cite{dolinsky2004pdb2pqr} tool.
 Generation of the solvent excluded molecular surface used the tool {\tt msms}~\cite{sanner1996reduced}.
-The final datasets used for {\tt gem} and all other benchmarks can be found in this papers associated GitHub repository~\cite{johnston2017}.
+The datasets used for {\tt gem} and all other benchmarks can be found in this paper's associated GitHub repository~\cite{johnston2017}.
 
 %Computational Fluid Dynamics -- {\tt cfd} is an unstructured grid benchmark which performs three-dimensional Euler equation computations to determine compressible flow (density, energy and momentum) over a surface.
 %This surface has a mesh data structure and internally is represented as a series of triangular vertices.
@@ -105,7 +106,7 @@ The problem size parameters for all benchmarks are presented in Table~\ref{tab:p
 
 Each {\bf Device} can be selected in a uniform way between applications using the same notation, on this system {\bf Device} comprises of {\tt -p 1 -d 0 -t 0} for the Intel Skylake CPU, where {\tt p} and {\tt d} are the integer identifier of the platform and device to respectively use, and {\tt -p 1 -d 0 -t 1} for the Nvidia GeForce GTX 1080 GPU.
 Each application is run as {\bf Benchmark} {\bf Device} {\tt --} {\bf Arguments}, where {\bf Arguments} is taken from Table~\ref{tab:program_arguments} at the selected scale of $\Phi$.
-For reproducibility the entire set of python scripts with all problem sizes is available in a GitHub repository~\cite{johnston2017}. 
+For reproducibility the entire set of Python scripts with all problem sizes is available in a GitHub repository~\cite{johnston2017}. 
 Where $\Phi$ is substituted as the argument for each benchmark, it is taken as the respective scale from Table~\ref{tab:problem_sizes} and is inserted into Table~\ref{tab:program_arguments}.
 
 \begin{table}[t]
