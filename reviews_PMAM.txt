@@ -1,0 +1,105 @@
+----------------------- REVIEW 1 ---------------------
+PAPER: 10
+TITLE: Dwarfs on Accelerators: Enhancing OpenCL Benchmarking for Heterogeneous Computing Architectures
+AUTHORS: Beau Johnston and Josh Milthorpe
+
+Overall evaluation: 0 (borderline paper)
+
+----------- Overall evaluation -----------
+Summary - This paper investigates the performance and energy of eight existing OpenCL benchmarks with four problem sizes on seven hardware platforms that include Xeon Phi, CPU and GPU. A focus of this paper is to manipulate the problem size of each benchmark and precisely measure its performance impacts on different platforms.
+
+
+
+
+Major Comments -
+Overall, I believe the authors deeply dived into the benchmarks' code and hardware details to perform benchmarking on the selected platforms. However, my major criticism is the novelty of this work. There are many papers have been done on the performance and energy evaluation of current heterogeneous platforms by running exiting or modified benchmarks with different problem sizes. It would be nice to improve from the following points.
+
+1. The target problem needs to be better formatted. The robustness of benchmarks is a relatively new point to explore. In HPC, performance/energy reproducibity is gaining more attention. I don't think the ultimate goal has to be an answer to "for a given architecture with a variety of computing devices and a given set of computational tasks, which is the best choice of device for each task?". Even the reproducibility problem itself is very important. So what factors in benchmarks and hardware will impact the performance/energy variation? Problem size is definitely one important factor, but what else factors? And how to increase the performance/energy reproducibility of benchmarking machines by manipulating these factors?
+
+2. The results section needs more insights on the obtained data. For example, the data point of srad with medium problem size shows larger performance variation than the other problem sizes and benchmarks. Why? Also, for energy, why crc CPU energy is lower than GPU energy? In addition, data transfer overhead is another point needs to be considered for heterogeneous platforms. Usually, the performance variation of GPU data transfer is more significant with different sizes.
+
+Minor comments -
+1. Page 4, 4.4.2 the first sentence seems broken
+2. Page 5, 5.2, is the GPU energy the chip energy or card energy?
+
+
+----------------------- REVIEW 2 ---------------------
+PAPER: 10
+TITLE: Dwarfs on Accelerators: Enhancing OpenCL Benchmarking for Heterogeneous Computing Architectures
+AUTHORS: Beau Johnston and Josh Milthorpe
+
+Overall evaluation: 0 (borderline paper)
+
+----------- Overall evaluation -----------
+The topic good but the paper is weak.  In general, it seems to be lacking
+background material.  Also, it is not coherently written as it jumps around
+from specific topic to what the paper seems to be about.
+
+
+mentions FPGA in paper but no FPGA based devices were tested
+- misleading
+
+needs some more background
+
+2 what are dwarfs?
+
+what is SHOC?
+LibSciBench?  reference?
+PAPI?
+RAPL?
+NVML?
+Perhaps some of this is out of order as some of these were
+referenced later in the paper (i.e. explains why the paper appears to be lacking 
+coherency).
+
+3) related work is weak - needs to be elaborated
+e.g. describe the Dwarfs?  This is mentioned in the title of the paper
+but never is it really discussed to any extent
+
+4) weak but more or less OK
+last paragraph is puzzling - it is not clear what is being communicated
+e.g. what is "Device"?  Why / how is is relevant? 
+
+5) why is CRC described in this section and not in 4?
+- why 50 iterations?  how was this chosen?
+
+5.1) start discussing things that have not been mentioned or referenced yet
+e.g. Dense Linear Algebra dward, Sparse Linear Algebra, Spectral Methods,
+N-Body Methods, Structured Grid dwarf
+- perhaps more background would have made this more understandable
+
+6) results
+- assuming the bars represent the range of execution times for the 50 runs
+ - what is the cause of this variation?
+  - why do some benchmarks see a lot a variation but some show only a little?
+
+
+  ----------------------- REVIEW 3 ---------------------
+  PAPER: 10
+  TITLE: Dwarfs on Accelerators: Enhancing OpenCL Benchmarking for Heterogeneous Computing Architectures
+  AUTHORS: Beau Johnston and Josh Milthorpe
+
+  Overall evaluation: -2 (reject)
+
+  ----------- Overall evaluation -----------
+  This paper enhances the OpenDwarfs OpenCL benchmark suite and evaluates several benchmarks on a range of platforms including CPU, GPU, and KNL. The enhancement includes some benchmarks that are moved from another benchmark suite, some new benchmarks, supporting problem size adjustment, and integrating high resolution timer based on the LibSciBench tool. The evaluation focuses on CPU and GPU platforms and shows performance in time and energy consumption.
+
+  Overall speaking, I appreciated the benchmark enhancement work which will be helpful for many users. However, the paper itself does not contain sufficient information. For instance, the evaluation reported only several graphs, but does not have detailed description, explanation, or performance analysis.
+
+  One more concern is about the suitability of OpenCL based benchmarks for CPU and Xeon Phi platforms. Although this is a good approach for portable application code, the resulted performance is highly relying on the platform-specific OpenCL compiler and runtime system (e.g., Intel OpenCL SDK). A deep study of the internal code translation and optimization is necessary. Unfortunately, this paper does not give this information.
+
+
+  ----------------------- REVIEW 4 ---------------------
+  PAPER: 10
+  TITLE: Dwarfs on Accelerators: Enhancing OpenCL Benchmarking for Heterogeneous Computing Architectures
+  AUTHORS: Beau Johnston and Josh Milthorpe
+
+  Overall evaluation: 0 (borderline paper)
+
+  ----------- Overall evaluation -----------
+  Authors present an extended and enhanced version of the OpenDwarfs OpenCL benchmark suite to improve portability and to add problem size variations.
+  OpenCL support for Xeon Phi is unclear status, but reviewer found 2017R2 at least.
+
+  Evaluation analyses should be required.
+  In energy investigation, characteristics of CRC is different from the other benchmarks since the energy  of Xeon is smaller than that of GPUs.  Please mention about the reason.
+
