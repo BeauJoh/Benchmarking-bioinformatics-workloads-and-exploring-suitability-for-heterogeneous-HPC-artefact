@@ -7,24 +7,23 @@ This is the only benchmark which performs best on CPU-type architectures, and it
 All other benchmarks perform best on GPU type accelerators; furthermore, the performance on the KNL is poor due to the lack of support for wide vector registers in Intel's OpenCL SDK.
 For the remaining benchmarks, we omit results for KNL.
 
-\begin{figure}[h]
+\newcommand{\plotwidth}{0.24\textwidth}
+\begin{figure*}[t]
 	\centering
-	\includegraphics[width=0.23\textwidth]{figures/time-results/generate_crc_tiny_boxplot_knl-1}
-	\includegraphics[width=0.23\textwidth]{figures/time-results/generate_crc_small_boxplot_knl-1}
-	
-	\includegraphics[width=0.23\textwidth]{figures/time-results/generate_crc_medium_boxplot_knl-1}
-	\includegraphics[width=0.23\textwidth]{figures/time-results/generate_crc_large_boxplot_knl-1}
-	\caption{Kernel Execution times for {\bf crc}, the only application favouring the CPU architectures.}
+	\includegraphics[width=\plotwidth]{figures/time-results/generate_crc_tiny_boxplot_knl-1}
+	\includegraphics[width=\plotwidth]{figures/time-results/generate_crc_small_boxplot_knl-1}
+	\includegraphics[width=\plotwidth]{figures/time-results/generate_crc_medium_boxplot_knl-1}
+	\includegraphics[width=\plotwidth]{figures/time-results/generate_crc_large_boxplot_knl-1}
+	\caption{Kernel execution times for the {\bf crc} benchmark on different hardware platforms, including KNL}
 	\label{fig:time-crc}
-\end{figure}
+\end{figure*}
 
-Figure~\ref{fig:time} shows the distribution of execution times for the remaining benchmarks.
-Each benchmark corresponds to a particular dwarf, Figure~\ref{fig:time-kmeans} and Figure~\ref{fig:time-lud} are both representative of the Dense Linear Algebra dwarf, Figure~\ref{fig:time-dwt} and Figure~\ref{fig:time-fft} are representative of Spectral Methods,
+Figures~\ref{fig:time} and~\ref{fig:time2} shows the distribution of execution times for the remaining benchmarks.
+Each benchmark corresponds to a particular dwarf: Figure~\ref{fig:time-kmeans} and Figure~\ref{fig:time-lud} are both representative of the Dense Linear Algebra dwarf, Figure~\ref{fig:time-csr} represents Sparse Linear Algebra, Figure~\ref{fig:time-dwt} and Figure~\ref{fig:time-fft} represent Spectral Methods,
 Figure~\ref{fig:time-gem} represents N-Body Methods, and Figure~\ref{fig:time-srad} represents the Structured Grid dwarf.
 
 \captionsetup[subfigure]{justification=raggedright,singlelinecheck=false}
 
-\newcommand{\plotwidth}{0.24\textwidth}
 \begin{figure*}
 	\begin{subfigure}{0.09\textwidth}\subcaption[l]{\bf kmeans} \label{fig:time-kmeans} \vspace{5mm}\end{subfigure}
 	\begin{subfigure}{0.9\textwidth}
@@ -41,6 +40,14 @@ Figure~\ref{fig:time-gem} represents N-Body Methods, and Figure~\ref{fig:time-sr
 		\includegraphics[width=\plotwidth]{figures/time-results/generate_lud_medium_boxplot-1}
 		\includegraphics[width=\plotwidth]{figures/time-results/generate_lud_large_boxplot-1}
 	\end{subfigure}
+
+	\begin{subfigure}{0.09\textwidth}\subcaption[l]{\bf csr} \label{fig:time-csr} \vspace{5mm}\end{subfigure}
+	\begin{subfigure}{0.9\textwidth}
+		\includegraphics[width=\plotwidth]{figures/time-results/generate_csr_tiny_boxplot-1}
+		\includegraphics[width=\plotwidth]{figures/time-results/generate_csr_small_boxplot-1}
+		\includegraphics[width=\plotwidth]{figures/time-results/generate_csr_medium_boxplot-1}
+		\includegraphics[width=\plotwidth]{figures/time-results/generate_csr_large_boxplot-1}
+	\end{subfigure}
 	
 	\begin{subfigure}{0.09\textwidth}\subcaption[l]{\bf dwt} \label{fig:time-dwt} \vspace{5mm}\end{subfigure}
 	\begin{subfigure}{0.9\textwidth}
@@ -56,8 +63,11 @@ Figure~\ref{fig:time-gem} represents N-Body Methods, and Figure~\ref{fig:time-sr
 		\includegraphics[width=\plotwidth]{figures/time-results/generate_fft_small_boxplot-1}
 		\includegraphics[width=\plotwidth]{figures/time-results/generate_fft_medium_boxplot-1}
 		\includegraphics[width=\plotwidth]{figures/time-results/generate_fft_large_boxplot-1}
-		\end{subfigure}
+	\end{subfigure}
+    \caption{Benchmark kernel execution times on different hardware platforms}\label{fig:time}
+\end{figure*}
 
+\begin{figure*}[t]
 	\begin{subfigure}{0.09\textwidth}\subcaption[l]{\bf gem} \label{fig:time-gem} \vspace{5mm}\end{subfigure}
 	\begin{subfigure}{0.9\textwidth}
 		\includegraphics[width=\plotwidth]{figures/time-results/generate_gem_tiny_boxplot-1}
@@ -73,7 +83,7 @@ Figure~\ref{fig:time-gem} represents N-Body Methods, and Figure~\ref{fig:time-sr
 		\includegraphics[width=\plotwidth]{figures/time-results/generate_srad_medium_boxplot-1}
 		\includegraphics[width=\plotwidth]{figures/time-results/generate_srad_large_boxplot-1}
 	\end{subfigure}
-    \caption{Kernel execution times for benchmarks for which the GPU architectures are optimal}\label{fig:time}
+    \caption{Benchmark kernel execution times on different hardware platforms (continued)}\label{fig:time2}
 \end{figure*}
 
 
