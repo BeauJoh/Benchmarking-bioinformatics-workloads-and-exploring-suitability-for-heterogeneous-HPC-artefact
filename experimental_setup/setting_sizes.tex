@@ -5,6 +5,8 @@
 For each application, four different problem sizes were selected, namely {\bf tiny}, {\bf small}, {\bf medium} and {\bf large}.
 These problem sizes are based on the memory hierarchy of the Skylake CPU.
 Specifically, {\bf tiny} should just fit within L1 cache, on the Skylake this corresponds to \SI{32}{\kibi\byte} of data cache, {\bf small} should fit within the \SI{256}{\kibi\byte} L2 data cache, {\bf medium} should fit within \SI{8192}{\kibi\byte} of the L3 cache, and {\bf large} must be much larger than \SI{8192}{\kibi\byte} to avoid caching and operate out of main memory.
+
+The memory footprint was verified for each application by printing the sum of the size of all memory allocated on the device.
 %This was verified using the {\tt lscpu} Linux tool.
 
 For this study, problem sizes were not customized to the memory hierarchy of each platform, since the CPU is the most sensitive to cache performance.
@@ -14,6 +16,7 @@ Caching performance was measured using PAPI counters.
 On the Skylake L1 and L2 data cache miss rates were counted using the {\tt PAPI\_L1\_DCM} and {\tt PAPI\_L2\_DCM} counters.
 For L3 miss events, only the total cache counter event ({\tt PAPI\_L3\_TCM}) was available.
 The final values presented as miss results are presented as a percentage, and were determined using the number of misses counted divided by the total instructions ({\tt PAPI\_TOT\_INS}).
+
 
 The methodology to determine the appropriate size parameters is demonstrated on the k-means benchmark.
 
@@ -79,6 +82,13 @@ The datasets used for {\tt gem} and all other benchmarks can be found in this pa
 %To generate suitable data sizes for this benchmark the data set provided with the benchmark {\tt fvcorr.domn.097K} has been shortened to $\Phi$ vertices, where $Phi$ is given in Table~\ref{tab:problem_sizes}, and was then stored as $\Phi${\tt.dat} files.
 %These files are then passed as the only argument into the benchmark.
 
+\todo[inline]{write up for bfs, nw}
+\subsubsection{bfs}
+Breadth-First Search
+
+\subsubsection{nw}
+Needleman-Wunsch
+
 \subsubsection{Summary of Benchmark Settings}
 
 The problem size parameters for all benchmarks are presented in Table~\ref{tab:problem_sizes}.
@@ -97,8 +107,10 @@ The problem size parameters for all benchmarks are presented in Table~\ref{tab:p
 			{\tt dwt}             & 72x54      & 200x150& 1152x864   & 3648x2736\\       
 			{\tt gem}             & 4TUT       & 2D3V   & nucleosome & 1KX5\\
 			{\tt srad}            & 80,16      & 128,80 & 1024,336   & 2048,1024\\
-			{\tt crc}             & 2000       & 16000  & 524000     & 4194304\\
 			%{\tt cfd}             & 128        & 1284   & 45056      & 193474
+			{\tt crc}             & 2000       & 16000  & 524000     & 4194304\\
+            {\tt bfs}             & 650        & 5376   & 172032     & 1048576\\
+            {\tt nw}              & 48         & 176    & 1008       & 4096\\
 		\end{tabular}
 		\label{tab:problem_sizes}
 	\end{threeparttable}
@@ -127,6 +139,8 @@ Where $\Phi$ is substituted as the argument for each benchmark, it is taken as t
 			{\tt srad}& $\Phi_1$ $\Phi_2$ {\tt 0 127 0 127 0.5 1}\\
 			{\tt crc}&  {\tt -i 1000\_}$\Phi${\tt.txt}\\
 			%{\tt cfd} & $\Phi${\tt.dat}\\
+            {\tt bfs}&  {\tt 'graph}$\Phi${\tt.txt'}\\
+            {\tt nw}&  $\Phi${ 10}\\
 		\end{tabular}
 		\begin{tablenotes}
 			\item [$\medtriangleup$] The {\tt -d 5000} indicates density of the matrix in this instance 0.5\% dense (or 99.5\% sparse).
