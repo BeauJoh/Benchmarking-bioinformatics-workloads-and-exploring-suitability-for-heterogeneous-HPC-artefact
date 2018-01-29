@@ -4,12 +4,13 @@
 #all:	latexmk
 all:	latexmk
 #all: 	texliveonfly
+LATEXMK?=latexmk
 
 texliveonfly:
 	python ./styles/texliveonfly.py document.tex
 
 latexmk:
-	/usr/local/texlive/2015basic/bin/x86_64-darwin/latexmk -pdf
+	$(LATEXMK) -pdf
 
 results:
 	cd results && make

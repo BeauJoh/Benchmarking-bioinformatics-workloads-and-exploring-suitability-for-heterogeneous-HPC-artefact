@@ -1,22 +1,21 @@
 \documentclass[../document.tex]{subfiles}
 \begin{document}\label{sec:extending_the_opendwarfs_benchmark_suite}
 
-Both Rodinia and the original OpenDwarfs benchmark suite focused on collecting a representative benchmarks for scientific applications, classified according to dwarfs, with a thorough diversity analysis to justify the addition of each benchmark to the corresponding suite.
+The OpenDwarfs benchmark suite comprises a variety of OpenCL codes, classified according to patterns of computation and communication known as the 13 Berkeley Dwarfs.\cite{asanovic2006landscape}
+The original suite focused on collecting representative benchmarks for scientific applications, with a thorough diversity analysis to justify the addition of each benchmark to the corresponding suite.
 
 We aim to extend these efforts to achieve a full representation of each dwarf, both by integrating other benchmark suites and adding custom kernels.
 At the same time, we hope to improve portability between devices, interpretability and flexibility of configuration including problem sizes.
+As problem size can profoundly affect performance on accelerator systems~\cite{marjanovic2016hpc}, we enhanced configurability so that each benchmark could be run for a wide range of problem sizes.
 
 For the Spectral Methods dwarf, the original OpenDwarfs version of the FFT benchmark was complex, with several code paths that were not executed for the default problem size, and returned incorrect results or failures on some combinations of platforms and problem sizes we tested.
 We replaced it with a simpler high-performance FFT benchmark created by Eric Bainville~\cite{bainville2010fft}, which worked correctly in all our tests.
-We have also added a 2-D discrete wavelet transform from Rodinia, and we plan to add a continuous wavelet transform code.
+We have also added a 2-D discrete wavelet transform from the Rodinia suite~\cite{che2009rodinia}, and we plan to add a continuous wavelet transform code.
 
-As problem size can profoundly affect performance on accelerator systems~\cite{marjanovic2016hpc}, we enhanced configurability so that each benchmark could be run for a wide range of problem sizes.
-
-% Moved from intro - not sure it's quite right here either but don't want to delete just yet - JM
-Previous work~\cite{johnston2017embedded} has shown that energy consumption of accelerator devices, at least in the embedded space and on compute-bound applications, is strongly correlated with execution time.
-Extending this investigation of energy usage to communication-bound and memory-bound problems is essential, since many scientific codes targeted for HPC and supercomputing systems have these characteristics.
-Additionally, given the candidate accelerators are proposed as future components on such systems, an evaluation of energy consumption on a wide range of accelerators is essential.
-To this end, LibSciBench (a performance measurement tool which allows high precision timing events to be collected for statistical analysis), complete with PAPI counters has been added to all of the applications in the OpenDwarfs Benchmark Suite.
-Through PAPI modules such as RAPL and NVML, LibSciBench also supports energy measurements, for which we report preliminary results in this paper.
+LibSciBench is a performance measurement tool which allows high precision timing events to be collected for statistical analysis~\cite{hoefler2015scientific}.
+It offers a high resolution timer in order to measure short running kernel codes, reported with one cycle resolution and roughly \SI{6}{\nano\second} of overhead.
+We used LibSciBench to record timings in conjunction with hardware events, which it collects via PAPI~\cite{mucci1999papi} counters.
+We modified the applications in the OpenDwarfs benchmark suite to insert library calls to LibSciBench to record timings and PAPI events for the three main components of application time: kernel execution, host setup and memory transfer operations.
+Through PAPI modules such as Intel's Running Average Power Limit (RAPL) and Nvidia Management Library (NVML), LibSciBench also supports energy measurements, for which we report preliminary results in this paper.
 
 \end{document}

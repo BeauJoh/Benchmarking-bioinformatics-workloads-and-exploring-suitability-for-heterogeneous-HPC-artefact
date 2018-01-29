@@ -2,11 +2,8 @@
 \begin{document}\label{ssec:measurements}
 
 %LibSciBench and performance counters
-LibSciBench is a performance measurement tool which allows high precision timing events to be collected for statistical analysis~\cite{hoefler2015scientific}.
-It offers a high resolution timer in order to measure short running kernel codes, reported with one cycle resolution and roughly \SI{6}{\nano\second} of overhead.
-We used LibSciBench to record timings in conjunction with hardware events, which it collects via PAPI~\cite{mucci1999papi} counters.
 
-We modified the applications in the OpenDwarfs benchmark suite to insert library calls to LibSciBench to record timings and PAPI events for the three main components of application time: kernel execution, host setup and memory transfer operations.
+We measured kernel execution time and device energy over 50 runs, for multiple problem sizes (see \S\ref{ssec:setting_sizes}).
 To help understand the timings, the following hardware counters were also collected:
 \begin{itemize}
 	\item total instructions and IPC (Instructions Per Cycle);
@@ -19,7 +16,6 @@ To help understand the timings, the following hardware counters were also collec
 A sample of 50 iterations was collected for each measurement.
 Only the kernel execution times and energies are presented in the final results.
 
-Energy measurements were taken on Intel platforms using the Running Average Power Limit (RAPL) PAPI module.
-Similarly, a PAPI module was used in conjunction with the Nvidia Management Library (NVML) to measure the energy usage on Nvidia GPUs.
+Energy measurements were taken on Intel platforms using the RAPL PAPI module, and on Nvidia GPUs using the NVML PAPI module.
 
 \end{document}
