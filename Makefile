@@ -1,6 +1,7 @@
 .PHONY: results document
 
 #all:	results document
+#all:	latexmk
 all:	latexmk
 #all: 	texliveonfly
 
@@ -8,7 +9,7 @@ texliveonfly:
 	python ./styles/texliveonfly.py document.tex
 
 latexmk:
-	latexmk -pdf
+	/usr/local/texlive/2015basic/bin/x86_64-darwin/latexmk -pdf
 
 results:
 	cd results && make
