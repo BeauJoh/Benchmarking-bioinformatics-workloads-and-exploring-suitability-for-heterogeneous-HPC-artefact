@@ -1,0 +1,26 @@
+# Sysname : Linux
+# Nodename: gpgpu
+# Release : 4.4.0-93-generic
+# Version : #116-Ubuntu SMP Fri Aug 11 21:17:51 UTC 2017
+# Machine : x86_64
+# Execution time and date (UTC): Wed Sep 20 01:45:01 2017
+# Execution time and date (local): Wed Sep 20 11:45:01 2017
+# Reported time measurements are in microseconds
+# pretty output format
+ number_of_residues number_of_vertices       region       id         time     overhead 
+         1268        258797  kernel_creation          0 3809.948608            0 
+         1268        258797  host_side_setup          0 6975.620239            1 
+         1268        258797  device_side_buffer_setup          0 14.847656            0 
+         1268        258797  device_side_h2d_copy          0 3138.314087            0 
+         1268        258797  setting_kernel_arguments          0 2.795654            0 
+         1268        258797    gem_kernel          0 36348.383423            0 
+         1268        258797    gem_kernel      30720 35260.176636            0 
+         1268        258797    gem_kernel      61440 36053.407349            0 
+         1268        258797    gem_kernel      92160 35705.631714            0 
+         1268        258797    gem_kernel     122880 35860.014404            0 
+         1268        258797    gem_kernel     153600 36441.085571            0 
+         1268        258797    gem_kernel     184320 35752.707153            0 
+         1268        258797    gem_kernel     215040 35872.985107            0 
+         1268        258797    gem_kernel     245760 12980.945435            0 
+         1268        258797  device_side_d2h_copy          0 196.621704            0 
+# Runtime: 0.314435 s (overhead: 0.000318 %) 15 records

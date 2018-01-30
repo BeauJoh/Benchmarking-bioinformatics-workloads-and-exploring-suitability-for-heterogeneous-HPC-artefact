@@ -1,0 +1,20 @@
+# Sysname : Linux
+# Nodename: gpgpu
+# Release : 4.4.0-93-generic
+# Version : #116-Ubuntu SMP Fri Aug 11 21:17:51 UTC 2017
+# Machine : x86_64
+# Execution time and date (UTC): Sat Sep 30 13:46:53 2017
+# Execution time and date (local): Sat Sep 30 23:46:53 2017
+# Reported time measurements are in microseconds
+# pretty output format
+       region       id         time     overhead nvml:::GeForce_GTX_1080:power nvml:::GeForce_GTX_1080:temperature
+ kernel_creation          0 876.000000          543            44527               45 
+ device_side_buffer_setup          0 4.000000          534            44527               45 
+ host_side_setup          0 474.000000          545            44527               45 
+ device_side_h2d_copy          0 427.000000          538            44527               45 
+ setting_srad1_kernel_arguments          0 1.000000         5689            44527               45 
+ srad1_kernel          0 32.000000          885            44527               45 
+ setting_srad2_kernel_arguments          0 0.000000          542            44527               45 
+ srad2_kernel          0 15.000000          537            44527               45 
+ device_side_d2h_copy          0 24.000000          542            44527               45 
+# Runtime: 0.102011 s (overhead: 10.150866 %) 9 records

@@ -1,0 +1,26 @@
+# Sysname : Linux
+# Nodename: node20
+# Release : 3.10.0-514.10.2.el7.x86_64
+# Version : #1 SMP Fri Mar 3 00:04:05 UTC 2017
+# Machine : x86_64
+# Execution time and date (UTC): Fri Sep 29 01:41:39 2017
+# Execution time and date (local): Fri Sep 29 02:41:39 2017
+# Reported time measurements are in microseconds
+# pretty output format
+ number_of_residues number_of_vertices       region       id         time     overhead 
+         1268        258797  kernel_creation          0 7256.557617            0 
+         1268        258797  host_side_setup          0 12241.776367            2 
+         1268        258797  device_side_buffer_setup          0 42.999023            0 
+         1268        258797  device_side_h2d_copy          0 8101.229492            0 
+         1268        258797  setting_kernel_arguments          0 7.470703            1 
+         1268        258797    gem_kernel          0 109835.969727            0 
+         1268        258797    gem_kernel      30720 109825.423828            0 
+         1268        258797    gem_kernel      61440 109807.432617            0 
+         1268        258797    gem_kernel      92160 109896.986328            0 
+         1268        258797    gem_kernel     122880 109813.732422            0 
+         1268        258797    gem_kernel     153600 109860.851562            0 
+         1268        258797    gem_kernel     184320 109916.814453            0 
+         1268        258797    gem_kernel     215040 109854.336914            0 
+         1268        258797    gem_kernel     245760 52075.761719            0 
+         1268        258797  device_side_d2h_copy          0 470.460938            0 
+# Runtime: 0.959034 s (overhead: 0.000313 %) 15 records

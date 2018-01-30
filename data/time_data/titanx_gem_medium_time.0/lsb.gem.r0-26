@@ -1,0 +1,26 @@
+# Sysname : Linux
+# Nodename: node23
+# Release : 3.10.0-514.10.2.el7.x86_64
+# Version : #1 SMP Fri Mar 3 00:04:05 UTC 2017
+# Machine : x86_64
+# Execution time and date (UTC): Wed Sep 20 20:01:34 2017
+# Execution time and date (local): Wed Sep 20 21:01:34 2017
+# Reported time measurements are in microseconds
+# pretty output format
+ number_of_residues number_of_vertices       region       id         time     overhead 
+         1268        258797  kernel_creation          0 9365.226562            0 
+         1268        258797  host_side_setup          0 9601.794922            1 
+         1268        258797  device_side_buffer_setup          0 20.164062            0 
+         1268        258797  device_side_h2d_copy          0 4628.531250            0 
+         1268        258797  setting_kernel_arguments          0 2.933594            0 
+         1268        258797    gem_kernel          0 31984.660156            0 
+         1268        258797    gem_kernel      30720 32521.138672            0 
+         1268        258797    gem_kernel      61440 32716.371094            0 
+         1268        258797    gem_kernel      92160 33126.660156            0 
+         1268        258797    gem_kernel     122880 30329.652344            0 
+         1268        258797    gem_kernel     153600 30047.599609            0 
+         1268        258797    gem_kernel     184320 29273.486328            0 
+         1268        258797    gem_kernel     215040 29167.382812            0 
+         1268        258797    gem_kernel     245760 15599.441406            0 
+         1268        258797  device_side_d2h_copy          0 265.019531            0 
+# Runtime: 0.288671 s (overhead: 0.000346 %) 15 records

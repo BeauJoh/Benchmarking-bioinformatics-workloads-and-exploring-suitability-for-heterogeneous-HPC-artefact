@@ -1,0 +1,30 @@
+# Sysname : Linux
+# Nodename: gpgpu
+# Release : 4.4.0-93-generic
+# Version : #116-Ubuntu SMP Fri Aug 11 21:17:51 UTC 2017
+# Machine : x86_64
+# Execution time and date (UTC): Wed Sep 20 01:11:19 2017
+# Execution time and date (local): Wed Sep 20 11:11:19 2017
+# Reported time measurements are in microseconds
+# pretty output format
+ number_of_residues number_of_vertices       region       id         time     overhead 
+         4104        383320  kernel_creation          0 68117.234253            0 
+         4104        383320  host_side_setup          0 8318.833008            1 
+         4104        383320  device_side_buffer_setup          0 63.861938            0 
+         4104        383320  device_side_h2d_copy          0 2417.456177            0 
+         4104        383320  setting_kernel_arguments          0 12.399536            0 
+         4104        383320    gem_kernel          0 230556.041626            0 
+         4104        383320    gem_kernel      30720 233636.289795            0 
+         4104        383320    gem_kernel      61440 242187.454468            0 
+         4104        383320    gem_kernel      92160 233003.083130            0 
+         4104        383320    gem_kernel     122880 243315.783936            0 
+         4104        383320    gem_kernel     153600 238052.621216            0 
+         4104        383320    gem_kernel     184320 231298.652832            0 
+         4104        383320    gem_kernel     215040 232549.788574            0 
+         4104        383320    gem_kernel     245760 232045.501343            0 
+         4104        383320    gem_kernel     276480 237171.620850            0 
+         4104        383320    gem_kernel     307200 236969.792603            0 
+         4104        383320    gem_kernel     337920 237719.347168            0 
+         4104        383320    gem_kernel     368640 116696.082153            0 
+         4104        383320  device_side_d2h_copy          0 135.328125            0 
+# Runtime: 3.024288 s (overhead: 0.000033 %) 19 records

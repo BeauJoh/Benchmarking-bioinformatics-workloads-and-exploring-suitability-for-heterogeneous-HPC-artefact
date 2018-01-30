@@ -1,0 +1,51 @@
+# Sysname : Linux
+# Nodename: node20
+# Release : 3.10.0-514.10.2.el7.x86_64
+# Version : #1 SMP Fri Mar 3 00:04:05 UTC 2017
+# Machine : x86_64
+# Execution time and date (UTC): Thu Sep 21 01:30:39 2017
+# Execution time and date (local): Thu Sep 21 02:30:39 2017
+# Reported time measurements are in microseconds
+# pretty output format
+       region number_of_objects number_of_features iteration_number_hint_until_convergence       id         time     overhead 
+ host_side_setup           256            30 NA         0 236.784180            0 
+ kernel_creation           256            30 NA         0 237487.263672            1 
+ device_side_buffer_setup           256            30 NA         0 849.590820            0 
+ host_side_setup_choosing_initial_cluster_positions           256            30 NA         0 5.946289            0 
+ device_side_h2d_copy           256            30             0          0 590.262695            0 
+ kmeans_kernel           256            30             0          0 86.424805            0 
+ device_side_d2h_copy           256            30             0          0 39.626953            0 
+ device_side_h2d_copy           256            30             1          0 42.784180            0 
+ kmeans_kernel           256            30             1          0 75.790039            0 
+ device_side_d2h_copy           256            30             1          0 24.726562            0 
+ device_side_h2d_copy           256            30             2          0 45.916016            0 
+ kmeans_kernel           256            30             2          0 75.290039            0 
+ device_side_d2h_copy           256            30             2          0 25.949219            0 
+ device_side_h2d_copy           256            30             3          0 42.061523            0 
+ kmeans_kernel           256            30             3          0 73.408203            0 
+ device_side_d2h_copy           256            30             3          0 26.060547            0 
+ device_side_h2d_copy           256            30             4          0 44.866211            0 
+ kmeans_kernel           256            30             4          0 73.868164            0 
+ device_side_d2h_copy           256            30             4          0 27.043945            0 
+ device_side_h2d_copy           256            30             5          0 44.484375            0 
+ kmeans_kernel           256            30             5          0 73.761719            0 
+ device_side_d2h_copy           256            30             5          0 24.656250            0 
+ device_side_h2d_copy           256            30             6          0 59.858398            0 
+ kmeans_kernel           256            30             6          0 73.880859            0 
+ device_side_d2h_copy           256            30             6          0 24.859375            0 
+ device_side_h2d_copy           256            30             7          0 46.632812            0 
+ kmeans_kernel           256            30             7          0 73.960938            0 
+ device_side_d2h_copy           256            30             7          0 24.886719            0 
+ device_side_h2d_copy           256            30             8          0 44.385742            0 
+ kmeans_kernel           256            30             8          0 73.355469            0 
+ device_side_d2h_copy           256            30             8          0 24.681641            0 
+ device_side_h2d_copy           256            30             9          0 43.947266            0 
+ kmeans_kernel           256            30             9          0 73.314453            0 
+ device_side_d2h_copy           256            30             9          0 24.940430            0 
+ device_side_h2d_copy           256            30            10          0 44.004883            0 
+ kmeans_kernel           256            30            10          0 74.216797            0 
+ device_side_d2h_copy           256            30            10          0 24.862305            0 
+ device_side_h2d_copy           256            30            11          0 47.103516            0 
+ kmeans_kernel           256            30            11          0 74.659180            0 
+ device_side_d2h_copy           256            30            11          0 25.114258            0 
+# Runtime: 0.241733 s (overhead: 0.000414 %) 40 records

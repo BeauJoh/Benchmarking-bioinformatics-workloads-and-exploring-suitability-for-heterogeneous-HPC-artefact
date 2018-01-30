@@ -1,0 +1,42 @@
+# Sysname : Linux
+# Nodename: gpgpu
+# Release : 4.4.0-87-generic
+# Version : #110-Ubuntu SMP Tue Jul 18 12:55:35 UTC 2017
+# Machine : x86_64
+# Execution time and date (UTC): Wed Sep  6 06:26:44 2017
+# Execution time and date (local): Wed Sep  6 16:26:44 2017
+# Reported time measurements are in microseconds
+# pretty output format
+       region matrix_dimension       id         time     overhead 
+ host_side_setup NA         0 119898.146484            0 
+ kernel_creation            80          0 882.616699            0 
+ device_side_buffer_setup            80          0 1.198730            0 
+ device_side_h2d_copy            80          0 420.127930            0 
+ setting_diagonal_kernel_arguments            80          0 0.485352            0 
+ diagonal_kernel            80          0 73.515137            0 
+ setting_perimeter_kernel_arguments            80          0 0.133789            0 
+ perimeter_kernel            80          0 57.191895            0 
+ setting_internal_kernel_arguments            80          0 0.121094            0 
+ internal_kernel            80          0 11.137207            0 
+ setting_diagonal_kernel_arguments            80         16 0.089355            0 
+ diagonal_kernel            80         16 53.275879            0 
+ setting_perimeter_kernel_arguments            80         16 0.062500            0 
+ perimeter_kernel            80         16 56.380371            0 
+ setting_internal_kernel_arguments            80         16 0.054199            0 
+ internal_kernel            80         16 10.102539            0 
+ setting_diagonal_kernel_arguments            80         32 0.052734            0 
+ diagonal_kernel            80         32 52.964844            0 
+ setting_perimeter_kernel_arguments            80         32 0.030762            0 
+ perimeter_kernel            80         32 56.039062            0 
+ setting_internal_kernel_arguments            80         32 0.064453            0 
+ internal_kernel            80         32 9.967285            0 
+ setting_diagonal_kernel_arguments            80         48 0.054199            0 
+ diagonal_kernel            80         48 52.669434            0 
+ setting_perimeter_kernel_arguments            80         48 0.036133            0 
+ perimeter_kernel            80         48 55.485840            0 
+ setting_internal_kernel_arguments            80         48 0.034180            0 
+ internal_kernel            80         48 11.374023            0 
+ setting_final_diagonal_kernel_arguments            80         64 0.105469            0 
+ final_diagonal_kernel            80          0 52.487305            0 
+ device_side_d2h_copy            80          0 19.643555            0 
+# Runtime: 0.121878 s (overhead: 0.000000 %) 31 records

@@ -1,0 +1,19 @@
+# Sysname : Linux
+# Nodename: node20
+# Release : 3.10.0-514.10.2.el7.x86_64
+# Version : #1 SMP Fri Mar 3 00:04:05 UTC 2017
+# Machine : x86_64
+# Execution time and date (UTC): Fri Sep 29 02:47:21 2017
+# Execution time and date (local): Fri Sep 29 03:47:21 2017
+# Reported time measurements are in microseconds
+# pretty output format
+       region number_of_matrices workgroup_size execution_number       id         time     overhead 
+ host_side_setup NANANA         0 485836.004883            0 
+ device_side_buffer_setup             1 NANA         0 18.303711            0 
+ kernel_creation             1 NANA         0 10.049805            0 
+ kernel_creation             1          1024             0          0 2.359375            0 
+ device_side_h2d_copy             1          1024             0          0 4925.822266            2 
+ setting_csr_kernel_arguments             1          1024             0          0 2.807617            0 
+   csr_kernel             1          1024             0          0 1691.633789            0 
+ device_side_d2h_copy             1          1024             0          0 90.125977            0 
+# Runtime: 0.501343 s (overhead: 0.000399 %) 8 records

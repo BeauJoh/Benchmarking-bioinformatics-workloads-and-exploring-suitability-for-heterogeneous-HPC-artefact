@@ -1,0 +1,19 @@
+# Sysname : Linux
+# Nodename: gpgpu
+# Release : 4.4.0-87-generic
+# Version : #110-Ubuntu SMP Tue Jul 18 12:55:35 UTC 2017
+# Machine : x86_64
+# Execution time and date (UTC): Wed Sep  6 05:28:12 2017
+# Execution time and date (local): Wed Sep  6 15:28:12 2017
+# Reported time measurements are in microseconds
+# pretty output format
+       region number_of_matrices workgroup_size execution_number       id         time     overhead 
+ host_side_setup NANANA         0 4177.014648            0 
+ device_side_buffer_setup             1 NANA         0 102.502441            0 
+ kernel_creation             1 NANA         0 148.396484            0 
+ kernel_creation             1            32             0          0 95.551758            0 
+ device_side_h2d_copy             1            32             0          0 81.105957            0 
+ setting_csr_kernel_arguments             1            32             0          0 2.028809            0 
+   csr_kernel             1            32             0          0 34.978027            0 
+ device_side_d2h_copy             1            32             0          0 16.006348            0 
+# Runtime: 0.022352 s (overhead: 0.000000 %) 8 records

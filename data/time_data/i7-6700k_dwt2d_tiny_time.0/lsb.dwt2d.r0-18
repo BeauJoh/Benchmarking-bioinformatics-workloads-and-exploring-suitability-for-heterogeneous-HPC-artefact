@@ -1,0 +1,45 @@
+# Sysname : Linux
+# Nodename: gpgpu
+# Release : 4.4.0-93-generic
+# Version : #116-Ubuntu SMP Fri Aug 11 21:17:51 UTC 2017
+# Machine : x86_64
+# Execution time and date (UTC): Tue Sep 19 00:34:00 2017
+# Execution time and date (local): Tue Sep 19 10:34:00 2017
+# Reported time measurements are in microseconds
+# pretty output format
+       region    dwt_level       id         time     overhead 
+ kernel_creation NA         0 971637.427856            0 
+ host_side_setup NA         0 65.718384            0 
+ device_side_buffer_setup NA         0 21.641724            0 
+ c_CopySrcToComponents_kernel NA         0 1.712769            0 
+ device_side_h2d_copy NA         0 53.917236            0 
+ setting_c_CopySrcToComponents_kernel_arguments NA         0 1.861084            0 
+ c_CopySrcToComponents_kernel NA         0 69.526978            0 
+ setting_kl_fdwt53Kernel_kernel_arguments             3          0 1.070801            0 
+ kl_fdwt53Kernel_kernel             3          0 56.158203            0 
+ device_side_d2d_copy             3          0 5.829224            0 
+ setting_kl_fdwt53Kernel_kernel_arguments             2          0 0.900024            0 
+ kl_fdwt53Kernel_kernel             2          0 37.251343            0 
+ device_side_d2d_copy             2          0 3.299194            0 
+ setting_kl_fdwt53Kernel_kernel_arguments             1          0 0.847168            0 
+ kl_fdwt53Kernel_kernel             1          0 17.799072            0 
+ setting_kl_fdwt53Kernel_kernel_arguments             3          0 0.770142            0 
+ kl_fdwt53Kernel_kernel             3          0 55.659546            0 
+ device_side_d2d_copy             3          0 3.047241            0 
+ setting_kl_fdwt53Kernel_kernel_arguments             2          0 0.769165            0 
+ kl_fdwt53Kernel_kernel             2          0 28.152100            0 
+ device_side_d2d_copy             2          0 2.923096            0 
+ setting_kl_fdwt53Kernel_kernel_arguments             1          0 0.732178            0 
+ kl_fdwt53Kernel_kernel             1          0 17.587280            0 
+ setting_kl_fdwt53Kernel_kernel_arguments             3          0 0.702759            0 
+ kl_fdwt53Kernel_kernel             3          0 42.263428            0 
+ device_side_d2d_copy             3          0 3.235596            0 
+ setting_kl_fdwt53Kernel_kernel_arguments             2          0 0.767944            0 
+ kl_fdwt53Kernel_kernel             2          0 29.392944            0 
+ device_side_d2d_copy             2          0 2.861450            0 
+ setting_kl_fdwt53Kernel_kernel_arguments             1          0 0.738892            0 
+ kl_fdwt53Kernel_kernel             1          0 20.452637            0 
+ device_side_d2h_copy             1          0 8.629272            0 
+ device_side_d2h_copy             1          0 7.045898            0 
+ device_side_d2h_copy             1          0 5.622070            0 
+# Runtime: 0.972346 s (overhead: 0.000000 %) 34 records

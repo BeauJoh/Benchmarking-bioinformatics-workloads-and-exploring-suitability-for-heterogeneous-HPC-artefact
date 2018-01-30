@@ -1,0 +1,30 @@
+# Sysname : Linux
+# Nodename: node23
+# Release : 3.10.0-514.10.2.el7.x86_64
+# Version : #1 SMP Fri Mar 3 00:04:05 UTC 2017
+# Machine : x86_64
+# Execution time and date (UTC): Wed Sep 20 20:05:18 2017
+# Execution time and date (local): Wed Sep 20 21:05:18 2017
+# Reported time measurements are in microseconds
+# pretty output format
+ number_of_residues number_of_vertices       region       id         time     overhead 
+         4104        383320  kernel_creation          0 10257.203125            0 
+         4104        383320  host_side_setup          0 12331.197266            2 
+         4104        383320  device_side_buffer_setup          0 21.562500            0 
+         4104        383320  device_side_h2d_copy          0 6270.621094            0 
+         4104        383320  setting_kernel_arguments          0 3.164062            0 
+         4104        383320    gem_kernel          0 25021.857422            0 
+         4104        383320    gem_kernel      30720 25441.603516            0 
+         4104        383320    gem_kernel      61440 25224.837891            0 
+         4104        383320    gem_kernel      92160 25893.189453            0 
+         4104        383320    gem_kernel     122880 25736.318359            0 
+         4104        383320    gem_kernel     153600 25677.529297            0 
+         4104        383320    gem_kernel     184320 25674.841797            0 
+         4104        383320    gem_kernel     215040 25522.406250            0 
+         4104        383320    gem_kernel     245760 24963.796875            0 
+         4104        383320    gem_kernel     276480 25339.054688            0 
+         4104        383320    gem_kernel     307200 25242.925781            0 
+         4104        383320    gem_kernel     337920 25149.779297            0 
+         4104        383320    gem_kernel     368640 15384.505859            0 
+         4104        383320  device_side_d2h_copy          0 320.111328            0 
+# Runtime: 0.349497 s (overhead: 0.000572 %) 19 records

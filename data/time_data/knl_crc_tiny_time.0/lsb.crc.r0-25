@@ -1,0 +1,17 @@
+# Sysname : Linux
+# Nodename: node03
+# Release : 3.10.0-514.10.2.el7.x86_64
+# Version : #1 SMP Fri Mar 3 00:04:05 UTC 2017
+# Machine : x86_64
+# Execution time and date (UTC): Wed Sep 27 06:53:23 2017
+# Execution time and date (local): Wed Sep 27 07:53:23 2017
+# Reported time measurements are in microseconds
+# pretty output format
+ number_of_pages    page_size       region       id         time     overhead 
+            1          2000  device_side_buffer_setup          0 136.291016            0 
+            1          2000  kernel_creation          0 368741.933594            3 
+            1          2000  device_side_h2d_copy          0 322.377930            1 
+            1          2000  setting_kernel_compute_arguments          0 45.136719            0 
+            1          2000  kernel_compute_kernel          0 280.992188            2 
+            1          2000  device_side_h2d_copy          0 154.729492            0 
+# Runtime: 0.372592 s (overhead: 0.001610 %) 6 records
