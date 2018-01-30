@@ -3,7 +3,8 @@
 
 %LibSciBench and performance counters
 
-We measured kernel execution time and device energy over 50 runs, for multiple problem sizes (see \S\ref{ssec:setting_sizes}).
+We measured execution time and energy for individual OpenCL kernels within each benchmark.
+Each benchmark was run 50 times for a minimum of two seconds for each problem size (see \S\ref{ssec:setting_sizes}) for both execution time and energy measurements.
 To help understand the timings, the following hardware counters were also collected:
 \begin{itemize}
 	\item total instructions and IPC (Instructions Per Cycle);
@@ -13,7 +14,6 @@ To help understand the timings, the following hardware counters were also collec
 	\item branch instructions and branch mispredictions.
 \end{itemize}
 
-A sample of 50 iterations was collected for each measurement.
 Only the kernel execution times and energies are presented in the final results.
 
 Energy measurements were taken on Intel platforms using the RAPL PAPI module, and on Nvidia GPUs using the NVML PAPI module.

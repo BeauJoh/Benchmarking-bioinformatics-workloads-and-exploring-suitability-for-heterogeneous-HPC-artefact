@@ -7,6 +7,7 @@ The original suite focused on collecting representative benchmarks for scientifi
 We aim to extend these efforts to achieve a full representation of each dwarf, both by integrating other benchmark suites and adding custom kernels.
 At the same time, we hope to improve portability between devices, interpretability and flexibility of configuration including problem sizes.
 As problem size can profoundly affect performance on accelerator systems~\cite{marjanovic2016hpc}, we enhanced configurability so that each benchmark could be run for a wide range of problem sizes.
+To improve reproducibility of results, we also modified each benchmark to execute in a loop for a minimum of two seconds, to ensure that sampling of execution time and performance counters was not significantly affected by operating system noise.
 
 For the Spectral Methods dwarf, the original OpenDwarfs version of the FFT benchmark was complex, with several code paths that were not executed for the default problem size, and returned incorrect results or failures on some combinations of platforms and problem sizes we tested.
 We replaced it with a simpler high-performance FFT benchmark created by Eric Bainville~\cite{bainville2010fft}, which worked correctly in all our tests.
