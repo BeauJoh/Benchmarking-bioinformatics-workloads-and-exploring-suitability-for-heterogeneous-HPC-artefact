@@ -1,0 +1,42 @@
+# Sysname : Linux
+# Nodename: node20
+# Release : 3.10.0-514.10.2.el7.x86_64
+# Version : #1 SMP Fri Mar 3 00:04:05 UTC 2017
+# Machine : x86_64
+# Execution time and date (UTC): Fri Sep 29 03:02:11 2017
+# Execution time and date (local): Fri Sep 29 04:02:11 2017
+# Reported time measurements are in microseconds
+# pretty output format
+       region matrix_dimension       id         time     overhead 
+ host_side_setup NA         0 179504.220703            0 
+ kernel_creation            80          0 6806.891602            1 
+ device_side_buffer_setup            80          0 5.347656            0 
+ device_side_h2d_copy            80          0 552.858398            0 
+ setting_diagonal_kernel_arguments            80          0 1.007812            0 
+ diagonal_kernel            80          0 184.028320            0 
+ setting_perimeter_kernel_arguments            80          0 0.256836            0 
+ perimeter_kernel            80          0 241.001953            0 
+ setting_internal_kernel_arguments            80          0 0.245117            0 
+ internal_kernel            80          0 31.263672            0 
+ setting_diagonal_kernel_arguments            80         16 0.279297            0 
+ diagonal_kernel            80         16 161.609375            0 
+ setting_perimeter_kernel_arguments            80         16 0.169922            0 
+ perimeter_kernel            80         16 225.874023            0 
+ setting_internal_kernel_arguments            80         16 0.119141            0 
+ internal_kernel            80         16 27.628906            0 
+ setting_diagonal_kernel_arguments            80         32 0.156250            0 
+ diagonal_kernel            80         32 161.014648            0 
+ setting_perimeter_kernel_arguments            80         32 0.148438            0 
+ perimeter_kernel            80         32 226.600586            0 
+ setting_internal_kernel_arguments            80         32 0.143555            0 
+ internal_kernel            80         32 25.873047            0 
+ setting_diagonal_kernel_arguments            80         48 0.154297            0 
+ diagonal_kernel            80         48 161.369141            0 
+ setting_perimeter_kernel_arguments            80         48 0.142578            0 
+ perimeter_kernel            80         48 226.197266            0 
+ setting_internal_kernel_arguments            80         48 0.187500            0 
+ internal_kernel            80         48 25.829102            0 
+ setting_final_diagonal_kernel_arguments            80         64 0.228516            0 
+ final_diagonal_kernel            80          0 160.327148            0 
+ device_side_d2h_copy            80          0 52.812500            0 
+# Runtime: 0.189039 s (overhead: 0.000529 %) 31 records

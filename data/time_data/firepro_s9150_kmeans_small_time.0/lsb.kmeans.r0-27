@@ -1,0 +1,111 @@
+# Sysname : Linux
+# Nodename: node33
+# Release : 4.11.0-kfd-compute-rocm-rel-1.6-148
+# Version : #1 SMP Wed Aug 23 12:52:59 CDT 2017
+# Machine : x86_64
+# Execution time and date (UTC): Wed Sep  6 08:31:14 2017
+# Execution time and date (local): Wed Sep  6 09:31:14 2017
+# Reported time measurements are in microseconds
+# pretty output format
+       region number_of_objects number_of_features iteration_number_hint_until_convergence       id         time     overhead 
+ host_side_setup          2048            30 NA         0 523.589844            0 
+ kernel_creation          2048            30 NA         0 219909.396484            0 
+ device_side_buffer_setup          2048            30 NA         0 323.664062           12 
+ host_side_setup_choosing_initial_cluster_positions          2048            30 NA         0 24.429688            0 
+ device_side_h2d_copy          2048            30             0          0 328.839844            0 
+ kmeans_kernel          2048            30             0          0 125.964844            0 
+ device_side_d2h_copy          2048            30             0          0 17.080078            0 
+ device_side_h2d_copy          2048            30             1          0 18.617188            0 
+ kmeans_kernel          2048            30             1          0 116.529297            0 
+ device_side_d2h_copy          2048            30             1          0 69.189453            0 
+ device_side_h2d_copy          2048            30             2          0 36.650391            0 
+ kmeans_kernel          2048            30             2          0 106.224609            0 
+ device_side_d2h_copy          2048            30             2          0 21.666016            0 
+ device_side_h2d_copy          2048            30             3          0 30.347656            0 
+ kmeans_kernel          2048            30             3          0 104.933594            0 
+ device_side_d2h_copy          2048            30             3          0 9.375000            0 
+ device_side_h2d_copy          2048            30             4          0 42.371094            0 
+ kmeans_kernel          2048            30             4          0 105.261719            0 
+ device_side_d2h_copy          2048            30             4          0 8.908203            0 
+ device_side_h2d_copy          2048            30             5          0 18.689453            0 
+ kmeans_kernel          2048            30             5          0 105.722656            0 
+ device_side_d2h_copy          2048            30             5          0 9.085938            0 
+ device_side_h2d_copy          2048            30             6          0 18.296875            0 
+ kmeans_kernel          2048            30             6          0 91.902344            0 
+ device_side_d2h_copy          2048            30             6          0 8.939453            0 
+ device_side_h2d_copy          2048            30             7          0 28.089844            0 
+ kmeans_kernel          2048            30             7          0 92.369141            0 
+ device_side_d2h_copy          2048            30             7          0 8.990234            0 
+ device_side_h2d_copy          2048            30             8          0 28.994141            0 
+ kmeans_kernel          2048            30             8          0 114.017578            0 
+ device_side_d2h_copy          2048            30             8          0 22.134766            0 
+ device_side_h2d_copy          2048            30             9          0 18.113281            0 
+ kmeans_kernel          2048            30             9          0 99.775391            0 
+ device_side_d2h_copy          2048            30             9          0 9.105469            0 
+ device_side_h2d_copy          2048            30            10          0 17.408203            0 
+ kmeans_kernel          2048            30            10          0 89.265625            0 
+ device_side_d2h_copy          2048            30            10          0 8.800781            0 
+ device_side_h2d_copy          2048            30            11          0 54.617188            0 
+ kmeans_kernel          2048            30            11          0 107.316406            0 
+ device_side_d2h_copy          2048            30            11          0 9.695312            0 
+ device_side_h2d_copy          2048            30            12          0 40.855469            0 
+ kmeans_kernel          2048            30            12          0 111.964844            0 
+ device_side_d2h_copy          2048            30            12          0 9.251953            0 
+ device_side_h2d_copy          2048            30            13          0 41.673828            0 
+ kmeans_kernel          2048            30            13          0 117.529297            0 
+ device_side_d2h_copy          2048            30            13          0 21.066406            0 
+ device_side_h2d_copy          2048            30            14          0 59.669922            0 
+ kmeans_kernel          2048            30            14          0 100.605469            0 
+ device_side_d2h_copy          2048            30            14          0 23.402344            0 
+ device_side_h2d_copy          2048            30            15          0 34.732422            0 
+ kmeans_kernel          2048            30            15          0 90.392578            0 
+ device_side_d2h_copy          2048            30            15          0 9.037109            0 
+ device_side_h2d_copy          2048            30            16          0 36.830078            0 
+ kmeans_kernel          2048            30            16          0 99.208984            0 
+ device_side_d2h_copy          2048            30            16          0 9.494141            0 
+ device_side_h2d_copy          2048            30            17          0 45.781250            0 
+ kmeans_kernel          2048            30            17          0 90.671875            0 
+ device_side_d2h_copy          2048            30            17          0 18.074219            0 
+ device_side_h2d_copy          2048            30            18          0 18.388672            0 
+ kmeans_kernel          2048            30            18          0 90.611328            0 
+ device_side_d2h_copy          2048            30            18          0 8.857422            0 
+ device_side_h2d_copy          2048            30            19          0 18.013672            0 
+ kmeans_kernel          2048            30            19          0 90.914062            0 
+ device_side_d2h_copy          2048            30            19          0 8.958984            0 
+ device_side_h2d_copy          2048            30            20          0 35.093750            2 
+ kmeans_kernel          2048            30            20          0 110.275391            0 
+ device_side_d2h_copy          2048            30            20          0 8.951172            0 
+ device_side_h2d_copy          2048            30            21          0 31.949219            0 
+ kmeans_kernel          2048            30            21          0 90.357422            0 
+ device_side_d2h_copy          2048            30            21          0 9.044922            0 
+ device_side_h2d_copy          2048            30            22          0 18.976562            0 
+ kmeans_kernel          2048            30            22          0 97.072266            0 
+ device_side_d2h_copy          2048            30            22          0 22.216797            0 
+ device_side_h2d_copy          2048            30            23          0 42.671875            0 
+ kmeans_kernel          2048            30            23          0 102.349609            0 
+ device_side_d2h_copy          2048            30            23          0 9.765625            0 
+ device_side_h2d_copy          2048            30            24          0 56.376953            0 
+ kmeans_kernel          2048            30            24          0 93.335938            0 
+ device_side_d2h_copy          2048            30            24          0 9.384766            0 
+ device_side_h2d_copy          2048            30            25          0 44.138672            0 
+ kmeans_kernel          2048            30            25          0 92.818359            0 
+ device_side_d2h_copy          2048            30            25          0 9.375000            0 
+ device_side_h2d_copy          2048            30            26          0 47.023438            0 
+ kmeans_kernel          2048            30            26          0 89.949219            0 
+ device_side_d2h_copy          2048            30            26          0 9.720703            0 
+ device_side_h2d_copy          2048            30            27          0 59.601562            0 
+ kmeans_kernel          2048            30            27          0 90.060547            0 
+ device_side_d2h_copy          2048            30            27          0 9.417969            0 
+ device_side_h2d_copy          2048            30            28          0 41.964844            0 
+ kmeans_kernel          2048            30            28          0 91.441406            0 
+ device_side_d2h_copy          2048            30            28          0 12.146484            0 
+ device_side_h2d_copy          2048            30            29          0 47.017578            0 
+ kmeans_kernel          2048            30            29          0 90.888672            0 
+ device_side_d2h_copy          2048            30            29          0 9.156250            0 
+ device_side_h2d_copy          2048            30            30          0 20.404297            0 
+ kmeans_kernel          2048            30            30          0 102.660156            0 
+ device_side_d2h_copy          2048            30            30          0 9.333984            0 
+ device_side_h2d_copy          2048            30            31          0 18.888672            0 
+ kmeans_kernel          2048            30            31          0 113.580078            0 
+ device_side_d2h_copy          2048            30            31          0 10.406250            0 
+# Runtime: 0.250565 s (overhead: 0.005587 %) 100 records

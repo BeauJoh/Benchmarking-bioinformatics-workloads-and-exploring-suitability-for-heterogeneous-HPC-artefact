@@ -1,0 +1,17 @@
+# Sysname : Linux
+# Nodename: node33
+# Release : 4.11.0-kfd-compute-rocm-rel-1.6-148
+# Version : #1 SMP Wed Aug 23 12:52:59 CDT 2017
+# Machine : x86_64
+# Execution time and date (UTC): Wed Sep 27 07:11:13 2017
+# Execution time and date (local): Wed Sep 27 08:11:13 2017
+# Reported time measurements are in microseconds
+# pretty output format
+ number_of_pages    page_size       region       id         time     overhead 
+            1         16000  device_side_buffer_setup          0 3.996094            0 
+            1         16000  kernel_creation          0 60795.580078            0 
+            1         16000  device_side_h2d_copy          0 204.144531            0 
+            1         16000  setting_kernel_compute_arguments          0 0.910156            0 
+            1         16000  kernel_compute_kernel          0 1982.982422            0 
+            1         16000  device_side_h2d_copy          0 24.800781            0 
+# Runtime: 0.116521 s (overhead: 0.000000 %) 6 records

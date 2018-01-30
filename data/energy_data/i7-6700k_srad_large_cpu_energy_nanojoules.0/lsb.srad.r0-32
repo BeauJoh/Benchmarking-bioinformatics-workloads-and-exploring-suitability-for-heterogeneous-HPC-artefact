@@ -1,0 +1,20 @@
+# Sysname : Linux
+# Nodename: gpgpu
+# Release : 4.4.0-93-generic
+# Version : #116-Ubuntu SMP Fri Aug 11 21:17:51 UTC 2017
+# Machine : x86_64
+# Execution time and date (UTC): Sat Sep 30 15:00:00 2017
+# Execution time and date (local): Sun Oct  1 01:00:00 2017
+# Reported time measurements are in microseconds
+# pretty output format
+       region       id         time     overhead rapl:::PP0_ENERGY:PACKAGE0 rapl:::DRAM_ENERGY:PACKAGE0
+ kernel_creation          0 105024.000000           49       2616821289         62316894 
+ device_side_buffer_setup          0 25.000000            9                0                0 
+ host_side_setup          0 75464.000000           13       1687438964         43945312 
+ device_side_h2d_copy          0 1221.000000            7         36865234          1892089 
+ setting_srad1_kernel_arguments          0 6.000000            6                0                0 
+ srad1_kernel          0 10801.000000           11        664672851         29113769 
+ setting_srad2_kernel_arguments          0 6.000000            5                0                0 
+ srad2_kernel          0 4633.000000            9        215332031         12634277 
+ device_side_d2h_copy          0 884.000000            8         31616210                0 
+# Runtime: 0.247334 s (overhead: 0.047304 %) 9 records

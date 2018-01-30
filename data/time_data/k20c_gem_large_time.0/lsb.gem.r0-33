@@ -1,0 +1,30 @@
+# Sysname : Linux
+# Nodename: node20
+# Release : 3.10.0-514.10.2.el7.x86_64
+# Version : #1 SMP Fri Mar 3 00:04:05 UTC 2017
+# Machine : x86_64
+# Execution time and date (UTC): Fri Sep 29 01:48:00 2017
+# Execution time and date (local): Fri Sep 29 02:48:00 2017
+# Reported time measurements are in microseconds
+# pretty output format
+ number_of_residues number_of_vertices       region       id         time     overhead 
+         4104        383320  kernel_creation          0 9720.070312            0 
+         4104        383320  host_side_setup          0 18353.592773            2 
+         4104        383320  device_side_buffer_setup          0 42.828125            0 
+         4104        383320  device_side_h2d_copy          0 9356.750977            0 
+         4104        383320  setting_kernel_arguments          0 7.484375            0 
+         4104        383320    gem_kernel          0 112667.074219            0 
+         4104        383320    gem_kernel      30720 112767.632812            0 
+         4104        383320    gem_kernel      61440 112788.693359            0 
+         4104        383320    gem_kernel      92160 112831.868164            0 
+         4104        383320    gem_kernel     122880 112782.115234            0 
+         4104        383320    gem_kernel     153600 113239.649414            0 
+         4104        383320    gem_kernel     184320 112880.879883            0 
+         4104        383320    gem_kernel     215040 112755.305664            0 
+         4104        383320    gem_kernel     245760 112628.631836            0 
+         4104        383320    gem_kernel     276480 112668.506836            0 
+         4104        383320    gem_kernel     307200 113161.488281            0 
+         4104        383320    gem_kernel     337920 112675.600586            0 
+         4104        383320    gem_kernel     368640 56560.820312            0 
+         4104        383320  device_side_d2h_copy          0 548.801758            0 
+# Runtime: 1.448462 s (overhead: 0.000138 %) 19 records

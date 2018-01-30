@@ -1,0 +1,30 @@
+# Sysname : Linux
+# Nodename: gpgpu
+# Release : 4.4.0-93-generic
+# Version : #116-Ubuntu SMP Fri Aug 11 21:17:51 UTC 2017
+# Machine : x86_64
+# Execution time and date (UTC): Wed Sep 20 01:54:33 2017
+# Execution time and date (local): Wed Sep 20 11:54:33 2017
+# Reported time measurements are in microseconds
+# pretty output format
+ number_of_residues number_of_vertices       region       id         time     overhead 
+         4104        383320  kernel_creation          0 3821.657593            0 
+         4104        383320  host_side_setup          0 9929.363525            1 
+         4104        383320  device_side_buffer_setup          0 15.922729            0 
+         4104        383320  device_side_h2d_copy          0 4401.172119            0 
+         4104        383320  setting_kernel_arguments          0 2.703003            0 
+         4104        383320    gem_kernel          0 37512.368042            0 
+         4104        383320    gem_kernel      30720 36049.507202            0 
+         4104        383320    gem_kernel      61440 35939.681152            0 
+         4104        383320    gem_kernel      92160 35862.673218            0 
+         4104        383320    gem_kernel     122880 36278.314697            0 
+         4104        383320    gem_kernel     153600 36901.698853            0 
+         4104        383320    gem_kernel     184320 36823.264771            0 
+         4104        383320    gem_kernel     215040 36084.363403            0 
+         4104        383320    gem_kernel     245760 35981.240723            0 
+         4104        383320    gem_kernel     276480 36142.438965            0 
+         4104        383320    gem_kernel     307200 36772.962158            0 
+         4104        383320    gem_kernel     337920 36804.455933            0 
+         4104        383320    gem_kernel     368640 13777.942261            0 
+         4104        383320  device_side_d2h_copy          0 265.995361            0 
+# Runtime: 0.469389 s (overhead: 0.000213 %) 19 records

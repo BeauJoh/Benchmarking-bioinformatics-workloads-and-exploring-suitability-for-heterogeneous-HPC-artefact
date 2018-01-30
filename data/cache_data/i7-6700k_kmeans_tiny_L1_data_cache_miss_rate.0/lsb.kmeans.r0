@@ -1,0 +1,51 @@
+# Sysname : Linux
+# Nodename: gpgpu
+# Release : 4.4.0-93-generic
+# Version : #116-Ubuntu SMP Fri Aug 11 21:17:51 UTC 2017
+# Machine : x86_64
+# Execution time and date (UTC): Sun Oct  1 23:12:37 2017
+# Execution time and date (local): Mon Oct  2 10:12:37 2017
+# Reported time measurements are in microseconds
+# pretty output format
+       region number_of_objects number_of_features iteration_number_hint_until_convergence       id         time     overhead     PAPI_TOT_INS      PAPI_L1_DCM
+ host_side_setup           256            30 NA         0 65.000000            2           532154             1249 
+ kernel_creation           256            30 NA         0 108639.000000           13        351672345          2963024 
+ device_side_buffer_setup           256            30 NA         0 135.000000            5            83803             3885 
+ host_side_setup_choosing_initial_cluster_positions           256            30 NA         0 4.000000            2            12485              136 
+ device_side_h2d_copy           256            30             0          0 29.000000            3            36494              735 
+ kmeans_kernel           256            30             0          0 27.000000            3            31207              735 
+ device_side_d2h_copy           256            30             0          0 16.000000            3            22097              609 
+ device_side_h2d_copy           256            30             1          0 17.000000            3            37303              827 
+ kmeans_kernel           256            30             1          0 22.000000            3            36800              743 
+ device_side_d2h_copy           256            30             1          0 9.000000            2            23615              438 
+ device_side_h2d_copy           256            30             2          0 19.000000            2            36088              851 
+ kmeans_kernel           256            30             2          0 15.000000            2            47802              938 
+ device_side_d2h_copy           256            30             2          0 9.000000            2            23971              462 
+ device_side_h2d_copy           256            30             3          0 14.000000            3            39656              846 
+ kmeans_kernel           256            30             3          0 27.000000            2            20451              428 
+ device_side_d2h_copy           256            30             3          0 9.000000            2            23791              456 
+ device_side_h2d_copy           256            30             4          0 16.000000            4            37868              915 
+ kmeans_kernel           256            30             4          0 21.000000            3            19782              435 
+ device_side_d2h_copy           256            30             4          0 9.000000            2            24024              462 
+ device_side_h2d_copy           256            30             5          0 13.000000            3            39308              902 
+ kmeans_kernel           256            30             5          0 19.000000            2            19701              484 
+ device_side_d2h_copy           256            30             5          0 11.000000            2            20861              434 
+ device_side_h2d_copy           256            30             6          0 19.000000            3            37122              948 
+ kmeans_kernel           256            30             6          0 19.000000            2            19447              469 
+ device_side_d2h_copy           256            30             6          0 11.000000            2            20829              465 
+ device_side_h2d_copy           256            30             7          0 19.000000            3            38192             1064 
+ kmeans_kernel           256            30             7          0 22.000000            2            20375              466 
+ device_side_d2h_copy           256            30             7          0 10.000000            3            20988              501 
+ device_side_h2d_copy           256            30             8          0 17.000000            3            39239             1062 
+ kmeans_kernel           256            30             8          0 14.000000            3            26863              589 
+ device_side_d2h_copy           256            30             8          0 11.000000            2            20879              481 
+ device_side_h2d_copy           256            30             9          0 20.000000            2            38499             1128 
+ kmeans_kernel           256            30             9          0 16.000000            3            19111              464 
+ device_side_d2h_copy           256            30             9          0 12.000000            2            24438              626 
+ device_side_h2d_copy           256            30            10          0 19.000000            3            37850             1086 
+ kmeans_kernel           256            30            10          0 18.000000            2            19308              409 
+ device_side_d2h_copy           256            30            10          0 11.000000            2            21532              485 
+ device_side_h2d_copy           256            30            11          0 20.000000            3            39238             1197 
+ kmeans_kernel           256            30            11          0 19.000000            2            19978              507 
+ device_side_d2h_copy           256            30            11          0 11.000000            2            21001              515 
+# Runtime: 0.110064 s (overhead: 0.101759 %) 40 records

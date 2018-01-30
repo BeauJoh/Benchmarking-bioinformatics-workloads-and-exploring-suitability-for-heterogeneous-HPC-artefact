@@ -1,0 +1,48 @@
+# Sysname : Linux
+# Nodename: node33
+# Release : 4.11.0-kfd-compute-rocm-rel-1.6-148
+# Version : #1 SMP Wed Aug 23 12:52:59 CDT 2017
+# Machine : x86_64
+# Execution time and date (UTC): Wed Sep  6 08:24:17 2017
+# Execution time and date (local): Wed Sep  6 09:24:17 2017
+# Reported time measurements are in microseconds
+# pretty output format
+       region number_of_objects number_of_features iteration_number_hint_until_convergence       id         time     overhead 
+ host_side_setup           256            30 NA         0 85.611328            0 
+ kernel_creation           256            30 NA         0 219706.779297            0 
+ device_side_buffer_setup           256            30 NA         0 300.810547            0 
+ host_side_setup_choosing_initial_cluster_positions           256            30 NA         0 3.248047            0 
+ device_side_h2d_copy           256            30             0          0 241.859375            0 
+ kmeans_kernel           256            30             0          0 114.466797            0 
+ device_side_d2h_copy           256            30             0          0 46.843750            0 
+ device_side_h2d_copy           256            30             1          0 39.453125            0 
+ kmeans_kernel           256            30             1          0 94.085938            0 
+ device_side_d2h_copy           256            30             1          0 12.058594            0 
+ device_side_h2d_copy           256            30             2          0 25.132812            0 
+ kmeans_kernel           256            30             2          0 105.044922            0 
+ device_side_d2h_copy           256            30             2          0 11.910156            0 
+ device_side_h2d_copy           256            30             3          0 24.384766            0 
+ kmeans_kernel           256            30             3          0 90.740234            0 
+ device_side_d2h_copy           256            30             3          0 12.068359            0 
+ device_side_h2d_copy           256            30             4          0 24.476562            0 
+ kmeans_kernel           256            30             4          0 91.136719            0 
+ device_side_d2h_copy           256            30             4          0 11.775391            0 
+ device_side_h2d_copy           256            30             5          0 25.298828            0 
+ kmeans_kernel           256            30             5          0 88.496094            0 
+ device_side_d2h_copy           256            30             5          0 12.121094            0 
+ device_side_h2d_copy           256            30             6          0 24.644531            0 
+ kmeans_kernel           256            30             6          0 90.626953            0 
+ device_side_d2h_copy           256            30             6          0 11.826172            0 
+ device_side_h2d_copy           256            30             7          0 24.617188            0 
+ kmeans_kernel           256            30             7          0 90.210938            0 
+ device_side_d2h_copy           256            30             7          0 11.939453            0 
+ device_side_h2d_copy           256            30             8          0 25.509766            0 
+ kmeans_kernel           256            30             8          0 87.748047            0 
+ device_side_d2h_copy           256            30             8          0 14.306641            0 
+ device_side_h2d_copy           256            30             9          0 25.849609            0 
+ kmeans_kernel           256            30             9          0 90.958984            0 
+ device_side_d2h_copy           256            30             9          0 12.222656            0 
+ device_side_h2d_copy           256            30            10          0 24.324219            0 
+ kmeans_kernel           256            30            10          0 91.158203            0 
+ device_side_d2h_copy           256            30            10          0 11.939453            0 
+# Runtime: 0.240265 s (overhead: 0.000000 %) 37 records

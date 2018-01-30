@@ -1,0 +1,16 @@
+# Sysname : Linux
+# Nodename: node03
+# Release : 3.10.0-514.10.2.el7.x86_64
+# Version : #1 SMP Fri Mar 3 00:04:05 UTC 2017
+# Machine : x86_64
+# Execution time and date (UTC): Wed Sep 20 05:02:54 2017
+# Execution time and date (local): Wed Sep 20 06:02:54 2017
+# Reported time measurements are in microseconds
+# pretty output format
+ signal_length       region       id         time     overhead 
+       524288  host_side_setup          0 3230506.325195            1 
+       524288  device_side_buffer_setup          0 198.065430            2 
+       524288  device_side_h2d_copy          0 3886.002930            5 
+       524288    fft_kernel          0 12833.379883            1 
+       524288  device_side_d2h_copy          0 1498.661133           14 
+# Runtime: 3.253484 s (overhead: 0.000707 %) 5 records

@@ -1,0 +1,30 @@
+# Sysname : Linux
+# Nodename: node23
+# Release : 3.10.0-514.10.2.el7.x86_64
+# Version : #1 SMP Fri Mar 3 00:04:05 UTC 2017
+# Machine : x86_64
+# Execution time and date (UTC): Wed Sep 20 20:05:44 2017
+# Execution time and date (local): Wed Sep 20 21:05:44 2017
+# Reported time measurements are in microseconds
+# pretty output format
+ number_of_residues number_of_vertices       region       id         time     overhead 
+         4104        383320  kernel_creation          0 9714.437500            0 
+         4104        383320  host_side_setup          0 11616.128906            1 
+         4104        383320  device_side_buffer_setup          0 20.240234            0 
+         4104        383320  device_side_h2d_copy          0 6749.501953            0 
+         4104        383320  setting_kernel_arguments          0 2.900391            0 
+         4104        383320    gem_kernel          0 24453.927734            0 
+         4104        383320    gem_kernel      30720 24911.326172            0 
+         4104        383320    gem_kernel      61440 24748.630859            0 
+         4104        383320    gem_kernel      92160 25190.328125            0 
+         4104        383320    gem_kernel     122880 25031.488281            0 
+         4104        383320    gem_kernel     153600 25196.601562            0 
+         4104        383320    gem_kernel     184320 25998.365234            0 
+         4104        383320    gem_kernel     215040 25836.898438            0 
+         4104        383320    gem_kernel     245760 25481.138672            0 
+         4104        383320    gem_kernel     276480 25830.970703            0 
+         4104        383320    gem_kernel     307200 25806.558594            0 
+         4104        383320    gem_kernel     337920 25575.808594            0 
+         4104        383320    gem_kernel     368640 15685.613281            0 
+         4104        383320  device_side_d2h_copy          0 318.701172            0 
+# Runtime: 0.348215 s (overhead: 0.000287 %) 19 records

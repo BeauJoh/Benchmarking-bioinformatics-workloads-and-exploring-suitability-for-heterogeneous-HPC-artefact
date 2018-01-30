@@ -1,0 +1,45 @@
+# Sysname : Linux
+# Nodename: gpgpu
+# Release : 4.4.0-93-generic
+# Version : #116-Ubuntu SMP Fri Aug 11 21:17:51 UTC 2017
+# Machine : x86_64
+# Execution time and date (UTC): Sat Sep 30 14:58:38 2017
+# Execution time and date (local): Sun Oct  1 00:58:38 2017
+# Reported time measurements are in microseconds
+# pretty output format
+       region    dwt_level       id         time     overhead rapl:::PP0_ENERGY:PACKAGE0 rapl:::DRAM_ENERGY:PACKAGE0
+ kernel_creation NA         0 976399.000000           36      23585632324        573364257 
+ host_side_setup NA         0 4146.000000           13         98815917          7812500 
+ device_side_buffer_setup NA         0 44.000000            9          1220703                0 
+ c_CopySrcToComponents_kernel NA         0 6.000000            9                0                0 
+ device_side_h2d_copy NA         0 4274.000000           13        108825683         11047363 
+ setting_c_CopySrcToComponents_kernel_arguments NA         0 6.000000            5                0                0 
+ c_CopySrcToComponents_kernel NA         0 20686.000000           12        960021972         64331054 
+ setting_kl_fdwt53Kernel_kernel_arguments             3          0 5.000000            5          2868652                0 
+ kl_fdwt53Kernel_kernel             3          0 15834.000000           10        946044921         46997070 
+ device_side_d2d_copy             3          0 28.000000            7                0                0 
+ setting_kl_fdwt53Kernel_kernel_arguments             2          0 6.000000            6          3112792                0 
+ kl_fdwt53Kernel_kernel             2          0 3894.000000            9        229125976          9948730 
+ device_side_d2d_copy             2          0 14.000000            5                0                0 
+ setting_kl_fdwt53Kernel_kernel_arguments             1          0 5.000000            5                0                0 
+ kl_fdwt53Kernel_kernel             1          0 1098.000000            7         68969726          3295898 
+ setting_kl_fdwt53Kernel_kernel_arguments             3          0 3.000000            6                0                0 
+ kl_fdwt53Kernel_kernel             3          0 13672.000000           22        853576660         39123535 
+ device_side_d2d_copy             3          0 16.000000            5                0                0 
+ setting_kl_fdwt53Kernel_kernel_arguments             2          0 6.000000            6                0                0 
+ kl_fdwt53Kernel_kernel             2          0 3857.000000           10        232666015          9582519 
+ device_side_d2d_copy             2          0 14.000000            5                0                0 
+ setting_kl_fdwt53Kernel_kernel_arguments             1          0 4.000000            6                0                0 
+ kl_fdwt53Kernel_kernel             1          0 1110.000000            7         72570800          2136230 
+ setting_kl_fdwt53Kernel_kernel_arguments             3          0 3.000000            5                0                0 
+ kl_fdwt53Kernel_kernel             3          0 14311.000000            9        887451171         44372558 
+ device_side_d2d_copy             3          0 14.000000            6          3051757                0 
+ setting_kl_fdwt53Kernel_kernel_arguments             2          0 5.000000            6                0                0 
+ kl_fdwt53Kernel_kernel             2          0 3838.000000            9        227600097          9704589 
+ device_side_d2d_copy             2          0 14.000000            6                0                0 
+ setting_kl_fdwt53Kernel_kernel_arguments             1          0 4.000000            6                0                0 
+ kl_fdwt53Kernel_kernel             1          0 1091.000000            7         67749023          1342773 
+ device_side_d2h_copy             1          0 3437.000000           45         91735839          8361816 
+ device_side_d2h_copy             1          0 3383.000000           57         89904785         10375976 
+ device_side_d2h_copy             1          0 3555.000000           55         93139648         10131835 
+# Runtime: 1.152178 s (overhead: 0.037234 %) 34 records

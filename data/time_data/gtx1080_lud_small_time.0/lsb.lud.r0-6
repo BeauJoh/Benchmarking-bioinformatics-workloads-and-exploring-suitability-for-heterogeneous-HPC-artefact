@@ -1,0 +1,102 @@
+# Sysname : Linux
+# Nodename: gpgpu
+# Release : 4.4.0-87-generic
+# Version : #110-Ubuntu SMP Tue Jul 18 12:55:35 UTC 2017
+# Machine : x86_64
+# Execution time and date (UTC): Wed Sep  6 06:31:07 2017
+# Execution time and date (local): Wed Sep  6 16:31:07 2017
+# Reported time measurements are in microseconds
+# pretty output format
+       region matrix_dimension       id         time     overhead 
+ host_side_setup NA         0 133686.547852            0 
+ kernel_creation           240          0 890.640625            0 
+ device_side_buffer_setup           240          0 1.169434            0 
+ device_side_h2d_copy           240          0 421.424316            0 
+ setting_diagonal_kernel_arguments           240          0 0.513184            0 
+ diagonal_kernel           240          0 61.541016            0 
+ setting_perimeter_kernel_arguments           240          0 0.121094            0 
+ perimeter_kernel           240          0 57.337402            0 
+ setting_internal_kernel_arguments           240          0 0.105957            0 
+ internal_kernel           240          0 14.980957            0 
+ setting_diagonal_kernel_arguments           240         16 0.089844            0 
+ diagonal_kernel           240         16 53.531738            0 
+ setting_perimeter_kernel_arguments           240         16 0.047363            0 
+ perimeter_kernel           240         16 56.522949            0 
+ setting_internal_kernel_arguments           240         16 0.050781            0 
+ internal_kernel           240         16 13.846680            0 
+ setting_diagonal_kernel_arguments           240         32 0.043945            0 
+ diagonal_kernel           240         32 52.950684            0 
+ setting_perimeter_kernel_arguments           240         32 0.334473            0 
+ perimeter_kernel           240         32 56.388672            0 
+ setting_internal_kernel_arguments           240         32 0.032227            0 
+ internal_kernel           240         32 13.630859            0 
+ setting_diagonal_kernel_arguments           240         48 0.036133            0 
+ diagonal_kernel           240         48 52.401367            0 
+ setting_perimeter_kernel_arguments           240         48 0.026367            0 
+ perimeter_kernel           240         48 55.783203            0 
+ setting_internal_kernel_arguments           240         48 0.059570            0 
+ internal_kernel           240         48 13.937988            0 
+ setting_diagonal_kernel_arguments           240         64 0.035156            0 
+ diagonal_kernel           240         64 53.242676            0 
+ setting_perimeter_kernel_arguments           240         64 0.025391            0 
+ perimeter_kernel           240         64 56.244141            0 
+ setting_internal_kernel_arguments           240         64 0.032715            1 
+ internal_kernel           240         64 12.512207            0 
+ setting_diagonal_kernel_arguments           240         80 0.054199            0 
+ diagonal_kernel           240         80 52.828613            0 
+ setting_perimeter_kernel_arguments           240         80 0.025391            0 
+ perimeter_kernel           240         80 56.092773            0 
+ setting_internal_kernel_arguments           240         80 0.042969            0 
+ internal_kernel           240         80 12.505859            0 
+ setting_diagonal_kernel_arguments           240         96 0.041016            0 
+ diagonal_kernel           240         96 52.953613            0 
+ setting_perimeter_kernel_arguments           240         96 0.052734            0 
+ perimeter_kernel           240         96 56.185547            0 
+ setting_internal_kernel_arguments           240         96 0.045410            0 
+ internal_kernel           240         96 11.324219            0 
+ setting_diagonal_kernel_arguments           240        112 0.036621            0 
+ diagonal_kernel           240        112 53.305664            0 
+ setting_perimeter_kernel_arguments           240        112 0.027832            0 
+ perimeter_kernel           240        112 56.207031            0 
+ setting_internal_kernel_arguments           240        112 0.064941            0 
+ internal_kernel           240        112 11.509277            0 
+ setting_diagonal_kernel_arguments           240        128 0.036133            0 
+ diagonal_kernel           240        128 53.223633            0 
+ setting_perimeter_kernel_arguments           240        128 0.025879            0 
+ perimeter_kernel           240        128 56.924805            0 
+ setting_internal_kernel_arguments           240        128 0.038086            0 
+ internal_kernel           240        128 10.645996            0 
+ setting_diagonal_kernel_arguments           240        144 0.047363            0 
+ diagonal_kernel           240        144 53.000977            0 
+ setting_perimeter_kernel_arguments           240        144 0.024902            0 
+ perimeter_kernel           240        144 55.880859            0 
+ setting_internal_kernel_arguments           240        144 0.034180            0 
+ internal_kernel           240        144 10.741211            0 
+ setting_diagonal_kernel_arguments           240        160 0.039062            0 
+ diagonal_kernel           240        160 53.208008            0 
+ setting_perimeter_kernel_arguments           240        160 0.054688            0 
+ perimeter_kernel           240        160 55.912598            0 
+ setting_internal_kernel_arguments           240        160 0.049316            0 
+ internal_kernel           240        160 10.264160            0 
+ setting_diagonal_kernel_arguments           240        176 0.042480            0 
+ diagonal_kernel           240        176 53.600586            0 
+ setting_perimeter_kernel_arguments           240        176 0.025391            0 
+ perimeter_kernel           240        176 56.516602            0 
+ setting_internal_kernel_arguments           240        176 0.063965            0 
+ internal_kernel           240        176 10.081543            0 
+ setting_diagonal_kernel_arguments           240        192 0.035156            0 
+ diagonal_kernel           240        192 52.565918            0 
+ setting_perimeter_kernel_arguments           240        192 0.026367            0 
+ perimeter_kernel           240        192 55.792969            0 
+ setting_internal_kernel_arguments           240        192 0.062988            0 
+ internal_kernel           240        192 10.128906            0 
+ setting_diagonal_kernel_arguments           240        208 0.063965            0 
+ diagonal_kernel           240        208 53.199707            0 
+ setting_perimeter_kernel_arguments           240        208 0.025879            0 
+ perimeter_kernel           240        208 55.541016            0 
+ setting_internal_kernel_arguments           240        208 0.052734            0 
+ internal_kernel           240        208 10.140625            0 
+ setting_final_diagonal_kernel_arguments           240        224 0.094238            0 
+ final_diagonal_kernel           240          0 53.224121            0 
+ device_side_d2h_copy           240          0 54.233887            0 
+# Runtime: 0.136948 s (overhead: 0.000730 %) 91 records

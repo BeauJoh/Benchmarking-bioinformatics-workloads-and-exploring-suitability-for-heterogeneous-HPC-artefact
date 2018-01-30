@@ -1,0 +1,26 @@
+# Sysname : Linux
+# Nodename: gpgpu
+# Release : 4.4.0-93-generic
+# Version : #116-Ubuntu SMP Fri Aug 11 21:17:51 UTC 2017
+# Machine : x86_64
+# Execution time and date (UTC): Sat Sep 30 14:48:58 2017
+# Execution time and date (local): Sun Oct  1 00:48:58 2017
+# Reported time measurements are in microseconds
+# pretty output format
+ number_of_residues number_of_vertices       region       id         time     overhead rapl:::PP0_ENERGY:PACKAGE0 rapl:::DRAM_ENERGY:PACKAGE0
+         1268        258797  kernel_creation          0 66953.000000           16       1626647949         41748046 
+         1268        258797  host_side_setup          0 5663.000000           14        140014648          5249023 
+         1268        258797  device_side_buffer_setup          0 64.000000            9          1220703                0 
+         1268        258797  device_side_h2d_copy          0 1842.000000           17         68786621          2807617 
+         1268        258797  setting_kernel_arguments          0 15.000000            8                0                0 
+         1268        258797    gem_kernel          0 229927.000000           20      16013366699        119750976 
+         1268        258797    gem_kernel      30720 231384.000000            5      16291259765        119628906 
+         1268        258797    gem_kernel      61440 230252.000000            9      15955810546        118713378 
+         1268        258797    gem_kernel      92160 238484.000000            8      16453613281        122741699 
+         1268        258797    gem_kernel     122880 233158.000000            5      16207153320        120666503 
+         1268        258797    gem_kernel     153600 229133.000000            8      15824584960        118164062 
+         1268        258797    gem_kernel     184320 230801.000000            8      16071594238        118652343 
+         1268        258797    gem_kernel     215040 229570.000000            6      15940551757        119262695 
+         1268        258797    gem_kernel     245760 106506.000000           10       7011352539         55236816 
+         1268        258797  device_side_d2h_copy          0 99.000000            5          3784179                0 
+# Runtime: 2.034069 s (overhead: 0.007276 %) 15 records

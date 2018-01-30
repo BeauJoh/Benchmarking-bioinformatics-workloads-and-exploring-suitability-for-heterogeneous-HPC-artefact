@@ -1,0 +1,16 @@
+source("utils.R")
+source("stats.R")
+source("aes.R")
+source("functions.R")
+source("load_data.R")
+
+p <- ggplot(data.energy, aes(x=application,y=energy,color=device)) + geom_boxplot(outlier.alpha = 0.1,varwidth=TRUE) + ylab('energy (j)') + xlab("applications")
+pdf('../figures/energy_charts.pdf')
+print(p)
+dev.off()
+
+breaks=c(0.02,0.2,2,20,200)
+p <- ggplot(data.energy, aes(x=application,y=energy,color=device)) + geom_boxplot(outlier.alpha = 0.1,varwidth=TRUE) + ylab('energy (j)') + xlab("applications") + scale_y_continuous(trans='log10', breaks=breaks, labels=breaks)
+pdf('../figures/energy_charts_log10.pdf')
+print(p)
+dev.off()

@@ -1,0 +1,42 @@
+# Sysname : Linux
+# Nodename: node33
+# Release : 4.11.0-kfd-compute-rocm-rel-1.6-148
+# Version : #1 SMP Wed Aug 23 12:52:59 CDT 2017
+# Machine : x86_64
+# Execution time and date (UTC): Wed Sep  6 08:52:02 2017
+# Execution time and date (local): Wed Sep  6 09:52:02 2017
+# Reported time measurements are in microseconds
+# pretty output format
+       region matrix_dimension       id         time     overhead 
+ host_side_setup NA         0 163639.714844            1 
+ kernel_creation            80          0 121307.847656            0 
+ device_side_buffer_setup            80          0 3.466797            0 
+ device_side_h2d_copy            80          0 143.593750            0 
+ setting_diagonal_kernel_arguments            80          0 0.826172            0 
+ diagonal_kernel            80          0 165.699219            0 
+ setting_perimeter_kernel_arguments            80          0 0.134766            0 
+ perimeter_kernel            80          0 191.910156            0 
+ setting_internal_kernel_arguments            80          0 0.367188            0 
+ internal_kernel            80          0 137.771484            0 
+ setting_diagonal_kernel_arguments            80         16 0.386719            0 
+ diagonal_kernel            80         16 223.046875            0 
+ setting_perimeter_kernel_arguments            80         16 0.408203            0 
+ perimeter_kernel            80         16 185.181641            0 
+ setting_internal_kernel_arguments            80         16 0.394531            0 
+ internal_kernel            80         16 76.144531            0 
+ setting_diagonal_kernel_arguments            80         32 0.400391            0 
+ diagonal_kernel            80         32 156.337891            0 
+ setting_perimeter_kernel_arguments            80         32 0.390625            0 
+ perimeter_kernel            80         32 158.988281            0 
+ setting_internal_kernel_arguments            80         32 0.189453            0 
+ internal_kernel            80         32 74.005859            0 
+ setting_diagonal_kernel_arguments            80         48 0.396484            0 
+ diagonal_kernel            80         48 149.050781            0 
+ setting_perimeter_kernel_arguments            80         48 0.224609            0 
+ perimeter_kernel            80         48 155.013672            0 
+ setting_internal_kernel_arguments            80         48 0.226562            0 
+ internal_kernel            80         48 66.601562            0 
+ setting_final_diagonal_kernel_arguments            80         64 0.214844            0 
+ final_diagonal_kernel            80          0 142.292969            0 
+ device_side_d2h_copy            80          0 31.820312            0 
+# Runtime: 0.305655 s (overhead: 0.000327 %) 31 records

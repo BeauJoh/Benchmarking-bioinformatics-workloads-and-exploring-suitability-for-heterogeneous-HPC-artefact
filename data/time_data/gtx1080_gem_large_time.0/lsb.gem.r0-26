@@ -1,0 +1,30 @@
+# Sysname : Linux
+# Nodename: gpgpu
+# Release : 4.4.0-93-generic
+# Version : #116-Ubuntu SMP Fri Aug 11 21:17:51 UTC 2017
+# Machine : x86_64
+# Execution time and date (UTC): Wed Sep 20 01:53:19 2017
+# Execution time and date (local): Wed Sep 20 11:53:19 2017
+# Reported time measurements are in microseconds
+# pretty output format
+ number_of_residues number_of_vertices       region       id         time     overhead 
+         4104        383320  kernel_creation          0 3795.873047            0 
+         4104        383320  host_side_setup          0 10026.465454            1 
+         4104        383320  device_side_buffer_setup          0 17.580078            0 
+         4104        383320  device_side_h2d_copy          0 4423.214966            0 
+         4104        383320  setting_kernel_arguments          0 2.735718            0 
+         4104        383320    gem_kernel          0 35946.118774            0 
+         4104        383320    gem_kernel      30720 35808.109497            0 
+         4104        383320    gem_kernel      61440 36680.483398            0 
+         4104        383320    gem_kernel      92160 36381.095947            0 
+         4104        383320    gem_kernel     122880 37166.376709            0 
+         4104        383320    gem_kernel     153600 36474.543335            0 
+         4104        383320    gem_kernel     184320 36008.335938            0 
+         4104        383320    gem_kernel     215040 35995.008179            0 
+         4104        383320    gem_kernel     245760 36832.656372            0 
+         4104        383320    gem_kernel     276480 37181.319702            0 
+         4104        383320    gem_kernel     307200 37065.139038            0 
+         4104        383320    gem_kernel     337920 35910.837769            0 
+         4104        383320    gem_kernel     368640 13776.281738            0 
+         4104        383320  device_side_d2h_copy          0 257.024170            0 
+# Runtime: 0.469768 s (overhead: 0.000213 %) 19 records

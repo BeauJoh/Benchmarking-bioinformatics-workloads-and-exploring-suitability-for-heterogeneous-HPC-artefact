@@ -1,0 +1,17 @@
+# Sysname : Linux
+# Nodename: gpgpu
+# Release : 4.4.0-93-generic
+# Version : #116-Ubuntu SMP Fri Aug 11 21:17:51 UTC 2017
+# Machine : x86_64
+# Execution time and date (UTC): Sat Sep 30 08:53:39 2017
+# Execution time and date (local): Sat Sep 30 18:53:39 2017
+# Reported time measurements are in microseconds
+# pretty output format
+ number_of_pages    page_size       region       id         time     overhead 
+            1          2000  device_side_buffer_setup          0 2.570557            0 
+            1          2000  kernel_creation          0 1260.946533            0 
+            1          2000  device_side_h2d_copy          0 330.686768            0 
+            1          2000  setting_kernel_compute_arguments          0 0.664307            0 
+            1          2000  kernel_compute_kernel          0 362.396729            0 
+            1          2000  device_side_h2d_copy          0 54.624268            0 
+# Runtime: 0.002264 s (overhead: 0.000000 %) 6 records

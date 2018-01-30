@@ -1,0 +1,19 @@
+# Sysname : Linux
+# Nodename: node33
+# Release : 4.11.0-kfd-compute-rocm-rel-1.6-148
+# Version : #1 SMP Wed Aug 23 12:52:59 CDT 2017
+# Machine : x86_64
+# Execution time and date (UTC): Wed Sep  6 09:37:51 2017
+# Execution time and date (local): Wed Sep  6 10:37:51 2017
+# Reported time measurements are in microseconds
+# pretty output format
+       region number_of_matrices workgroup_size execution_number       id         time     overhead 
+ host_side_setup NANANA         0 338521.500000            0 
+ device_side_buffer_setup             1 NANA         0 8.546875            0 
+ kernel_creation             1 NANA         0 7.494141            0 
+ kernel_creation             1           256             0          0 1.638672            0 
+ device_side_h2d_copy             1           256             0          0 3371.822266            0 
+ setting_csr_kernel_arguments             1           256             0          0 2.070312            0 
+   csr_kernel             1           256             0          0 2061.484375            0 
+ device_side_d2h_copy             1           256             0          0 115.759766            0 
+# Runtime: 0.580613 s (overhead: 0.000000 %) 8 records

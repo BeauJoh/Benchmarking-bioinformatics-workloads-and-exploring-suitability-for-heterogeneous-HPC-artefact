@@ -1,0 +1,42 @@
+# Sysname : Linux
+# Nodename: node33
+# Release : 4.11.0-kfd-compute-rocm-rel-1.6-148
+# Version : #1 SMP Wed Aug 23 12:52:59 CDT 2017
+# Machine : x86_64
+# Execution time and date (UTC): Wed Sep  6 08:26:54 2017
+# Execution time and date (local): Wed Sep  6 09:26:54 2017
+# Reported time measurements are in microseconds
+# pretty output format
+       region number_of_objects number_of_features iteration_number_hint_until_convergence       id         time     overhead 
+ host_side_setup           256            30 NA         0 86.833984            0 
+ kernel_creation           256            30 NA         0 219901.173828            0 
+ device_side_buffer_setup           256            30 NA         0 199.888672            0 
+ host_side_setup_choosing_initial_cluster_positions           256            30 NA         0 4.191406            0 
+ device_side_h2d_copy           256            30             0          0 244.277344            0 
+ kmeans_kernel           256            30             0          0 126.601562            0 
+ device_side_d2h_copy           256            30             0          0 93.298828            0 
+ device_side_h2d_copy           256            30             1          0 18.296875            0 
+ kmeans_kernel           256            30             1          0 102.265625            0 
+ device_side_d2h_copy           256            30             1          0 21.451172            0 
+ device_side_h2d_copy           256            30             2          0 17.453125            0 
+ kmeans_kernel           256            30             2          0 83.808594            0 
+ device_side_d2h_copy           256            30             2          0 7.660156            0 
+ device_side_h2d_copy           256            30             3          0 17.261719            0 
+ kmeans_kernel           256            30             3          0 83.544922            0 
+ device_side_d2h_copy           256            30             3          0 7.599609            0 
+ device_side_h2d_copy           256            30             4          0 16.964844            0 
+ kmeans_kernel           256            30             4          0 83.794922            0 
+ device_side_d2h_copy           256            30             4          0 7.763672            0 
+ device_side_h2d_copy           256            30             5          0 17.218750            0 
+ kmeans_kernel           256            30             5          0 83.683594            0 
+ device_side_d2h_copy           256            30             5          0 8.123047            0 
+ device_side_h2d_copy           256            30             6          0 17.230469            0 
+ kmeans_kernel           256            30             6          0 83.611328            0 
+ device_side_d2h_copy           256            30             6          0 7.818359            0 
+ device_side_h2d_copy           256            30             7          0 17.232422            0 
+ kmeans_kernel           256            30             7          0 83.912109            0 
+ device_side_d2h_copy           256            30             7          0 7.929688            0 
+ device_side_h2d_copy           256            30             8          0 17.232422            0 
+ kmeans_kernel           256            30             8          0 83.496094            0 
+ device_side_d2h_copy           256            30             8          0 7.890625            0 
+# Runtime: 0.240532 s (overhead: 0.000000 %) 31 records
