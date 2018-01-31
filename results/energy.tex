@@ -34,11 +34,12 @@ Thus we expect that the {\bf large} problem size will also show the largest diff
 Figures~\ref{fig:energy} and~\ref{fig:energy-log} show the kernel execution energy for several benchmarks for the {\bf large} size.
 All results are presented in joules.
 The box plots are coloured according to device: red for the Intel Skylake i7-6700k CPU and blue for the Nvidia GTX1080 GPU.
-Certain trends become apparent when directly comparing joules required over a range of problems.
-\todo{proper analysis of these results}
+\todo{report power as well as energy; proper analysis of the results}
 The logarithmic transformation has been applied to Figure~\ref{fig:energy-log} to emphasise the variation at smaller energy scales (< \SI{1}{\joule}), which was necessary due to small execution times for some benchmarks.
 In future this will be addressed by balancing the amount of computation required for each benchmark, to standardize the magnitude of results.
 
+Certain trends become apparent when directly comparing joules required over a range of problems.
+All the benchmarks use more energy on the CPU, with the exception of {\tt crc} which as previously mentioned has low floating-point intensity and so is not able to make use of the GPU's greater floating-point capability. 
 Variance with respect to energy usage is larger on the CPU, which is consistent with the execution time results.
 
 \end{document}
