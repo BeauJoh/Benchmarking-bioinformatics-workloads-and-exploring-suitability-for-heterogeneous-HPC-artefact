@@ -5,7 +5,7 @@ The OpenDwarfs benchmark suite comprises a variety of OpenCL codes, classified a
 The original suite focused on collecting representative benchmarks for scientific applications, with a thorough diversity analysis to justify the addition of each benchmark to the corresponding suite.
 
 We aim to extend these efforts to achieve a full representation of each dwarf, both by integrating other benchmark suites and adding custom kernels.
-At the same time, we hope to improve portability between devices, interpretability and flexibility of configuration including problem sizes.
+At the same time, we hope to improve the reproducibility and interpretability of results, portability between devices, and flexibility of configuration including problem sizes.
 As problem size can profoundly affect performance on accelerator systems~\cite{marjanovic2016hpc}, we enhanced configurability so that each benchmark could be run for a wide range of problem sizes.
 To improve reproducibility of results, we also modified each benchmark to execute in a loop for a minimum of two seconds, to ensure that sampling of execution time and performance counters was not significantly affected by operating system noise.
 

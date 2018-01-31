@@ -1,11 +1,11 @@
 \documentclass[../document.tex]{subfiles}
 \begin{document}\label{ssec:time}
 	
-The Cyclic Redundancy Check {\tt crc} benchmark represents the Combinational Logic dwarf.
+We first present execution time measurements for each benchmark, starting with the Cyclic Redundancy Check {\tt crc} benchmark which represents the Combinational Logic dwarf.
 Figure~\ref{fig:time-crc} shows the execution times for the {\tt crc} benchmark over 50 iterations on each of the target architectures, including the KNL.
-This is the only benchmark which performs best on CPU-type architectures, and it also performs well on the KNL MIC architecture.
-All other benchmarks perform best on GPU type accelerators; furthermore, the performance on the KNL is poor due to the lack of support for wide vector registers in Intel's OpenCL SDK.
-For the remaining benchmarks, we omit results for KNL.
+Execution times are lowest on CPU-type architectures, probably due to the low floating-point intensity of the CRC computation~\cite[Ch. 6]{joshi2016thesis}.
+Excluding {\tt crc}, all the other benchmarks perform best on GPU type accelerators; furthermore, the performance on the KNL is poor due to the lack of support for wide vector registers in Intel's OpenCL SDK.
+We therefore omit results for KNL for the remaining benchmarks.
 
 \newcommand{\plotwidth}{0.24\textwidth}
 \begin{figure*}[t]
