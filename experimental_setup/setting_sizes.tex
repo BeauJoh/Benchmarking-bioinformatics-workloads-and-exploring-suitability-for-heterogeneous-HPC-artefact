@@ -54,11 +54,13 @@ The {\bf large} problem size is at least four times the size of the last-level c
 For brevity, cache miss results are not presented in this paper but were used to verify the suitable selection of all workload scales across all applications.
 The procedure to select problem size parameters is specific to each benchmark, but follows a similar approach to k-means.
 
-\subsubsection{lud, fft, srad, crc, nw, hmm, n-queens}
+\subsubsection{lud, fft, srad, crc, nw, hmm}
 The LU-Decomposition {\tt lud}, Fast Fourier Transform {\tt fft}, Speckle Reducing Anisotropic Diffusion {\tt srad}, Cyclic Redundancy Check {\tt crc}, Needleman-Wunsch {\tt nw}, Baum-Welch Algorithm Hidden Markov Model {\tt hmm} and N-Queens {\tt n-queens} benchmarks did not require additional data sets.
 Where necessary these benchmarks were modified to generate the correct solution and run on modern architectures.
 Correctness was examined either by directly comparing outputs against a serial implementation of the codes (where one was available), or by adding utilities to compare norms between the experimental outputs.
-The N-Queens application is a corner case where memory footprint scales poorly relative to the computational complexity of increasing the number of queens -- namely, valid placements of n queens on a chessboard of size n$\times$n where each queen cannot be attacked by another.
+
+\subsubsection{n-queens}
+The N-Queens application exhibits backtrack branch-and-bound behaviour, and is a corner case where memory footprint scales poorly relative to the computational complexity of increasing the number of queens -- namely, valid placements of n queens on a chessboard of size n$\times$n where each queen cannot be attacked by another.
 Thus, it is significantly compute bound and only only one size is provided.
 
 \subsubsection{dwt}
@@ -143,7 +145,7 @@ Where $\Phi$ is substituted as the argument for each benchmark, it is taken as t
             {\tt bfs}&  {\tt 'graph}$\Phi${\tt.txt'}\\
             {\tt nw}&  $\Phi${ 10}\\
             {\tt hmm}&  {\tt -n }$\Phi_1${\tt -s }$\Phi_2${\tt -v n}\\
-            \todo[inline]{verify the tiny and small size have n specified}
+            {\tt n-queens} & 18\\
 		\end{tabular}
 		\begin{tablenotes}
 			\item [$\medtriangleup$] The {\tt -d 5000} indicates density of the matrix in this instance 0.5\% dense (or 99.5\% sparse).
