@@ -3,15 +3,15 @@
 
 The OpenDwarfs benchmark suite comprises a variety of OpenCL codes, classified according to patterns of computation and communication known as the 13 Berkeley Dwarfs.\cite{asanovic2006landscape}
 The original suite focused on collecting representative benchmarks for scientific applications, with a thorough diversity analysis to justify the addition of each benchmark to the corresponding suite.
-
 We aim to extend these efforts to achieve a full representation of each dwarf, both by integrating other benchmark suites and adding custom kernels.
-At the same time, we hope to improve the reproducibility and interpretability of results, portability between devices, and flexibility of configuration including problem sizes.
-As problem size can profoundly affect performance on accelerator systems~\cite{marjanovic2016hpc}, we enhanced configurability so that each benchmark could be run for a wide range of problem sizes.
+
+\citet{marjanovic2016hpc} argue that the selection of problem size for HPC benchmarking critically affects which hardware properties are relevant.
+We have observed this to be true across a wide range of accelerators, therefore we have enhanced the OpenDwarfs benchmark suite to support running different problem sizes for each benchmark.
 To improve reproducibility of results, we also modified each benchmark to execute in a loop for a minimum of two seconds, to ensure that sampling of execution time and performance counters was not significantly affected by operating system noise.
 
 For the Spectral Methods dwarf, the original OpenDwarfs version of the FFT benchmark was complex, with several code paths that were not executed for the default problem size, and returned incorrect results or failures on some combinations of platforms and problem sizes we tested.
 We replaced it with a simpler high-performance FFT benchmark created by Eric Bainville~\cite{bainville2010fft}, which worked correctly in all our tests.
-We have also added a 2-D discrete wavelet transform from the Rodinia suite~\cite{che2009rodinia}, and we plan to add a continuous wavelet transform code.
+We have also added a 2-D discrete wavelet transform from the Rodinia suite~\cite{che2009rodinia} (with modifications to improve portability), and we plan to add a continuous wavelet transform code.
 
 LibSciBench is a performance measurement tool which allows high precision timing events to be collected for statistical analysis~\cite{hoefler2015scientific}.
 It offers a high resolution timer in order to measure short running kernel codes, reported with one cycle resolution and roughly \SI{6}{\nano\second} of overhead.

@@ -12,19 +12,16 @@ The Summit supercomputer at Oak Ridge National Laboratory is based on the IBM Po
 Promising next generation architectures include Fujitsu's Post-K~\cite{morgan_2016_postk}, and Cray's CS-400, which forms the platform for the Isambard supercomputer~\cite{feldman_2017_isambard}.
 Both architectures use ARM cores alongside other conventional accelerators, with several Intel Xeon Phi and Nvidia P100 GPUs per node.
 
-We are interested in workload characterization, performance prediction and scheduling of scientific application codes for heterogeneous HPC architectures.
-To evaluate different approaches we require a diverse benchmark suite which is portable to a wide variety of devices.
+Given this heterogeneity of hardware and the wide diversity of scientific application codes, workload characterization, performance prediction and scheduling are all becoming more challenging.
+To evaluate different approaches requires a representative benchmark suite which is portable to a wide variety of devices.
 We focus on the OpenCL programming model as it is supported on a wide range of systems including CPU, GPU and FPGA devices.
 While it is possible to write application code directly in OpenCL, it may also be used as a base to implement higher-level programming models.
 This technique was shown by \citet{mitra2014implementation} where an OpenMP runtime was implemented over an OpenCL framework for Texas Instruments Keystone II DSP architecture.
 Having a common back-end in the form of OpenCL allows a direct comparison of identical code across diverse architectures.
 
-Our starting point is the OpenDwarfs benchmark suite, a set of OpenCL benchmarks for heterogeneous computing platforms.\cite{krommydas2016opendwarfs}
-We extended OpenDwarfs with additional benchmarks taken from the Rodinia suite~\cite{che2009rodinia} (with modifications to improve portability), and with new benchmarks such as the two-dimensional discrete wavelet transform and a new FFT benchmark.
-
-\citet{marjanovic2016hpc} argue that the selection of problem size for HPC benchmarking critically affects which hardware properties are relevant.
-We have observed this to be true across a wide range of accelerators, therefore we have enhanced the OpenDwarfs benchmark suite to support running different problem sizes for each benchmark.
-In this paper we report preliminary results for our enhanced version of OpenDwarfs on a range of platforms including CPU, GPU and MIC devices.
+In this paper, we present an extended version of the OpenDwarfs benchmark suite, a set of OpenCL benchmarks for heterogeneous computing platforms.\cite{krommydas2016opendwarfs}
+We added new benchmarks to improve the diversity of the suite, and made a number of modifications aimed at improving the reproducibility and interpretability of results, portability between devices, and flexibility of configuration including problem sizes.
+We report preliminary results for our enhanced version of OpenDwarfs on a range of platforms including CPU, GPU and MIC devices.
 
 % for a short paper, we may not need this roadmap - JM
 %Section~\ref{sec:extending_the_opendwarfs_benchmark_suite} discusses the changes made to the OpenDwarfs benchmark suite.
