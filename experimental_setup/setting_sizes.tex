@@ -54,10 +54,12 @@ The {\bf large} problem size is at least four times the size of the last-level c
 For brevity, cache miss results are not presented in this paper but were used to verify the suitable selection of all workload scales across all applications.
 The procedure to select problem size parameters is specific to each benchmark, but follows a similar approach to k-means.
 
-\subsubsection{lud, fft, srad, crc}
-The LU-Decomposition {\tt lud}, Fast Fourier Transform {\tt fft}, Speckle Reducing Anisotropic Diffusion {\tt srad} and Cyclic Redundancy Check {\tt crc} benchmarks did not require additional data sets.
+\subsubsection{lud, fft, srad, crc, nw, hmm, n-queens}
+The LU-Decomposition {\tt lud}, Fast Fourier Transform {\tt fft}, Speckle Reducing Anisotropic Diffusion {\tt srad}, Cyclic Redundancy Check {\tt crc}, Needleman-Wunsch {\tt nw}, Baum-Welch Algorithm Hidden Markov Model {\tt hmm} and N-Queens {\tt n-queens} benchmarks did not require additional data sets.
 Where necessary these benchmarks were modified to generate the correct solution and run on modern architectures.
 Correctness was examined either by directly comparing outputs against a serial implementation of the codes (where one was available), or by adding utilities to compare norms between the experimental outputs.
+The N-Queens application is a corner case where memory footprint scales poorly relative to the computational complexity of increasing the number of queens -- namely, valid placements of n queens on a chessboard of size n$\times$n where each queen cannot be attacked by another.
+Thus, it is significantly compute bound and only only one size is provided.
 
 \subsubsection{dwt}
 Two-Dimensional Discrete Wavelet Transform is commonly used in image compression.
@@ -82,12 +84,10 @@ The datasets used for {\tt gem} and all other benchmarks can be found in this pa
 %To generate suitable data sizes for this benchmark the data set provided with the benchmark {\tt fvcorr.domn.097K} has been shortened to $\Phi$ vertices, where $Phi$ is given in Table~\ref{tab:problem_sizes}, and was then stored as $\Phi${\tt.dat} files.
 %These files are then passed as the only argument into the benchmark.
 
-\todo[inline]{write up for bfs, nw, hmm}
 \subsubsection{bfs}
-Breadth-First Search
-
-\subsubsection{nw}
-Needleman-Wunsch
+Breadth-First Search is a graph traversal method and computes the single-source shortest-path using fixed weights.
+Each graph is comprised of vertices and edges and is stored in file, these files were generated using the {\tt graphgen} tool provided in Rodinia\cite{che2009rodinia}.
+The number of nodes generated was selected according to problem size, {\bf tiny}, {\bf small}, {\bf medium} {\bf large} has 650, 5376, 172032 and 1048576 respectively.
 
 \subsubsection{Summary of Benchmark Settings}
 
