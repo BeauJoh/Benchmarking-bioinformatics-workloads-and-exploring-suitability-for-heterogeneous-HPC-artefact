@@ -2,7 +2,7 @@ source("utils.R")
 source("stats.R")
 source("aes.R")
 source("functions.R")
-source("load_data.R")
+source("load_runtime_data.R")
 
 p <- ggplot(data.energy, aes(x=application,y=energy,color=device)) + geom_boxplot(outlier.alpha = 0.1,varwidth=TRUE) + ylab('energy (j)') + xlab("applications")
 pdf('../figures/energy_charts.pdf')
