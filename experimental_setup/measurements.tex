@@ -5,6 +5,11 @@
 
 We measured execution time and energy for individual OpenCL kernels within each benchmark.
 Each benchmark was run 50 times for a minimum of two seconds for each problem size (see \S\ref{ssec:setting_sizes}) for both execution time and energy measurements.
+
+A sample size of 50 per group -- or each application and at each problem size -- was used to ensure that sufficient statistical power $\beta = 0.8$ would be available to detect a statistically significant difference in means on the scale of half standard deviation of separation.
+This sample size was computed using the t-test power calculation over over a normal distribution.
+In this setting, half a standard deviation was determined to be a fine scale difference yet practical enough to determine the true difference in means for the executed runtimes.
+
 To help understand the timings, the following hardware counters were also collected:
 \begin{itemize}
 	\item total instructions and IPC (Instructions Per Cycle);

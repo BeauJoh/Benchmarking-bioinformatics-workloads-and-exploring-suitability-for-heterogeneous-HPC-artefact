@@ -7,7 +7,7 @@ These were the only devices examined since collection of PAPI energy measurement
 The distributions were collected by measuring solely the kernel execution over a distribution of 50 runs.
 RAPL CPU energy measurements were collected over all cores in package 0 {\tt rapl:::PP0\_ENERGY:PACKAGE0}.
 NVML GPU energy was collected using the power usage readings {\tt nvml:::GeForce\_GTX\_1080:power} for the device and presents the total power draw (+/-5 watts) for the entire card -- memory and chip.
-Measurements results converted to power (\SI{}{\joule\per\second}) from their original resolution \SI{}{\nano\joule} and \SI{}{\milli\watt} on the CPU and GPU respectively.
+Measurements results converted to energy \SI{}{\joule} \todo[inline]{power (\SI{}{\joule\per\second})} from their original resolution \SI{}{\nano\joule} and \SI{}{\milli\watt} on the CPU and GPU respectively.
 
 From the time results presented in Section~\ref{ssec:time} we see the largest difference occurs between CPU and GPU type accelerators at the {\bf large} problem size.
 Thus we expect that the {\bf large} problem size will also show the largest difference in energy.
