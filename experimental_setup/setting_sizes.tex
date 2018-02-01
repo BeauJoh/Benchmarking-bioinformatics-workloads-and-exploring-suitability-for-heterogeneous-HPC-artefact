@@ -2,11 +2,11 @@
 \begin{document}\label{ssec:setting_sizes}
 
 %focus of this is the experimental evaluation to justify setting problem sizes
-For each application, four different problem sizes were selected, namely {\bf tiny}, {\bf small}, {\bf medium} and {\bf large}.
+For each benchmark, four different problem sizes were selected, namely {\bf tiny}, {\bf small}, {\bf medium} and {\bf large}.
 These problem sizes are based on the memory hierarchy of the Skylake CPU.
 Specifically, {\bf tiny} should just fit within L1 cache, on the Skylake this corresponds to \SI{32}{\kibi\byte} of data cache, {\bf small} should fit within the \SI{256}{\kibi\byte} L2 data cache, {\bf medium} should fit within \SI{8192}{\kibi\byte} of the L3 cache, and {\bf large} must be much larger than \SI{8192}{\kibi\byte} to avoid caching and operate out of main memory.
 
-The memory footprint was verified for each application by printing the sum of the size of all memory allocated on the device.
+The memory footprint was verified for each benchmark by printing the sum of the size of all memory allocated on the device.
 %This was verified using the {\tt lscpu} Linux tool.
 
 For this study, problem sizes were not customized to the memory hierarchy of each platform, since the CPU is the most sensitive to cache performance.
@@ -51,17 +51,18 @@ The {\bf large} problem size is at least four times the size of the last-level c
 %To measure increase the number of points/objects by 1 from 5 to 47.\todo[inline]{How are number of points actually increased?}
 %Configuration of the experiment is repeated 300 times, and each iteration of the kernel is instrumented for the respective cache events.
 
-For brevity, cache miss results are not presented in this paper but were used to verify the suitable selection of all workload scales across all applications.
+For brevity, cache miss results are not presented in this paper but were used to verify the selection of suitable problem sizes for each benchmark.
 The procedure to select problem size parameters is specific to each benchmark, but follows a similar approach to k-means.
 
 \subsubsection{lud, fft, srad, crc, nw, hmm}
-The LU-Decomposition {\tt lud}, Fast Fourier Transform {\tt fft}, Speckle Reducing Anisotropic Diffusion {\tt srad}, Cyclic Redundancy Check {\tt crc}, Needleman-Wunsch {\tt nw}, Baum-Welch Algorithm Hidden Markov Model {\tt hmm} and N-Queens {\tt n-queens} benchmarks did not require additional data sets.
+The LU-Decomposition {\tt lud}, Fast Fourier Transform {\tt fft}, Speckle Reducing Anisotropic Diffusion {\tt srad}, Cyclic Redundancy Check {\tt crc}, Needleman-Wunsch {\tt nw}, and Baum-Welch Algorithm Hidden Markov Model {\tt hmm} benchmarks did not require additional data sets.
 Where necessary these benchmarks were modified to generate the correct solution and run on modern architectures.
 Correctness was examined either by directly comparing outputs against a serial implementation of the codes (where one was available), or by adding utilities to compare norms between the experimental outputs.
 
 \subsubsection{n-queens}
-The N-Queens application exhibits backtrack branch-and-bound behaviour, and is a corner case where memory footprint scales poorly relative to the computational complexity of increasing the number of queens -- namely, valid placements of n queens on a chessboard of size n$\times$n where each queen cannot be attacked by another.
-Thus, it is significantly compute bound and only only one size is provided.
+The N-Queens benchmark is a backtrack/branch-and-bound code which finds valid placements of n queens on a chessboard of size n$\times$n where each queen cannot be attacked by another.
+For this code, memory footprint scales very slowly with increasing number of queens, relative to the computational cost.
+Thus it is significantly compute-bound and only one problem size is tested.
 
 \subsubsection{dwt}
 Two-Dimensional Discrete Wavelet Transform is commonly used in image compression.
