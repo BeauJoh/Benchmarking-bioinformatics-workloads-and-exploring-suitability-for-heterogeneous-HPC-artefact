@@ -2,10 +2,6 @@
 \begin{document}\label{ssec:time}
 	
 We first present execution time measurements for each benchmark, starting with the Cyclic Redundancy Check {\tt crc} benchmark which represents the Combinational Logic dwarf.
-Figure~\ref{fig:time-crc} shows the execution times for the {\tt crc} benchmark over 50 iterations on each of the target architectures, including the KNL.
-Execution times are lowest on CPU-type architectures, probably due to the low floating-point intensity of the CRC computation~\cite[Ch. 6]{joshi2016thesis}.
-Excluding {\tt crc}, all the other benchmarks perform best on GPU type accelerators; furthermore, the performance on the KNL is poor due to the lack of support for wide vector registers in Intel's OpenCL SDK.
-We therefore omit results for KNL for the remaining benchmarks.
 
 \newcommand{\plotwidth}{0.24\textwidth}
 \begin{figure*}[t]
@@ -18,9 +14,20 @@ We therefore omit results for KNL for the remaining benchmarks.
 	\label{fig:time-crc}
 \end{figure*}
 
-Figures~\ref{fig:time} and~\ref{fig:time2} shows the distribution of execution times for the remaining benchmarks.
-Each benchmark corresponds to a particular dwarf: Figure~\ref{fig:time-kmeans} and Figure~\ref{fig:time-lud} are both representative of the Dense Linear Algebra dwarf, Figure~\ref{fig:time-csr} represents Sparse Linear Algebra, Figure~\ref{fig:time-dwt} and Figure~\ref{fig:time-fft} represent Spectral Methods,
-Figure~\ref{fig:time-gem} represents N-Body Methods, and Figure~\ref{fig:time-srad} represents the Structured Grid dwarf.
+Figure~\ref{fig:time-crc} shows the execution times for the {\tt crc} benchmark over 50 iterations on each of the target architectures, including the KNL.
+Execution times are lowest on CPU-type architectures, probably due to the low floating-point intensity of the CRC computation~\cite[Ch. 6]{joshi2016thesis}.
+Excluding {\tt crc}, all the other benchmarks perform best on GPU type accelerators; furthermore, the performance on the KNL is poor due to the lack of support for wide vector registers in Intel's OpenCL SDK.
+We therefore omit results for KNL for the remaining benchmarks.
+
+
+Figures~\ref{fig:time} and~\ref{fig:time2} shows the distribution of kernel execution times for the remaining benchmarks.
+Each benchmark corresponds to a particular dwarf: 
+Figure~\ref{fig:time-kmeans} ({\tt kmeans}) represents the MapReduce dwarf,
+Figure~\ref{fig:time-lud} ({\tt lud}) represents the Dense Linear Algebra dwarf,
+Figure~\ref{fig:time-csr} ({\tt csr}) represents Sparse Linear Algebra, 
+Figure~\ref{fig:time-dwt} ({\tt dwt}) and Figure~\ref{fig:time-fft} ({\tt fft}) represent Spectral Methods,
+Figure~\ref{fig:time-gem} ({\tt gem}) represents N-Body Methods, 
+and Figure~\ref{fig:time-srad} ({\tt srad}) represents the Structured Grid dwarf.
 
 \captionsetup[subfigure]{justification=raggedright,singlelinecheck=false}
 
@@ -85,6 +92,11 @@ Figure~\ref{fig:time-gem} represents N-Body Methods, and Figure~\ref{fig:time-sr
 	\end{subfigure}
     \caption{Benchmark kernel execution times on different hardware platforms (continued)}\label{fig:time2}
 \end{figure*}
+
+For most benchmarks, the variance in execution times is much greater on the CPU platforms than on GPUs.
+\todo[inline]{Why? Possibly due to cycles run at lower clock speeds? Does clock throttling affect GPU as well?}
+While execution time increases with problem size for all benchmarks and platforms, the modern GPUs (Titan X, GTX1080 and GTX1080i) performed relatively better for large problem sizes, possibly due to their greater second-level cache size compared to the other platforms.
+A notable exception is {\tt k-means} for which CPU execution times were comparable to GPU, which reflects the relatively low ratio of floating point to memory operations in the benchmark.
 
 
 \todo{Are there any benchmarks where increasing the problem sizes makes results worse for the GPU?}
