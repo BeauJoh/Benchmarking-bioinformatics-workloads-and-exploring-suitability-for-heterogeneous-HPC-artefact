@@ -62,18 +62,10 @@ The LU-Decomposition {\tt lud}, Fast Fourier Transform {\tt fft}, Speckle Reduci
 Where necessary these benchmarks were modified to generate the correct solution and run on modern architectures.
 Correctness was examined either by directly comparing outputs against a serial implementation of the codes (where one was available), or by adding utilities to compare norms between the experimental outputs.
 
-<<<<<<< HEAD
-\subsubsection{n-queens}
-The N-Queens benchmark is a backtrack /branch-and-bound code which finds valid placements of n queens on a chessboard of size n$\times$n where each queen cannot be attacked by another.
-For this code, memory footprint scales very slowly with increasing number of queens, relative to the computational cost.
-Thus it is significantly compute-bound and only one problem size is tested.
-=======
-\todo{Replace n-queens if new results are available}
 %\subsubsection{n-queens}
 %The N-Queens benchmark is a backtrack/branch-and-bound code which finds valid placements of n queens on a %chessboard of size n$\times$n where each queen cannot be attacked by another.
 %For this code, memory footprint scales very slowly with increasing number of queens, relative to the %computational cost.
 %Thus it is significantly compute-bound and only one problem size is tested.
->>>>>>> 1530740bbfc9e5c68e9b3c4ac4750b6b72c4db9e
 
 \subsubsection{dwt}
 Two-Dimensional Discrete Wavelet Transform is commonly used in image compression.
