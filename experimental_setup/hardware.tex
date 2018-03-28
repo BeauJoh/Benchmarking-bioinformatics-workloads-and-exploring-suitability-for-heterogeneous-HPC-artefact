@@ -9,26 +9,132 @@
         Name         & Vendor   & Type  & Series    & \multicolumn{1}{m{1cm}|}{\centering Core Count} & \multicolumn{1}{m{2.5cm}|}{\centering Clock Frequency (\si{\mega\hertz}) (min/max/turbo)}  &\multicolumn{1}{m{2.1cm}|}{\centering Cache (\SI{}{\kibi\byte}) (L1/L2/L3)} & \multicolumn{1}{m{.8cm}|}{\centering TDP (\SI{}{\watt})} &  \multicolumn{1}{m{1cm}}{\centering Launch  Date} \\ \hline
         Xeon E5-2697 v2  & Intel    & CPU   &Ivy Bridge & 24$\ast$ &1200/2700/3500 & 32/256/30720 & 130 & Q3 2013\\
         i7-6700K & Intel    & CPU   &Skylake & 8$\ast$ & 800/4000/4300 & 32/256/8192& 91 & Q3 2015\\
+        i5-3550  & Intel    & CPU   & Ivy Bridge & 4$\ast$ & 1600/3380/3700 & 32/256/6144& 77 & Q2 2012\\
         Titan X & Nvidia & GPU & Pascal & 3584\textdagger & 1417/1531/-- & 48/2048/-- & 250 & Q3 2016\\
-        GTX1080 & Nvidia & GPU & Pascal & 2560\textdagger & 1607/1733/-- & 48/2048/-- & 180 & Q2 2016\\
-        GTX1080Ti & Nvidia & GPU & Pascal & 3584\textdagger & 1480/1582/-- & 48/2048/-- & 250 & Q1 2017\\
+        GTX 1080 & Nvidia & GPU & Pascal & 2560\textdagger & 1607/1733/-- & 48/2048/-- & 180 & Q2 2016\\
+        GTX 1080 Ti & Nvidia & GPU & Pascal & 3584\textdagger & 1480/1582/-- & 48/2048/-- & 250 & Q1 2017\\
         K20m & Nvidia & GPU & Kepler & 2496\textdagger & 706/--/-- & 64/1536/-- & 225 & Q4 2012\\
         K40m & Nvidia & GPU & Kepler & 2880\textdagger & 745/875/-- & 64/1536/-- & 235 & Q4 2013\\
+        HD 7970   & AMD & GPU & Tahiti & 2048$\|$ & 925/1010/-- & 16/768/-- & 250 & Q4 2011\\
+        R9 290X   & AMD & GPU & Hawaii & 2816$\|$ & 1000/--/-- & 16/1024/--& 250 & Q3 2014\\
+        R9 295x2  & AMD & GPU & Hawaii & 5632$\|$ & 1018/--/-- & 16/1024/--& 500 & Q2 2014\\
+        R9 Fury X & AMD & GPU & Fuji   & 4096$\|$ & 1050/--/-- & 16/2048/--& 273 & Q2 2015\\
+        RX 480    & AMD & GPU & Polaris& 4096$\|$ & 1120/1266/-- & 16/2048/-- & 150 & Q2 2016 \\
         Xeon Phi 7210 & Intel & MIC & KNL & 256\textdaggerdbl & 1300/1500/-- & 32/1024/-- & 215 & Q2 2016\\
     \end{tabular}
     \begin{tablenotes}
     \item [$\ast$] HyperThreaded cores
     \item [\textdagger] CUDA cores
+    \item [$\|$] Stream processors
     \item [\textdaggerdbl] Each physical core has 4 hardware threads per core, thus 64 cores
     \end{tablenotes}
 \end{threeparttable}
 \label{tab:hardware}
 \end{table*}
 
-The experiments were conducted on eight hardware platforms and are presented in Table~\ref{tab:hardware}.
-Two of these systems are Intel CPU architectures, five are current Nvidia GPUs and one is a MIC (Intel Knights Landing Xeon Phi).
+The experiments were conducted on 14 hardware platforms and are presented in Table~\ref{tab:hardware}.
+Three of these systems are Intel CPU architectures, five are current Nvidia GPUs, five are AMD GPUs, and one is a MIC (Intel Knights Landing Xeon Phi).
 The L1 cache size should be read as having both an instruction size cache and a data cache size of equal values as those displayed. 
-For Nvidia GPUs, the L2 cache size reported is the size per SM.
+For Nvidia GPUs, the L2 cache size reported is the size L2 cache per SM multiplied by the number of SMs.
 For the Intel CPUs, hyper-threading was enabled and the frequency governor was set to `performance'.
 
 \end{document}
+
+%gtx1080
+%	device no. 0
+%	name:            GeForce GTX 1080
+%	vendor:          NVIDIA Corporation
+%
+%	device type:            GPU
+%	core count:             20
+%	max clock frequency:    1835 MHz
+%	max total work size:    1024
+%	max work dimensions:    3
+%	max work item sizes:    1024    1024    64
+%	global memory size:     8112 MiBs
+%	global cache size:      320 KiBs
+%	global cacheline size:  128 bytes
+%	local memory size:      48 KiBs
+%
+%
+%hd7970
+%device no. 0
+%name:            Tahiti
+%vendor:          Advanced Micro Devices, Inc.
+%
+%device type:            GPU
+%core count:             32
+%max clock frequency:    1010 MHz
+%max total work size:    256
+%max work dimensions:    3
+%max work item sizes:    256     256     256
+%global memory size:     3035 MiBs
+%global cache size:      16 KiBs
+%global cacheline size:  64 bytes
+%local memory size:      32 KiBs
+%
+%r9-295x2
+%device no. 0
+%name:            Hawaii
+%vendor:          Advanced Micro Devices, Inc.
+%
+%device type:            GPU
+%core count:             44
+%max clock frequency:    1018 MHz
+%max total work size:    256
+%max work dimensions:    3
+%max work item sizes:    256     256     256
+%global memory size:     4054 MiBs
+%global cache size:      16 KiBs
+%global cacheline size:  64 bytes
+%local memory size:      32 KiBs
+%
+%furyx
+%device no. 0
+%name:            Fiji
+%vendor:          Advanced Micro Devices, Inc.
+%
+%device type:            GPU
+%core count:             64
+%max clock frequency:    1050 MHz
+%max total work size:    256
+%max work dimensions:    3
+%max work item sizes:    256     256     256
+%global memory size:     4079 MiBs
+%global cache size:      16 KiBs
+%global cacheline size:  64 bytes
+%local memory size:      32 KiBs
+%
+%r9-290x
+%device no. 0
+%name:            Hawaii
+%vendor:          Advanced Micro Devices, Inc.
+%
+%device type:            GPU
+%core count:             44
+%max clock frequency:    1000 MHz
+%max total work size:    256
+%max work dimensions:    3
+%max work item sizes:    256     256     256
+%global memory size:     4082 MiBs
+%global cache size:      16 KiBs
+%global cacheline size:  64 bytes
+%local memory size:      32 KiBs
+%
+%rx-480
+%device no. 0
+%        name:            Ellesmere
+%        vendor:          Advanced Micro Devices, Inc.
+%
+%        device type:            GPU
+%        core count:             36
+%        max clock frequency:    1310 MHz
+%        max total work size:    256
+%        max work dimensions:    3
+%        max work item sizes:    256     256     256
+%        global memory size:     8164 MiBs
+%        global cache size:      16 KiBs
+%        global cacheline size:  64 bytes
+%        local memory size:      32 KiBs<Paste>
+%
+%
