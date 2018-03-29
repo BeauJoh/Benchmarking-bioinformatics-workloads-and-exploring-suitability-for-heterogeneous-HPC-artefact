@@ -19,6 +19,8 @@ Execution times are lowest on CPU-type architectures, probably due to the low fl
 Excluding {\tt crc}, all the other benchmarks perform best on GPU type accelerators; furthermore, the performance on the KNL is poor due to the lack of support for wide vector registers in Intel's OpenCL SDK.
 We therefore omit results for KNL for the remaining benchmarks.
 
+\todo{We could examine the kiviat diagrams to see if they have high memory address entropy -- or high memory overhead which contributes to the why some benchmarks see a wide variation while others experience only a little, is this the major cause in variation?}
+\todo{What are the major motivations for including this results section? We should conclude with these motivations and what has been shown accordingly}
 
 Figures~\ref{fig:time} and~\ref{fig:time2} shows the distribution of kernel execution times for the remaining benchmarks.
 Each benchmark corresponds to a particular dwarf: 
