@@ -22,8 +22,10 @@ We first present execution time measurements for each benchmark, starting with t
 \end{figure*}
 
 
-
 Figure~\ref{fig:time-crc} shows the execution times for the {\tt crc} benchmark over 50 iterations on each of the target architectures, including the KNL.
+%Each result is the combined execution time of a kernel for a given iteration.
+%For instance, s
+Some applications contain more than one kernel being executed on the accelerator device, an iteration is the sum of all compute time spent on the accelerator for all kernels.
 The results have been coloured according to accelerator type: red for CPU devices, green for consumer GPUs, blue for HPC GPUs, and purple for the KNL MIC.
 Execution times are lowest on CPU-type architectures, probably due to the low floating-point intensity of the CRC computation~\cite[Ch. 6]{joshi2016thesis}.
 Excluding {\tt crc}, all the other benchmarks perform best on GPU type accelerators; furthermore, the performance on the KNL is poor due to the lack of support for wide vector registers in Intel's OpenCL SDK.
@@ -61,7 +63,7 @@ The N-body Methods dwarf is represented by ({\tt gem}) and the results are shown
 \begin{figure*}
     \centering
     \includegraphics[width=\textwidth,keepaspectratio]{figures/new-time-results/generate_main_2x3_bandwplot}
-    \caption{Smaller Benchmark kernel execution times on different hardware platforms}
+    \caption{Single problem sized benchmarks of kernel execution times on different hardware platforms}
     \label{fig:time3}
 \end{figure*}
 

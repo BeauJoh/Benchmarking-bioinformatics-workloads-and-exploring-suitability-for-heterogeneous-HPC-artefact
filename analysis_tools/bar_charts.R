@@ -107,7 +107,7 @@ for(a in applications){
                   plot.margin = unit(c(0,0,0,0), "cm"))
 
         #only include "size" as a title on these applications
-        if(a %in% c("crc","kmeans","srad","gem")){
+        if(a %in% c("crc","kmeans","srad")){
             p <- p + ggtitle(s)
         }
 
@@ -213,27 +213,23 @@ dev.off()
 #2x3 results
 #gem, nqueens and hmm only runs on tiny and small problem sizes
 print("saving main_2x3_bandwplot.pdf")
-plots <- align_plots(plot.gem.tiny  +theme(legend.position = "none"),
-                     plot.gem.small +theme(legend.position = "none"),
-                     plot.nqueens.tiny  +theme(legend.position = "none"),
-                     plot.nqueens.small +theme(legend.position = "none"),
-                     plot.hmm.tiny  +theme(legend.position = "none"),
-                     plot.hmm.small +theme(legend.position = "none"),
+plots <- align_plots(plot.gem.tiny + ggtitle("(a) gem")  +theme(legend.position = "none"),
+                     #plot.gem.small +theme(legend.position = "none"),
+                     plot.nqueens.tiny+ ggtitle("(b) nqueens")  +theme(legend.position = "none"),
+                     #plot.nqueens.small +theme(legend.position = "none"),
+                     plot.hmm.tiny + ggtitle("(c) hmm") +theme(legend.position = "none"),
+                     #plot.hmm.small +theme(legend.position = "none"),
                      align='v',axis='l')
 
-gem_row        <- plot_grid(plots[[1]], plots[[2]], ncol=2,nrow=1)
-nqueens_row    <- plot_grid(plots[[3]], plots[[4]], ncol=2,nrow=1)
-hmm_row        <- plot_grid(plots[[5]], plots[[6]], ncol=2,nrow=1)
+p <- plot_grid(plots[[1]], plots[[2]], plots[[3]],
+               get_legend(plot.kmeans.tiny + theme(legend.title=element_text(face="bold"))),#add legend
+               ncol=4,nrow=1,#specify layout
+               rel_widths=c(0.3,0.3,0.3,0.1))#the legend needs much less space
 
-p <- plot_grid(gem_row,nqueens_row,hmm_row,#add plots
-               legend_generic,#add legend
-               ncol = 1, nrow = 4,#specify layout
-               labels = c("(a) gem","(b) nqueens","(c) hmm"),
-               label_x = c(.01,.0,0.01), #adjust x offset of each row label
-               label_y = c(1.0 ,1.06,1.06), #adjust y offset of each row label
-               rel_heights=c(1,1,1,.05))#the legend needs much less space
+               #label_x = c(.01,.0,0.01), #adjust x offset of each row label
+               #label_y = c(1.0 ,1.06,1.06), #adjust y offset of each row label
 
-pdf('../figures/new-time-results/generate_main_2x3_bandwplot.pdf',width=16.6,height=14.1)
+pdf('../figures/new-time-results/generate_main_2x3_bandwplot.pdf',width=16.6,height=4.7)
 print(ggdraw(p))
 dev.off()
 
