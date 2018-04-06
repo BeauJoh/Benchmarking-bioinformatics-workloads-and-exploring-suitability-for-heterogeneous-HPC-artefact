@@ -60,6 +60,8 @@
 \newcommandx{\thiswillnotshow}[2][1=]{\todo[disable,#1]{#2}}
 %
 
+\hyphenation{Open-Dwarfs}
+
 \def\sharedaffiliation{%
 \end{tabular}
 \begin{tabular}{c}}
@@ -126,10 +128,10 @@
 \section{Results}\label{sec:results}
 
 The primary purpose of including these time results is to demonstrate the benefits of the extensions made to the OpenDwarfs Benchmark suite.
-The use of LibSciBench allowed high resolution measurements -- and over multiple code regions -- of time data allowed for reproducibility amongst the presented results.
-Presented are 11 unique applications which show portability of the OpenCL codes, namely, that they can run over a range of devices -- 15 devices and four different types of accelerator.
-As such, application code changes required to achieve portability between all the devices is justified.
-Finally, extending all applications to operate over multiple problem sizes adds depth to the accelerator analysis -- this is in contrast to the fixed application problem sizes in most benchmark suites.
+The use of LibSciBench allowed high resolution timing measurements over multiple code regions.
+To demonstrate the portability of the Extended OpenDwarfs benchmark suite, we present results from 11 varied benchmarks running on 15 different devices representing four distinct classes of accelerator.
+For 12 of the benchmarks, we measured multiple problem sizes and observed distinctly different scaling patterns between devices.
+This underscores the importance of allowing a choice of problem size in a benchmarking suite.
 
 \subsection{Time}\subfile{results/time}
 \subsection{Energy}\subfile{results/energy}
@@ -141,7 +143,7 @@ Finally, extending all applications to operate over multiple problem sizes adds 
 \section{Future Work}\subfile{future_work/future_work.tex}
 
 \section*{Acknowledgements}
-We thank our colleagues at The University of Bristol's High Performance Computing Research group for the use of "The Zoo" Research cluster which was used for the runtime results.
+We thank our colleagues at The University of Bristol's High Performance Computing Research group for the use of ``The Zoo'' Research cluster for experimental evaluation.
 
 
 %References

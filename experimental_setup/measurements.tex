@@ -4,9 +4,8 @@
 %LibSciBench and performance counters
 
 We measured execution time and energy for individual OpenCL kernels within each benchmark.
+Each benchmark run executed the application in a loop until at least two seconds had elapsed, and the mean execution time for each kernel was recorded.
 Each benchmark was run 50 times for each problem size (see \S\ref{ssec:setting_sizes}) for both execution time and energy measurements.
-Applications that completed in less than two seconds were rerun until the time had elapsed with the mean execution times of each kernel were recorded, this precaution was taken to avoid measuring system events and other causes of noise along with events that correspond to the first run of a kernel such as cold cache on start-up etc.
-
 A sample size of 50 per group -- for each combination of benchmark and problem size -- was used to ensure that sufficient statistical power $\beta = 0.8$ would be available to detect a significant difference in means on the scale of half standard deviation of separation.
 This sample size was computed using the t-test power calculation over a normal distribution.
 
