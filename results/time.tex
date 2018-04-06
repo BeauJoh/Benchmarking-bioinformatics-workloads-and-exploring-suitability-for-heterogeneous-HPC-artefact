@@ -135,8 +135,7 @@ The use of LibSciBench allowed high resolution measurements -- and over multiple
 Presented are 11 unique applications which show portability of the OpenCL codes, namely, that they can run over a range of devices -- 15 devices and four different types of accelerator.
 As such, application code changes required to achieve portability between all the devices is justified.
 Finally, extending all applications to operate over multiple problem sizes adds depth to the accelerator analysis -- this is in contrast to the fixed application problem sizes in most benchmark suites.
-Namely, certain applications show good scaling for particular architectures, an example is between Figures~\ref{fig:time2}a and b.
-Examining transition from tiny to large problem sizes in Figure~\ref{fig:time2}a shows the performance gap between CPU and GPU architectures widening for {\tt srad} -- indicating codes representative of structured grid dwarfs are well suited to GPUs.
+Examining the transition from tiny to large problem sizes in Figure~\ref{fig:time2}a shows the performance gap between CPU and GPU architectures widening for {\tt srad} -- indicating codes representative of structured grid dwarfs are well suited to GPUs.
 
 In contrast, Figure~\ref{fig:time2}b shows Dynamic Programming problems have performance results tied to micro-architecture or OpenCL runtime support that are ill-classified by solely examining accelerator type.
 For instance, the Intel CPUs and NVIDIA GPUs experience comparably over all problem sizes, whereas all AMD GPUs experience worst performance as size increases.
