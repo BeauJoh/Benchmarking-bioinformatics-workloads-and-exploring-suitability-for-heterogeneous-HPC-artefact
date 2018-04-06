@@ -24,7 +24,7 @@ We first present execution time measurements for each benchmark, starting with t
 
 
 Figure~\ref{fig:time-crc} shows the execution times for the {\tt crc} benchmark over 50 iterations on each of the target architectures, including the KNL.
-The results have been coloured according to accelerator type, red for CPU devices, green for Consumer GPU, blue for HPC GPU, and purple for the KNL MIC.
+The results have been coloured according to accelerator type: red for CPU devices, green for consumer GPUs, blue for HPC GPUs, and purple for the KNL MIC.
 Execution times are lowest on CPU-type architectures, probably due to the low floating-point intensity of the CRC computation~\cite[Ch. 6]{joshi2016thesis}.
 Excluding {\tt crc}, all the other benchmarks perform best on GPU type accelerators; furthermore, the performance on the KNL is poor due to the lack of support for wide vector registers in Intel's OpenCL SDK.
 We therefore omit results for KNL for the remaining benchmarks.
@@ -33,7 +33,6 @@ We therefore omit results for KNL for the remaining benchmarks.
 \todo{What are the major motivations for including this results section? We should conclude with these motivations and what has been shown accordingly}
 
 Figures~\ref{fig:time} and~\ref{fig:time2} shows the distribution of kernel execution times for the remaining benchmarks.
-The results have been coloured according to accelerator type, red for CPU devices, green for Consumer GPUs and  blue for HPC GPU devices.
 Each benchmark corresponds to a particular dwarf: 
 Figure~\ref{fig:time}a ({\tt kmeans}) represents the MapReduce dwarf,
 Figure~\ref{fig:time}b ({\tt lud}) represents the Dense Linear Algebra dwarf,
@@ -41,6 +40,7 @@ Figure~\ref{fig:time}c ({\tt csr}) represents Sparse Linear Algebra,
 Figure~\ref{fig:time}d ({\tt dwt}) and Figure~\ref{fig:time}e ({\tt fft}) represent Spectral Methods,
 Figure~\ref{fig:time2}a ({\tt srad}) represents the Structured Grid dwarf and Figure~\ref{fig:time2}b ({\tt nw}) represents Dynamic Programming.
 Finally, due to page limit constraints, Figure~\ref{fig:time3} presents results for tiny and small problem sizes.
+\todo{Why due to page limit constraints? This figure is stretched out so it takes up twice the room it needs to.}
 The N-body Methods dwarf is represented by ({\tt gem}) and the results are shown in Figure~\ref{fig:time3}a, the Backtrack \& Branch and Bound dwarf is represented by the ({\tt nqueens}) application in Figure~\ref{fig:time3}b and ({\tt hmm}) results in Figure~\ref{fig:time3}c represent the Graphical Models dwarf.
 
 
@@ -138,7 +138,7 @@ Finally, extending all applications to operate over multiple problem sizes adds 
 Namely, certain applications show good scaling for particular architectures, an example is between Figures~\ref{fig:time2}a and b.
 Examining transition from tiny to large problem sizes in Figure~\ref{fig:time2}a shows the performance gap between CPU and GPU architectures widening for {\tt srad} -- indicating codes representative of structured grid dwarfs are well suited to GPUs.
 
-In contrast, Figure~\ref{fig:time2}b shows Dynamic Programming problems have performance results tied to micro-architecture or OpenCL runtime support that are ill classified by solely examining accelerator type.
+In contrast, Figure~\ref{fig:time2}b shows Dynamic Programming problems have performance results tied to micro-architecture or OpenCL runtime support that are ill-classified by solely examining accelerator type.
 For instance, the Intel CPUs and NVIDIA GPUs experience comparably over all problem sizes, whereas all AMD GPUs experience worst performance as size increases.
 
 It isn't until many problem sizes are considered that these broader trends are discovered.
@@ -160,7 +160,7 @@ Increasing problem size also hinders the performance in certain circumstances fo
 For example, Figure~\ref{fig:time2}b shows a widening performance gap over each increase in problem size between AMD GPUs and the other devices.
 
 A brief study around the similarities within a dwarf and the differences between them can be presented based on the presented runtime results.
-Asanovi\'{c}et al.~\cite{asanovic2006landscape} state that applications from the Spectral Methods dwarf is Memory latency limited,indeed if we examine {\tt dwt} and {\tt fft} -- the applications which represent Spectral Methods -- in Figure~\ref{fig:time}d andFigure~\ref{fig:time}e respectively, we see that in the medium problem sizes the execution times match the higher memory latency of the L3 cache of CPU devices relative to the GPU counterparts.
+Asanovi\'{c} et al.~\cite{asanovic2006landscape} state that applications from the Spectral Methods dwarf is Memory latency limited,indeed if we examine {\tt dwt} and {\tt fft} -- the applications which represent Spectral Methods -- in Figure~\ref{fig:time}d andFigure~\ref{fig:time}e respectively, we see that in the medium problem sizes the execution times match the higher memory latency of the L3 cache of CPU devices relative to the GPU counterparts.
 The trend only increases with problem size, since the large sized problem shows the CPU devices frequently accessing main memory while the GPUs larger memory ensures a lower memory access latency.
 It is expected if had we extended this study to an even larger problem size that would not fit on GPU global memory, much higher perfomance penalties would be experienced over GPU devices, since the PCI-E interconnect has a higher latency than a memory access to main memory from the CPU systems.
 
