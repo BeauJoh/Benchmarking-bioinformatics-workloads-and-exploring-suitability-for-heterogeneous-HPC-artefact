@@ -200,7 +200,7 @@ nw_row    <- plot_grid(plots[[5]], plots[[6]], plots[[7]], plots[[8]], ncol=4,nr
 p <- plot_grid(srad_row,nw_row,#add plots
                legend_generic,#add legend
                ncol = 1, nrow = 3,#specify layout
-               labels = c("(f) srad","(g) nw"),
+               labels = c("(a) srad","(b) nw"),
                label_x = c(.01,.01 ), #adjust x offset of each row label
                label_y = c(1.0 ,1.06), #adjust y offset of each row label
                rel_heights=c(1,1,.05))#the legend needs much less space
