@@ -4,15 +4,24 @@
 We first present execution time measurements for each benchmark, starting with the Cyclic Redundancy Check {\tt crc} benchmark which represents the Combinational Logic dwarf.
 
 \newcommand{\plotwidth}{0.24\textwidth}
+%\begin{figure*}[t]
+%	\centering
+%	\includegraphics[width=\plotwidth]{figures/time-results/generate_crc_tiny_boxplot_knl-1}
+%	\includegraphics[width=\plotwidth]{figures/time-results/generate_crc_small_boxplot_knl-1}
+%	\includegraphics[width=\plotwidth]{figures/time-results/generate_crc_medium_boxplot_knl-1}
+%	\includegraphics[width=\plotwidth]{figures/time-results/generate_crc_large_boxplot_knl-1}
+%	\caption{Kernel execution times for the {\bf crc} benchmark on different hardware platforms, including KNL}
+%	\label{fig:time-crc}
+%\end{figure*}
+
 \begin{figure*}[t]
 	\centering
-	\includegraphics[width=\plotwidth]{figures/time-results/generate_crc_tiny_boxplot_knl-1}
-	\includegraphics[width=\plotwidth]{figures/time-results/generate_crc_small_boxplot_knl-1}
-	\includegraphics[width=\plotwidth]{figures/time-results/generate_crc_medium_boxplot_knl-1}
-	\includegraphics[width=\plotwidth]{figures/time-results/generate_crc_large_boxplot_knl-1}
-	\caption{Kernel execution times for the {\bf crc} benchmark on different hardware platforms, including KNL}
+	\includegraphics[width=\textwidth,keepaspectratio]{figures/new-time-results/generate_crc_row_bandwplot}
+	\caption{Kernel execution times for the {\bf crc} benchmark on different hardware platforms}
 	\label{fig:time-crc}
 \end{figure*}
+
+
 
 Figure~\ref{fig:time-crc} shows the execution times for the {\tt crc} benchmark over 50 iterations on each of the target architectures, including the KNL.
 Execution times are lowest on CPU-type architectures, probably due to the low floating-point intensity of the CRC computation~\cite[Ch. 6]{joshi2016thesis}.
@@ -31,69 +40,90 @@ Figure~\ref{fig:time-dwt} ({\tt dwt}) and Figure~\ref{fig:time-fft} ({\tt fft}) 
 Figure~\ref{fig:time-gem} ({\tt gem}) represents N-Body Methods, 
 and Figure~\ref{fig:time-srad} ({\tt srad}) represents the Structured Grid dwarf.
 
-\captionsetup[subfigure]{justification=raggedright,singlelinecheck=false}
-
 \begin{figure*}
-	\begin{subfigure}{0.09\textwidth}\subcaption[l]{\bf kmeans} \label{fig:time-kmeans} \vspace{5mm}\end{subfigure}
-	\begin{subfigure}{0.9\textwidth}
-		\includegraphics[width=\plotwidth]{figures/time-results/generate_kmeans_no_knl_tiny_boxplot-1}
-		\includegraphics[width=\plotwidth]{figures/time-results/generate_kmeans_no_knl_small_boxplot-1}
-		\includegraphics[width=\plotwidth]{figures/time-results/generate_kmeans_no_knl_medium_boxplot-1}
-		\includegraphics[width=\plotwidth]{figures/time-results/generate_kmeans_no_knl_large_boxplot-1}
-	\end{subfigure}
-
-	\begin{subfigure}{0.09\textwidth}\subcaption[l]{\bf lud} \label{fig:time-lud} \vspace{5mm}\end{subfigure}
-	\begin{subfigure}{0.9\textwidth}
-		\includegraphics[width=\plotwidth]{figures/time-results/generate_lud_tiny_boxplot-1}
-		\includegraphics[width=\plotwidth]{figures/time-results/generate_lud_small_boxplot-1}
-		\includegraphics[width=\plotwidth]{figures/time-results/generate_lud_medium_boxplot-1}
-		\includegraphics[width=\plotwidth]{figures/time-results/generate_lud_large_boxplot-1}
-	\end{subfigure}
-
-	\begin{subfigure}{0.09\textwidth}\subcaption[l]{\bf csr} \label{fig:time-csr} \vspace{5mm}\end{subfigure}
-	\begin{subfigure}{0.9\textwidth}
-		\includegraphics[width=\plotwidth]{figures/time-results/generate_csr_tiny_boxplot-1}
-		\includegraphics[width=\plotwidth]{figures/time-results/generate_csr_small_boxplot-1}
-		\includegraphics[width=\plotwidth]{figures/time-results/generate_csr_medium_boxplot-1}
-		\includegraphics[width=\plotwidth]{figures/time-results/generate_csr_large_boxplot-1}
-	\end{subfigure}
-	
-	\begin{subfigure}{0.09\textwidth}\subcaption[l]{\bf dwt} \label{fig:time-dwt} \vspace{5mm}\end{subfigure}
-	\begin{subfigure}{0.9\textwidth}
-		\includegraphics[width=\plotwidth]{figures/time-results/generate_dwt_tiny_boxplot-1}
-		\includegraphics[width=\plotwidth]{figures/time-results/generate_dwt_small_boxplot-1}
-		\includegraphics[width=\plotwidth]{figures/time-results/generate_dwt_medium_boxplot-1}
-		\includegraphics[width=\plotwidth]{figures/time-results/generate_dwt_large_boxplot-1}
-	\end{subfigure}
-
-	\begin{subfigure}{0.09\textwidth}\subcaption[l]{\bf fft} \label{fig:time-fft} \vspace{5mm}\end{subfigure}
-	\begin{subfigure}{0.9\textwidth}
-		\includegraphics[width=\plotwidth]{figures/time-results/generate_fft_tiny_boxplot-1}
-		\includegraphics[width=\plotwidth]{figures/time-results/generate_fft_small_boxplot-1}
-		\includegraphics[width=\plotwidth]{figures/time-results/generate_fft_medium_boxplot-1}
-		\includegraphics[width=\plotwidth]{figures/time-results/generate_fft_large_boxplot-1}
-	\end{subfigure}
-    \caption{Benchmark kernel execution times on different hardware platforms}\label{fig:time}
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio]{figures/new-time-results/generate_main_4x5_bandwplot}
+    \caption{Benchmark kernel execution times on different hardware platforms}
+    \label{fig:time}
 \end{figure*}
 
 \begin{figure*}[t]
-	\begin{subfigure}{0.09\textwidth}\subcaption[l]{\bf gem} \label{fig:time-gem} \vspace{5mm}\end{subfigure}
-	\begin{subfigure}{0.9\textwidth}
-		\includegraphics[width=\plotwidth]{figures/time-results/generate_gem_tiny_boxplot-1}
-		\includegraphics[width=\plotwidth]{figures/time-results/generate_gem_small_boxplot-1}
-		\includegraphics[width=\plotwidth]{figures/time-results/generate_gem_medium_boxplot-1}
-		\includegraphics[width=\plotwidth]{figures/time-results/generate_gem_large_boxplot-1}
-		\end{subfigure}
-
-	\begin{subfigure}{0.09\textwidth}\subcaption[l]{\bf srad} \label{fig:time-srad} \vspace{5mm}\end{subfigure}
-	\begin{subfigure}{0.9\textwidth}
-		\includegraphics[width=\plotwidth]{figures/time-results/generate_srad_tiny_boxplot-1}
-		\includegraphics[width=\plotwidth]{figures/time-results/generate_srad_small_boxplot-1}
-		\includegraphics[width=\plotwidth]{figures/time-results/generate_srad_medium_boxplot-1}
-		\includegraphics[width=\plotwidth]{figures/time-results/generate_srad_large_boxplot-1}
-	\end{subfigure}
-    \caption{Benchmark kernel execution times on different hardware platforms (continued)}\label{fig:time2}
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio]{figures/new-time-results/generate_main_4x2_bandwplot}
+    \caption{Benchmark kernel execution times on different hardware platforms (continued)}
+    \label{fig:time2}
 \end{figure*}
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio]{figures/new-time-results/generate_main_2x3_bandwplot}
+    \caption{Smaller Benchmark kernel execution times on different hardware platforms}
+    \label{fig:time3}
+\end{figure*}
+
+%\captionsetup[subfigure]{justification=raggedright,singlelinecheck=false}
+%
+%\begin{figure*}
+%	\begin{subfigure}{0.09\textwidth}\subcaption[l]{\bf kmeans} \label{fig:time-kmeans} \vspace{5mm}\end{subfigure}
+%	\begin{subfigure}{0.9\textwidth}
+%		\includegraphics[width=\plotwidth]{figures/time-results/generate_kmeans_no_knl_tiny_boxplot-1}
+%		\includegraphics[width=\plotwidth]{figures/time-results/generate_kmeans_no_knl_small_boxplot-1}
+%		\includegraphics[width=\plotwidth]{figures/time-results/generate_kmeans_no_knl_medium_boxplot-1}
+%		\includegraphics[width=\plotwidth]{figures/time-results/generate_kmeans_no_knl_large_boxplot-1}
+%	\end{subfigure}
+%
+%	\begin{subfigure}{0.09\textwidth}\subcaption[l]{\bf lud} \label{fig:time-lud} \vspace{5mm}\end{subfigure}
+%	\begin{subfigure}{0.9\textwidth}
+%		\includegraphics[width=\plotwidth]{figures/time-results/generate_lud_tiny_boxplot-1}
+%		\includegraphics[width=\plotwidth]{figures/time-results/generate_lud_small_boxplot-1}
+%		\includegraphics[width=\plotwidth]{figures/time-results/generate_lud_medium_boxplot-1}
+%		\includegraphics[width=\plotwidth]{figures/time-results/generate_lud_large_boxplot-1}
+%	\end{subfigure}
+%
+%	\begin{subfigure}{0.09\textwidth}\subcaption[l]{\bf csr} \label{fig:time-csr} \vspace{5mm}\end{subfigure}
+%	\begin{subfigure}{0.9\textwidth}
+%		\includegraphics[width=\plotwidth]{figures/time-results/generate_csr_tiny_boxplot-1}
+%		\includegraphics[width=\plotwidth]{figures/time-results/generate_csr_small_boxplot-1}
+%		\includegraphics[width=\plotwidth]{figures/time-results/generate_csr_medium_boxplot-1}
+%		\includegraphics[width=\plotwidth]{figures/time-results/generate_csr_large_boxplot-1}
+%	\end{subfigure}
+%	
+%	\begin{subfigure}{0.09\textwidth}\subcaption[l]{\bf dwt} \label{fig:time-dwt} \vspace{5mm}\end{subfigure}
+%	\begin{subfigure}{0.9\textwidth}
+%		\includegraphics[width=\plotwidth]{figures/time-results/generate_dwt_tiny_boxplot-1}
+%		\includegraphics[width=\plotwidth]{figures/time-results/generate_dwt_small_boxplot-1}
+%		\includegraphics[width=\plotwidth]{figures/time-results/generate_dwt_medium_boxplot-1}
+%		\includegraphics[width=\plotwidth]{figures/time-results/generate_dwt_large_boxplot-1}
+%	\end{subfigure}
+%
+%	\begin{subfigure}{0.09\textwidth}\subcaption[l]{\bf fft} \label{fig:time-fft} \vspace{5mm}\end{subfigure}
+%	\begin{subfigure}{0.9\textwidth}
+%		\includegraphics[width=\plotwidth]{figures/time-results/generate_fft_tiny_boxplot-1}
+%		\includegraphics[width=\plotwidth]{figures/time-results/generate_fft_small_boxplot-1}
+%		\includegraphics[width=\plotwidth]{figures/time-results/generate_fft_medium_boxplot-1}
+%		\includegraphics[width=\plotwidth]{figures/time-results/generate_fft_large_boxplot-1}
+%	\end{subfigure}
+%    \caption{Benchmark kernel execution times on different hardware platforms}\label{fig:time}
+%\end{figure*}
+%
+%\begin{figure*}[t]
+%	\begin{subfigure}{0.09\textwidth}\subcaption[l]{\bf gem} \label{fig:time-gem} \vspace{5mm}\end{subfigure}
+%	\begin{subfigure}{0.9\textwidth}
+%		\includegraphics[width=\plotwidth]{figures/time-results/generate_gem_tiny_boxplot-1}
+%		\includegraphics[width=\plotwidth]{figures/time-results/generate_gem_small_boxplot-1}
+%		\includegraphics[width=\plotwidth]{figures/time-results/generate_gem_medium_boxplot-1}
+%		\includegraphics[width=\plotwidth]{figures/time-results/generate_gem_large_boxplot-1}
+%		\end{subfigure}
+%
+%	\begin{subfigure}{0.09\textwidth}\subcaption[l]{\bf srad} \label{fig:time-srad} \vspace{5mm}\end{subfigure}
+%	\begin{subfigure}{0.9\textwidth}
+%		\includegraphics[width=\plotwidth]{figures/time-results/generate_srad_tiny_boxplot-1}
+%		\includegraphics[width=\plotwidth]{figures/time-results/generate_srad_small_boxplot-1}
+%		\includegraphics[width=\plotwidth]{figures/time-results/generate_srad_medium_boxplot-1}
+%		\includegraphics[width=\plotwidth]{figures/time-results/generate_srad_large_boxplot-1}
+%	\end{subfigure}
+%    \caption{Benchmark kernel execution times on different hardware platforms (continued)}\label{fig:time2}
+%\end{figure*}
 
 For most benchmarks, the variance in execution times is much greater on the CPU platforms than on GPUs.
 \todo[inline]{Why? Possibly due to cycles run at lower clock speeds? Does clock throttling affect GPU as well?}
