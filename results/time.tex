@@ -39,8 +39,8 @@ Figure~\ref{fig:time}b ({\tt lud}) represents the Dense Linear Algebra dwarf,
 Figure~\ref{fig:time}c ({\tt csr}) represents Sparse Linear Algebra, 
 Figure~\ref{fig:time}d ({\tt dwt}) and Figure~\ref{fig:time}e ({\tt fft}) represent Spectral Methods,
 Figure~\ref{fig:time2}a ({\tt srad}) represents the Structured Grid dwarf and Figure~\ref{fig:time2}b ({\tt nw}) represents Dynamic Programming.
-Finally, due to page limit constraints, Figure~\ref{fig:time3} presents results for tiny and small problem sizes.
-\todo{Why due to page limit constraints? This figure is stretched out so it takes up twice the room it needs to.}
+
+Finally, Figure~\ref{fig:time3} presents results for the 3 applications with restricted problem sizes and only one problem size is shown.
 The N-body Methods dwarf is represented by ({\tt gem}) and the results are shown in Figure~\ref{fig:time3}a, the Backtrack \& Branch and Bound dwarf is represented by the ({\tt nqueens}) application in Figure~\ref{fig:time3}b and ({\tt hmm}) results in Figure~\ref{fig:time3}c represent the Graphical Models dwarf.
 
 
@@ -65,77 +65,8 @@ The N-body Methods dwarf is represented by ({\tt gem}) and the results are shown
     \label{fig:time3}
 \end{figure*}
 
-%\captionsetup[subfigure]{justification=raggedright,singlelinecheck=false}
-%
-%\begin{figure*}
-%	\begin{subfigure}{0.09\textwidth}\subcaption[l]{\bf kmeans} \label{fig:time-kmeans} \vspace{5mm}\end{subfigure}
-%	\begin{subfigure}{0.9\textwidth}
-%		\includegraphics[width=\plotwidth]{figures/time-results/generate_kmeans_no_knl_tiny_boxplot-1}
-%		\includegraphics[width=\plotwidth]{figures/time-results/generate_kmeans_no_knl_small_boxplot-1}
-%		\includegraphics[width=\plotwidth]{figures/time-results/generate_kmeans_no_knl_medium_boxplot-1}
-%		\includegraphics[width=\plotwidth]{figures/time-results/generate_kmeans_no_knl_large_boxplot-1}
-%	\end{subfigure}
-%
-%	\begin{subfigure}{0.09\textwidth}\subcaption[l]{\bf lud} \label{fig:time-lud} \vspace{5mm}\end{subfigure}
-%	\begin{subfigure}{0.9\textwidth}
-%		\includegraphics[width=\plotwidth]{figures/time-results/generate_lud_tiny_boxplot-1}
-%		\includegraphics[width=\plotwidth]{figures/time-results/generate_lud_small_boxplot-1}
-%		\includegraphics[width=\plotwidth]{figures/time-results/generate_lud_medium_boxplot-1}
-%		\includegraphics[width=\plotwidth]{figures/time-results/generate_lud_large_boxplot-1}
-%	\end{subfigure}
-%
-%	\begin{subfigure}{0.09\textwidth}\subcaption[l]{\bf csr} \label{fig:time-csr} \vspace{5mm}\end{subfigure}
-%	\begin{subfigure}{0.9\textwidth}
-%		\includegraphics[width=\plotwidth]{figures/time-results/generate_csr_tiny_boxplot-1}
-%		\includegraphics[width=\plotwidth]{figures/time-results/generate_csr_small_boxplot-1}
-%		\includegraphics[width=\plotwidth]{figures/time-results/generate_csr_medium_boxplot-1}
-%		\includegraphics[width=\plotwidth]{figures/time-results/generate_csr_large_boxplot-1}
-%	\end{subfigure}
-%	
-%	\begin{subfigure}{0.09\textwidth}\subcaption[l]{\bf dwt} \label{fig:time-dwt} \vspace{5mm}\end{subfigure}
-%	\begin{subfigure}{0.9\textwidth}
-%		\includegraphics[width=\plotwidth]{figures/time-results/generate_dwt_tiny_boxplot-1}
-%		\includegraphics[width=\plotwidth]{figures/time-results/generate_dwt_small_boxplot-1}
-%		\includegraphics[width=\plotwidth]{figures/time-results/generate_dwt_medium_boxplot-1}
-%		\includegraphics[width=\plotwidth]{figures/time-results/generate_dwt_large_boxplot-1}
-%	\end{subfigure}
-%
-%	\begin{subfigure}{0.09\textwidth}\subcaption[l]{\bf fft} \label{fig:time-fft} \vspace{5mm}\end{subfigure}
-%	\begin{subfigure}{0.9\textwidth}
-%		\includegraphics[width=\plotwidth]{figures/time-results/generate_fft_tiny_boxplot-1}
-%		\includegraphics[width=\plotwidth]{figures/time-results/generate_fft_small_boxplot-1}
-%		\includegraphics[width=\plotwidth]{figures/time-results/generate_fft_medium_boxplot-1}
-%		\includegraphics[width=\plotwidth]{figures/time-results/generate_fft_large_boxplot-1}
-%	\end{subfigure}
-%    \caption{Benchmark kernel execution times on different hardware platforms}\label{fig:time}
-%\end{figure*}
-%
-%\begin{figure*}[t]
-%	\begin{subfigure}{0.09\textwidth}\subcaption[l]{\bf gem} \label{fig:time-gem} \vspace{5mm}\end{subfigure}
-%	\begin{subfigure}{0.9\textwidth}
-%		\includegraphics[width=\plotwidth]{figures/time-results/generate_gem_tiny_boxplot-1}
-%		\includegraphics[width=\plotwidth]{figures/time-results/generate_gem_small_boxplot-1}
-%		\includegraphics[width=\plotwidth]{figures/time-results/generate_gem_medium_boxplot-1}
-%		\includegraphics[width=\plotwidth]{figures/time-results/generate_gem_large_boxplot-1}
-%		\end{subfigure}
-%
-%	\begin{subfigure}{0.09\textwidth}\subcaption[l]{\bf srad} \label{fig:time-srad} \vspace{5mm}\end{subfigure}
-%	\begin{subfigure}{0.9\textwidth}
-%		\includegraphics[width=\plotwidth]{figures/time-results/generate_srad_tiny_boxplot-1}
-%		\includegraphics[width=\plotwidth]{figures/time-results/generate_srad_small_boxplot-1}
-%		\includegraphics[width=\plotwidth]{figures/time-results/generate_srad_medium_boxplot-1}
-%		\includegraphics[width=\plotwidth]{figures/time-results/generate_srad_large_boxplot-1}
-%	\end{subfigure}
-%    \caption{Benchmark kernel execution times on different hardware platforms (continued)}\label{fig:time2}
-%\end{figure*}
 
-
-The primary purpose of including these time results is to demonstrate the benefits of the extensions made to the OpenDwarfs Benchmark suite.
-The use of LibSciBench allowed high resolution measurements -- and over multiple code regions -- of time data allowed for reproducibility amongst the presented results.
-Presented are 11 unique applications which show portability of the OpenCL codes, namely, that they can run over a range of devices -- 15 devices and four different types of accelerator.
-As such, application code changes required to achieve portability between all the devices is justified.
-Finally, extending all applications to operate over multiple problem sizes adds depth to the accelerator analysis -- this is in contrast to the fixed application problem sizes in most benchmark suites.
-Examining the transition from tiny to large problem sizes in Figure~\ref{fig:time2}a shows the performance gap between CPU and GPU architectures widening for {\tt srad} -- indicating codes representative of structured grid dwarfs are well suited to GPUs.
+Examining the transition from tiny to large problem sizes (from left to right) in Figure~\ref{fig:time2}a shows the performance gap between CPU and GPU architectures widening for {\tt srad} -- indicating codes representative of structured grid dwarfs are well suited to GPUs.
 
 In contrast, Figure~\ref{fig:time2}b shows Dynamic Programming problems have performance results tied to micro-architecture or OpenCL runtime support that are ill-classified by solely examining accelerator type.
 For instance, the Intel CPUs and NVIDIA GPUs experience comparably over all problem sizes, whereas all AMD GPUs experience worst performance as size increases.
