@@ -73,8 +73,7 @@ Examining the transition from tiny to large problem sizes (from left to right) i
 In contrast, Figure~\ref{fig:time2}b shows Dynamic Programming problems have performance results tied to micro-architecture or OpenCL runtime support and can not be explained solely by considering accelerator type.
 For instance, the Intel CPUs and NVIDIA GPUs perform comparably over all problem sizes, whereas all AMD GPUs exhibit worse performance as size increases.
 
-For most benchmarks, the variance in execution times is much greater for devices with a lower clock frequency, regardless of accelerator type.
-\todo{Is this really true? The *absolute* (and therefore visible) variance is certainly greater, but what is the relative variance?}
+For most benchmarks, the coefficient of variation in execution times is much greater for devices with a lower clock frequency, regardless of accelerator type.
 While execution time increases with problem size for all benchmarks and platforms, the modern GPUs (Titan X, GTX1080, GTX1080Ti, R9 Fury X and RX 480) performed relatively better for large problem sizes, possibly due to their greater second-level cache size compared to the other platforms.
 A notable exception is {\tt k-means} for which CPU execution times were comparable to GPU, which reflects the relatively low ratio of floating-point to memory operations in the benchmark.
 

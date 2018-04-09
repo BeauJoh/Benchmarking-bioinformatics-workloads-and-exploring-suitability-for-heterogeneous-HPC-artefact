@@ -11,8 +11,9 @@ The Scalable Heterogeneous Computing benchmark suite (SHOC)~\cite{lopez2015exami
 SHOC supports multiple programming models including OpenCL, CUDA and OpenACC, with benchmarks ranging from targeted tests of particular low-level hardware features to a handful of application kernels.
 Sun et al.~\cite{sun2016} propose Hetero-Mark, a Benchmark Suite for CPU-GPU Collaborative Computing, which has five benchmark applications each implemented in HCC -- which compiles to OpenCL, HIP -- for a CUDA and Radeon Open Compute back-end, and a CUDA version.
 Meanwhile, Chai by G{\'o}mez-Luna et al.~\cite{gomez2017chai}, offers 15 applications in 7 different implementations with the focus on supporting integrated architectures.
-These benchmark suites focus on comparison between languages, environments and the corresponding support on heterogeneous architectures; whereas our work focuses on benchmarking for device specific performance limitations by examining the problem sizes where these limitations occur -- this is largely ignored by benchmarking suites with fixed problem sizes.
-\todo{Is different problem size the only point of difference between Ex. OpenDwarfs and these suites? (This sounds rather weak.)}
+
+These benchmark suites focus on comparison between languages and environments; whereas our work focuses on benchmarking for device specific performance limitations, for example, by examining the problem sizes where these limitations occur -- this is largely ignored by benchmarking suites with fixed problem sizes.
+
 Additionally, our enhanced OpenDwarfs benchmark suite aims to cover a wider range of application patterns by focusing exclusively on OpenCL using higher-level benchmarks.
 
 \citet{barnes2016evaluating} collected a representative set of applications from the current NERSC workload to guide optimization for Knights Landing in the Cori supercomputer.
