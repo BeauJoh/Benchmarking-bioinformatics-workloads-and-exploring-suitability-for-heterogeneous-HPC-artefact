@@ -1,4 +1,13 @@
-\documentclass[sigconf,preprint,9pt]{acmart}
+\documentclass[sigconf]{acmart}
+
+%remove acm stuff for arXiv.org
+%\makeatletter
+%\renewcommand\@formatdoi[1]{\ignorespaces}
+%\makeatother
+%\settopmatter{printacmref=false} % Removes citation information below abstract
+%\renewcommand\footnotetextcopyrightpermission[1]{} % removes footnote with conference information in first column
+%\pagestyle{plain} % removes running headers
+%\acmDOI{}
 
 % Copyright
 %\setcopyright{none}
@@ -17,7 +26,7 @@
 \acmISBN{123-4567-24-567/08/06}
 
 %Conference
-\acmConference[ICPP '18]{47th International Workshop on Parallel Processing}{13-16 August, 2018}{University of Oregon, Eugene, Oregon, USA.} 
+\acmConference[ICPP '18]{47th International Workshop on Parallel Processing}{13-16 August, 2018}{, Eugene, Oregon, USA.} 
 \acmYear{2018}
 \copyrightyear{2018}
 
@@ -123,7 +132,6 @@
 \subsection{Software}\subfile{experimental_setup/software}
 \subsection{Measurements}\subfile{experimental_setup/measurements}
 \subsection{Setting Sizes}\subfile{experimental_setup/setting_sizes}
-
 
 \section{Results}\label{sec:results}
 
