@@ -2,6 +2,7 @@
 library(ggplot2)
 library(cowplot)
 library(plyr)
+library(viridis)
 
 #source("load_data.R")
 load('rundata.all.Rda')
@@ -92,7 +93,7 @@ for(a in applications){
 
         pdf(paste('../figures/full_bandw_sep/',a,"_",s,'.pdf',sep=''))
         x <- data.all[data.all$application == a & data.all$size == s,]
-      
+
         #drop phi except for listed applications
         if(drop_phi & a %!in% c("crc")){
             x <- subset(x,device != "Xeon Phi 7210")
@@ -102,13 +103,23 @@ for(a in applications){
             geom_boxplot(outlier.alpha = 0.1,varwidth=TRUE)+
             labs(colour="accelerator type",y='time (ms)',x='')+
             scale_y_continuous(limit = c(0, max(x$total_time*0.001)*1.05)) +
+            scale_color_viridis(discrete=TRUE) + theme_bw() + 
             theme(axis.text.x = element_text(size=10, angle = 45, hjust = 1),
                   title = element_text(size=10, face="bold"),
                   plot.margin = unit(c(0,0,0,0), "cm"))
 
+        #just adjust the size-title since the application row title sits over the top of them
+        s_title <- s
+        if(s == 'tiny' && a == 'kmeans'){
+            s_title <- '                         tiny'
+        }
+        if(s == 'tiny' && a == 'srad'){
+            s_title <- '                   tiny'
+        }
+
         #only include "size" as a title on these applications
         if(a %in% c("crc","kmeans","srad")){
-            p <- p + ggtitle(s)
+            p <- p + ggtitle(s_title)
         }
 
         print(p)
