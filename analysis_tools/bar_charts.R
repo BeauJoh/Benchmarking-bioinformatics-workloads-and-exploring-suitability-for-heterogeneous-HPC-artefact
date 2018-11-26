@@ -113,12 +113,12 @@ for(a in applications){
         if(s == 'tiny' && a == 'kmeans'){
             s_title <- '                         tiny'
         }
-        if(s == 'tiny' && a == 'srad'){
+        if(s == 'tiny' && a == 'fft'){
             s_title <- '                   tiny'
         }
 
         #only include "size" as a title on these applications
-        if(a %in% c("crc","kmeans","srad")){
+        if(a %in% c("crc","kmeans","fft")){
             p <- p + ggtitle(s_title)
         }
 
@@ -180,15 +180,15 @@ csr_row    <- plot_grid(plots[[9]], plots[[10]],plots[[11]],plots[[12]],ncol=4,n
 dwt_row    <- plot_grid(plots[[13]],plots[[14]],plots[[15]],plots[[16]],ncol=4,nrow=1)
 fft_row    <- plot_grid(plots[[17]],plots[[18]],plots[[19]],plots[[20]],ncol=4,nrow=1)
 
-p <- plot_grid(kmeans_row,lud_row,csr_row,dwt_row,fft_row,#add plots
+p <- plot_grid(kmeans_row,lud_row,csr_row,dwt_row,#fft_row,#add plots
                legend_generic,#add legend
-               ncol = 1, nrow = 6,#specify layout
-               labels = c("(a) kmeans","(b) lud","(c) csr", "(d) dwt", "(e) fft"),
-               label_x = c(.001,.01,.01,.01,.012), #adjust x offset of each row label
-               label_y = c(1.0,1.06,1.06,1.06,1.06), #adjust y offset of each row label
-               rel_heights=c(1,1,1,1,1,.05))#the legend needs much less space
+               ncol = 1, nrow = 5,#specify layout
+               labels = c("(a) kmeans","(b) lud","(c) csr", "(d) dwt"),
+               label_x = c(.001,.013,.013,.01), #adjust x offset of each row label
+               label_y = c(1.0,1.06,1.06,1.06), #adjust y offset of each row label
+               rel_heights=c(1,1,1,1,.05))#the legend needs much less space
 
-pdf('../figures/new-time-results/generate_main_4x5_bandwplot.pdf',width=16.6,height=23.4)
+pdf('../figures/new-time-results/generate_main_4x5_bandwplot.pdf',width=16.6,height=18.72)
 print(ggdraw(p))
 dev.off()
 
@@ -208,15 +208,15 @@ plots <- align_plots(plot.srad.tiny  +theme(legend.position = "none"),
 srad_row  <- plot_grid(plots[[1]], plots[[2]], plots[[3]], plots[[4]], ncol=4,nrow=1)
 nw_row    <- plot_grid(plots[[5]], plots[[6]], plots[[7]], plots[[8]], ncol=4,nrow=1)
 
-p <- plot_grid(srad_row,nw_row,#add plots
+p <- plot_grid(fft_row,srad_row,nw_row,#add plots
                legend_generic,#add legend
-               ncol = 1, nrow = 3,#specify layout
-               labels = c("(a) srad","(b) nw"),
-               label_x = c(.01,.01 ), #adjust x offset of each row label
-               label_y = c(1.0 ,1.06), #adjust y offset of each row label
-               rel_heights=c(1,1,.05))#the legend needs much less space
+               ncol = 1, nrow = 4,#specify layout
+               labels = c("(a) fft","(b) srad","(c) nw"),
+               label_x = c(.015,.01,.012), #adjust x offset of each row label
+               label_y = c(1.0,1.06, 1.06), #adjust y offset of each row label
+               rel_heights=c(1,1,1,.05))#the legend needs much less space
 
-pdf('../figures/new-time-results/generate_main_4x2_bandwplot.pdf',width=16.6,height=9.4)
+pdf('../figures/new-time-results/generate_main_4x2_bandwplot.pdf',width=16.6,height=14.04)
 print(ggdraw(p))
 dev.off()
 
