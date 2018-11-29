@@ -75,11 +75,16 @@ RUN make install
 
 # Install R and model dependencies
 RUN apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys E298A3A825C0D65DFD57CBB651716619E084DAB9
-RUN add-apt-repository 'deb [arch=amd64,i386] https://cran.rstudio.com/bin/linux/ubuntu xenial/'
+RUN add-apt-repository 'deb https://cloud.r-project.org/bin/linux/ubuntu cosmic-cran35/'
+RUN add-apt-repository ppa:marutter/rrutter3.5
 RUN apt-get update
-RUN apt-get install --no-install-recommends -y r-base libcurl4-openssl-dev libssl-dev r-cran-rcppeigen liblapack-dev libblas-dev gfortran
+RUN apt-get install -y --no-install-recommends r-base
+RUN apt-get install --no-install-recommends -y libcurl4-openssl-dev libssl-dev liblapack-dev libblas-dev gfortran
 RUN Rscript -e "install.packages('devtools',repos = 'http://cran.us.r-project.org');"
+RUN Rscript -e "devtools::install_github('RcppCore/Rcpp')"
+RUN Rscript -e "devtools::install_github('RcppCore/RcppEigen')"
 RUN Rscript -e "devtools::install_github('imbs-hl/ranger')"
+
 # Install the git-lsf module
 WORKDIR /downloads
 RUN wget https://github.com/git-lfs/git-lfs/releases/download/v2.5.1/git-lfs-linux-amd64-v2.5.1.tar.gz
@@ -104,6 +109,7 @@ RUN Rscript -e "devtools::install_github('tidyverse/magrittr')"
 RUN Rscript -e "devtools::install_github('tidyverse/ggplot2')"
 RUN Rscript -e "devtools::install_github('tidyverse/tidyr')"
 RUN Rscript -e "devtools::install_github('BeauJoh/fmsb')"
+RUN Rscript -e "devtools::install_github('wilkelab/cowplot')"
 
 # Install LetMeKnow
 RUN pip3 install -U 'lmk==0.0.14'
