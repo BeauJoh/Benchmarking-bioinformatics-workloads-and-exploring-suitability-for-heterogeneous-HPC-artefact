@@ -30,7 +30,7 @@ To start the docker image run:
 `docker run --runtime=nvidia -it --mount src=`pwd`,target=/workspace,type=bind -p 8888:8888 --net=host workbook`
 
 And run the codes with:
-`cd /workbook/codes`
+`cd /workspace`
 
 `make`
 

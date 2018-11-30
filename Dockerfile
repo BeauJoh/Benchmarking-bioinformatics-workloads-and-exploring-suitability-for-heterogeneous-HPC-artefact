@@ -81,6 +81,7 @@ RUN apt-get update
 RUN apt-get install -y --no-install-recommends r-base
 RUN apt-get install --no-install-recommends -y libcurl4-openssl-dev libssl-dev liblapack-dev libblas-dev gfortran
 RUN Rscript -e "install.packages('devtools',repos = 'http://cran.us.r-project.org');"
+RUN Rscript -e "install.packages('knitr',repos = 'http://cran.us.r-project.org');"
 RUN Rscript -e "devtools::install_github('RcppCore/Rcpp')"
 RUN Rscript -e "devtools::install_github('RcppCore/RcppEigen')"
 RUN Rscript -e "devtools::install_github('imbs-hl/ranger')"
