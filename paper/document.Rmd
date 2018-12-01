@@ -42,7 +42,7 @@ Having a common back-end in the form of OpenCL allows a direct comparison of ide
 
 In this paper, we present an extended version of the OpenDwarfs benchmark suite, a set of OpenCL benchmarks for heterogeneous computing platforms. [@krommydas2016opendwarfs]
 We added new benchmarks to improve the diversity of the suite, and made a number of modifications aimed at improving the reproducibility and interpretability of results, portability between devices, and flexibility of configuration including problem sizes.
-We report preliminary results for a subset of the enhanced OpenDwarfs suite on a range of platforms consisting of CPU, GPU and MIC devices.
+We report preliminary results on a range of platforms consisting of CPU, GPU and MIC devices for a subset of the enhanced OpenDwarfs suite, focusing on benchmarks of interest in bioinformatics and computational biology applications.
 
 # Enhancing the OpenDwarfs Benchmark Suite
 
@@ -53,10 +53,12 @@ We aim to extend these efforts to achieve a full representation of each dwarf, b
 Marjanovi{\'c} et al. [@marjanovic2016hpc] argue that the selection of problem size for HPC benchmarking critically affects which hardware properties are relevant.
 We have observed this to be true across a wide range of accelerators, therefore we have enhanced the OpenDwarfs benchmark suite to support running different problem sizes for each benchmark.
 To improve reproducibility of results, we also modified each benchmark to execute in a loop for a minimum of two seconds, to ensure that sampling of execution time and performance counters was not significantly affected by operating system noise.
-
+We added new benchmarks for the Spectral Methods dwarf, based on a high-performance FFT benchmark created by Eric Bainville [@bainville2010fft], and a 2-D discrete wavelet transform from the Rodinia suite [@che2009rodinia].
+<!--
 For the Spectral Methods dwarf, the original OpenDwarfs version of the FFT benchmark was complex, with several code paths that were not executed for the default problem size, and returned incorrect results or failures on some combinations of platforms and problem sizes we tested.
 We replaced it with a simpler high-performance FFT benchmark created by Eric Bainville [@bainville2010fft], which worked correctly in all our tests.
 We have also added a 2-D discrete wavelet transform from the Rodinia suite [@che2009rodinia] (with modifications to improve portability), and we plan to add a continuous wavelet transform code.
+-->
 
 To understand benchmark performance, it is useful to be able to collect hardware performance counters associated with each timing segment.
 LibSciBench is a performance measurement tool which allows high precision timing events to be collected for statistical analysis [@hoefler2015scientific].
@@ -258,6 +260,8 @@ Thus it is significantly compute-bound and only one problem size is tested.
 
 The Baum-Welch Algorithm Hidden Markov Model `hmm` benchmark represents the Graphical Models dwarf and did not require additional data sets, however validation of the correctness of results has not occurred apart from over the **tiny** problem size, as such, it is the only size examined in the evaluation.
 
+\todo{How do we verify results for HMM?}
+
 
 <!--
 ### cfd
@@ -293,7 +297,6 @@ The problem size parameters for all benchmarks are presented in Table~\ref{tab:p
 			{\tt srad}            & 80,16      & 128,80 & 1024,336   & 2048,1024\\
 			%{\tt cfd}             & 128        & 1284   & 45056      & 193474
 			{\tt crc}             & 2000       & 16000  & 524000     & 4194304\\
-			\todo{Replace if new results are available}
             %{\tt bfs}             & 650        & 5376   & 172032     & 1048576\\
             {\tt nw}              & 48         & 176    & 1008       & 4096\\
             {\tt gem}             & 4TUT       & 2D3V   & nucleosome & 1KX5\\
@@ -326,7 +329,6 @@ Where $\Phi$ is substituted as the argument for each benchmark, it is taken as t
 			{\tt srad}& $\Phi_1$ $\Phi_2$ {\tt 0 127 0 127 0.5 1}\\
 			{\tt crc}&  {\tt -i 1000\_}$\Phi${\tt.txt}\\
 			%{\tt cfd} & $\Phi${\tt.dat}\\
-			\todo{Replace if new results are available}
             %{\tt bfs}&  {\tt 'graph}$\Phi${\tt.txt'}\\
             {\tt nw}&  $\Phi${ 10}\\
             {\tt gem} & $\Phi$ {80 1 0}\\
@@ -340,6 +342,8 @@ Where $\Phi$ is substituted as the argument for each benchmark, it is taken as t
 		\label{tab:program_arguments}
 	\end{threeparttable}
 \end{table}
+
+\todo{Include bfs if new results are available}
 
 # Results
 
