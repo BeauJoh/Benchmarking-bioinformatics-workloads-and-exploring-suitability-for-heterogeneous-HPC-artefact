@@ -119,7 +119,7 @@ plot_kiviat_with_labels_normalize <- function(x,labels,nv,colour,colour_spokes,a
         }
         normalize <- function(x,nv) {
             if(max(nv) - min(nv) == 0){
-                return(rep(1,length(nv)))
+                return(x) 
             }
             return ((x - min(nv)) / (max(nv) - min(nv)))
         }
@@ -127,7 +127,6 @@ plot_kiviat_with_labels_normalize <- function(x,labels,nv,colour,colour_spokes,a
         for (i in seq(1,ncol(x))){
             x[,i] <- normalize(x[,i],nv[,i])
         }
-
     colnames(x) <- labels
     #colnames(x)[2] <- "Workitems"
     #colnames(x)[3] <- "Total Memory\nFootprint"
