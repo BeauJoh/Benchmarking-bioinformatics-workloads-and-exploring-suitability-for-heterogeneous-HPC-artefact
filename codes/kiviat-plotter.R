@@ -3,6 +3,7 @@
 #git clone https://github.com/BeauJoh/fmsb
 #R CMD INSTALL fmsb
 library(fmsb)
+library(viridis)
 
 #x <- reorder_and_subset(featdata.kmeans,size="tiny",kernel="kmeansPoint")
 #x <- data.frame(t(colMeans(x)))
@@ -165,8 +166,8 @@ plot_kiviat_with_labels_normalize <- function(x,labels,nv,colour,colour_spokes,a
         legend(x=0.95, y=1.3, legend = c('tiny','small','medium','large'), bty = "n", pch=20, col=colour_border, text.col = "grey25", cex=0.8, pt.cex=1.5)
 
     }else if(all_kernels){
-
-        colour_border=c(rgb(0.2,0.5,0.5,0.9), rgb(0.8,0.2,0.5,0.9))# , rgb(0.7,0.5,0.1,0.9),rgb(0.0,0.0,0.0,0.9))
+	# generate as many colours as there are kernels
+	colour_border=viridis(length(kernel_names),end=0.90)
         #remove margins and plot
         par(mar=c(0,1,0,1),plt=c(0.0,1.0,0.0,1.0))
         radarchart(x_rad,axistype=1,

@@ -111,6 +111,7 @@ RUN Rscript -e "devtools::install_github('tidyverse/ggplot2')"
 RUN Rscript -e "devtools::install_github('tidyverse/tidyr')"
 RUN Rscript -e "devtools::install_github('BeauJoh/fmsb')"
 RUN Rscript -e "devtools::install_github('wilkelab/cowplot')"
+RUN Rscript -e "devtools::install_github('cran/viridis')"
 
 # Install LetMeKnow
 RUN pip3 install -U 'lmk==0.0.14'
