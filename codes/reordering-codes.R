@@ -2,6 +2,7 @@
 #source('./analysis_tools/load_aiwc_dataframes.R')
 
 featdata_labels <- c("Opcode",
+		     "Imbalance",
                      "Granularity",
                      "Barriers Per Instruction",
                      "Instructions Per Operand",
@@ -40,6 +41,7 @@ reorder_and_subset <- function(featdata,size,kernel){
     k <- kernel
     x <- data.frame(opcode = subset(df,
                                     size==s & kernel==k & metric=="opcode")$count,
+                    imbalance = (subset(df, size==s & kernel == k & metric=="max instructions executed by a work-item")$count -  subset(df, size==s & kernel == k & metric=="min instructions executed by a work-item")$count) / subset(df, size==s & kernel == k & metric=="total instruction count")$count,
                     granularity = subset(df,
                                     size==s & kernel==k & metric=="granularity")$count,
                     barriers_per_instruction = subset(df,
@@ -107,6 +109,7 @@ reorder_and_subset <- function(featdata,size,kernel){
 reorder_features <- function(featdata){
     df <- featdata
     x <- data.frame(opcode = subset(df,metric=="opcode")$count,
+		    imbalance = (subset(df, metric=="max instructions executed by a work-item")$count -  subset(df, metric=="min instructions executed by a work-item")$count) / subset(df, metric=="total instruction count")$count,
                     granularity = subset(df,metric=="granularity")$count,
                     barriers_per_instruction = subset(df,metric=="barriers per instruction")$count,
                     instructions_per_operand = subset(df,metric=="instructions per operand")$count,

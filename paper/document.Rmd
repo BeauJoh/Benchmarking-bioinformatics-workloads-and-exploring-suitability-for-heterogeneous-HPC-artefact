@@ -491,6 +491,14 @@ In future this will be addressed by balancing the amount of computation required
 All the benchmarks use more energy on the CPU, with the exception of `crc` which as previously mentioned has low floating-point intensity and so is not able to make use of the GPU's greater floating-point capability. 
 Variance with respect to energy usage is larger on the CPU, which is consistent with the execution time results.
 
+## AIWC
+
+The **imbalance** shows the distribution of work between threads.
+It is computed as $\frac{$max instructions executed by a work-item $-$min instructions executed by a work-item$}{$total instruction count$}$.
+
+
+## Hardware Counters
+
 # Conclusions
 
 We have performed essential curation of the OpenDwarfs benchmark suite.
