@@ -1,0 +1,46 @@
+# Sysname : Linux
+# Nodename: gpgpu
+# Release : 4.4.0-139-generic
+# Version : #165-Ubuntu SMP Wed Oct 24 10:58:50 UTC 2018
+# Machine : x86_64
+# Execution time and date (UTC): Tue Dec  4 01:22:55 2018
+# Execution time and date (local): Tue Dec  4 01:22:55 2018
+# Reported time measurements are in microseconds
+# pretty output format
+       region       id         time     overhead 
+ kernel_creation          0 4550.752441            0 
+ device_side_buffer_setup          0 10.113525            0 
+ host_side_setup          0 119.831543            0 
+ device_side_buffer_setup          0 6.456787            0 
+ host_side_setup          0 12.500000            0 
+ device_side_buffer_setup          0 4.505371            0 
+ host_side_setup          0 54.798584            0 
+ device_side_buffer_setup          0 22.153076            0 
+ host_side_setup          0 0.284668            0 
+ device_side_buffer_setup          0 8.016357            0 
+ host_side_setup          0 9.015137            0 
+ device_side_h2d_copy          0 884.175049            0 
+ device_side_buffer_setup          0 4.119141            0 
+ host_side_setup          0 47.170898            0 
+ host_side_setup          0 78.980469            0 
+ setting_hSetZeroKernel_arguments          0 0.724121            0 
+ hSetZeroKernel_kernel          0 192.580322            0 
+ setting_hSetZeroKernel_arguments          0 0.093750            0 
+ hSetZeroKernel_kernel          0 144.273438            0 
+ setting_hSetZeroKernel_arguments          0 0.116455            0 
+ hSetZeroKernel_kernel          0 239.968506            0 
+ setting_hSetZeroKernel_arguments          0 0.106934            0 
+ hSetZeroKernel_kernel          0 212.451416            0 
+ setting_hSetZeroKernel_arguments          0 0.094727            0 
+ hSetZeroKernel_kernel          0 212.308105            0 
+ setting_hSetZeroKernel_arguments          0 0.143799            0 
+ hSetZeroKernel_kernel          0 104.971680            0 
+ setting_hSetZeroKernel_arguments          0 0.111084            0 
+ hSetZeroKernel_kernel          0 103.444824            0 
+ device_side_h2d_copy          0 144.360596            0 
+ setting_hMatchStringKernel_arguments          0 0.390137            0 
+ hMatchStringKernel_kernel          0 4669.075684            0 
+ setting_hTraceBackKernel_arguments          0 0.231445            0 
+ hTraceBackKernel          0 953.197754            0 
+ device_side_d2h_copy          0 148.470947            0 
+# Runtime: 0.013321 s (overhead: 0.000000 %) 35 records
