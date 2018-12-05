@@ -457,13 +457,12 @@ GPUs exhibit lower execution times than CPUs, which would be expected in a memor
 
 \todo[inline]{The remaining applications could be examined in terms of dwarf}
 
-## Architecture-Independent Workload Characterization
+### Architecture-Independent Workload Characterization
 
 To better understand the performance results for selected bioinformatics benchmarks, we analysed the codes using the Architecture Independent Workload Characterization tool [@johnston2018aiwc].
 AIWC simulates the execution of OpenCL kernels to collect architecture-independent features such as branch and memory entropy and instruction complexity.
-For multi-threaded or parallel workloads it collects metrics that indicate both instruction and thread-level parallelism.
-Examples include coarse indications of parallelism by counting the number of work-items and barriers encountered, which in turn, can inform the developer on the amount of parallelism a given implementation of an algorithm achieves.
-Additionally, distribution statistics around Instructions To Barrier (ITB), and Instructions per Thread (IPT) can be used to indicate both irregular workloads and load imbalance.
+For multi-threaded or parallel workloads it collects metrics for both instruction and thread-level parallelism.
+Available parallelism is measured by the number of work-items and barriers encountered, while load imbalance is measured by differences in instructions per thread.
 
 <!--
 The **imbalance** shows the distribution of work between threads.
