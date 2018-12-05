@@ -459,7 +459,7 @@ GPUs exhibit lower execution times than CPUs, which would be expected in a memor
 
 ## Architecture-Independent Workload Characterization
 
-To better understand the performance results for selected bioinformatics benchmarks, we analyzed the codes using the Architecture Independent Workload Characterization tool [@johnston2018aiwc].
+To better understand the performance results for selected bioinformatics benchmarks, we analysed the codes using the Architecture Independent Workload Characterization tool [@johnston2018aiwc].
 AIWC simulates the execution of OpenCL kernels to collect architecture-independent features such as branch and memory entropy and instruction complexity.
 For multi-threaded or parallel workloads it collects metrics that indicate both instruction and thread-level parallelism.
 Examples include coarse indications of parallelism by counting the number of work-items and barriers encountered, which in turn, can inform the developer on the amount of parallelism a given implementation of an algorithm achieves.
