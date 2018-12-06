@@ -103,7 +103,7 @@ plot_kiviat_with_labels_old <- function(x,labels,n,m,colour){
                #pfcol=colour,pdensity=30)#blob colour and fill line density
 }
 
-plot_kiviat_with_labels_normalize <- function(x,labels,nv,colour,colour_spokes,all_sizes,all_kernels,kernel_names){
+plot_kiviat_with_labels_normalize <- function(x,labels,nv,colour,colour_spokes,all_sizes,all_kernels,kernel_names,extra_legend_offset){
     #x[1] <- x[1]/o
     #x[2] <- x[2]/n
     #x[3] <- x[3]/m
@@ -167,15 +167,24 @@ plot_kiviat_with_labels_normalize <- function(x,labels,nv,colour,colour_spokes,a
     }else if(all_kernels){
 	# generate as many colours as there are kernels
 	colour_border=viridis(length(kernel_names),end=0.90)
-        #remove margins and plot
-        par(mar=c(0,1,0,1),plt=c(0.0,1.0,0.0,1.0))
-        radarchart(x_rad,axistype=1,
-                   vlcex=0.75, caxislabels=ticks, axislabcol="black",#axis ticks
-                   pcol=colour_border,#line colour
-                   cgfcol=background_colours, cgdensity=background_density)
+        
+        if(extra_legend_offset){
+            par(mar=c(0,0,3,0),plt=c(0.0,1.0,0.0,1.0))
+            radarchart(x_rad,axistype=1,
+                       vlcex=0.75, caxislabels=ticks, axislabcol="black",#axis ticks
+                       pcol=colour_border,#line colour
+                       cgfcol=background_colours, cgdensity=background_density)
 
-        legend(x=0.95, y=1.3, legend = kernel_names, bty = "n", pch=20, col=colour_border, text.col = "grey25", cex=0.8, pt.cex=1.5)
-
+            legend(x=1.2, y=1.3, legend = kernel_names, bty = "n", pch=20, col=colour_border, text.col = "grey25", cex=0.8, pt.cex=1.5)
+        }else{
+            #remove margins and plot
+            par(mar=c(0,1,0,1),plt=c(0.0,1.0,0.0,1.0))
+            radarchart(x_rad,axistype=1,
+                       vlcex=0.75, caxislabels=ticks, axislabcol="black",#axis ticks
+                       pcol=colour_border,#line colour
+                       cgfcol=background_colours, cgdensity=background_density)
+            legend(x=0.95, y=1.3, legend = kernel_names, bty = "n", pch=20, col=colour_border, text.col = "grey25", cex=0.8, pt.cex=1.5)
+        }
     }
     else{
     radarchart(x_rad,axistype=1,
@@ -186,12 +195,12 @@ plot_kiviat_with_labels_normalize <- function(x,labels,nv,colour,colour_spokes,a
     }
 }
 
-plot_kiviat <- function(x,nv,colour_spokes=FALSE,colour="black",all_sizes=FALSE,all_kernels=FALSE,kernel_names = c()){
+plot_kiviat <- function(x,nv,colour_spokes=FALSE,colour="black",all_sizes=FALSE,all_kernels=FALSE,kernel_names = c(),extra_legend_offset=FALSE){
     labels <- c("Opcode\n",
 		"Imbalance\n",
                 "Granularity",
                 "Barriers Per Instruction",
-                "Instructions Per Operand",
+                "Instructions Per\n Operand",
                 #"Workitems",
                 #"Total Barriers Hit",
                 #"Min ITB",
@@ -212,8 +221,8 @@ plot_kiviat <- function(x,nv,colour_spokes=FALSE,colour="black",all_sizes=FALSE,
                 "LMAE -- \nSkipped 7 LSBs",
                 "LMAE -- \nSkipped 8 LSBs",
                 "LMAE -- \nSkipped 9\n LSBs",
-                "LMAE -- \nSkipped 10\n LSBs",
-                "Total Unique\nBranch Instructions",
+                "LMAE -- \nSkipped \n10 LSBs",
+                "Total Unique\nBranch\n Instructions",
                 "90% Branch\nInstructions",
                 "Branch Entropy\n(Yokota)",
                 "Branch Entropy\n(Average Linear)")
@@ -222,7 +231,7 @@ plot_kiviat <- function(x,nv,colour_spokes=FALSE,colour="black",all_sizes=FALSE,
         m<-get_magnitude_of_number_to_normalise(x[3])
         plot_kiviat_with_labels_old(x,labels,n,m,colour)
     } else{
-        plot_kiviat_with_labels_normalize(x,labels,nv,colour,colour_spokes,all_sizes,all_kernels,kernel_names)
+        plot_kiviat_with_labels_normalize(x,labels,nv,colour,colour_spokes,all_sizes,all_kernels,kernel_names,extra_legend_offset)
     }
 }
 

@@ -220,7 +220,6 @@ pdf('../figures/new-time-results/generate_main_4x2_bandwplot.pdf',width=16.6,hei
 print(ggdraw(p))
 dev.off()
 
-
 #2x3 results
 #gem, nqueens and hmm only runs on tiny and small problem sizes
 print("saving main_2x3_bandwplot.pdf")
@@ -241,6 +240,104 @@ p <- plot_grid(plots[[1]], plots[[2]], plots[[3]],
                #label_y = c(1.0 ,1.06,1.06), #adjust y offset of each row label
 
 pdf('../figures/new-time-results/generate_main_2x3_bandwplot.pdf',width=16.6,height=4.7)
+print(ggdraw(p))
+dev.off()
+
+
+#2x4 results
+#gem, nqueens, hmm and swat only runs on tiny and small problem sizes swat
+
+source('/workspace/analysis_tools/utils.R')
+source('/workspace/analysis_tools/stats.R')
+source('/workspace/analysis_tools/aes.R')
+source('/workspace/analysis_tools/functions.R')
+
+devices <- c('xeon_es-2697v2','i7-6700k','titanx','gtx1080','gtx1080ti','k20c','k40c','firepro-s9150','tahiti-hd7970','hawaii-r9-295x2','knl')
+dev_name<- c('E5-2697','i7-6700K','Titan X','GTX 1080','GTX 1080 Ti',"K20m","K40m",'FirePro S9150','HD 7970','R9 295x2','Xeon Phi 7210')
+dev_type<- c('CPU','CPU','Consumer GPU','Consumer GPU','Consumer GPU','HPC GPU','HPC GPU','HPC GPU','Consumer GPU','Consumer GPU','MIC')
+sizes <- c('small')
+data.swat <- data.frame()
+columns <- c('region','id','time','overhead')
+
+index <- 1
+for(device in devices){
+        for(size in sizes){
+                    path = paste("/workspace/data/time_data/",device,"_swat_",size,"_time.0/",sep='')
+        print(paste("loading:",path))
+                x <- ReadAllFilesInDir.AggregateWithRunIndex(dir.path=path,col=columns)
+                x$device <- device
+                        x$size <- size
+                        x$dev_name <- dev_name[index]
+                                x$dev_type <- dev_type[index]
+                                data.swat <- rbind(data.swat, x)
+                                    }
+    index <- index + 1
+}
+
+SumPerRunReduction <- function(x){
+        z <- data.frame()
+    for (y in unique(x$run)){
+                z <- rbind(z,data.frame('time'=sum(x[x$run == y,]$time),'run'=y))
+        }
+        return(z)
+}
+
+data.procswat <- data.frame()
+
+for(device in devices){
+        for(size in sizes){
+                    x <- data.swat[(data.swat$region=="hSetZeroKernel_kernel" | data.swat$region=="hTraceBackKernel" | data.swat$region=="hMatchStringKernel_kernel") & data.swat$device == device & data.swat$size == size,]
+        y <- x
+                x <- SumPerRunReduction(x)
+                data.procswat <- rbind(data.procswat,data.frame('application'='sw',
+                                                                                                                        'device'=y$dev_name,
+                                                                                                                                                                                'accelerator_type'=y$dev_type,
+                                                                                                                                                                                'size'=size,
+                                                                                                                                                                                                                                        'time'=x$time,
+                                                                                                                                                                                                                                        'run'=x$run))
+                    }
+}
+
+#remove knl from results
+data.procswat <- data.procswat[data.procswat$device!='Xeon Phi 7210',]
+data.procswat$accelerator_type <- factor(data.procswat$accelerator_type)
+
+library(ggplot2)
+library(cowplot)
+library(plyr)
+library(viridis)
+
+p <- ggplot(data.procswat, aes(x=factor(device), y=time*0.001,colour=accelerator_type)) +
+        geom_boxplot(outlier.alpha = 0.1,varwidth=TRUE)+
+            labs(colour="accelerator type",y='time (ms)',x='')+
+                scale_y_continuous(limit = c(0, max(x$time*0.001)*1.05)) +
+                    scale_color_viridis(discrete=TRUE) + theme_bw() +
+                        theme(axis.text.x = element_text(size=10, angle = 45, hjust = 1),
+                                        title = element_text(size=10, face="bold"),
+                                                  plot.margin = unit(c(0,0,0,0), "cm"))
+
+plot.swat.tiny <- p
+
+print("saving main_2x4_bandwplot.pdf")
+plots <- align_plots(plot.gem.tiny + ggtitle("(a) gem")  +theme(legend.position = "none"),
+                     #plot.gem.small +theme(legend.position = "none"),
+                     plot.nqueens.tiny+ ggtitle("(b) nqueens")  +theme(legend.position = "none"),
+                     #plot.nqueens.small +theme(legend.position = "none"),
+                     plot.hmm.tiny + ggtitle("(c) hmm") +theme(legend.position = "none"),
+                     plot.swat.tiny + ggtitle("(d) swat") +theme(legend.position = "none"),
+                     #plot.hmm.small +theme(legend.position = "none"),
+                     align='v',axis='l')
+
+p <- plot_grid(plot_grid(plots[[1]], plots[[2]], plots[[3]], plots[[4]],
+               ncol=4,nrow=1#specify layout
+               ),#the legend needs much less space
+               ncol=1,nrow=2,
+               get_legend(plot.kmeans.tiny + theme(legend.title=element_text(face="bold"),legend.position="bottom",legend.justification="right")),#add legend
+               rel_heights=c(1,0.05))
+               #label_x = c(.01,.0,0.01), #adjust x offset of each row label
+               #label_y = c(1.0 ,1.06,1.06), #adjust y offset of each row label
+
+pdf('../figures/new-time-results/generate_main_2x4_bandwplot.pdf',width=16.6,height=4.7)
 print(ggdraw(p))
 dev.off()
 

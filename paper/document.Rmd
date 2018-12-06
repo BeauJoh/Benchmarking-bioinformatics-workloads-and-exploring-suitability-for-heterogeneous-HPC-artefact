@@ -398,9 +398,6 @@ Figure\ \ref{fig:time2}c (`nw`) represents Dynamic Programming.
 Finally, Figure\ \ref{fig:time3} presents results for the three benchmarks with restricted problem sizes and only one problem size is shown.
 The N-body Methods dwarf is represented by (`gem`) and the results are shown in Figure\ \ref{fig:time3}a, the Backtrack \& Branch and Bound dwarf is represented by the (`nqueens`) benchmark in Figure\ \ref{fig:time3}b and (`hmm`) results in Figure\ \ref{fig:time3}c represent the Graphical Models dwarf.
 
-\todo{Remove nqueens and add swat to Figure\ \ref{fig:time3}}
-
-
 \begin{figure*}
     \centering
     \includegraphics[width=\textwidth,keepaspectratio]{figures/new-time-results/generate_main_4x5_bandwplot}
@@ -417,7 +414,7 @@ The N-body Methods dwarf is represented by (`gem`) and the results are shown in 
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\textwidth,keepaspectratio]{figures/new-time-results/generate_main_2x3_bandwplot}
+    \includegraphics[width=\textwidth,keepaspectratio]{figures/new-time-results/generate_main_2x4_bandwplot}
     \caption{Single problem sized benchmarks of kernel execution times on different hardware platforms}
     \label{fig:time3}
 \end{figure*}
@@ -459,10 +456,19 @@ GPUs exhibit lower execution times than CPUs, which would be expected in a memor
 
 ### Architecture-Independent Workload Characterization
 
-To better understand the performance results for selected bioinformatics benchmarks, we analysed the codes using the Architecture Independent Workload Characterization tool [@johnston2018aiwc].
+To better understand the performance results for selected bioinformatics benchmarks, we analysed the codes using the Architecture Independent Workload Characterization (AIWC) tool [@johnston2018aiwc].
 AIWC simulates the execution of OpenCL kernels to collect architecture-independent features such as branch and memory entropy and instruction complexity.
 For multi-threaded or parallel workloads it collects metrics for both instruction and thread-level parallelism.
 Available parallelism is measured by the number of work-items and barriers encountered, while load imbalance is measured by differences in instructions per thread.
+
+\begin{figure*}
+    \centering
+    \includegraphics[width=\textwidth,keepaspectratio]{figures/aiwc-results/sw-without-setZero}
+    \caption{AIWC metrics of Smith-Waterman}
+    \label{fig:aiwc1}
+\end{figure*}
+
+
 
 Figures\ ??-?? show radar/Kiviat diagrams of architecture-independent characteristics collected for each of the bioinformatics benchmarks.
 The ordering of the individual spokes does not reflect any statistical relationship between the metrics, however, they have been grouped into four main categories: green spokes represent metrics that indicate *parallelism*, blue spokes represent *compute* metrics, beige spokes represent *memory* metrics and purple spokes represent *control* metrics.
