@@ -463,14 +463,42 @@ Available parallelism is measured by the number of work-items and barriers encou
 
 \begin{figure*}
     \centering
-    \includegraphics[width=\textwidth,keepaspectratio]{figures/aiwc-results/sw-without-setZero}
-    \caption{AIWC metrics of Smith-Waterman}
-    \label{fig:aiwc1}
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth,keepaspectratio]{figures/aiwc-results/nw}
+        \caption{\texttt{nw}\label{fig:aiwc-nw}}
+    \end{subfigure}%
+    ~
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth,keepaspectratio]{figures/aiwc-results/sw-without-setZero}
+        \caption{\texttt{swat}\label{fig:aiwc-swat}}
+    \end{subfigure}
+
+        \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth,keepaspectratio]{figures/aiwc-results/gem}
+        \caption{\texttt{gem}\label{fig:aiwc-gem}}
+    \end{subfigure}%
+    ~
+    \begin{subfigure}[t]{0.5\textwidth}
+        \centering
+        \includegraphics[width=\textwidth,keepaspectratio]{figures/aiwc-results/kmeans}
+        \caption{\texttt{kmeans}\label{fig:aiwc-kmeans}}
+    \end{subfigure}
+
+        \begin{subfigure}[t]{0.55\textwidth}
+        \centering
+        \includegraphics[width=\textwidth,keepaspectratio]{figures/aiwc-results/hmm}
+        \caption{\texttt{hmm}\label{fig:aiwc-hmm}}
+    \end{subfigure}
+
+    \centering
+    \caption{Architecture-Independent Workload Characterization features for selected bioinformatics benchmarks}
+    \label{fig:aiwc}
 \end{figure*}
 
-
-
-Figures\ ??-?? show radar/Kiviat diagrams of architecture-independent characteristics collected for each of the bioinformatics benchmarks.
+Figure\ \ref{fig:aiwc} presents radar/Kiviat diagrams of architecture-independent characteristics collected for each of the bioinformatics benchmarks.
 The ordering of the individual spokes does not reflect any statistical relationship between the metrics, however, they have been grouped into four main categories: green spokes represent metrics that indicate *parallelism*, blue spokes represent *compute* metrics, beige spokes represent *memory* metrics and purple spokes represent *control* metrics.
 Some statistics such as Yokota branch entropy, imbalance, granularity, and instructions per operand naturally fall in the range [0..1].
 All other statistics are normalized with respect to the observed range across all benchmarks in the Extended OpenDwarfs suite.
@@ -480,20 +508,20 @@ A simple measure of load imbalance is computed from the AIWC instructions per th
 This presentation allows a quick value judgement between kernels as values closer to the centre (0) generally have lower hardware requirements.
 For example, smaller entropy scores indicate more regular memory access or branch patterns, requiring less cache or branch predictor hardware; smaller granularity indicates higher exploitable parallelism; smaller barriers per instruction indicates less synchronization; and so on.
 
-Figure\ ?? shows that the `nw` benchmark is characterized by high available thread parallelism (low values for granularity and imbalance) and a very high level of barrier synchronization.
+Figure\ \ref{fig:aiwc-nw} shows that the `nw` benchmark is characterized by high available thread parallelism (low values for granularity and imbalance) and a very high level of barrier synchronization.
 This explains its superior performance on NVidia GPUs compared to CPUs.
 \todo{Why is performance so crappy on AMD GPUs?}
 
-Figure\ ?? shows that the `swat` benchmark also has a high level of available thread parallelism, however, it has many fewer barriers and a much higher branch entropy.
+Figure\ \ref{fig:aiwc-swat} shows that the `swat` benchmark also has a high level of available thread parallelism, however, it has many fewer barriers and a much higher branch entropy.
 \todo{Given this, I'd expect relatively better performance on CPU - but we don't see this. What else explains the performance?}
 
-Figure\ ?? shows that the `gem` benchmark is characterized by very high available thread parallelism, and low branch and memory entropies.
+Figure\ \ref{fig:aiwc-gem} shows that the `gem` benchmark is characterized by very high available thread parallelism, and low branch and memory entropies.
 This makes it ideal for GPU architectures, which is reflected in the superior performance for the modern NVidia GPUs in Figure\ \ref{fig:time3}a.
 \todo{i7-600K is pretty good for CPU too - why? Again, why are the AMD GPUs so crappy?}
 
-The `kmeans` benchmark (Figure\ ??) also has a high level of available parallelism and low branch and memory entropies; as expected, the measurements in Figure\ \ref{fig:time}a show that both modern GPUs and older HPC GPUs perform significantly better than CPUs for this benchmark.
+The `kmeans` benchmark (Figure\ \ref{fig:aiwc-kmeans}) also has a high level of available parallelism and low branch and memory entropies; as expected, the measurements in Figure\ \ref{fig:time}a show that both modern GPUs and older HPC GPUs perform significantly better than CPUs for this benchmark.
 
-The `hmm` benchmark (Figure\ ??) is composed of a large number of kernels, which differ significantly in granularity.
+The `hmm` benchmark (Figure\ \ref{fig:aiwc-hmm}) is composed of a large number of kernels, which differ significantly in granularity.
 Most kernels have very little available parallelism, suggesting that this benchmark would perform best on CPU architectures with a small number of powerful cores; this is borne out by the measurements in Figure\ \ref{fig:time3}c which show the smallest benchmark time was recorded on the powerful i7-6700k CPU.
 
 None of the bioinformatics benchmarks are vectorized (instructions per operand = 1), and therefore fail to take advantage of the floating point capabilities available on CPU and MIC architectures.
