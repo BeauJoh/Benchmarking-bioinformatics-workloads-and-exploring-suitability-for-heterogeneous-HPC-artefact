@@ -64,12 +64,12 @@ To understand benchmark performance, it is useful to be able to collect hardware
 LibSciBench is a performance measurement tool which allows high precision timing events to be collected for statistical analysis [@hoefler2015scientific].
 It offers a high resolution timer in order to measure short running kernel codes, reported with one cycle resolution and roughly \SI{6}{\nano\second} of overhead.
 We used LibSciBench to record timings in conjunction with hardware events, which it collects via PAPI [@mucci1999papi] counters.
-We modified the applications in the OpenDwarfs benchmark suite to insert library calls to LibSciBench to record timings and PAPI events for the three main components of application time: kernel execution, host setup and memory transfer operations.
+We modified the codes in the OpenDwarfs benchmark suite to insert library calls to LibSciBench to record timings and PAPI events for the three main components of application time: kernel execution, host setup and memory transfer operations.
 Through PAPI modules such as Intel's Running Average Power Limit (RAPL) and Nvidia Management Library (NVML), LibSciBench also supports energy measurements, for which we report preliminary results in this paper.
 
 # Related Work
 
-The NAS parallel benchmarks [@bailey1991parallel] follow a `pencil-and-paper` approach, specifying the computational problem but leaving implementation choices such as language, data structures and algorithms to the user.
+The NAS parallel benchmarks [@bailey1991parallel] follow a "pencil-and-paper" approach, specifying the computational problem but leaving implementation choices such as language, data structures and algorithms to the user.
 The benchmarks include varied kernels and applications which allow a nuanced evaluation of a complete HPC system, however, the unconstrained approach does not readily support direct performance comparison between different hardware accelerators using a single set of codes.
 
 @martineau2016performance collected a suite of benchmarks and three mini-apps to evaluate Clang OpenMP 4.5 support for Nvidia GPUs.
@@ -151,7 +151,7 @@ LibSciBench version 0.2.2 was used for all performance measurements.
 ## Measurements
 
 We measured execution time and energy for individual OpenCL kernels within each benchmark.
-Each benchmark run executed the application in a loop until at least two seconds had elapsed, and the mean execution time for each kernel was recorded.
+Each run executed the benchmark code in a loop until at least two seconds had elapsed, and the mean execution time for each kernel was recorded.
 Each benchmark was run 50 times for each problem size (see \S\ref{ssec:setting_sizes}) for both execution time and energy measurements.
 A sample size of 50 per group -- for each combination of benchmark and problem size -- was used to ensure that sufficient statistical power $\beta = 0.8$ would be available to detect a significant difference in means on the scale of half standard deviation of separation.
 This sample size was computed using the t-test power calculation over a normal distribution.
@@ -311,8 +311,8 @@ The problem size parameters for all benchmarks are presented in Table\ \ref{tab:
 	\end{threeparttable}
 \end{table}
 
-Each **Device** can be selected in a uniform way between applications using the same notation, on this system **Device** comprises of `-p 1 -d 0 -t 0` for the Intel Skylake CPU, where `p` and `d` are the integer identifier of the platform and device to respectively use, and `-p 1 -d 0 -t 1` for the Nvidia GeForce GTX 1080 GPU.
-Each application is run as **Benchmark** **Device** `--` **Arguments**, where **Arguments** is taken from Table\ \ref{tab:program_arguments} at the selected scale of $\Phi$.
+Each **Device** can be selected in a uniform way between benchmarks using the same notation, on this system **Device** comprises of `-p 1 -d 0 -t 0` for the Intel Skylake CPU, where `p` and `d` are the integer identifier of the platform and device to respectively use, and `-p 1 -d 0 -t 1` for the Nvidia GeForce GTX 1080 GPU.
+Each benchmark is run as **Benchmark** **Device** `--` **Arguments**, where **Arguments** is taken from Table\ \ref{tab:program_arguments} at the selected scale of $\Phi$.
 For reproducibility the entire set of Python scripts with all problem sizes is available in a GitHub repository [@johnston2017]. 
 Where $\Phi$ is substituted as the argument for each benchmark, it is taken as the respective scale from Table\ \ref{tab:problem_sizes} and is inserted into Table\ \ref{tab:program_arguments}.
 
@@ -378,7 +378,7 @@ Execution times for `crc` are lowest on CPU-type architectures, probably due to 
 Excluding `crc`, all the other benchmarks perform best on GPU type accelerators; furthermore, the performance on the KNL is poor due to the lack of support for wide vector registers in Intel's OpenCL SDK.
 We therefore omit results for KNL for the remaining benchmarks.
 
-```{r eval=TRUE, dev='pdf', echo=FALSE, include=FALSE, cache=TRUE, draw_lud_diagonal_internal_all_kiviat, fig.cap = "\\label{fig:lud_diagonal_internal_kiviat} feature-space of the \\texttt{diagonal} and \\texttt{internal} kernels in the lud application on all problem sizes.", fig.width=8,fig.height=16}
+```{r eval=TRUE, dev='pdf', echo=FALSE, include=FALSE, cache=TRUE, draw_lud_diagonal_internal_all_kiviat, fig.cap = "\\label{fig:lud_diagonal_internal_kiviat} feature-space of the \\texttt{diagonal} and \\texttt{internal} kernels in the lud benchmark on all problem sizes.", fig.width=8,fig.height=16}
 #print(plot_grid(z2,z3,labels=c('A) LUD Diagonal','B) LUD Internal'),ncol=1))#labels = "AUTO"
 ```
 
@@ -395,8 +395,8 @@ Figures\ \ref{fig:time}d (`dwt`) and\ \ref{fig:time2}a (`fft`) represent Spectra
 Figure\ \ref{fig:time2}b (`srad`) represents the Structured Grid dwarf; and
 Figure\ \ref{fig:time2}c (`nw`) represents Dynamic Programming.
 
-Finally, Figure\ \ref{fig:time3} presents results for the three applications with restricted problem sizes and only one problem size is shown.
-The N-body Methods dwarf is represented by (`gem`) and the results are shown in Figure\ \ref{fig:time3}a, the Backtrack \& Branch and Bound dwarf is represented by the (`nqueens`) application in Figure\ \ref{fig:time3}b and (`hmm`) results in Figure\ \ref{fig:time3}c represent the Graphical Models dwarf.
+Finally, Figure\ \ref{fig:time3} presents results for the three benchmarks with restricted problem sizes and only one problem size is shown.
+The N-body Methods dwarf is represented by (`gem`) and the results are shown in Figure\ \ref{fig:time3}a, the Backtrack \& Branch and Bound dwarf is represented by the (`nqueens`) benchmark in Figure\ \ref{fig:time3}b and (`hmm`) results in Figure\ \ref{fig:time3}c represent the Graphical Models dwarf.
 
 \todo{Remove nqueens and add swat to Figure\ \ref{fig:time3}}
 
@@ -425,7 +425,7 @@ The N-body Methods dwarf is represented by (`gem`) and the results are shown in 
 
 Examining the transition from tiny to large problem sizes (from left to right) in Figure\ \ref{fig:time2}b shows the performance gap between CPU and GPU architectures widening for `srad`, indicating that codes representative of structured grid dwarfs are well suited to GPUs.
 
-In contrast, Figure\ \ref{fig:time2}c `swat` shows that the Intel CPUs and NVIDIA GPUs perform comparably over all problem sizes, whereas all AMD GPUs exhibit worse performance as size increases.
+In contrast, Figure\ \ref{fig:time2}c `nw` shows that the Intel CPUs and NVIDIA GPUs perform comparably over all problem sizes, whereas all AMD GPUs exhibit worse performance as size increases.
 This suggests that performance for this Dynamic Programming problem cannot be explained solely by considering accelerator type and may be tied to micro-architecture or OpenCL runtime support.
 
 For most benchmarks, the variability in execution times is greater for devices with a lower clock frequency, regardless of accelerator type.
@@ -464,14 +464,40 @@ AIWC simulates the execution of OpenCL kernels to collect architecture-independe
 For multi-threaded or parallel workloads it collects metrics for both instruction and thread-level parallelism.
 Available parallelism is measured by the number of work-items and barriers encountered, while load imbalance is measured by differences in instructions per thread.
 
-<!--
-The **imbalance** shows the distribution of work between threads.
-It is computed as $\frac{\mathrm{max instructions executed by a work-item }-\mathrm{min instructions executed by a work-item}}{\mathrm{total instruction count}}$.
--->
+Figures\ ??-?? show radar/Kiviat diagrams of architecture-independent characteristics collected for each of the bioinformatics benchmarks.
+The ordering of the individual spokes does not reflect any statistical relationship between the metrics, however, they have been grouped into four main categories: green spokes represent metrics that indicate *parallelism*, blue spokes represent *compute* metrics, beige spokes represent *memory* metrics and purple spokes represent *control* metrics.
+Some statistics such as Yokota branch entropy, imbalance, granularity, and instructions per operand naturally fall in the range [0..1].
+All other statistics are normalized with respect to the observed range across all benchmarks in the Extended OpenDwarfs suite.
+The parallelism metrics presented are the inverse values of the metrics collected by AIWC, i.e. **granularity** =  $1 / \textbf{work-items}$ ; **barriers per instruction** $= 1 / \textbf{mean instructions to barrier}$ ; **instructions per operand** $= 1 / \textbf{mean SIMD width}$.
+Additionally, a common problem in parallel applications is load imbalance due to unequal work distribution among threads.
+A simple measure of load imbalance is computed from the AIWC instructions per thread (IPT) metric, as **imbalance** = **max IPT** $-$ **min IPT**.
+This presentation allows a quick value judgement between kernels as values closer to the centre (0) generally have lower hardware requirements.
+For example, smaller entropy scores indicate more regular memory access or branch patterns, requiring less cache or branch predictor hardware; smaller granularity indicates higher exploitable parallelism; smaller barriers per instruction indicates less synchronization; and so on.
+
+Figure\ ?? shows that the `nw` benchmark is characterized by high available thread parallelism (low values for granularity and imbalance) and a very high level of barrier synchronization.
+This explains its superior performance on NVidia GPUs compared to CPUs.
+\todo{Why is performance so crappy on AMD GPUs?}
+
+Figure\ ?? shows that the `swat` benchmark also has a high level of available thread parallelism, however, it has many fewer barriers and a much higher branch entropy.
+\todo{Given this, I'd expect relatively better performance on CPU - but we don't see this. What else explains the performance?}
+
+Figure\ ?? shows that the `gem` benchmark is characterized by very high available thread parallelism, and low branch and memory entropies.
+This makes it ideal for GPU architectures, which is reflected in the superior performance for the modern NVidia GPUs in Figure\ \ref{fig:time3}a.
+\todo{i7-600K is pretty good for CPU too - why? Again, why are the AMD GPUs so crappy?}
+
+The `kmeans` benchmark (Figure\ ??) also has a high level of available parallelism and low branch and memory entropies; as expected, the measurements in Figure\ \ref{fig:time}a show that both modern GPUs and older HPC GPUs perform significantly better than CPUs for this benchmark.
+
+The `hmm` benchmark (Figure\ ??) is composed of a large number of kernels, which differ significantly in granularity.
+Most kernels have very little available parallelism, suggesting that this benchmark would perform best on CPU architectures with a small number of powerful cores; this is borne out by the measurements in Figure\ \ref{fig:time3}c which show the smallest benchmark time was recorded on the powerful i7-6700k CPU.
+
+None of the bioinformatics benchmarks are vectorized (instructions per operand = 1), and therefore fail to take advantage of the floating point capabilities available on CPU and MIC architectures.
+\todo{Should we bother showing MIC performance for `swat` - and if so, why not the other apps?}
+
+### Hardware Performance Counters
 
 ## Energy
 
-In addition to execution time, we are interested in differences in energy consumption between devices and applications.
+In addition to execution time, we are interested in differences in energy consumption between devices for the various benchmarks.
 We measured the energy consumption of benchmark kernel execution on the Intel Skylake i7-6700k CPU and the Nvidia GTX1080 GPU, using PAPI modules for RAPL and NVML. 
 These were the only devices examined since collection of PAPI energy measurements (with LibSciBench) requires superuser access, and these devices were the only accelerators available with this permission.
 The distributions were collected by measuring solely the kernel execution over a distribution of 50 runs.
@@ -511,8 +537,6 @@ In future this will be addressed by balancing the amount of computation required
 All the benchmarks use more energy on the CPU, with the exception of `crc` which as previously mentioned has low floating-point intensity and so is not able to make use of the GPU's greater floating-point capability. 
 Variance with respect to energy usage is larger on the CPU, which is consistent with the execution time results.
 
-## Hardware Counters
-
 # Conclusions
 
 We have performed essential curation of the OpenDwarfs benchmark suite.
@@ -527,13 +551,13 @@ In the best case, such optimizations resulted in sub-optimal performance for new
 In the worst case, they resulted in failures when running on untested platforms or changed execution arguments.
 
 Finally a major contribution of this work was to integrate LibSciBench into the benchmark suite, which adds a high precision timing library and support for statistical analysis and visualization.
-This has allowed collection of PAPI, energy and high resolution (sub-microsecond) time measurements at all stages of each application, which has added value to the analysis of OpenCL program flow on each system, for example identifying overheads in kernel construction and buffer enqueuing.
+This has allowed collection of PAPI, energy and high resolution (sub-microsecond) time measurements at all stages of each benchmark, which has added value to the analysis of OpenCL program flow on each system, for example identifying overheads in kernel construction and buffer enqueuing.
 The use of LibSciBench has also increased the reproducibility of timing data for both the current study and on new architectures in the future.
 
 # Future Work
 
 We plan to complete analysis of the remaining benchmarks in the suite for multiple problem sizes.
-In addition to comparing performance between devices, we would also like to develop some notion of `ideal` performance for each combination of benchmark and device, which would guide efforts to improve performance portability.
+In addition to comparing performance between devices, we would also like to develop some notion of *ideal* performance for each combination of benchmark and device, which would guide efforts to improve performance portability.
 Additional architectures such as FPGA, DSP and Radeon Open Compute based APUs -- which further breaks down the walls between the CPU and GPU -- will be considered.
 
 Each OpenCL kernel presented in this paper has been inspected using the Architecture Independent Workload Characterization (AIWC).
@@ -548,6 +572,6 @@ Now that a flexible benchmark suite is in place and results can be generated qui
 
 # Acknowledgements
 
-We thank our colleagues at The University of Bristol's High Performance Computing Research group for the use of ``The Zoo`` Research cluster for experimental evaluation.
+We thank our colleagues at The University of Bristol's High Performance Computing Research group for the use of *The Zoo* Research cluster for experimental evaluation.
 
 # References
