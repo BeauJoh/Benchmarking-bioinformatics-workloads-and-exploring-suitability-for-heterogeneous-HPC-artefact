@@ -1,26 +1,3 @@
----
-title: "Benchmarking bioinformatics workloads and exploring suitability for heterogeneous HPC"
-abstract: "
-
-For reasons of both performance and energy efficiency, high performance computing (HPC) hardware is becoming increasingly heterogeneous.
-The OpenCL framework supports portable programming across a wide range of computing devices and is gaining influence in programming next-generation accelerators.
-To characterize the performance of these devices across a range of applications requires a diverse, portable and configurable benchmark suite, and OpenCL is an attractive programming model for this purpose.
-
-We present an extended and enhanced version of the OpenDwarfs OpenCL benchmark suite, with a strong focus placed on the robustness of applications, curation of additional benchmarks with an increased emphasis on correctness of results and choice of problem size.
-Preliminary results and analysis are reported for eight benchmark codes on a diverse set of architectures -- three Intel CPUs, five Nvidia GPUs, six AMD GPUs and a Xeon Phi.
-Additionally, we examine a bioinformatics based subset of the OpenDwarfs codes and the architecture-independent characteristics of each.
-This is performed to gain insights around the suitability of heterogenous computing nodes for bioinfomatic workloads, and shows the best and worst characteristics of these codes when using accelerators.
-"
-author: 
-    Beau Johnston and Josh Milthorpe \
-    `{beau.johnston,josh.milthorpe}@anu.edu.au`\\ \
-    Research School of Computer Science\
-    Australian National University\
-    Canberra, Australia
-keywords: "workload characterization, benchmarking, HPC"
-bibliography: ./bibliography/bibliography.bib
----
-
 #Introduction
 
 High performance computing (HPC) hardware is becoming increasingly heterogeneous.
@@ -467,45 +444,6 @@ AIWC simulates the execution of OpenCL kernels to collect architecture-independe
 For multi-threaded or parallel workloads it collects metrics for both instruction and thread-level parallelism.
 Available parallelism is measured by the number of work-items and barriers encountered, while load imbalance is measured by differences in instructions per thread.
 
-<!--
-\begin{figure*}
-    \centering
-    \begin{subfigure}{0.5\textwidth}
-        \centering
-        \includegraphics[width=\textwidth,keepaspectratio]{figures/aiwc-results/nw}
-        \caption{\texttt{nw}\label{fig:aiwc-nw}}
-    \end{subfigure}%
-    ~
-    \begin{subfigure}{0.5\textwidth}
-        \centering
-        \includegraphics[width=\textwidth,keepaspectratio]{figures/aiwc-results/sw-without-setZero}
-        \caption{\texttt{swat}\label{fig:aiwc-swat}}
-    \end{subfigure}
-
-        \begin{subfigure}{0.5\textwidth}
-        \centering
-        \includegraphics[width=\textwidth,keepaspectratio]{figures/aiwc-results/gem}
-        \caption{\texttt{gem}\label{fig:aiwc-gem}}
-    \end{subfigure}%
-    ~
-    \begin{subfigure}{0.5\textwidth}
-        \centering
-        \includegraphics[width=\textwidth,keepaspectratio]{figures/aiwc-results/kmeans}
-        \caption{\texttt{kmeans}\label{fig:aiwc-kmeans}}
-    \end{subfigure}
-
-        \begin{subfigure}{0.55\textwidth}
-        \centering
-        \includegraphics[width=\textwidth,keepaspectratio]{figures/aiwc-results/hmm}
-        \caption{\texttt{hmm}\label{fig:aiwc-hmm}}
-    \end{subfigure}
-
-    \centering
-    \caption{Architecture-Independent Workload Characterization features for selected bioinformatics benchmarks}
-    \label{fig:aiwc}
-\end{figure*}
--->
-
 \begin{figure*}
     \centering
     \subfloat[\texttt{nw}\label{fig:aiwc-nw}]{%
@@ -581,6 +519,7 @@ Measurements results converted to energy \SI{}{\joule} \todo[inline]{power (\SI{
 From the time results presented in Section \ref{ssec:time} we see the largest difference occurs between CPU and GPU type accelerators at the **large** problem size.
 Thus we expect that the **large** problem size will also show the largest difference in energy.
 
+<!--
 \begin{figure*}[htb]
 \begin{minipage}{.49\textwidth}
 \centering
@@ -596,6 +535,19 @@ Thus we expect that the **large** problem size will also show the largest differ
 \label{fig:energy-log}
 \end{minipage}
 \caption{Benchmark kernel execution energy ({\bf large} problem size) on Core i7-6700K and Nvidia GTX1080}
+\end{figure*}
+-->
+
+\begin{figure*}
+    \centering
+    \captionsetup[subfloat]{justification=centering}
+    \subfloat[][Kernel execution energy \label{fig:energy}]{%
+        \includegraphics[width=0.5\textwidth]{figures/energy-results/energy_charts}
+    }
+    \subfloat[\texttt{Log of kernel execution energy}\label{fig:energy-log}]{%
+        \includegraphics[width=0.5\textwidth]{figures/energy-results/energy_charts_log10}
+    }
+    \caption{Benchmark kernel execution energy ({\bf large} problem size) on Core i7-6700K and Nvidia GTX1080}
 \end{figure*}
 
 \todo{Does energy scale with problem size for all benchmarks? Maybe not since dwarfs with large memory access cache misses could add huge overheads}

@@ -10,10 +10,12 @@ output/sage-document.tex: output/document.md packages.yaml author-preamble.latex
 	pandoc  --wrap=preserve \
 		--filter pandoc-crossref \
 		--natbib \
+		--bibliography=./bibliography/bibliography.bib \
 		--filter ./pandoc-tools/bib-filter.py \
 		--number-sections \
 		./sage-packages.yaml \
 		--include-before-body=./templates/ieee-longtable-fix-preamble.latex \
+		--include-before-body=./author-preamble.latex \
 		-o output/sage-document.$(subst output/sage-document.,,$@) output/document.md
 	rm sagej.cls
 		#--filter pandoc-citeproc \

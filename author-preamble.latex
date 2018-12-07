@@ -1,12 +1,27 @@
-\author{\IEEEauthorblockN{Beau Johnston}
-\IEEEauthorblockA{\textit{Research School of Computer Science} \\
-\textit{Australian National University}\\
-Canberra, Australia \\
-beau.johnston@anu.edu.au}
-\and
-\IEEEauthorblockN{Josh Milthorpe}
-\IEEEauthorblockA{\textit{Research School of Computer Science} \\
-\textit{Australian National University}\\
-Canberra, Australia \\
-josh.milthorpe@anu.edu.au}
-}
+
+\runninghead{Johnston, Milthorpe}
+\title{Benchmarking bioinformatics workloads and exploring suitability for heterogeneous HPC}
+\author{Beau Johnston and Josh Milthorpe\affilnum{1}}
+
+\affiliation{\affilnum{1}The Australian National University, AU}
+\corrauth{Beau Johnston,
+    Research School of Computer Science,
+    The Australian National University,
+    Canberra, ACT, AU.}
+\email{beau.johnston@anu.edu.au}
+
+\begin{abstract}
+For reasons of both performance and energy efficiency, high performance computing (HPC) hardware is becoming increasingly heterogeneous.
+The OpenCL framework supports portable programming across a wide range of computing devices and is gaining influence in programming next-generation accelerators.
+To characterize the performance of these devices across a range of applications requires a diverse, portable and configurable benchmark suite, and OpenCL is an attractive programming model for this purpose.
+
+We present an extended and enhanced version of the OpenDwarfs OpenCL benchmark suite, with a strong focus placed on the robustness of applications, curation of additional benchmarks with an increased emphasis on correctness of results and choice of problem size.
+Preliminary results and analysis are reported for eight benchmark codes on a diverse set of architectures -- three Intel CPUs, five Nvidia GPUs, six AMD GPUs and a Xeon Phi.
+
+Additionally, we examine the architecture-independent characteristics of a subset of bioinformatics codes from OpenDwarfs.
+This is performed to gain insights around the suitability of heterogenous computing nodes for bioinfomatic workloads, and shows the best and worst characteristics of these codes when using accelerators.
+\end{abstract}
+
+\keywords{workload characterization, benchmarking, bioinformatics}
+
+\maketitle
