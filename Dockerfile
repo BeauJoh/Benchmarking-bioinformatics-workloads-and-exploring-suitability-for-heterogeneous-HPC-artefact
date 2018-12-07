@@ -1,6 +1,6 @@
 # An Ubuntu environment configured for building the phd repo.
-FROM nvidia/opencl:devel-ubuntu16.04
-#FROM ubuntu:16.04
+#FROM nvidia/opencl:devel-ubuntu16.04
+FROM ubuntu:16.04
 
 MAINTAINER Beau Johnston <beau.johnston@anu.edu.au>
 
