@@ -1,4 +1,4 @@
-all: output/sage-document.pdf output/document.pdf
+all: output/sage-document.pdf #output/document.pdf
 
 output/document.md: paper/document.Rmd
 	mkdir -p output
