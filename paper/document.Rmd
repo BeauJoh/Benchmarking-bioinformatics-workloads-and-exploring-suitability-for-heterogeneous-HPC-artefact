@@ -489,11 +489,11 @@ This presentation allows a quick value judgement between kernels as values close
 For example, smaller entropy scores indicate more regular memory access or branch patterns, requiring less cache or branch predictor hardware; smaller granularity indicates higher exploitable parallelism; smaller barriers per instruction indicates less synchronization; and so on.
 
 Figure\ \ref{fig:aiwc-nw} shows that the `nw` benchmark is characterized by high available thread parallelism (low values for granularity and imbalance) and a very high level of barrier synchronization.
-This explains its superior performance on NVidia GPUs compared to CPUs.
-\todo{Why is performance so crappy on AMD GPUs?}
+This explains its superior performance on Nvidia GPUs compared to CPUs.
+The Nvidia devices examined are roughly two years newer than the AMD GPUs, we expect modern AMD GPUs to form a better comparison.
 
 Figure\ \ref{fig:aiwc-swat} shows that the `swat` benchmark also has a high level of available thread parallelism, however, it has many fewer barriers and a much higher branch entropy.
-\todo{Given this, I'd expect relatively better performance on CPU - but we don't see this. What else explains the performance?}
+Given this, we expect to see relatively better performance on CPU architectures -- the i7600k CPU is two years older than the optimal Nvidia GPUs presented -- it would be interesting to repeat this evaluation on a CPU of comparable vintage.
 
 Figure\ \ref{fig:aiwc-gem} shows that the `gem` benchmark is characterized by very high available thread parallelism, and low branch and memory entropies.
 This makes it ideal for GPU architectures, which is reflected in the superior performance for the modern NVidia GPUs in Figure\ \ref{fig:time3}a.
@@ -518,25 +518,6 @@ Measurements results converted to energy \SI{}{\joule} \todo[inline]{power (\SI{
 
 From the time results presented in Section \ref{ssec:time} we see the largest difference occurs between CPU and GPU type accelerators at the **large** problem size.
 Thus we expect that the **large** problem size will also show the largest difference in energy.
-
-<!--
-\begin{figure*}[htb]
-\begin{minipage}{.49\textwidth}
-\centering
-\includegraphics[width=1\textwidth]{figures/energy-results/energy_charts.pdf}
-\caption{Kernel execution energy}
-\label{fig:energy}
-\end{minipage}
-\hfill
-\begin{minipage}{.49\textwidth}
-\centering
-\includegraphics[width=1\textwidth]{figures/energy-results/energy_charts_log10.pdf}
-\caption{Log of kernel execution energy}
-\label{fig:energy-log}
-\end{minipage}
-\caption{Benchmark kernel execution energy ({\bf large} problem size) on Core i7-6700K and Nvidia GTX1080}
-\end{figure*}
--->
 
 \begin{figure*}
     \centering
@@ -565,7 +546,7 @@ Variance with respect to energy usage is larger on the CPU, which is consistent 
 # Conclusions
 
 We have performed essential curation of the OpenDwarfs benchmark suite.
-We improved coverage of spectral methods by adding a new Discrete Wavelet Transform benchmark, and replacing the previous inadequate `fft` benchmark.
+<!-- We improved coverage of spectral methods by adding a new Discrete Wavelet Transform benchmark, and replacing the previous inadequate `fft` benchmark.-->
 All benchmarks were enhanced to allow multiple problem sizes; in this paper we report results for four different problem sizes, selected according to the memory hierarchy of CPU systems as motivated by @marjanovic2016hpc.
 These can now be easily adjusted for next generation accelerator systems using the methodology outlined in Section\ \ref{ssec:setting_sizes}.
 
@@ -575,25 +556,36 @@ Re-examining the original codes on range of modern hardware showed limitations, 
 In the best case, such optimizations resulted in sub-optimal performance for newer systems (many problem sizes favored the original GPUs on which they were originally run).
 In the worst case, they resulted in failures when running on untested platforms or changed execution arguments.
 
-Finally a major contribution of this work was to integrate LibSciBench into the benchmark suite, which adds a high precision timing library and support for statistical analysis and visualization.
+A major contribution of this work was to integrate LibSciBench into the benchmark suite, which adds a high precision timing library and support for statistical analysis and visualization.
 This has allowed collection of PAPI, energy and high resolution (sub-microsecond) time measurements at all stages of each benchmark, which has added value to the analysis of OpenCL program flow on each system, for example identifying overheads in kernel construction and buffer enqueuing.
 The use of LibSciBench has also increased the reproducibility of timing data for both the current study and on new architectures in the future.
+
+The evaluation of performance bottle-necks for bioinformatics codes was presented using AIWC.
+It is interesting to note that optimal accelerators are typically GPU based, given the high available thread parallelism and high barrier synchronization counts of many sequencing analysis applications.
+However, the bioinformatics applications examined contain few kernels with higher branch and memory access entropies, interspersed with the GPU suited workloads, which suggests that CPUs are critical to achieve good performance on these systems.
+Indeed, partitioning applications by scheduling kernel to their optimal accelerator may generally provide better performance for HPC bioinformatics applications.
 
 # Future Work
 
 We plan to complete analysis of the remaining benchmarks in the suite for multiple problem sizes.
 In addition to comparing performance between devices, we would also like to develop some notion of *ideal* performance for each combination of benchmark and device, which would guide efforts to improve performance portability.
-Additional architectures such as FPGA, DSP and Radeon Open Compute based APUs -- which further breaks down the walls between the CPU and GPU -- will be considered.
+Additional architectures such as FPGA, DSP modern AMD GPUs and Radeon Open Compute based APUs -- which further breaks down the walls between the CPU and GPU -- will be considered.
 
+<!--
 Each OpenCL kernel presented in this paper has been inspected using the Architecture Independent Workload Characterization (AIWC).
-Analysis using AIWC helps understand how the structure of kernels contributes to the varying runtime characteristics between devices that are presented in this work, and will be published in the future.
-
+Analysis using AIWC helps understand how the structure of kernels contributes to the varying runtime characteristics between devices that are presented in this work, the examination of AIWC on the remaining kernels -- not associated to bioinformatics -- will be presented in the future.
 Certain configuration parameters for the benchmarks, e.g. local workgroup size, are amenable to auto-tuning.
 We plan to integrate auto-tuning into the benchmarking framework to provide confidence that the optimal parameters are used for each combination of code and accelerator.
+-->
 
 The original goal of this research was to discover methods for choosing the best device for a particular computational task, for example to support scheduling decisions under time and/or energy constraints.
 Until now, we found the available OpenCL benchmark suites were not rich enough to adequately characterize performance across the diverse range of applications and computational devices of interest.
 Now that a flexible benchmark suite is in place and results can be generated quickly and reliably on a range of accelerators, we plan to use these benchmarks to evaluate scheduling approaches.
+
+Finally, the benefits of an architecture-independent evaluation are many.
+AIWC may be used in the future to guide a developer to optimize kernels to specific accelerators, or tailor codes to generic accelerator types.
+Metrics could be used to design better accelerators, or configure heterogeneous HPC nodes to have an optimal mix of accelerators for the primary characteristics of the most commonly executed scientific codes.
+We envisage the use of AIWC for scheduling kernels to the optimal type of accelerator will grant better utilization of bioinformatics applications on future HPC systems -- which will be increasingly heterogeneous.
 
 # Acknowledgements
 

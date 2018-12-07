@@ -55,8 +55,8 @@ grammarly: output/document.md
 	pkill Grammarly || true #if grammarly already exists kill it
 	pandoc  --wrap=preserve \
 		--filter pandoc-crossref \
-		--filter pandoc-citeproc \
-		--number-sections \
+		--natbib \
+		--bibliography=./bibliography/bibliography.bib \
 		-t plain \
 		-o output/document.txt output/document.md #now get just the text
 	open -a Grammarly output/document.txt #and open it in grammarly
