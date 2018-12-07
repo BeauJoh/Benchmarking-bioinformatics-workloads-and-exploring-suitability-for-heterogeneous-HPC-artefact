@@ -1,12 +1,11 @@
 
-Benchmarks and Limitations of HPC for Bioinformatics
----------------------------------------------------------------------------
+Benchmarking bioinformatics workloads and exploring suitability for heterogeneous HPC
+-------------------------------------------------------------------------------------
 
-<!--
-This artefact now uses binder -- automatic cloud hosting of Jupyter workbooks with support for docker. So if you want to avoid all the steps mentioned below, simply click the binder badge.
+Note: This artefact also uses binder -- automatic cloud hosting of Jupyter workbooks with support for docker. So if you want to avoid all the steps mentioned below, simply click the binder badge.
 
-[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/BeauJoh/aiwc-opencl-based-architecture-independent-workload-characterization-artefact/master)
--->
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/BeauJoh/Benchmarking-bioinformatics-workloads-and-exploring-suitability-for-heterogeneous-HPC-artefact.git/master
+)
 
 # Installation
 
