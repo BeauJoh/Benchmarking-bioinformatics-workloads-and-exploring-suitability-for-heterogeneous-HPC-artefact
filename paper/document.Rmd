@@ -1,14 +1,14 @@
 #Introduction
 
-High performance computing (HPC) hardware is becoming increasingly heterogeneous.
+High-performance computing (HPC) hardware is becoming increasingly heterogeneous.
 A major motivation for this is to reduce energy use; indeed, without significant improvements in energy efficiency, the cost of exascale computing will be prohibitive.
 From June 2016 to June 2017, the average energy efficiency of the top 10 of the Green500 supercomputers rose by 2.3x, from 4.8 to 11.1 gigaflops per watt. [@feldman_2017]
 For many systems, this was made possible by highly energy-efficient Nvidia Tesla P100 GPUs.
 In addition to GPUs, future HPC architectures are also likely to include nodes with FPGA, DSP, ASIC and MIC components.
-A single node may be heterogeneous, containing multiple different computing devices; moreover, a HPC system may offer nodes of different types.
+A single node may be heterogeneous, containing multiple different computing devices; moreover, an HPC system may offer nodes of different types.
 For example, the Cori system at Lawrence Berkeley National Laboratory comprises 2,388 Cray XC40 nodes with Intel Haswell CPUs, and 9,688 Intel Xeon Phi nodes. [@declerck2016cori]
 The Summit supercomputer at Oak Ridge National Laboratory is based on the IBM Power9 CPU, which includes both NVLINK [@morgan_2016], a high bandwidth interconnect between Nvidia GPUs; and CAPI, an interconnect to support FPGAs and other accelerators. [@morgan_2017]
-Promising next generation architectures include Fujitsu's Post-K [@morgan_2016_postk], and Cray's CS-400, which forms the platform for the Isambard supercomputer [@feldman_2017_isambard].
+Promising next-generation architectures include Fujitsu's Post-K [@morgan_2016_postk], and Cray's CS-400, which forms the platform for the Isambard supercomputer [@feldman_2017_isambard].
 Both architectures use ARM cores alongside other conventional accelerators, with several Intel Xeon Phi and Nvidia P100 GPUs per node.
 
 Given this heterogeneity of hardware and the wide diversity of scientific application codes, workload characterization, performance prediction and scheduling are all becoming more challenging.
@@ -19,7 +19,7 @@ This technique was shown by @mitra2014implementation where an OpenMP runtime was
 Having a common back-end in the form of OpenCL allows a direct comparison of identical code across diverse architectures.
 
 In this paper, we present an extended version of the OpenDwarfs benchmark suite, a set of OpenCL benchmarks for heterogeneous computing platforms. [@krommydas2016opendwarfs]
-We added new benchmarks to improve the diversity of the suite, and made a number of modifications aimed at improving the reproducibility and interpretability of results, portability between devices, and flexibility of configuration including problem sizes.
+We added new benchmarks to improve the diversity of the suite and made a number of modifications aimed at improving the reproducibility and interpretability of results, portability between devices, and flexibility of configuration including problem sizes.
 We report preliminary results on a range of platforms consisting of CPU, GPU and MIC devices for a subset of the enhanced OpenDwarfs suite, focusing on benchmarks of interest in bioinformatics and computational biology applications.
 
 # Enhancing the OpenDwarfs Benchmark Suite
@@ -40,7 +40,7 @@ We have also added a 2-D discrete wavelet transform from the Rodinia suite [@che
 
 To understand benchmark performance, it is useful to be able to collect hardware performance counters associated with each timing segment.
 LibSciBench is a performance measurement tool which allows high precision timing events to be collected for statistical analysis [@hoefler2015scientific].
-It offers a high resolution timer in order to measure short running kernel codes, reported with one cycle resolution and roughly \SI{6}{\nano\second} of overhead.
+It offers a high-resolution timer in order to measure short running kernel codes, reported with one cycle resolution and roughly \SI{6}{\nano\second} of overhead.
 We used LibSciBench to record timings in conjunction with hardware events, which it collects via PAPI [@mucci1999papi] counters.
 We modified the codes in the OpenDwarfs benchmark suite to insert library calls to LibSciBench to record timings and PAPI events for the three main components of application time: kernel execution, host setup and memory transfer operations.
 Through PAPI modules such as Intel's Running Average Power Limit (RAPL) and Nvidia Management Library (NVML), LibSciBench also supports energy measurements, for which we report preliminary results in this paper.
@@ -61,7 +61,7 @@ SHOC supports multiple programming models including OpenCL, CUDA and OpenACC, wi
 @sun2016 propose Hetero-Mark, a Benchmark Suite for CPU-GPU Collaborative Computing, which has five benchmark applications each implemented in HCC -- which compiles to OpenCL, HIP -- for a CUDA and Radeon Open Compute back-end, and a CUDA version.
 Meanwhile, Chai by @gomez2017chai, offers 15 applications in 7 different implementations with the focus on supporting integrated architectures.
 
-These benchmark suites focus on comparison between languages and environments; whereas our work focuses on benchmarking for device specific performance limitations, for example, by examining the problem sizes where these limitations occur -- this is largely ignored by benchmarking suites with fixed problem sizes.
+These benchmark suites focus on the comparison between languages and environments; whereas our work focuses on benchmarking for device-specific performance limitations, for example, by examining the problem sizes where these limitations occur -- this is largely ignored by benchmarking suites with fixed problem sizes.
 
 Additionally, our enhanced OpenDwarfs benchmark suite aims to cover a wider range of application patterns by focusing exclusively on OpenCL using higher-level benchmarks.
 
@@ -115,7 +115,7 @@ For the Intel CPUs, hyper-threading was enabled and the frequency governor was s
 ## Software
 
 OpenCL version 1.2 was used for all experiments.
-On the CPUs we used the Intel OpenCL driver version 6.3, provided in the 2016-R3 opencl-sdk release.
+On the CPUs, we used the Intel OpenCL driver version 6.3, provided in the 2016-R3 opencl-sdk release.
 On the Nvidia GPUs we used the Nvidia OpenCL driver version 375.66, provided as part of CUDA 8.0.61, AMD GPUs used the OpenCL driver version provided in the amdappsdk v3.0.
 
 The Knights Landing (KNL) architecture used the same OpenCL driver as the Intel CPU platforms, however, the 2018-R1 release of the Intel compiler was required to compile for the architecture natively on the host.
@@ -175,8 +175,8 @@ Each step of the algorithm assigns each point to the cluster with the closest ce
 Execution terminates when no clusters change size between iterations.
 Starting positions for the centroids are determined randomly.
 The OpenDwarfs benchmark previously required the object features to be read from a previously generated file.
-We extended the benchmark to support generation of a random distribution of points.
-This was done to more fairly evaluate cache performance, since repeated runs of clustering on the same feature space (loaded from file) would deterministically generate similar caching behavior.
+We extended the benchmark to support the generation of a random distribution of points.
+This was done to more fairly evaluate cache performance since repeated runs of clustering on the same feature space (loaded from file) would deterministically generate similar caching behavior.
 For all problem sizes, the number of clusters $C_n$ is fixed at 5.
 
 Given a fixed number of clusters, the parameters that may be used to select a problem size are the number of points $P_n$, and the dimensionality or number of features per point $F_n$.
@@ -202,7 +202,7 @@ The **large** problem size is at least four times the size of the last-level cac
 -->
 
 For brevity, cache miss results are not presented in this paper but were used to verify the selection of suitable problem sizes for each benchmark.
-The procedure to select problem size parameters is specific to each benchmark, but follows a similar approach to k-means.
+The procedure to select problem size parameters is specific to each benchmark but follows a similar approach to k-means.
 
 ### lud, fft, srad, crc, nw
 
@@ -225,7 +225,7 @@ For three of the benchmarks, we were unable to generate different problem sizes 
 
 Gemnoui `gem` is an n-body-method based benchmark which computes electrostatic potential of biomolecular structures.
 Determining suitable problem sizes was performed by initially browsing the National Center for Biotechnology Information's Molecular Modeling Database (MMDB) [@madej2013mmdb] and inspecting the corresponding Protein Data Bank format (pdb) files.
-Molecules were then selected based on complexity, since the greater the complexity the greater the number of atoms required for the benchmark and thus the larger the memory footprint.
+Molecules were then selected based on complexity since the greater the complexity the greater the number of atoms required for the benchmark and thus the larger the memory footprint.
 **tiny** used the Prion Peptide 4TUT [@yu2015crystal] and was the simplest structure, consisting of a single protein (1 molecule), it had the device side memory usage of \SI{31.3}{\kibi\byte} which should fit in the L1 cache (\SI{32}{\kibi\byte}) on the Skylake processor.
 **small** used a Leukocyte Receptor 2D3V [@shiroishi2006crystal] also consisting of 1 protein molecule, with an associated memory footprint of 252KiB.
 **medium** used the nucleosome dataset originally provided in the OpenDwarfs benchmark suite, using \SI{7498}{\kibi\byte} of device-side memory.
@@ -239,7 +239,7 @@ Smith-Waterman alignment `swat` is a variation of the Needleman-Wunsch algorithm
 The original OpenDwarfs suite included a selection of data files, but no method to generate arbitrarily-sized inputs.
 
 The `nqueens` benchmark is a backtrack/branch-and-bound code which finds valid placements of queens on a chessboard of size n$\times$n, where each queen cannot be attacked by another.
-For this code, memory footprint scales very slowly with increasing number of queens, relative to the computational cost.
+For this code, memory footprint scales very slowly with the increasing number of queens, relative to the computational cost.
 Thus it is significantly compute-bound and only one problem size is tested.
 
 The Baum-Welch Algorithm Hidden Markov Model `hmm` benchmark represents the Graphical Models dwarf and did not require additional data sets, however validation of the correctness of results has not occurred apart from over the **tiny** problem size, as such, it is the only size examined in the evaluation.
@@ -296,7 +296,7 @@ The problem size parameters for all benchmarks are presented in Table\ \ref{tab:
 
 Each **Device** can be selected in a uniform way between benchmarks using the same notation, on this system **Device** comprises of `-p 1 -d 0 -t 0` for the Intel Skylake CPU, where `p` and `d` are the integer identifier of the platform and device to respectively use, and `-p 1 -d 0 -t 1` for the Nvidia GeForce GTX 1080 GPU.
 Each benchmark is run as **Benchmark** **Device** `--` **Arguments**, where **Arguments** is taken from Table\ \ref{tab:program_arguments} at the selected scale of $\Phi$.
-For reproducibility the entire set of Python scripts with all problem sizes is available in a GitHub repository [@johnston2017]. 
+For reproducibility, the entire set of Python scripts with all problem sizes is available in a GitHub repository [@johnston2017]. 
 Where $\Phi$ is substituted as the argument for each benchmark, it is taken as the respective scale from Table\ \ref{tab:problem_sizes} and is inserted into Table\ \ref{tab:program_arguments}.
 
 \begin{table}[t]
@@ -336,7 +336,7 @@ Where $\Phi$ is substituted as the argument for each benchmark, it is taken as t
 # Results
 
 The primary purpose of including these time results is to demonstrate the benefits of the extensions made to the OpenDwarfs Benchmark suite.
-The use of LibSciBench allowed high resolution timing measurements over multiple code regions.
+The use of LibSciBench allowed high-resolution timing measurements over multiple code regions.
 To demonstrate the portability of the Extended OpenDwarfs benchmark suite, we present results from 11 varied benchmarks running on 15 devices representing four distinct classes of accelerator.
 For eight of the benchmarks, we measured multiple problem sizes and observed distinctly different scaling patterns between devices.
 This underscores the importance of allowing a choice of problem size in a benchmarking suite.
@@ -359,7 +359,7 @@ Figure\ \ref{fig:time-crc} shows the execution times for the `crc` benchmark ove
 The results are colored according to accelerator type: purple for CPU devices, blue for consumer GPUs, green for HPC GPUs, and yellow for KNL.
 Execution times for `crc` are lowest on CPU-type architectures, probably due to the low floating-point intensity of the CRC computation [@joshi2016thesis, Ch. 6].
 Excluding `crc`, all the other benchmarks perform best on GPU type accelerators; furthermore, the performance on the KNL is poor due to the lack of support for wide vector registers in Intel's OpenCL SDK.
-We therefore omit results for KNL for the remaining benchmarks.
+We, therefore, omit results for KNL for the remaining benchmarks.
 
 ```{r eval=TRUE, dev='pdf', echo=FALSE, include=FALSE, cache=TRUE, draw_lud_diagonal_internal_all_kiviat, fig.cap = "\\label{fig:lud_diagonal_internal_kiviat} feature-space of the \\texttt{diagonal} and \\texttt{internal} kernels in the lud benchmark on all problem sizes.", fig.width=8,fig.height=16}
 #print(plot_grid(z2,z3,labels=c('A) LUD Diagonal','B) LUD Internal'),ncol=1))#labels = "AUTO"
@@ -403,9 +403,9 @@ The N-body Methods dwarf is represented by (`gem`) and the results are shown in 
 \end{figure*}
 
 
-Examining the transition from tiny to large problem sizes (from left to right) in Figure\ \ref{fig:time2}b shows the performance gap between CPU and GPU architectures widening for `srad`, indicating that codes representative of structured grid dwarfs are well suited to GPUs.
+Examining the transition from tiny to large problem sizes (from left to right) in Figure\ \ref{fig:time2}b shows the performance gap between CPU and GPU architectures widening for `srad`, indicating that codes representative of structured grid dwarfs is well suited to GPUs.
 
-In contrast, Figure\ \ref{fig:time2}c `nw` shows that the Intel CPUs and NVIDIA GPUs perform comparably over all problem sizes, whereas all AMD GPUs exhibit worse performance as size increases.
+In contrast, Figure\ \ref{fig:time2}c `nw` shows that the Intel CPUs and NVIDIA GPUs perform comparably for all problem sizes, whereas all AMD GPUs exhibit worse performance as size increases.
 This suggests that performance for this Dynamic Programming problem cannot be explained solely by considering accelerator type and may be tied to micro-architecture or OpenCL runtime support.
 
 For most benchmarks, the variability in execution times is greater for devices with a lower clock frequency, regardless of accelerator type.
@@ -428,9 +428,9 @@ For example, Figure\ \ref{fig:time2}b shows the performance gap between AMD GPUs
 Predicted application properties for the various Berkeley Dwarfs are evident in the measured runtime results.
 For example, @asanovic2006landscape state that the Spectral Methods dwarf is memory latency limited.
 Examining the representative benchmarks `dwt` and `fft` in Figure\ \ref{fig:time}d and Figure\ \ref{fig:time2}a respectively, we see that CPU performance drops significantly for CPU compared to GPU as problem size increases.
-This reflects the higher latency and smaller size of last-level cache on CPU devices relative to GPUs.
+This reflects the higher latency and smaller size of the last-level cache on CPU devices relative to GPUs.
 \todo{What is the memory size for the GPUs, and what is the difference in latency?}
-It is expected if had we extended this study to an even larger problem size that would not fit on GPU global memory, much higher performance penalties would be experienced over GPU devices, since the PCI-E interconnect has a higher latency than a memory access to main memory from the CPU systems.
+It is expected if we had extended this study to an even larger problem size that would not fit on GPU global memory, much higher performance penalties would be experienced over GPU devices, since the PCI-E interconnect has a higher latency than a memory access to main memory from the CPU systems.
 As a further example, @asanovic2006landscape state that the Structured Grid dwarf is memory bandwidth limited.
 The Structured Grid dwarf is represented by the `srad` benchmark shown in Figure\ \ref{fig:time2}a.
 GPUs exhibit lower execution times than CPUs, which would be expected in a memory bandwidth-limited code as GPU devices offer higher bandwidth than a system interconnect.
@@ -441,7 +441,7 @@ GPUs exhibit lower execution times than CPUs, which would be expected in a memor
 
 To better understand the performance results for selected bioinformatics benchmarks, we analysed the codes using the Architecture Independent Workload Characterization (AIWC) tool [@johnston2018aiwc].
 AIWC simulates the execution of OpenCL kernels to collect architecture-independent features such as branch and memory entropy and instruction complexity.
-For multi-threaded or parallel workloads it collects metrics for both instruction and thread-level parallelism.
+For multi-threaded or parallel workloads, it collects metrics for both instruction and thread-level parallelism.
 Available parallelism is measured by the number of work-items and barriers encountered, while load imbalance is measured by differences in instructions per thread.
 
 \begin{figure*}
@@ -474,7 +474,7 @@ Available parallelism is measured by the number of work-items and barriers encou
     \caption{Architecture-Independent Workload Characterization features for the \texttt{hmm} bioinformatics benchmark}\label{fig:aiwc-hmm}
 \end{figure*}
 
-The bioinformatics subset of applications from the extended OpenDwarfs benchmark suite include computations used in sequence analysis, biophysics, gene expression/similarity and pattern identification.
+The bioinformatics subset of applications from the extended OpenDwarfs benchmark suite includes computations used in sequence analysis, biophysics, gene expression/similarity and pattern identification.
 `nw` and `swat` applications from the Dynamic-Programming dwarf are both directly used in sequence analysis, `gem` from the N-Body-Methods dwarf to cover biophysics computations, `hmm` from the Graphical-Models dwarf considers both sequence analysis and gene expression.
 Finally, the MapReduce dwarf features the `kmeans` benchmark, which can be used directly in both pattern identification and gene similarity comparisons.
 
@@ -504,7 +504,7 @@ The `kmeans` benchmark (Figure\ \ref{fig:aiwc-kmeans}) also has a high level of 
 The `hmm` benchmark (Figure\ \ref{fig:aiwc-hmm}) is composed of a large number of kernels, which differ significantly in granularity.
 Most kernels have very little available parallelism, suggesting that this benchmark would perform best on CPU architectures with a small number of powerful cores; this is borne out by the measurements in Figure\ \ref{fig:time3}c which show the smallest benchmark time was recorded on the powerful i7-6700k CPU.
 
-None of the bioinformatics benchmarks are vectorized (instructions per operand = 1), and therefore fail to take advantage of the floating point capabilities available on CPU and MIC architectures.
+None of the bioinformatics benchmarks is vectorized (instructions per operand = 1), and therefore fail to take advantage of the floating point capabilities available on CPU and MIC architectures.
 
 ## Energy
 
@@ -547,12 +547,12 @@ Variance with respect to energy usage is larger on the CPU, which is consistent 
 
 We have performed essential curation of the OpenDwarfs benchmark suite.
 <!-- We improved coverage of spectral methods by adding a new Discrete Wavelet Transform benchmark, and replacing the previous inadequate `fft` benchmark.-->
-All benchmarks were enhanced to allow multiple problem sizes; in this paper we report results for four different problem sizes, selected according to the memory hierarchy of CPU systems as motivated by @marjanovic2016hpc.
-These can now be easily adjusted for next generation accelerator systems using the methodology outlined in Section\ \ref{ssec:setting_sizes}.
+All benchmarks were enhanced to allow multiple problem sizes; in this paper, we report results for four different problem sizes, selected according to the memory hierarchy of CPU systems as motivated by @marjanovic2016hpc.
+These can now be easily adjusted for next-generation accelerator systems using the methodology outlined in Section\ \ref{ssec:setting_sizes}.
 
 We ran many of the benchmarks presented in the original OpenDwarfs [@krommydas2016opendwarfs] paper on current hardware.
 This was done for two reasons, firstly to investigate the original findings to the state-of-the-art systems and secondly to extend the usefulness of the benchmark suite.
-Re-examining the original codes on range of modern hardware showed limitations, such as the fixed problem sizes along with many platform-specific optimizations (such as local work-group size).
+Re-examining the original codes on a range of modern hardware showed limitations, such as the fixed problem sizes along with many platform-specific optimizations (such as local work-group size).
 In the best case, such optimizations resulted in sub-optimal performance for newer systems (many problem sizes favored the original GPUs on which they were originally run).
 In the worst case, they resulted in failures when running on untested platforms or changed execution arguments.
 
@@ -562,7 +562,7 @@ The use of LibSciBench has also increased the reproducibility of timing data for
 
 The evaluation of performance bottle-necks for bioinformatics codes was presented using AIWC.
 It is interesting to note that optimal accelerators are typically GPU based, given the high available thread parallelism and high barrier synchronization counts of many sequencing analysis applications.
-However, the bioinformatics applications examined contain few kernels with higher branch and memory access entropies, interspersed with the GPU suited workloads, which suggests that CPUs are critical to achieve good performance on these systems.
+However, the bioinformatics applications examined contain few kernels with higher branch and memory access entropies, interspersed with the GPU suited workloads, which suggests that CPUs are critical to achieving good performance on these systems.
 Indeed, partitioning applications by scheduling kernel to their optimal accelerator may generally provide better performance for HPC bioinformatics applications.
 
 # Future Work
@@ -578,7 +578,7 @@ Certain configuration parameters for the benchmarks, e.g. local workgroup size, 
 We plan to integrate auto-tuning into the benchmarking framework to provide confidence that the optimal parameters are used for each combination of code and accelerator.
 -->
 
-The original goal of this research was to discover methods for choosing the best device for a particular computational task, for example to support scheduling decisions under time and/or energy constraints.
+The original goal of this research was to discover methods for choosing the best device for a particular computational task, for example, to support scheduling decisions under time and/or energy constraints.
 Until now, we found the available OpenCL benchmark suites were not rich enough to adequately characterize performance across the diverse range of applications and computational devices of interest.
 Now that a flexible benchmark suite is in place and results can be generated quickly and reliably on a range of accelerators, we plan to use these benchmarks to evaluate scheduling approaches.
 
@@ -589,6 +589,6 @@ We envisage the use of AIWC for scheduling kernels to the optimal type of accele
 
 # Acknowledgements
 
-We thank our colleagues at The University of Bristol's High Performance Computing Research group for the use of *The Zoo* Research cluster for experimental evaluation.
+We thank our colleagues at The University of Bristol's High-Performance Computing Research group for the use of *The Zoo* Research cluster for experimental evaluation.
 
 # References
