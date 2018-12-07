@@ -3,44 +3,317 @@
 # Release : 3.10.0-514.10.2.el7.x86_64
 # Version : #1 SMP Fri Mar 3 00:04:05 UTC 2017
 # Machine : x86_64
-# Execution time and date (UTC): Tue Dec  4 05:32:23 2018
-# Execution time and date (local): Tue Dec  4 05:32:23 2018
+# Execution time and date (UTC): Fri Dec  7 05:40:33 2018
+# Execution time and date (local): Fri Dec  7 05:40:33 2018
 # Reported time measurements are in microseconds
 # pretty output format
-       region       id         time     overhead 
- kernel_creation          0 480415.050781           12 
- device_side_buffer_setup          0 112.835938            1 
- host_side_setup          0 394.109375            1 
- device_side_buffer_setup          0 78.085938            0 
- host_side_setup          0 13.128906            1 
- device_side_buffer_setup          0 49.714844            0 
- host_side_setup          0 76.640625            0 
- device_side_buffer_setup          0 122.816406            0 
- host_side_setup          0 0.531250            0 
- device_side_buffer_setup          0 249.140625            0 
- host_side_setup          0 3.253906            0 
- device_side_h2d_copy          0 256.933594            0 
- device_side_buffer_setup          0 27.640625            0 
- host_side_setup          0 2884.308594            1 
- host_side_setup          0 106.554688            0 
- setting_hSetZeroKernel_arguments          0 29.675781            0 
- hSetZeroKernel_kernel          0 18379.078125            5 
- setting_hSetZeroKernel_arguments          0 9.210938            0 
- hSetZeroKernel_kernel          0 19334.652344            1 
- setting_hSetZeroKernel_arguments          0 9.363281            0 
- hSetZeroKernel_kernel          0 18536.925781            1 
- setting_hSetZeroKernel_arguments          0 9.117188            0 
- hSetZeroKernel_kernel          0 18487.097656            1 
- setting_hSetZeroKernel_arguments          0 9.230469            0 
- hSetZeroKernel_kernel          0 18476.902344            1 
- setting_hSetZeroKernel_arguments          0 10.492188            0 
- hSetZeroKernel_kernel          0 857.765625            0 
- setting_hSetZeroKernel_arguments          0 17.371094            0 
- hSetZeroKernel_kernel          0 401.757812            0 
- device_side_h2d_copy          0 643.253906            0 
- setting_hMatchStringKernel_arguments          0 22.335938            0 
- hMatchStringKernel_kernel          0 32197.128906            0 
- setting_hTraceBackKernel_arguments          0 10.484375            2 
- hTraceBackKernel          0 3457.250000            0 
- device_side_d2h_copy          0 1660.843750            0 
-# Runtime: 0.620694 s (overhead: 0.004350 %) 35 records
+       region repeats_to_two_seconds       id         time     overhead 
+ kernel_creation NA         0 479057.718750            3 
+ device_side_buffer_setup NA         0 113.593750            1 
+ host_side_setup NA         0 430.906250            2 
+ device_side_buffer_setup NA         0 77.406250            0 
+ host_side_setup NA         0 21.976562            1 
+ device_side_buffer_setup NA         0 49.070312            0 
+ host_side_setup NA         0 77.246094            0 
+ device_side_buffer_setup NA         0 125.632812            0 
+ host_side_setup NA         0 0.589844            0 
+ device_side_buffer_setup NA         0 43.308594            0 
+ host_side_setup NA         0 4.019531            0 
+ device_side_h2d_copy NA         0 363.757812            0 
+ device_side_buffer_setup NA         0 31.992188            0 
+ host_side_setup NA         0 1125.171875            0 
+  fillBuffers             0          0 14904.082031            1 
+ device_side_h2d_copy             0          0 671.089844            0 
+ setting_hMatchStringKernel_arguments             0          0 142.164062            6 
+ hMatchStringKernel_kernel             0          0 33488.453125            0 
+ setting_hTraceBackKernel_arguments             0          0 11.078125            0 
+ hTraceBackKernel             0          0 2748.250000            0 
+ device_side_d2h_copy             0          0 2321.273438            0 
+  fillBuffers             1          0 9082.648438            1 
+ device_side_h2d_copy             1          0 539.425781            0 
+ setting_hMatchStringKernel_arguments             1          0 1795.765625            0 
+ hMatchStringKernel_kernel             1          0 36707.789062            0 
+ setting_hTraceBackKernel_arguments             1          0 10.410156            0 
+ hTraceBackKernel             1          0 4036.605469            0 
+ device_side_d2h_copy             1          0 1112.273438            0 
+  fillBuffers             2          0 6851.929688            0 
+ device_side_h2d_copy             2          0 4563.531250            1 
+ setting_hMatchStringKernel_arguments             2          0 48.898438            0 
+ hMatchStringKernel_kernel             2          0 32042.933594            1 
+ setting_hTraceBackKernel_arguments             2          0 17.746094            5 
+ hTraceBackKernel             2          0 4406.210938            1 
+ device_side_d2h_copy             2          0 3103.937500            1 
+  fillBuffers             3          0 7856.375000            0 
+ device_side_h2d_copy             3          0 2663.027344            0 
+ setting_hMatchStringKernel_arguments             3          0 18.394531            0 
+ hMatchStringKernel_kernel             3          0 29451.933594            1 
+ setting_hTraceBackKernel_arguments             3          0 12.132812            0 
+ hTraceBackKernel             3          0 320.574219            0 
+ device_side_d2h_copy             3          0 378.406250            0 
+  fillBuffers             4          0 7324.480469            0 
+ device_side_h2d_copy             4          0 288.453125            0 
+ setting_hMatchStringKernel_arguments             4          0 12.796875            0 
+ hMatchStringKernel_kernel             4          0 30692.230469            0 
+ setting_hTraceBackKernel_arguments             4          0 8.433594            0 
+ hTraceBackKernel             4          0 267.625000            0 
+ device_side_d2h_copy             4          0 956.316406            0 
+  fillBuffers             5          0 7324.449219            0 
+ device_side_h2d_copy             5          0 304.847656            0 
+ setting_hMatchStringKernel_arguments             5          0 13.113281            0 
+ hMatchStringKernel_kernel             5          0 32573.070312            0 
+ setting_hTraceBackKernel_arguments             5          0 8.492188            0 
+ hTraceBackKernel             5          0 386.867188            0 
+ device_side_d2h_copy             5          0 366.894531            0 
+  fillBuffers             6          0 10030.253906            0 
+ device_side_h2d_copy             6          0 477.425781            0 
+ setting_hMatchStringKernel_arguments             6          0 16.777344            0 
+ hMatchStringKernel_kernel             6          0 42217.546875            0 
+ setting_hTraceBackKernel_arguments             6          0 15.714844            0 
+ hTraceBackKernel             6          0 3420.386719            0 
+ device_side_d2h_copy             6          0 1768.261719            0 
+  fillBuffers             7          0 6605.835938            1 
+ device_side_h2d_copy             7          0 1234.125000           15 
+ setting_hMatchStringKernel_arguments             7          0 73.929688            0 
+ hMatchStringKernel_kernel             7          0 39768.324219            0 
+ setting_hTraceBackKernel_arguments             7          0 9.808594            0 
+ hTraceBackKernel             7          0 304.593750            0 
+ device_side_d2h_copy             7          0 861.371094            0 
+  fillBuffers             8          0 9940.375000            0 
+ device_side_h2d_copy             8          0 497.621094            0 
+ setting_hMatchStringKernel_arguments             8          0 13.449219            0 
+ hMatchStringKernel_kernel             8          0 32505.179688            0 
+ setting_hTraceBackKernel_arguments             8          0 8.828125            0 
+ hTraceBackKernel             8          0 309.878906            0 
+ device_side_d2h_copy             8          0 3709.808594            0 
+  fillBuffers             9          0 8436.195312            1 
+ device_side_h2d_copy             9          0 473.554688            0 
+ setting_hMatchStringKernel_arguments             9          0 36.097656            0 
+ hMatchStringKernel_kernel             9          0 32556.574219            1 
+ setting_hTraceBackKernel_arguments             9          0 32.175781            0 
+ hTraceBackKernel             9          0 400.511719            0 
+ device_side_d2h_copy             9          0 610.847656            0 
+  fillBuffers            10          0 9161.355469            1 
+ device_side_h2d_copy            10          0 716.531250            0 
+ setting_hMatchStringKernel_arguments            10          0 18.980469            0 
+ hMatchStringKernel_kernel            10          0 34326.281250            1 
+ setting_hTraceBackKernel_arguments            10          0 17.300781            0 
+ hTraceBackKernel            10          0 315.316406            0 
+ device_side_d2h_copy            10          0 577.382812            0 
+  fillBuffers            11          0 10339.781250            0 
+ device_side_h2d_copy            11          0 2945.640625            0 
+ setting_hMatchStringKernel_arguments            11          0 13.546875            0 
+ hMatchStringKernel_kernel            11          0 32129.652344            0 
+ setting_hTraceBackKernel_arguments            11          0 16.039062            0 
+ hTraceBackKernel            11          0 366.777344            1 
+ device_side_d2h_copy            11          0 975.605469            1 
+  fillBuffers            12          0 8226.175781            1 
+ device_side_h2d_copy            12          0 1010.253906            1 
+ setting_hMatchStringKernel_arguments            12          0 76.589844            0 
+ hMatchStringKernel_kernel            12          0 30242.675781            1 
+ setting_hTraceBackKernel_arguments            12          0 16.523438            0 
+ hTraceBackKernel            12          0 389.972656            1 
+ device_side_d2h_copy            12          0 454.335938            0 
+  fillBuffers            13          0 10358.156250            0 
+ device_side_h2d_copy            13          0 756.390625            0 
+ setting_hMatchStringKernel_arguments            13          0 78.207031            0 
+ hMatchStringKernel_kernel            13          0 30921.867188            0 
+ setting_hTraceBackKernel_arguments            13          0 9.480469            0 
+ hTraceBackKernel            13          0 2224.140625            0 
+ device_side_d2h_copy            13          0 920.386719            0 
+  fillBuffers            14          0 8725.687500            0 
+ device_side_h2d_copy            14          0 5165.308594            0 
+ setting_hMatchStringKernel_arguments            14          0 20.664062            0 
+ hMatchStringKernel_kernel            14          0 34280.425781            0 
+ setting_hTraceBackKernel_arguments            14          0 8.816406            0 
+ hTraceBackKernel            14          0 488.496094            0 
+ device_side_d2h_copy            14          0 1211.890625            0 
+  fillBuffers            15          0 10072.222656            1 
+ device_side_h2d_copy            15          0 425.468750            0 
+ setting_hMatchStringKernel_arguments            15          0 26.746094            0 
+ hMatchStringKernel_kernel            15          0 35689.250000            1 
+ setting_hTraceBackKernel_arguments            15          0 16.167969            0 
+ hTraceBackKernel            15          0 316.753906            0 
+ device_side_d2h_copy            15          0 440.234375            0 
+  fillBuffers            16          0 8753.453125            0 
+ device_side_h2d_copy            16          0 575.042969            0 
+ setting_hMatchStringKernel_arguments            16          0 19.429688            5 
+ hMatchStringKernel_kernel            16          0 32920.636719            0 
+ setting_hTraceBackKernel_arguments            16          0 18.773438            0 
+ hTraceBackKernel            16          0 508.671875            1 
+ device_side_d2h_copy            16          0 3066.457031            0 
+  fillBuffers            17          0 8241.449219            0 
+ device_side_h2d_copy            17          0 431.750000            0 
+ setting_hMatchStringKernel_arguments            17          0 51.359375            0 
+ hMatchStringKernel_kernel            17          0 32110.703125            1 
+ setting_hTraceBackKernel_arguments            17          0 15.511719            0 
+ hTraceBackKernel            17          0 306.570312            0 
+ device_side_d2h_copy            17          0 701.925781            0 
+  fillBuffers            18          0 8740.707031            1 
+ device_side_h2d_copy            18          0 598.062500            0 
+ setting_hMatchStringKernel_arguments            18          0 18.285156            0 
+ hMatchStringKernel_kernel            18          0 32789.488281            0 
+ setting_hTraceBackKernel_arguments            18          0 8.714844            0 
+ hTraceBackKernel            18          0 290.902344            0 
+ device_side_d2h_copy            18          0 2667.023438            1 
+  fillBuffers            19          0 10486.859375            1 
+ device_side_h2d_copy            19          0 3156.472656            0 
+ setting_hMatchStringKernel_arguments            19          0 21.726562            0 
+ hMatchStringKernel_kernel            19          0 43296.988281            1 
+ setting_hTraceBackKernel_arguments            19          0 22.234375            0 
+ hTraceBackKernel            19          0 620.886719            0 
+ device_side_d2h_copy            19          0 1078.710938            1 
+  fillBuffers            20          0 8711.335938            0 
+ device_side_h2d_copy            20          0 706.339844            0 
+ setting_hMatchStringKernel_arguments            20          0 26.843750            0 
+ hMatchStringKernel_kernel            20          0 33937.707031            1 
+ setting_hTraceBackKernel_arguments            20          0 18.136719            0 
+ hTraceBackKernel            20          0 374.949219            0 
+ device_side_d2h_copy            20          0 574.496094            0 
+  fillBuffers            21          0 9665.605469            0 
+ device_side_h2d_copy            21          0 657.062500            0 
+ setting_hMatchStringKernel_arguments            21          0 23.171875            0 
+ hMatchStringKernel_kernel            21          0 30480.562500            1 
+ setting_hTraceBackKernel_arguments            21          0 16.636719            0 
+ hTraceBackKernel            21          0 425.128906            0 
+ device_side_d2h_copy            21          0 388.617188            0 
+  fillBuffers            22          0 9974.726562            1 
+ device_side_h2d_copy            22          0 597.628906            0 
+ setting_hMatchStringKernel_arguments            22          0 25.480469            0 
+ hMatchStringKernel_kernel            22          0 33649.046875            1 
+ setting_hTraceBackKernel_arguments            22          0 16.179688            0 
+ hTraceBackKernel            22          0 339.285156            0 
+ device_side_d2h_copy            22          0 997.746094            0 
+  fillBuffers            23          0 9121.613281            0 
+ device_side_h2d_copy            23          0 488.230469            0 
+ setting_hMatchStringKernel_arguments            23          0 13.210938            0 
+ hMatchStringKernel_kernel            23          0 29609.816406            0 
+ setting_hTraceBackKernel_arguments            23          0 7.687500            0 
+ hTraceBackKernel            23          0 259.648438            0 
+ device_side_d2h_copy            23          0 1879.894531            0 
+  fillBuffers            24          0 8476.542969            1 
+ device_side_h2d_copy            24          0 553.871094            0 
+ setting_hMatchStringKernel_arguments            24          0 18.734375            0 
+ hMatchStringKernel_kernel            24          0 33195.175781            1 
+ setting_hTraceBackKernel_arguments            24          0 16.886719            0 
+ hTraceBackKernel            24          0 328.164062            0 
+ device_side_d2h_copy            24          0 2510.472656            0 
+  fillBuffers            25          0 10583.851562            0 
+ device_side_h2d_copy            25          0 693.800781            0 
+ setting_hMatchStringKernel_arguments            25          0 59.871094            0 
+ hMatchStringKernel_kernel            25          0 32579.546875            1 
+ setting_hTraceBackKernel_arguments            25          0 16.011719            0 
+ hTraceBackKernel            25          0 380.054688            0 
+ device_side_d2h_copy            25          0 1496.261719            1 
+  fillBuffers            26          0 11267.207031            0 
+ device_side_h2d_copy            26          0 510.890625            0 
+ setting_hMatchStringKernel_arguments            26          0 21.613281            0 
+ hMatchStringKernel_kernel            26          0 32669.226562            1 
+ setting_hTraceBackKernel_arguments            26          0 16.453125            0 
+ hTraceBackKernel            26          0 321.562500            0 
+ device_side_d2h_copy            26          0 2314.984375            1 
+  fillBuffers            27          0 9773.820312            1 
+ device_side_h2d_copy            27          0 3882.070312            0 
+ setting_hMatchStringKernel_arguments            27          0 106.015625            0 
+ hMatchStringKernel_kernel            27          0 40962.160156            0 
+ setting_hTraceBackKernel_arguments            27          0 8.941406            0 
+ hTraceBackKernel            27          0 2297.800781            1 
+ device_side_d2h_copy            27          0 3150.761719            0 
+  fillBuffers            28          0 6984.164062            1 
+ device_side_h2d_copy            28          0 792.789062            0 
+ setting_hMatchStringKernel_arguments            28          0 45.351562            0 
+ hMatchStringKernel_kernel            28          0 30916.554688            1 
+ setting_hTraceBackKernel_arguments            28          0 16.871094            0 
+ hTraceBackKernel            28          0 369.996094            0 
+ device_side_d2h_copy            28          0 438.363281            0 
+  fillBuffers            29          0 7870.531250            1 
+ device_side_h2d_copy            29          0 519.832031            0 
+ setting_hMatchStringKernel_arguments            29          0 64.664062            0 
+ hMatchStringKernel_kernel            29          0 28444.304688            1 
+ setting_hTraceBackKernel_arguments            29          0 16.542969            0 
+ hTraceBackKernel            29          0 303.410156            0 
+ device_side_d2h_copy            29          0 2874.027344            0 
+  fillBuffers            30          0 7943.609375            0 
+ device_side_h2d_copy            30          0 456.886719            0 
+ setting_hMatchStringKernel_arguments            30          0 19.773438            0 
+ hMatchStringKernel_kernel            30          0 33896.242188            1 
+ setting_hTraceBackKernel_arguments            30          0 18.683594            0 
+ hTraceBackKernel            30          0 530.394531            1 
+ device_side_d2h_copy            30          0 3233.730469            1 
+  fillBuffers            31          0 14922.312500            1 
+ device_side_h2d_copy            31          0 640.800781            0 
+ setting_hMatchStringKernel_arguments            31          0 19.230469            0 
+ hMatchStringKernel_kernel            31          0 41078.675781            1 
+ setting_hTraceBackKernel_arguments            31          0 17.500000            0 
+ hTraceBackKernel            31          0 447.230469            0 
+ device_side_d2h_copy            31          0 4552.277344            0 
+  fillBuffers            32          0 8951.792969            0 
+ device_side_h2d_copy            32          0 3583.429688            1 
+ setting_hMatchStringKernel_arguments            32          0 68.980469            0 
+ hMatchStringKernel_kernel            32          0 37914.925781            1 
+ setting_hTraceBackKernel_arguments            32          0 19.406250            0 
+ hTraceBackKernel            32          0 358.765625            0 
+ device_side_d2h_copy            32          0 827.089844            1 
+  fillBuffers            33          0 8415.769531            1 
+ device_side_h2d_copy            33          0 4852.800781            1 
+ setting_hMatchStringKernel_arguments            33          0 85.121094            0 
+ hMatchStringKernel_kernel            33          0 29448.964844            0 
+ setting_hTraceBackKernel_arguments            33          0 14.429688            0 
+ hTraceBackKernel            33          0 2066.882812            1 
+ device_side_d2h_copy            33          0 1547.023438            0 
+  fillBuffers            34          0 13054.109375            1 
+ device_side_h2d_copy            34          0 725.515625            0 
+ setting_hMatchStringKernel_arguments            34          0 20.242188            0 
+ hMatchStringKernel_kernel            34          0 45531.597656            1 
+ setting_hTraceBackKernel_arguments            34          0 24.542969           16 
+ hTraceBackKernel            34          0 467.113281            1 
+ device_side_d2h_copy            34          0 2551.460938            1 
+  fillBuffers            35          0 9074.074219            0 
+ device_side_h2d_copy            35          0 2755.507812            0 
+ setting_hMatchStringKernel_arguments            35          0 20.445312            0 
+ hMatchStringKernel_kernel            35          0 32236.949219            0 
+ setting_hTraceBackKernel_arguments            35          0 9.847656            0 
+ hTraceBackKernel            35          0 316.324219            0 
+ device_side_d2h_copy            35          0 523.769531            0 
+  fillBuffers            36          0 11539.402344            1 
+ device_side_h2d_copy            36          0 3536.152344            0 
+ setting_hMatchStringKernel_arguments            36          0 20.179688            0 
+ hMatchStringKernel_kernel            36          0 32405.593750            1 
+ setting_hTraceBackKernel_arguments            36          0 15.960938            0 
+ hTraceBackKernel            36          0 446.726562            0 
+ device_side_d2h_copy            36          0 1971.007812            1 
+  fillBuffers            37          0 8443.183594            0 
+ device_side_h2d_copy            37          0 677.066406            0 
+ setting_hMatchStringKernel_arguments            37          0 25.300781            0 
+ hMatchStringKernel_kernel            37          0 35326.074219            1 
+ setting_hTraceBackKernel_arguments            37          0 16.367188            0 
+ hTraceBackKernel            37          0 483.234375            0 
+ device_side_d2h_copy            37          0 506.042969            0 
+  fillBuffers            38          0 10630.324219            1 
+ device_side_h2d_copy            38          0 2383.976562            0 
+ setting_hMatchStringKernel_arguments            38          0 22.054688            0 
+ hMatchStringKernel_kernel            38          0 33111.765625            1 
+ setting_hTraceBackKernel_arguments            38          0 20.242188            0 
+ hTraceBackKernel            38          0 422.808594            1 
+ device_side_d2h_copy            38          0 718.511719            1 
+  fillBuffers            39          0 10248.359375            1 
+ device_side_h2d_copy            39          0 908.804688            0 
+ setting_hMatchStringKernel_arguments            39          0 27.320312            0 
+ hMatchStringKernel_kernel            39          0 32943.843750            0 
+ setting_hTraceBackKernel_arguments            39          0 9.136719            0 
+ hTraceBackKernel            39          0 3299.671875            0 
+ device_side_d2h_copy            39          0 1973.464844            0 
+  fillBuffers            40          0 11055.863281            0 
+ device_side_h2d_copy            40          0 3270.769531            0 
+ setting_hMatchStringKernel_arguments            40          0 80.691406            0 
+ hMatchStringKernel_kernel            40          0 32254.250000            0 
+ setting_hTraceBackKernel_arguments            40          0 16.761719            0 
+ hTraceBackKernel            40          0 281.847656            0 
+ device_side_d2h_copy            40          0 643.789062            0 
+  fillBuffers            41          0 8990.582031            0 
+ device_side_h2d_copy            41          0 621.359375            0 
+ setting_hMatchStringKernel_arguments            41          0 13.550781            0 
+ hMatchStringKernel_kernel            41          0 32291.914062            1 
+ setting_hTraceBackKernel_arguments            41          0 18.558594            0 
+ hTraceBackKernel            41          0 439.101562            0 
+ device_side_d2h_copy            41          0 5060.335938            1 
+# Runtime: 2.504407 s (overhead: 0.004911 %) 308 records
